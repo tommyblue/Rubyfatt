@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+taxes = Tax.create([{:order => 0, :name => 'INPS 4%', :rate => 4, :compound => false}, {:order => 1, :name => 'IVA 21%', :rate => 21, :compound => true}, {:order => 2, :name => "Ritenuta d'accounto -20%", :rate => -20, :compound => true}])
+consolidated_tax = ConsolidatedTax.create(:name => "P. IVA")
+consolidated_tax.taxes << taxes
+
+user = User.create(:email => "tommaso.visconti@gmail.com", :password => "password", :name => "Tommaso", :surname => "Visconti", :address => "Via Rupe Canina 25", :zip_code => "50039", :town => "Vicchio", :province => "FI", :country => "", :tax_code => "VSCTMS83L27D612B", :vat => "05999900482")
