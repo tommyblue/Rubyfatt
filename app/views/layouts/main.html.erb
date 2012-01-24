@@ -39,10 +39,19 @@
 			
 			<ul id="main-nav">  <!-- Accordion Menu -->
 				<li>
-					<%= link_to "Dashboard", root_url, :class => 'nav-top-item current' %>
+					<%= link_to "Dashboard", root_url, :class => 'nav-top-item' %>
 					<ul>
 						<li><%= link_to "Customers", customers_path %></li>
 						<li><%= link_to "Consolidated Taxes", consolidated_taxes_path %></li>
+					</ul>
+				</li>
+				
+				<li>
+					<%= link_to "Customers", root_url, :class => 'nav-top-item' %>
+					<ul>
+					  <% current_user.customers.each do |customer| %>
+						  <li><%= link_to customer.title, customer_slips_path(customer) %></li>
+						<% end %>
 					</ul>
 				</li>
 			</ul> <!-- End #main-nav -->

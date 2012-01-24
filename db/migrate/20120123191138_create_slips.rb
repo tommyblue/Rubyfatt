@@ -6,8 +6,7 @@ class CreateSlips < ActiveRecord::Migration
       t.references :invoice
       t.references :consolidated_tax
       t.string :name
-      t.integer :price_cents, :default => 0, :null => false
-      t.string :currency
+      t.decimal :price, :precision => 8, :scale => 2
       t.timestamps
     end
   end

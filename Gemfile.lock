@@ -60,9 +60,6 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.2)
-    money (4.0.1)
-      i18n (~> 0.4)
-      json
     multi_json (1.0.4)
     mysql2 (0.3.11)
     orm_adapter (0.0.6)
@@ -122,7 +119,6 @@ DEPENDENCIES
   devise
   formtastic
   jquery-rails
-  money
   mysql2
   rails (= 3.2.0)
   sass-rails (~> 3.2.3)

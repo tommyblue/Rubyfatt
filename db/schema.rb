@@ -67,10 +67,9 @@ ActiveRecord::Schema.define(:version => 20120123191832) do
     t.integer  "invoice_id"
     t.integer  "consolidated_tax_id"
     t.string   "name"
-    t.integer  "price_cents",         :default => 0, :null => false
-    t.string   "currency"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.decimal  "price",               :precision => 8, :scale => 2
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
   end
 
   create_table "taxes", :force => true do |t|

@@ -14,3 +14,5 @@ consolidated_tax.taxes << taxes
 
 user.taxes << taxes
 user.consolidated_taxes << consolidated_tax
+
+customer = user.customers.create(:title => "Christian Vibio", :name => "Christian", :surname => "Vibio", :address => "Via Eichenau 43", :zip_code => "50054", :town => "Budrio", :province => "BO", :country => "Italy", :tax_code => "VBICRS74M10B249A", :vat => "02703781209")

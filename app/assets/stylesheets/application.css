@@ -527,7 +527,8 @@ form p small {
                 }
 				
 
-form input[type=text],				
+form input[type=text],
+form input[type=number],				
 form input.text-input,
 form select,
 form textarea,
@@ -544,7 +545,7 @@ form .small-input {
                 width: 25% !important;
                 }
                 
-form .medium-input, form input[type=text] {
+form .medium-input, form input[type=text],form input[type=number], {
                 width: 50% !important;
                 }
                 

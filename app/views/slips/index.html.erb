@@ -1,0 +1,38 @@
+<div class="content-box-header">
+  <h3>Slips for <%= @customer.title %></h3>
+</div>
+
+<div class="content-box-content" style="display: block;">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Tax</th>
+        <th>Created at</th>
+        <th>Estimated</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <td colspan="5">
+          <div class="bulk-actions align-left">
+            <%= link_to "New slip", new_customer_slip_path(@customer), :class => "button" %>
+          </div>
+          <div class="clear"></div>
+        </td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <% @slips.each do |slip| %>
+      <tr class="<%= cycle 'alt-row', '' %>">
+        <td><%= slip.name %></td>
+        <td><%= number_to_currency(slip.price) %></td>
+        <td><%= slip.consolidated_tax.name %></td>
+        <td><%= l slip.created_at %></td>
+        <td><%= slip.estimated? ? image_tag("icons/tick-octagon.png") : image_tag("icons/cross-octagon.png") %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
