@@ -1,0 +1,44 @@
+<div class="content-box-header">
+  <h3>Customers</h3>
+</div>
+
+<div class="content-box-content" style="display: block;">
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>CEO</th>
+        <th>Address</th>
+        <th>Tax code</th>
+        <th>VAT</th>
+        <th>Slips</th>
+        <th>Estimates</th>
+        <th>Invoices</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <td colspan="8">
+          <div class="bulk-actions align-left">
+            <%= link_to "New customer", new_customer_path, :class => "button" %>
+          </div>
+          <div class="clear"></div>
+        </td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <% @customers.each do |customer| %>
+      <tr class="<%= cycle 'alt-row', '' %>">
+        <td><%= customer.title %></td>
+        <td><%= customer.name %> <%= customer.surname %></td>
+        <td><%= customer.address %> <%= customer.zip_code %> <%= customer.town %> <%= customer.province %></td>
+        <td><%= customer.tax_code %></td>
+        <td><%= customer.vat %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

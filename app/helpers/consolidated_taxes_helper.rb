@@ -1,0 +1,2 @@
+module ConsolidatedTaxesHelper
+end

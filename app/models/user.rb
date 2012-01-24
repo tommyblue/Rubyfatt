@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   
   has_many :customers
   has_many :options
+  has_many :consolidated_taxes, :class_name => 'ConsolidatedTax'
+  has_many :taxes, :class_name => 'Tax'
 end

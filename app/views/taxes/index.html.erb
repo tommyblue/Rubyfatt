@@ -1,0 +1,36 @@
+<div class="content-box-header">
+  <h3>Taxes</h3>
+</div>
+
+<div class="content-box-content" style="display: block;">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Rate</th>
+        <th>Compound</th>
+        <th>Order</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <td colspan="4">
+          <div class="bulk-actions align-left">
+            
+          </div>
+          <div class="clear"></div>
+        </td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <% @taxes.each do |tax| %>
+      <tr class="<%= cycle 'alt-row', '' %>">
+        <td><%= tax.name %></td>
+        <td><%= tax.rate %>%</td>
+        <td><%= tax.compound ? image_tag("icons/tick-octagon.png") : image_tag("icons/cross-octagon.png") %></td>
+        <td><%= tax.order %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

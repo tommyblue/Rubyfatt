@@ -13,3 +13,10 @@
 # ActiveSupport::Inflector.inflections do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.plural 'tax', 'taxes'
+  inflect.plural 'taxi', 'taxis'
+  inflect.singular 'taxes', 'tax'
+  inflect.singular 'taxis', 'taxi'
+end

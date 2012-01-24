@@ -14,10 +14,12 @@
 ActiveRecord::Schema.define(:version => 20120123191832) do
 
   create_table "consolidated_taxes", :force => true do |t|
-    t.string "name"
+    t.integer "user_id"
+    t.string  "name"
   end
 
   create_table "customers", :force => true do |t|
+    t.integer  "user_id"
     t.string   "title"
     t.string   "name"
     t.string   "surname"
@@ -73,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20120123191832) do
 
   create_table "taxes", :force => true do |t|
     t.integer "consolidated_tax_id"
+    t.integer "user_id"
     t.integer "order"
     t.string  "name"
     t.integer "rate"

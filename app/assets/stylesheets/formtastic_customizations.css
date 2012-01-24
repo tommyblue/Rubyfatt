@@ -1,0 +1,23 @@
+.formtastic ol li {
+  list-style-type: none !important;
+}
+
+.formtastic legend {
+  color: #555555 !important;
+}
+
+.formtastic .fragments .label, .formtastic .choices .label {
+  position: static !important;
+  width: 25% !important;
+}
+
+.formtastic .choices-group, .formtastic .fragments-group {
+  padding: 10px 0 !important;
+}
+
+.formtastic li.error {
+  background: none no-repeat scroll 0 0 #FFCECE;
+  border: 1px solid #DF8F8F;
+  border-radius: 6px 6px 6px 6px;
+  padding: 10px !important;
+}
