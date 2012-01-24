@@ -11,6 +11,7 @@ gem 'mysql2'
 gem 'devise'
 
 gem 'formtastic'
+gem 'country-select'
 
 gem 'money'
 

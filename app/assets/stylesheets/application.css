@@ -84,6 +84,46 @@ p {
                 }
 
 /************ Button ************/
+li.button input, .button {
+  font-family: Verdana, Arial, sans-serif;
+  display: inline-block;
+  background: #459300 url('../images/bg-button-green.gif') top left repeat-x !important;
+  border: 1px solid #459300 !important;
+  padding: 4px 7px 4px 7px !important;
+  color: #fff !important;
+  font-size: 11px !important;
+  cursor: pointer;
+}
+  
+li.button {
+  font-family: Verdana, Arial, sans-serif;
+  display: block;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  color: transparent !important;
+  font-size: 11px !important;
+  cursor: normal;
+}
+              
+li.button input:hover, .button:hover {
+                text-decoration: underline;
+                }
+                
+li.button input, .button:active {
+                padding: 5px 7px 3px 7px !important;
+                }
+				
+a.remove-link {
+				color: #bb0000;
+				}
+
+a.remove-link:hover {
+				color: #000;
+				}
+
+
+
 .submit_button {
 				font-family: Verdana, Arial, sans-serif;
                 display: inline-block;
@@ -103,17 +143,6 @@ p {
                 padding: 5px 7px 3px 7px !important;
                 }
 				
-a.remove-link {
-				color: #bb0000;
-				padding: 0 0 0 18px;
-				background: transparent url('icons/cross.png') no-repeat 0 -2px;
-				line-height: 16px;
-				height: 16px;
-				}
-
-a.remove-link:hover {
-				color: #000;
-				}
 
 /********************************      Sidebar      ********************************/
 
@@ -497,7 +526,8 @@ form p small {
                 color: #777;
                 }
 				
-				
+
+form input[type=text],				
 form input.text-input,
 form select,
 form textarea,
@@ -514,7 +544,7 @@ form .small-input {
                 width: 25% !important;
                 }
                 
-form .medium-input {
+form .medium-input, form input[type=text] {
                 width: 50% !important;
                 }
                 
@@ -826,32 +856,3 @@ div.wysiwyg ul.panel li a.removeFormat { background-position: -80px -64px; }
 div.wysiwyg ul.panel li a.empty { background-position: -64px -80px; }
 
 div.wysiwyg iframe { border: 0; margin: 5px 0 0 0; clear: left; width: 97.5% !important; }
-
-/************ Button ************/
-.button {
-				font-family: Verdana, Arial, sans-serif;
-                display: inline-block;
-                background: #459300 url('../images/bg-button-green.gif') top left repeat-x !important;
-                border: 1px solid #459300 !important;
-                padding: 4px 7px 4px 7px !important;
-                color: #fff !important;
-                font-size: 11px !important;
-                cursor: pointer;
-                }
-                
-.button:hover {
-                text-decoration: underline;
-                }
-                
-.button:active {
-                padding: 5px 7px 3px 7px !important;
-                }
-				
-a.remove-link {
-				color: #bb0000;
-				}
-
-a.remove-link:hover {
-				color: #000;
-				}
-

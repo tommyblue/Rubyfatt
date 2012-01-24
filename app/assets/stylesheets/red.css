@@ -1,9 +1,15 @@
 
 a              { color: #bb0000; }
                 
-.button {
+li.button input, .button {
                 background: #950000 url('bg-button-red.gif') top left repeat-x !important;
                 border-color: #940000 !important;
+
+                }
+                
+li.button {
+                background: none !important;
+                border-color: none !important;
 
                 }
 

@@ -15,7 +15,7 @@ class CustomersController < ApplicationController
   end
 
   def create
-    @customer = current_user.customer.new(params[:customer])
+    @customer = current_user.customers.new(params[:customer])
     if @customer.save
       redirect_to(@customer, :notice => 'The customer was successfully created.')
     else

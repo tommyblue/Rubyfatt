@@ -1,16 +1,22 @@
 
+li.button input,
 .button,
 #main-content table tfoot td .bulk-actions select,
 .pagination a.number,
+form input[type=text],
 form input.text-input,
 form textarea,
 form .wysiwyg,
 form select {
-                -moz-border-radius: 4px;
-                -webkit-border-radius: 4px;
-				border-radius: 4px;
-			}
-			
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+li.button {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
 .content-box,
 .content-box-header,
 ul.content-box-tabs li a.current,

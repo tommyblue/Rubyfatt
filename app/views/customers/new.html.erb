@@ -1,4 +1,10 @@
-<%= semantic_form_for @customer do |f| %>
-  <%= f.inputs %>
-  <%= f.buttons %>
-<% end %>%
+<div class="content-box-header">
+  <h3>New customer</h3>
+  <div class="clear"></div>
+</div>
+<div class="content-box-content">
+  <%= semantic_form_for @customer do |f| %>
+    <%= f.inputs %>
+    <%= f.buttons %>
+  <% end %>
+</div>
