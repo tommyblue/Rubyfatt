@@ -16,6 +16,8 @@ Easyfatt::Application.routes.draw do
   #   resources :products
   resources :customers do
     resources :slips
+    resources :estimates
+    resources :invoices
   end
   
   resources :users

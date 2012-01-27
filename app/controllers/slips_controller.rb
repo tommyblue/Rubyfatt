@@ -5,6 +5,8 @@ class SlipsController < ApplicationController
   def index
     @customer = Customer.find(params[:customer_id])
     @slips = @customer.working_slips
+    @estimates = @customer.estimates
+    @invoices = @customer.invoices
   end
   
   def new

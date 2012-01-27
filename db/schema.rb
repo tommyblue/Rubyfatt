@@ -35,41 +35,41 @@ ActiveRecord::Schema.define(:version => 20120123191832) do
   end
 
   create_table "estimates", :force => true do |t|
-    t.integer  "customers_id"
-    t.date     "date"
-    t.integer  "year"
-    t.integer  "number"
-    t.boolean  "invoiced"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "customer_id"
+    t.integer  "consolidated_tax_id"
+    t.date     "date",                                   :null => false
+    t.integer  "number",                                 :null => false
+    t.boolean  "invoiced",            :default => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   create_table "invoices", :force => true do |t|
-    t.integer  "customers_id"
-    t.date     "date"
-    t.integer  "year"
-    t.integer  "number"
-    t.boolean  "paid"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "customer_id"
+    t.integer  "consolidated_tax_id"
+    t.date     "date",                                   :null => false
+    t.integer  "number",                                 :null => false
+    t.boolean  "paid",                :default => false
+    t.date     "payment_date"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   create_table "options", :force => true do |t|
     t.integer "user_id"
     t.string  "name"
     t.string  "value"
-    t.boolean "integer"
+    t.boolean "integer", :default => false
   end
 
   create_table "slips", :force => true do |t|
     t.integer  "customer_id"
     t.integer  "estimate_id"
     t.integer  "invoice_id"
-    t.integer  "consolidated_tax_id"
     t.string   "name"
-    t.decimal  "price",               :precision => 8, :scale => 2
-    t.datetime "created_at",                                        :null => false
-    t.datetime "updated_at",                                        :null => false
+    t.decimal  "rate",        :precision => 8, :scale => 2
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "taxes", :force => true do |t|
@@ -82,15 +82,16 @@ ActiveRecord::Schema.define(:version => 20120123191832) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "surname"
-    t.string   "address"
-    t.string   "zip_code"
-    t.string   "town"
-    t.string   "province"
+    t.string   "name",                                                  :null => false
+    t.string   "surname",                                               :null => false
+    t.string   "address",                                               :null => false
+    t.string   "zip_code",                                              :null => false
+    t.string   "town",                                                  :null => false
+    t.string   "province",                                              :null => false
     t.string   "country"
-    t.string   "tax_code"
-    t.string   "vat"
+    t.string   "tax_code",                                              :null => false
+    t.string   "vat",                                                   :null => false
+    t.string   "phone",                                                 :null => false
     t.datetime "created_at",                                            :null => false
     t.datetime "updated_at",                                            :null => false
     t.string   "email",                                 :default => "", :null => false

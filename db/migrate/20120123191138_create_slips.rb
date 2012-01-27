@@ -4,9 +4,8 @@ class CreateSlips < ActiveRecord::Migration
       t.references :customer
       t.references :estimate
       t.references :invoice
-      t.references :consolidated_tax
       t.string :name
-      t.decimal :price, :precision => 8, :scale => 2
+      t.decimal :rate, :precision => 8, :scale => 2
       t.timestamps
     end
   end

@@ -1,117 +1,124 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html lang="it">
- 
-	<head>
-		<meta charset="utf-8"/>
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		
-		<title>EasyFatt</title>
-		
-		<!--                       CSS                       -->
-	  <%= stylesheet_link_tag "application" %>
-	  <%= stylesheet_link_tag "red" %>
-  	<!--[if lt IE 9]>
-  	  <%= stylesheet_link_tag "ie" %>
-  	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  	<![endif]-->
+<head>
+	<meta charset="utf-8"/>
+	<title>EasyFatt</title>
+	
+	<%= stylesheet_link_tag "application" %>
+	<!--[if lt IE 9]>
+	<%= stylesheet_link_tag "ie" %>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<%= javascript_include_tag "application" %>
+	
+	<meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1.0" />
+  <%= csrf_meta_tag %>
 
-    <!--                       Javascripts                       -->
-    <%= javascript_include_tag "application" %>
-		
-  	<meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1.0" />
-    <%= csrf_meta_tag %>
-	</head>
-  
-	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
-		
-		<div id="sidebar"><div id="sidebar-wrapper"> <!-- Sidebar with logo and menu -->
-			
-			<h1 id="sidebar-title"><a href="#">Simpla Admin</a></h1>
-		  
-			<!-- Logo (221px wide) -->
-			<%= image_tag "logo.png", :id => "logo", :alt =>I18n.t('devise.sign_in_title') %>
-		  
-			<!-- Sidebar Profile links -->
-			<div id="profile-links">
-			  <%= link_to current_user.name.to_s + ' ' + current_user.surname.to_s, user_path(current_user.id) %> <%= link_to(image_tag('icons/door-open-in.png', :title => "Esci"), destroy_user_session_path, :method => :delete, :class => 'logout_user', :title => 'Esci') %>
-			</div>        
-			
-			<ul id="main-nav">  <!-- Accordion Menu -->
-				<li>
-					<%= link_to "Dashboard", root_url, :class => 'nav-top-item' %>
-					<ul>
-						<li><%= link_to "Customers", customers_path %></li>
-						<li><%= link_to "Consolidated Taxes", consolidated_taxes_path %></li>
-					</ul>
-				</li>
-				
-				<li>
-					<%= link_to "Customers", root_url, :class => 'nav-top-item' %>
-					<ul>
-					  <% current_user.customers.each do |customer| %>
-						  <li><%= link_to customer.title, customer_slips_path(customer) %></li>
-						<% end %>
-					</ul>
-				</li>
-			</ul> <!-- End #main-nav -->
-		</div></div> <!-- End #sidebar -->
-		
-		<div id="main-content"> <!-- Main Content Section with everything -->
-			
-			<noscript> <!-- Show a notification if the user has disabled javascript -->
-				<div class="notification error png_bg">
-					<div>
-						Javascript is disabled or is not supported by your browser. Please <a href="http://browsehappy.com/" title="Upgrade to a better browser">upgrade</a> your browser or <a href="http://www.google.com/support/bin/answer.py?answer=23852" title="Enable Javascript in your browser">enable</a> Javascript to navigate the interface properly.
-					</div>
-				</div>
-			</noscript>
-			
-			<% if flash[:notice] %>
-  	    <div class="notification information png_bg">
-					<div>
-					  <%= flash[:notice] %>
-					</div>
-				</div>
-  	  <% end %>
-  	  <% if flash[:warning] %>
-  	    <div class="notification attention png_bg">
-					<div>
-					  <%= flash[:warning] %>
-					</div>
-				</div>
-  	  <% end %>
-  	  <% if flash[:error] %>
-  	    <div class="notification error png_bg">
-					<div>
-					  <%= flash[:error] %>
-					</div>
-				</div>
-  	  <% end %>
-  	  <% if flash[:success] %>
-  	    <div class="notification success png_bg">
-					<div>
-					  <%= flash[:success] %>
-					</div>
-				</div>
-  	  <% end %>
-  	  
-  	  <div class="content-box"><!-- Start Content Box -->
-			    
-			  <%= yield %>
+	<script type="text/javascript">
+	$(document).ready(function() 
+    	{ 
+      	  $(".tablesorter").tablesorter(); 
+   	 } 
+	);
+	$(document).ready(function() {
 
-      </div> <!-- End .content-box -->
-			
-			<div id="footer">
-				<small>
-						<%= link_to raw("Copyright &copy;"), "http://www.gnu.org/licenses/gpl.txt", :target => :blank %> <%= Time.now.year %> <%= link_to "Kreations Collective", "http://www.kreations.it", :target => :blank %> | <a href="#">Top</a>
-				</small>
-			</div><!-- End #footer -->
-			
-		</div> <!-- End #main-content -->
+	//When page loads...
+	$(".tab_content").hide(); //Hide all content
+	$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+	$(".tab_content:first").show(); //Show first tab content
+
+	//On Click Event
+	$("ul.tabs li").click(function() {
+
+		$("ul.tabs li").removeClass("active"); //Remove any "active" class
+		$(this).addClass("active"); //Add "active" class to selected tab
+		$(".tab_content").hide(); //Hide all tab content
+
+		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+		$(activeTab).fadeIn(); //Fade in the active ID content
+		return false;
+	});
+
+});
+    </script>
+    <script type="text/javascript">
+    $(function(){
+        $('.column').equalHeight();
+    });
+</script>
+
+</head>
+
+
+<body>
+
+	<header id="header">
+		<hgroup>
+			<h1 class="site_title"><a href="index.html">Easyfatt</a></h1>
+			<h2 class="section_title"><%= yield :title %></h2>
+		</hgroup>
+	</header> <!-- end of header bar -->
+	
+	<section id="secondary_bar">
+		<div class="user">
+			<p><%= link_to current_user.name.to_s + ' ' + current_user.surname.to_s, user_path(current_user.id) %></p>
+			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
+		</div>
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><a href="index.html">Website Admin</a> <div class="breadcrumb_divider"></div> <a class="current">Dashboard</a></article>
+		</div>
+	</section><!-- end of secondary bar -->
+	
+	<aside id="sidebar" class="column">
+		<form class="quick_search">
+			<input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+		</form>
+		<hr/>
+		<h3>Content</h3>
+		<ul>
+		  <li class="icn_view_users"><%= link_to "Customers", customers_path %></li>
+		  <li class="icn_add_user"><%= link_to "New customer", new_customer_path %></li>
+			<li class="icn_categories"><%= link_to "Consolidated Taxes", consolidated_taxes_path %></li>
+		</ul>
+		<h3>Customers</h3>
+		<ul>
+		  <% current_user.customers.each do |customer| %>
+			  <li class="icn_profile"><%= link_to customer.title, customer_slips_path(customer) %></li>
+			<% end %>
+		</ul>
+		<h3>Admin</h3>
+		<ul>
+			<li class="icn_jump_back"><%= link_to("Logout", destroy_user_session_path, :method => :delete, :title => 'Esci') %></li>
+		</ul>
 		
-	</div>
-	<%= yield :scripts %>
-	</body>
-  
+		<footer>
+			<hr />
+			<p><strong><%= link_to raw("Copyright &copy;"), "http://www.gnu.org/licenses/gpl.txt", :target => :blank %> <%= Time.now.year %> <%= link_to "Kreations Collective", "http://www.kreations.it", :target => :blank %></strong></p>
+			<p>Theme by <a href="http://www.medialoot.com">MediaLoot</a></p>
+		</footer>
+	</aside><!-- end of sidebar -->
+	
+	<section id="main" class="column">
+		<% if flash[:notice] %>
+	    <h4 class="alert_info"><%= flash[:notice] %></h4>
+	  <% end %>
+	  <% if flash[:warning] %>
+	    <h4 class="alert_warning"><%= flash[:warning] %></h4>
+	  <% end %>
+	  <% if flash[:error] %>
+	    <h4 class="alert_error"><%= flash[:error] %></h4>
+	  <% end %>
+	  <% if flash[:success] %>
+	    <h4 class="alert_success"><%= flash[:success] %></h4>
+	  <% end %>
+	  
+	  <%= yield %>
+		
+		<div class="spacer"></div>
+	</section>
+
+
+</body>
+
 </html>

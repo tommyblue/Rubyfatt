@@ -1,36 +1,41 @@
-<div class="content-box-header">
-  <h3>Slips for <%= @customer.title %></h3>
-</div>
+<% content_for :title do %>
+  <%= @customer.title %>
+<% end %>
 
-<div class="content-box-content" style="display: block;">
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Tax</th>
-        <th>Created at</th>
-        <th>Estimated</th>
-      </tr>
-    </thead>
-    <tfoot>
-      <tr>
-        <td colspan="5">
-          <div class="bulk-actions align-left">
-            <%= link_to "New slip", new_customer_slip_path(@customer), :class => "button" %>
-          </div>
-          <div class="clear"></div>
-        </td>
-      </tr>
-    </tfoot>
-    <tbody>
-      <tr class="<%= cycle 'alt-row', '' %>">
-        <td><%= @slip.name %></td>
-        <td><%= number_to_currency(@slip.price, :unit => "€", :format => "%n %u") %></td>
-        <td><%= @slip.consolidated_tax.name %></td>
-        <td><%= @slip.created_at %></td>
-        <td><%= @slip.estimated? ? image_tag("icons/tick-octagon.png") : image_tag("icons/cross-octagon.png") %></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<article class="module width_full">
+	<header><h3>Slip</h3></header>
+	<div class="tab_container">
+    <table class="tablesorter" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Rate</th>
+          <th>Tax</th>
+          <th>Total</th>
+          <th>Created at</th>
+          <th>Estimated</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            <div class="bulk-actions align-left">
+              <%= link_to "New slip", new_customer_slip_path(@customer), :class => "button" %>
+            </div>
+            <div class="clear"></div>
+          </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr class="<%= cycle 'alt-row', '' %>">
+          <td><%= @slip.name %></td>
+          <td><%= number_to_currency(@slip.rate) %></td>
+          <td><%= @slip.consolidated_tax.name %></td>
+          <td><%= number_to_currency(@slip.total) %></td>
+          <td><%= l @slip.created_at %></td>
+          <td><%= @slip.estimated? ? image_tag("icons/tick-octagon.png") : image_tag("icons/cross-octagon.png") %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</article>

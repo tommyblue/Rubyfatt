@@ -5,10 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :surname, :address, :zip_code, :town, :province, :country, :tax_code, :vat
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :surname, :address, :zip_code, :town, :province, :country, :tax_code, :vat, :phone
   
   has_many :customers
   has_many :options
   has_many :consolidated_taxes, :class_name => 'ConsolidatedTax'
   has_many :taxes, :class_name => 'Tax'
+  
+  validates_presence_of :name, :surname, :address, :zip_code, :town, :province, :tax_code, :vat, :phone
 end

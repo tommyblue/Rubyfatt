@@ -1,10 +1,13 @@
-<div class="content-box-header">
-  <h3>New customer</h3>
-  <div class="clear"></div>
-</div>
-<div class="content-box-content">
+<% content_for :title do %>
+  Customers
+<% end %>
+
+<article class="module width_full">
+	<header><h3>New customer</h3></header>
+	<div class="module_content">
   <%= semantic_form_for @customer do |f| %>
     <%= f.inputs %>
     <%= f.buttons %>
   <% end %>
-</div>
+  </div>
+</article>

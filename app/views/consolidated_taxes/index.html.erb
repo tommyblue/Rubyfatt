@@ -1,36 +1,39 @@
-<div class="content-box-header">
-  <h3>Consolidated Taxes</h3>
-</div>
+<% content_for :title do %>
+  Consolidated taxes
+<% end %>
 
-<div class="content-box-content" style="display: block;">
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Taxes</th>
-      </tr>
-    </thead>
-    <tfoot>
-      <tr>
-        <td colspan="2">
-          <div class="bulk-actions align-left">
+<article class="module width_full">
+	<header><h3>Customers</h3></header>
+	<div class="tab_container">
+    <table class="tablesorter" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Taxes</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan="2">
+            <div class="bulk-actions align-left">
             
-          </div>
-          <div class="clear"></div>
-        </td>
-      </tr>
-    </tfoot>
-    <tbody>
-      <% @consolidated_taxes.each do |consolidated_tax| %>
-      <tr class="<%= cycle 'alt-row', '' %>">
-        <td><%= consolidated_tax.name %></td>
-        <td>
-          <% consolidated_tax.taxes.each do |tax| %>
-            <%= link_to tax.name, consolidated_tax_tax_path(consolidated_tax, tax) %><br />
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+            </div>
+            <div class="clear"></div>
+          </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <% @consolidated_taxes.each do |consolidated_tax| %>
+        <tr class="<%= cycle 'alt-row', '' %>">
+          <td><%= consolidated_tax.name %></td>
+          <td>
+            <% consolidated_tax.taxes.each do |tax| %>
+              <%= link_to tax.name, consolidated_tax_tax_path(consolidated_tax, tax) %><br />
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</article>

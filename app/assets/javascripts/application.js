@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require simpla_admin/simpla.jquery.configuration.js
-//= require simpla_admin/facebox.js
-//= require simpla_admin/jquery.wysiwyg.js
+//= require hideshow
+//= require jquery.tablesorter.min
+//= require jquery.equalHeight
 //= require_tree .

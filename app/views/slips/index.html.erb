@@ -1,38 +1,137 @@
-<div class="content-box-header">
-  <h3>Slips for <%= @customer.title %></h3>
-</div>
+<% content_for :title do %>
+  <%= @customer.title %>
+<% end %>
 
-<div class="content-box-content" style="display: block;">
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Tax</th>
-        <th>Created at</th>
-        <th>Estimated</th>
-      </tr>
-    </thead>
-    <tfoot>
-      <tr>
-        <td colspan="5">
-          <div class="bulk-actions align-left">
-            <%= link_to "New slip", new_customer_slip_path(@customer), :class => "button" %>
-          </div>
-          <div class="clear"></div>
-        </td>
-      </tr>
-    </tfoot>
-    <tbody>
-      <% @slips.each do |slip| %>
-      <tr class="<%= cycle 'alt-row', '' %>">
-        <td><%= slip.name %></td>
-        <td><%= number_to_currency(slip.price) %></td>
-        <td><%= slip.consolidated_tax.name %></td>
-        <td><%= l slip.created_at %></td>
-        <td><%= slip.estimated? ? image_tag("icons/tick-octagon.png") : image_tag("icons/cross-octagon.png") %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<article class="module width_full">
+	<header><h3>Slips</h3></header>
+	<div class="tab_container">
+    <table class="tablesorter" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Rate</th>
+          <th>Tax</th>
+          <th>Total</th>
+          <th>Created at</th>
+          <th>Estimated</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            <div class="bulk-actions align-left">
+              <%= link_to "New slip", new_customer_slip_path(@customer), :class => "button" %>
+            </div>
+            <div class="clear"></div>
+          </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <% @slips.each do |slip| %>
+        <tr class="<%= cycle 'alt-row', '' %>">
+          <td><%= slip.name %></td>
+          <td><%= number_to_currency(slip.rate) %></td>
+          <td><%= slip.consolidated_tax.name %></td>
+          <td><%= number_to_currency(slip.total) %></td>
+          <td><%= l slip.created_at %></td>
+          <td><%= slip.estimated? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</article>
+
+<article class="module width_full">
+	<header><h3>Estimates</h3></header>
+	<div class="tab_container">
+    <table class="tablesorter" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Date</th>
+          <th>Rate</th>
+          <th>Total</th>
+          <th>Invoiced</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan="3">
+            <div class="bulk-actions align-left">
+              <%= link_to "New estimate", new_customer_estimate_path(@customer), :class => "button" %>
+            </div>
+            <div class="clear"></div>
+          </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <% @estimates.each do |estimate| %>
+        <tr class="<%= cycle 'alt-row', '' %>">
+          <td><%= estimate.number %></td>
+          <td><%= l estimate.date %></td>
+          <td><%= number_to_currency(estimate.rate) %></td>
+          <td><%= number_to_currency(estimate.total) %></td>
+          <td><%= estimate.invoiced? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</article>
+
+<article class="module width_full">
+	<header><h3>Invoices</h3></header>
+	<div class="tab_container">
+    <table class="tablesorter" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Date</th>
+          <th>Slips</th>
+          <th>Rate</th>
+          <th>Total</th>
+          <th>Paid</th>
+          <th>Payment date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan="8">
+            <div class="bulk-actions align-left">
+              <%= link_to "New invoice", new_customer_invoice_path(@customer), :class => "button" %>
+            </div>
+            <div class="clear"></div>
+          </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <% @invoices.each do |invoice| %>
+        <tr class="<%= cycle 'alt-row', '' %>">
+          <td><%= invoice.number %></td>
+          <td><%= l invoice.date %></td>
+          <td>
+            <ul>
+              <% invoice.slips.each do |slip| %>
+                <li><%= slip.name %>: <%= number_to_currency(slip.rate) %></li>
+              <% end %>
+            </ul>
+          </td>
+          <td><%= number_to_currency(invoice.rate) %></td>
+          <td><%= number_to_currency(invoice.total) %></td>
+          <td><%= invoice.paid? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
+          <td><%= l invoice.payment_date if invoice.paid %></td>
+          <td>
+            <%= image_tag('icons/blue-document-page-previous.png' )%>
+            <%= image_tag('icons/money-coin.png' )%>
+            <%= link_to image_tag('icons/document-pdf-text.png' ), customer_invoice_path(@customer,invoice.id, :format => 'pdf') %>
+            <%= image_tag('icons/document--pencil.png' )%>
+            <%= image_tag('icons/cross-circle.png' )%>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</article>

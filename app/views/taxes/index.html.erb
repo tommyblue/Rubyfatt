@@ -27,7 +27,7 @@
       <tr class="<%= cycle 'alt-row', '' %>">
         <td><%= tax.name %></td>
         <td><%= tax.rate %>%</td>
-        <td><%= tax.compound ? image_tag("icons/tick-octagon.png") : image_tag("icons/cross-octagon.png") %></td>
+        <td><%= tax.compound ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
         <td><%= tax.order %></td>
       </tr>
       <% end %>

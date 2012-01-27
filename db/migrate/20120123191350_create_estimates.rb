@@ -1,11 +1,11 @@
 class CreateEstimates < ActiveRecord::Migration
   def change
     create_table :estimates do |t|
-      t.references :customers
-      t.date :date
-      t.integer :year
-      t.integer :number
-      t.boolean :invoiced
+      t.references :customer
+      t.references :consolidated_tax
+      t.date :date, :null => false
+      t.integer :number, :null => false
+      t.boolean :invoiced, :default => false
       t.timestamps
     end
   end

@@ -4,7 +4,7 @@ class CreateOptions < ActiveRecord::Migration
       t.references :user
       t.string :name
       t.string :value
-      t.boolean :integer
+      t.boolean :integer, :default => false
     end
   end
 end
