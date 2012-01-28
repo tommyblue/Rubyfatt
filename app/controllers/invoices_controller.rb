@@ -41,7 +41,10 @@ class InvoicesController < ApplicationController
   def destroy
     @customer = Customer.find(params[:customer_id])
     @invoice = Invoice.find(params[:id])
-    @invoice.restore_slips_and_destroy
-    redirect_to(customer_slips_path(@customer), :success => 'The invoice was successfully destroyed and its slips was restored')
+    if @invoice.restore_slips_and_destroy
+      redirect_to(customer_slips_path(@customer), :success => 'The invoice was successfully destroyed and its slips was restored')
+    else
+      redirect_to(customer_slips_path(@customer), :error => "Can't destroy a paid invoice")
+    end
   end
 end
