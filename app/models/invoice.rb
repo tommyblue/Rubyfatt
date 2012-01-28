@@ -3,7 +3,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :customer
   has_many :slips
   
-  validates_presence_of :date, :customer_id
+  validates_presence_of :date, :customer, :consolidated_tax
   
   before_save do
     self.number = self.customer.user.options.where(:name => 'NEXT_INVOICE_NUMBER').first.value.to_i
@@ -38,5 +38,13 @@ class Invoice < ActiveRecord::Base
     
     compounds.each { |compound| sum += compound }
     sum
+  end
+  
+  # Destroy the invoice restoring the slips
+  def restore_slips_and_destroy
+    self.slips.each do |slip|
+      slip.restore
+    end
+    self.destroy
   end
 end

@@ -6,6 +6,8 @@ class CreateSlips < ActiveRecord::Migration
       t.references :invoice
       t.string :name
       t.decimal :rate, :precision => 8, :scale => 2
+      t.boolean :timed, :default => false
+      t.integer :duration
       t.timestamps
     end
   end

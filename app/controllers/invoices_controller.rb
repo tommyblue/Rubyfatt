@@ -11,6 +11,7 @@ class InvoicesController < ApplicationController
     @invoice = @customer.invoices.new
     @invoice.date = Time.now
     @slips = @customer.working_slips
+    @consolidated_taxes = current_user.consolidated_taxes
   end
 
   def create
@@ -19,6 +20,7 @@ class InvoicesController < ApplicationController
     if @invoice.save
       redirect_to(customer_slips_path(@customer), :notice => 'The invoice was successfully created.')
     else
+      flash[:warning] = "Error validating the invoice"
       render :action => "new"
     end
   end
@@ -34,5 +36,13 @@ class InvoicesController < ApplicationController
         type: "application/pdf"
       end
     end
+  end
+  
+  def destroy
+    @customer = Customer.find(params[:customer_id])
+    @invoice = Invoice.find(params[:id])
+    @invoice.restore_slips_and_destroy
+    flash[:success] = "The invoice was successfully destroyed and its slips was restored"
+    redirect_to(customer_slips_path(@customer))
   end
 end

@@ -10,15 +10,15 @@
         <tr>
           <th>Name</th>
           <th>Rate</th>
-          <th>Tax</th>
-          <th>Total</th>
           <th>Created at</th>
+          <th>Timed</th>
+          <th>Duration</th>
           <th>Estimated</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
-          <td colspan="5">
+          <td colspan="6">
             <div class="bulk-actions align-left">
               <%= link_to "New slip", new_customer_slip_path(@customer), :class => "button" %>
             </div>
@@ -30,10 +30,10 @@
         <tr class="<%= cycle 'alt-row', '' %>">
           <td><%= @slip.name %></td>
           <td><%= number_to_currency(@slip.rate) %></td>
-          <td><%= @slip.consolidated_tax.name %></td>
-          <td><%= number_to_currency(@slip.total) %></td>
           <td><%= l @slip.created_at %></td>
-          <td><%= @slip.estimated? ? image_tag("icons/tick-octagon.png") : image_tag("icons/cross-octagon.png") %></td>
+          <td><%= @slip.timed? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
+          <td><%= @slip.duration ? ChronicDuration.output(@slip.duration, :format => :short) : '-' %></td>
+          <td><%= @slip.estimated? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
         </tr>
       </tbody>
     </table>

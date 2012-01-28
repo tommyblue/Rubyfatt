@@ -8,6 +8,7 @@
   <%= semantic_form_for [@customer, @invoice] do |f| %>
     <%= f.inputs :date, :paid, :payment_date %>
     <%= f.input :slips, :as => :check_boxes, :collection => @slips %>
+    <%= f.input :consolidated_tax, :as => :select, :collection => @consolidated_taxes %>
     <%= f.buttons %>
   <% end %>
   </div>

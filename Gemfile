@@ -15,6 +15,8 @@ gem 'country-select'
 
 gem 'prawn',  '~> 1.0.0.rc1'
 
+gem 'chronic_duration'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

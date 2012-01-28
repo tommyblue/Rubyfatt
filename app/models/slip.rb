@@ -6,4 +6,8 @@ class Slip < ActiveRecord::Base
   def estimated?
     self.estimate != nil
   end
+  
+  def restore
+    self.update_attribute(:invoice_id, nil)
+  end
 end
