@@ -14,11 +14,12 @@
           <th>Timed</th>
           <th>Duration</th>
           <th>Estimated</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
-          <td colspan="6">
+          <td colspan="7">
             <div class="bulk-actions align-left">
               <%= link_to "New slip", new_customer_slip_path(@customer), :class => "button" %>
             </div>
@@ -35,6 +36,7 @@
             <td><%= slip.timed? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
             <td><%= slip.duration ? ChronicDuration.output(slip.duration, :format => :short) : '-' %></td>
             <td><%= slip.estimated? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
+            <td><%= link_to(image_tag('icons/document--pencil.png', :alt => 'Edit slip', :title => 'Edit slip'), edit_customer_slip_path(@customer, slip)) %></td>
           </tr>
         <% end %>
       </tbody>
@@ -53,11 +55,12 @@
           <th>Rate</th>
           <th>Total</th>
           <th>Invoiced</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
-          <td colspan="3">
+          <td colspan="6">
             <div class="bulk-actions align-left">
               <%= link_to "New estimate", new_customer_estimate_path(@customer), :class => "button" %>
             </div>
@@ -73,6 +76,7 @@
           <td><%= number_to_currency(estimate.rate) %></td>
           <td><%= number_to_currency(estimate.total) %></td>
           <td><%= estimate.invoiced? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
+          <td></td>
         </tr>
         <% end %>
       </tbody>
@@ -110,7 +114,7 @@
         <% @invoices.each do |invoice| %>
         <tr class="<%= cycle 'alt-row', '' %>">
           <td><%= invoice.number %></td>
-          <td><%= l invoice.date %></td>
+          <td><%= invoice.date.strftime("%d/%m/%Y") %></td>
           <td>
             <ul>
               <% invoice.slips.each do |slip| %>
@@ -121,10 +125,10 @@
           <td><%= number_to_currency(invoice.rate) %></td>
           <td><%= number_to_currency(invoice.total) %></td>
           <td><%= invoice.paid? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
-          <td><%= l invoice.payment_date if invoice.paid %></td>
+          <td><%= invoice.payment_date.strftime("%d/%m/%Y") if invoice.paid and invoice.payment_date %></td>
           <td>
-            <%= link_to(image_tag('icons/blue-document-page-previous.png', :alt => 'Delete invoice and restore slips', :title => 'Delete invoice and restore slips'), customer_invoice_path(@customer,invoice.id), :method => :delete, :confirm => "Are you sure to delete the invoice and restore the slips?\nATTENTION: You shouldn't destroy invoices unless you know what you're doing. Numbering won't be automatically restored...") %>
-            <%= link_to(image_tag('icons/money-coin.png', :alt => 'Add payment', :title => 'Add payment'), '/customer/#{@customer.id}/invoices/#{invoice.id}/payment') %>
+            <%= link_to(image_tag('icons/blue-document-page-previous.png', :alt => 'Delete invoice and restore slips', :title => 'Delete invoice and restore slips'), customer_invoice_path(@customer,invoice.id), :method => :delete, :confirm => "Are you sure to delete the invoice and restore the slips?\nATTENTION: You shouldn't destroy invoices unless you know what you're doing. Numbering won't be automatically restored...") unless invoice.paid? %>
+            <%= link_to(image_tag('icons/money-coin.png', :alt => 'Add payment', :title => 'Add payment'), "/invoice/#{invoice.id}/payment") unless invoice.paid? %>
             <%= link_to image_tag('icons/document-pdf-text.png', :alt => 'Print invoice', :title => 'Print invoice' ), customer_invoice_path(@customer,invoice.id, :format => 'pdf') %>
           </td>
         </tr>

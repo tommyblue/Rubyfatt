@@ -17,7 +17,7 @@ class CustomersController < ApplicationController
   def create
     @customer = current_user.customers.new(params[:customer])
     if @customer.save
-      redirect_to(@customer, :notice => 'The customer was successfully created.')
+      redirect_to(@customer, :success => 'The customer was successfully created.')
     else
       render :action => "new"
     end
@@ -30,7 +30,7 @@ class CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update_attributes(params[:customer])
-      redirect_to(@customer, :notice => 'The Customer was successfully updated.')
+      redirect_to(@customer, :success => 'The Customer was successfully updated.')
     else
       render :action => "edit"
     end

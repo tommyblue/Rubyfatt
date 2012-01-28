@@ -11,20 +11,24 @@ Easyfatt::Application.routes.draw do
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
-
+  
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :customers do
-    resources :slips
-    resources :estimates
-    resources :invoices
+    resources :slips, :estimates, :invoices
   end
   
   resources :users
   
+  resources :options
+  
   resources :consolidated_taxes do
     resources :taxes
   end
+  
+  match 'invoice/:invoice_id/payment' => 'payments#create', :via => :post
+  match 'invoice/:invoice_id/payment' => 'payments#new', :via => :get
+  
   # Sample resource route with options:
   #   resources :products do
   #     member do

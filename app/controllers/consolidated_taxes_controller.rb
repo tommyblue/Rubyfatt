@@ -17,7 +17,7 @@ class ConsolidatedTaxesController < ApplicationController
   def create
     @consolidated_tax = current_user.ConsolidatedTax.new(params[:tax])
     if @consolidated_tax.save
-      redirect_to(@consolidated_tax, :notice => 'The Tax was successfully created.')
+      redirect_to(@consolidated_tax, :success => 'The Tax was successfully created.')
     else
       render :action => "new"
     end
@@ -30,7 +30,7 @@ class ConsolidatedTaxesController < ApplicationController
   def update
     @consolidated_tax = ConsolidatedTax.find(params[:id])
     if @consolidated_tax.update_attributes(params[:tax])
-      redirect_to(@consolidated_tax, :notice => 'The Tax was successfully updated.')
+      redirect_to(@consolidated_tax, :success => 'The Tax was successfully updated.')
     else
       render :action => "edit"
     end

@@ -1,0 +1,13 @@
+<% content_for :title do %>
+  Invoices
+<% end %>
+
+<article class="module width_full">
+	<header><h3>Add payment</h3></header>
+	<div class="module_content">
+  <%= form_tag do %>
+    <%= date_select 'payment', 'date' %>
+    <%= submit_tag "Add payment" %>
+  <% end %>
+  </div>
+</article>

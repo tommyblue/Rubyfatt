@@ -1,0 +1,10 @@
+<div class="content-box-header">
+  <h3>Edit slip <%= @slip.name %></h3>
+  <div class="clear"></div>
+</div>
+<div class="content-box-content">
+  <%= semantic_form_for [@customer, @slip] do |f| %>
+    <%= f.inputs %>
+    <%= f.buttons %>
+  <% end %>
+</div>

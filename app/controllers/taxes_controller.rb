@@ -17,7 +17,7 @@ class TaxesController < ApplicationController
   def create
     @tax = current_user.Tax.new(params[:tax])
     if @tax.save
-      redirect_to(@tax, :notice => 'The Tax was successfully created.')
+      redirect_to(@tax, :success => 'The Tax was successfully created.')
     else
       render :action => "new"
     end
@@ -30,7 +30,7 @@ class TaxesController < ApplicationController
   def update
     tax = Tax.find(params[:id])
     if tax.update_attributes(params[:tax])
-      redirect_to(tax, :notice => 'The Tax was successfully updated.')
+      redirect_to(tax, :success => 'The Tax was successfully updated.')
     else
       render :action => "edit"
     end

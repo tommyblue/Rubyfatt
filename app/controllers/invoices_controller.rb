@@ -18,7 +18,7 @@ class InvoicesController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @invoice = @customer.invoices.new(params[:invoice])
     if @invoice.save
-      redirect_to(customer_slips_path(@customer), :notice => 'The invoice was successfully created.')
+      redirect_to(customer_slips_path(@customer), :success => 'The invoice was successfully created.')
     else
       flash[:warning] = "Error validating the invoice"
       render :action => "new"
@@ -32,7 +32,7 @@ class InvoicesController < ApplicationController
       format.html
       format.pdf do
         pdf = InvoicePdf.new(@invoice, view_context)
-        send_data pdf.render, filename: "invoice_#{@invoice.date.year}-#{@invoice.number}.pdf",
+        send_data pdf.render, filename: "invoice_#{@invoice.date.year}-#{@invoice.number.to_s.rjust(3,'0')}.pdf",
         type: "application/pdf"
       end
     end
@@ -42,7 +42,6 @@ class InvoicesController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @invoice = Invoice.find(params[:id])
     @invoice.restore_slips_and_destroy
-    flash[:success] = "The invoice was successfully destroyed and its slips was restored"
-    redirect_to(customer_slips_path(@customer))
+    redirect_to(customer_slips_path(@customer), :success => 'The invoice was successfully destroyed and its slips was restored')
   end
 end

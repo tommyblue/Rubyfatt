@@ -88,7 +88,7 @@ class InvoicePdf < Prawn::Document
     
     table items, :header => true, :width => 500, :position => :right, 
       :cell_style => { :overflow => :shrink_to_fit, :borders => [:bottom], :border_width => 1, :border_color => "5569A3", :inline_format => true },
-      :column_widths => { 0 => 400, 1 => 100}, :row_colors => ["FFFFFF", "d2e3ed"] do
+      :column_widths => { 0 => 400, 1 => 100} do
         style(columns(2)) {|x| x.align = :right }
         row(0).borders = []
         row(0).font_style = :bold
