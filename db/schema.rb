@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120123191832) do
+ActiveRecord::Schema.define(:version => 20120128174149) do
 
   create_table "consolidated_taxes", :force => true do |t|
     t.integer "user_id"
@@ -62,6 +62,14 @@ ActiveRecord::Schema.define(:version => 20120123191832) do
     t.boolean "integer", :default => false
   end
 
+  create_table "recurring_slips", :force => true do |t|
+    t.integer "customer_id"
+    t.integer "estimate_id"
+    t.integer "invoice_id"
+    t.string  "name"
+    t.decimal "rate",        :precision => 8, :scale => 2
+  end
+
   create_table "slips", :force => true do |t|
     t.integer  "customer_id"
     t.integer  "estimate_id"
@@ -70,6 +78,8 @@ ActiveRecord::Schema.define(:version => 20120123191832) do
     t.decimal  "rate",        :precision => 8, :scale => 2
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
+    t.boolean  "timed"
+    t.integer  "duration"
   end
 
   create_table "taxes", :force => true do |t|

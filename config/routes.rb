@@ -18,6 +18,8 @@ Easyfatt::Application.routes.draw do
     resources :slips, :estimates, :invoices
   end
   
+  resources :recurring_slips
+  
   resources :users
   
   resources :options

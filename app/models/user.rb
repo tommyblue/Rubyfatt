@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :options
   has_many :consolidated_taxes, :class_name => 'ConsolidatedTax'
   has_many :taxes, :class_name => 'Tax'
+  has_many :slips, :through => :customers
   
   validates_presence_of :name, :surname, :address, :zip_code, :town, :province, :tax_code, :vat, :phone
 end

@@ -3,6 +3,7 @@ class Customer < ActiveRecord::Base
   has_many :estimates
   has_many :invoices
   has_many :slips
+  has_many :recurring_slips
   
   has_many :working_slips, :class_name => 'Slip', :conditions => ['invoice_id IS NULL']
 end

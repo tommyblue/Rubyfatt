@@ -3,7 +3,7 @@ class Slip < ActiveRecord::Base
   belongs_to :invoice
   belongs_to :customer
   
-  validates_presence_of :name, :rate
+  validates_presence_of :name, :rate, :customer
   
   def estimated?
     self.estimate != nil
