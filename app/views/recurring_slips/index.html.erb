@@ -1,0 +1,43 @@
+<% content_for :title do %>
+  Recurring slips
+<% end %>
+
+<article class="module width_full">
+	<header><h3>Recurring slips</h3></header>
+	<div class="tab_container">
+    <table class="tablesorter" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Customer</th>
+          <th>Name</th>
+          <th>Rate</th>
+          <th>Rule</th>
+          <th>Next occurrence</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan="6">
+            <div class="bulk-actions align-left">
+              <%= link_to "New recurring slip", new_recurring_slip_path, :class => "button" %>
+            </div>
+            <div class="clear"></div>
+          </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <% @recurring_slips.each do |slip| %>
+          <tr class="<%= cycle 'alt-row', '' %>">
+            <td><%= slip.customer.title %></td>
+            <td><%= slip.name %></td>
+            <td><%= number_to_currency(slip.rate) %></td>
+            <td><%= slip.schedule %></td>
+            <td class="<%= ' highlight' if slip.to_invoice? %>"><%= slip.next_occurrence ? slip.next_occurrence.strftime("%d/%m/%Y") : '-' %></td>
+            <td><%= link_to(image_tag('icons/blog--plus.png', :alt => 'Create invoice', :title => 'Create invoice'), new_recurring_slip_recurring_invoice_path(slip) ) if slip.to_invoice? %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</article>

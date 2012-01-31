@@ -4,7 +4,7 @@
 </div>
 <div class="content-box-content">
   <%= semantic_form_for [@customer, @slip] do |f| %>
-    <%= f.inputs %>
+    <%= f.inputs :name, :rate, :timed, :duration %>
     <%= f.buttons %>
   <% end %>
 </div>

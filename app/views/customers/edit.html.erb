@@ -1,0 +1,13 @@
+<% content_for :title do %>
+  Customers
+<% end %>
+
+<article class="module width_full">
+	<header><h3>Edit customer</h3></header>
+	<div class="module_content">
+  <%= semantic_form_for @customer do |f| %>
+    <%= f.inputs %>
+    <%= f.buttons %>
+  <% end %>
+  </div>
+</article>

@@ -13,14 +13,12 @@
           <th>Address</th>
           <th>Tax code</th>
           <th>VAT</th>
-          <th>Slips</th>
-          <th>Estimates</th>
-          <th>Invoices</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
-          <td colspan="8">
+          <td colspan="6">
             <div class="bulk-actions align-left">
               <%= link_to "New customer", new_customer_path, :class => "button" %>
             </div>
@@ -36,9 +34,7 @@
           <td><%= customer.address %> <%= customer.zip_code %> <%= customer.town %> <%= customer.province %></td>
           <td><%= customer.tax_code %></td>
           <td><%= customer.vat %></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><%= link_to(image_tag('icons/document--pencil.png', :alt => 'Edit customer', :title => 'Edit customer'), edit_customer_path(customer)) %></td>
         </tr>
         <% end %>
       </tbody>
