@@ -1,6 +1,6 @@
 module ApplicationHelper
   def expired_recurring_slips
     expired = RecurringSlip.expired
-    '<span class="circle">' + expired.to_s + '</span>' if expired > 0
+    expired > 0 ? '<span class="circle">' + expired.to_s + '</span>' : ''
   end
 end
