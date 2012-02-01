@@ -76,7 +76,7 @@
           <td><%= number_to_currency(estimate.rate) %></td>
           <td><%= number_to_currency(estimate.total) %></td>
           <td><%= estimate.invoiced? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
-          <td></td>
+          <td><%= link_to(image_tag('icons/cross-circle.png', :alt => 'Delete estimate', :title => 'Delete estimate'), customer_estimate_path(@customer,estimate.id), :method => :delete, :confirm => "Are you sure to delete the estimate?\nATTENTION: You shouldn't destroy invoices unless you know what you're doing. Numbering won't be automatically restored...") %></td>
         </tr>
         <% end %>
       </tbody>
