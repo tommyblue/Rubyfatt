@@ -12,13 +12,20 @@ class InvoicePdf < Prawn::Document
     self.slips()
     move_down 50
     self.consolidated_taxes()
+    self.print_total
     #grid.show_all
   end
   
   # Initial setup
   def setup
-    font "Helvetica", :size => 12
     #font "#{Rails.root}/lib/assets/fonts/Neuton.ttf"
+    font_families.update(
+      "LiberationSans" => {
+        :normal => "#{Rails.root}/lib/assets/fonts/LiberationSans-Regular.ttf",
+        :bold   => "#{Rails.root}/lib/assets/fonts/LiberationSans-Bold.ttf"
+      }
+    )
+    font "LiberationSans", :size => 12
     define_grid(:columns => 5, :rows => 8, :gutter => 10) 
   end
   
@@ -99,25 +106,25 @@ class InvoicePdf < Prawn::Document
   def consolidated_taxes
     items = [["<b>Subtotale</b>", "<b>#{number_to_currency(@subtotal)}</b>"]]
     
-    sum = @subtotal
+    @sum = @subtotal
     compounds = []
     
     @invoice.consolidated_tax.taxes.each do |tax|
-      partial = sum * tax.rate / 100
+      partial = @sum * tax.rate / 100
       items += [[tax.name, number_to_currency(partial)]]
       
       if tax.compound
         compounds << partial
       else
-        compounds.each { |compound| sum += compound }
-        sum += partial
-        items += [["<b>Imponibile</b>", "<b>#{number_to_currency(sum)}</b>"]]
+        compounds.each { |compound| @sum += compound }
+        @sum += partial
+        items += [["<b>Imponibile</b>", "<b>#{number_to_currency(@sum)}</b>"]]
       end
     end
     
-    compounds.each { |compound| sum += compound }
+    compounds.each { |compound| @sum += compound }
     
-    items += [["<b>Totale</b>", "<b>#{number_to_currency(sum)}</b>"]]
+    items += [["<b>Totale</b>", "<b>#{number_to_currency(@sum)}</b>"]]
     
     grid([5,2], [6,4]).bounding_box do 
       table items, :header => false, :width => 250, :position => :right,
@@ -125,6 +132,13 @@ class InvoicePdf < Prawn::Document
         :column_widths => { 0 => 150, 1 => 100} do
           style(columns(2)) {|x| x.align = :right }
       end
+    end
+  end
+  
+  def print_total
+    grid([2,3], [2,4]).bounding_box do 
+      move_down 30
+      text  "#{number_to_currency(@sum)}", :size => 24, :style => :bold, :color => "5569A3", :align => :right
     end
   end
 end
