@@ -54,9 +54,10 @@ class InvoicePdf < Prawn::Document
         text "#{@invoice.customer.surname} #{@invoice.customer.name}", :color => "5569A3"
       end
       text "#{@invoice.customer.address}", :color => "5569A3"
-      text "#{@invoice.customer.zip_code} #{@invoice.customer.town} (#{@invoice.customer.province})", :color => "5569A3"
-      text "C.F. #{@invoice.customer.tax_code}", :color => "5569A3" if @invoice.customer.tax_code
-      text "P.IVA #{@invoice.customer.vat}", :color => "5569A3" if @invoice.customer.vat
+      province =  @invoice.customer.province == '' ? '' : "(#{@invoice.customer.province})"
+      text "#{@invoice.customer.zip_code} #{@invoice.customer.town}#{province}", :color => "5569A3"
+      text "C.F. #{@invoice.customer.tax_code}", :color => "5569A3" if @invoice.customer.tax_code != ''
+      text "P.IVA #{@invoice.customer.vat}", :color => "5569A3" if @invoice.customer.vat != ''
     end
   end
   
