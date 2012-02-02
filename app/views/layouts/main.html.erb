@@ -85,7 +85,7 @@
 		</ul>
 		<h3>Customers</h3>
 		<ul>
-		  <% current_user.customers.each do |customer| %>
+		  <% current_user.customers.order(:title,:surname,:name).each do |customer| %>
 			  <li class="icn_profile"><%= link_to customer.title, customer_slips_path(customer) %></li>
 			<% end %>
 		</ul>
