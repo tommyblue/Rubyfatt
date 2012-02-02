@@ -45,7 +45,7 @@ class InvoicePdf < Prawn::Document
   end
 
   def header_left
-    grid([0,0], [1,1]).bounding_box do 
+    grid([0,0], [1,2]).bounding_box do 
       move_down 50
       text "Attenzione:", :color => "777777"
       if @invoice.customer.title
