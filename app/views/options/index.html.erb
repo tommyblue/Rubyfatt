@@ -1,0 +1,37 @@
+<% content_for :title do %>
+  Options
+<% end %>
+
+<article class="module width_full">
+	<header><h3>Options</h3></header>
+	<div class="tab_container">
+    <table class="tablesorter" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan="3">
+            <div class="bulk-actions align-left">
+              <% link_to "New option", new_option_path, :class => "button" %>
+            </div>
+            <div class="clear"></div>
+          </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <% @options.each do |option| %>
+        <tr class="<%= cycle 'alt-row', '' %>">
+          <td><%= option.name %></td>
+          <td><%= option.value %></td>
+          <td><%= link_to(image_tag('icons/document--pencil.png', :alt => 'Edit option', :title => 'Edit option'), edit_option_path(option)) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</article>
