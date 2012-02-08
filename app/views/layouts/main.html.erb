@@ -62,8 +62,7 @@
 	
 	<section id="secondary_bar">
 		<div class="user">
-			<p><%= link_to current_user.name.to_s + ' ' + current_user.surname.to_s, user_path(current_user.id) %></p>
-			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
+			<p><%= link_to current_user.name.to_s + ' ' + current_user.surname.to_s, '/profile/edit', :title => 'Edit your profile' %></p>
 		</div>
 		<div class="breadcrumbs_container">
 			<article class="breadcrumbs"><a href="index.html">Website Admin</a> <div class="breadcrumb_divider"></div> <a class="current">Dashboard</a></article>
@@ -102,8 +101,8 @@
 	</aside><!-- end of sidebar -->
 	
 	<section id="main" class="column">
-		<% if flash[:notice] %>
-	    <h4 class="alert_info"><%= flash[:notice] %></h4>
+		<% if flash[:info] %>
+	    <h4 class="alert_info"><%= flash[:info] %></h4>
 	  <% end %>
 	  <% if flash[:warning] %>
 	    <h4 class="alert_warning"><%= flash[:warning] %></h4>
@@ -111,8 +110,8 @@
 	  <% if flash[:error] %>
 	    <h4 class="alert_error"><%= flash[:error] %></h4>
 	  <% end %>
-	  <% if flash[:success] %>
-	    <h4 class="alert_success"><%= flash[:success] %></h4>
+	  <% if flash[:notice] %>
+	    <h4 class="alert_success"><%= flash[:notice] %></h4>
 	  <% end %>
 	  
 	  <%= yield %>

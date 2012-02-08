@@ -1,0 +1,20 @@
+<% content_for :title do %>
+  User profile
+<% end %>
+
+<article class="module width_full">
+	<header>
+	  <h3 class="tabs_involved">Edit your profile</h3>
+	  <ul class="tabs">
+      <li>
+        <%= link_to "Change your password", '/profile/password/edit' %>
+      </li>
+    </ul>
+	</header>
+	<div class="module_content">
+    <%= semantic_form_for @user, :url => '/profile/update' do |f| %>
+      <%= f.inputs :name, :surname, :address, :zip_code, :town, :province, :country, :tax_code, :vat, :phone, :email %>
+      <%= f.buttons %>
+    <% end %>
+  </div>
+</article>

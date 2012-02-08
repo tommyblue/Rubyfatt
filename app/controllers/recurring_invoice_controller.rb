@@ -11,10 +11,13 @@ class RecurringInvoiceController < ApplicationController
   end
 
   def create
+    raise 's'
+    @recurring_slip = RecurringSlip.find(params[:recurring_slip_id])
+    @customer = @recurring_slip.customer
     @customer = Customer.find(params[:customer_id])
     @invoice = @customer.invoices.new(params[:invoice])
     if @invoice.save
-      redirect_to(customer_slips_path(@customer), :success => 'The invoice was successfully created.')
+      redirect_to(customer_slips_path(@customer), :notice => 'The invoice was successfully created.')
     else
       flash[:warning] = "Error validating the invoice"
       render :action => "new"

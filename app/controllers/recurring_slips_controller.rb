@@ -22,28 +22,32 @@ class RecurringSlipsController < ApplicationController
     @recurring_slip.schedule = schedule
     @recurring_slip.start_date = DateTime.civil(params[:schedule]["next(1i)"].to_i, params[:schedule]["next(2i)"].to_i, params[:schedule]["next(3i)"].to_i)
     if @recurring_slip.save
-      redirect_to(recurring_slips_path, :success => 'The recurring slip was successfully created.')
+      redirect_to(recurring_slips_path, :notice => 'The recurring slip was successfully created.')
     else
       render :action => "new"
     end
   end
 
-  def edit
-    @customer = Customer.find(params[:id])
-  end
+  #def edit
+  #  @recurring_slip = RecurringSlip.find(params[:id])
+  #end
 
-  def update
-    @customer = Customer.find(params[:id])
-    if @customer.update_attributes(params[:customer])
-      redirect_to(@customer, :success => 'The Customer was successfully updated.')
-    else
-      render :action => "edit"
-    end
-  end
+  #def update
+  #  @recurring_slip = RecurringSlip.find(params[:id])
+  #  if @recurring_slip.update_attributes(params[:customer])
+  #    redirect_to(@customer, :notice => 'The Customer was successfully updated.')
+  #  else
+  #    render :action => "edit"
+  #  end
+  #end
 
   def destroy
-    @customer = Customer.find(params[:id])
-    @customer.destroy
-    redirect_to(customers_url)
+    @recurring_slip = RecurringSlip.find(params[:id])
+    if @recurring_slip.destroy
+      flash[:notice] = "Recurring slip deleted"
+    else
+      flash[:error] = "Error deleting the recurring slip"
+    end
+    redirect_to(recurring_slips_url)
   end
 end

@@ -18,7 +18,7 @@ class InvoicesController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @invoice = @customer.invoices.new(params[:invoice])
     if @invoice.save
-      redirect_to(customer_slips_path(@customer), :success => 'The invoice was successfully created.')
+      redirect_to(customer_slips_path(@customer), :notice => 'The invoice was successfully created.')
     else
       flash[:warning] = "Error validating the invoice"
       render :action => "new"
@@ -42,7 +42,7 @@ class InvoicesController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @invoice = Invoice.find(params[:id])
     if @invoice.restore_slips_and_destroy
-      redirect_to(customer_slips_path(@customer), :success => 'The invoice was successfully destroyed and its slips was restored')
+      redirect_to(customer_slips_path(@customer), :notice => 'The invoice was successfully destroyed and its slips was restored')
     else
       redirect_to(customer_slips_path(@customer), :error => "Can't destroy a paid invoice")
     end

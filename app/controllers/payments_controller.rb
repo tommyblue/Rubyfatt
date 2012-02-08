@@ -11,7 +11,7 @@ class PaymentsController < ApplicationController
     @invoice.paid = true
     @invoice.payment_date = Date.civil(params[:payment]["date(1i)"].to_i, params[:payment]["date(2i)"].to_i, params[:payment]["date(3i)"].to_i)
     if @invoice.save
-      redirect_to(customer_slips_path(@customer), :success => 'The invoice was successfully paid.')
+      redirect_to(customer_slips_path(@customer), :notice => 'The invoice was successfully paid.')
     else
       flash[:warning] = "Errors during save"
       render :action => "new"

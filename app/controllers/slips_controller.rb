@@ -23,7 +23,7 @@ class SlipsController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @slip = @customer.slips.new(params[:slip])
     if @slip.save
-      redirect_to(customer_slips_path(@customer), :success => 'The slip was successfully created.')
+      redirect_to(customer_slips_path(@customer), :notice => 'The slip was successfully created.')
     else
       render :action => "new"
     end
@@ -38,7 +38,7 @@ class SlipsController < ApplicationController
     @slip = Slip.find(params[:id])
     @customer = @slip.customer
     if @slip.update_attributes(params[:slip])
-      redirect_to(customer_slips_path(@customer), :success => 'The slip was successfully updated.')
+      redirect_to(customer_slips_path(@customer), :notice => 'The slip was successfully updated.')
     else
       render :action => "edit"
     end

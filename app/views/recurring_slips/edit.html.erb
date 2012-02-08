@@ -1,0 +1,47 @@
+<div class="content-box-header">
+  <h3>Edit recurring slip</h3>
+  <div class="clear"></div>
+</div>
+<div class="content-box-content">
+  <%= semantic_form_for @recurring_slip do |f| %>
+    <%= f.inputs :customer, :name, :rate %>
+    
+    <fieldset class="inputs">
+      <ol>
+        <li id="months_input" class="string input required stringish">
+          <label class=" label" for="recurring_slip_name">
+          Months of recurrency
+          <abbr title="required">*</abbr>
+          </label>
+            <%= select 'schedule', 'month', [ ["Every month", 1], ["Every 2 months", 2], ["Every 3 months", 3], ["Every 4 months", 4], ["Every 6 months", 6], ["Every year", 12], ["Every 2 years", 24] ] %>
+        </li>
+      </ol>
+    </fieldset>
+    
+    <fieldset class="inputs">
+      <ol>
+        <li id="months_input" class="string input required stringish">
+          <label class=" label" for="recurring_slip_name">
+          Day of expiration
+          <abbr title="required">*</abbr>
+          </label>
+            <%= select 'schedule', 'day', [['At the beginning of the month', 1], ['At the end of the month', -1]].concat(2.upto(30).collect { |n| ["on the #{n.ordinal}", n] }) %>
+        </li>
+      </ol>
+    </fieldset>
+    
+    <fieldset class="inputs">
+      <ol>
+        <li id="months_input" class="string input required stringish">
+          <label class=" label" for="recurring_slip_name">
+          Next occurrence
+          <abbr title="required">*</abbr>
+          </label>
+            <%= date_select 'schedule', 'next' %>
+        </li>
+      </ol>
+    </fieldset>
+    
+    <%= f.buttons %>
+  <% end %>
+</div>

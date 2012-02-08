@@ -22,7 +22,10 @@ Easyfatt::Application.routes.draw do
     resources :recurring_invoice
   end
   
-  resources :users
+  match 'profile/password/edit' => 'profile#password_edit'
+  match 'profile/password/update' => 'profile#password_update', :via => :put
+  match 'profile/edit' => 'profile#edit'
+  match 'profile/update' => 'profile#update', :via => :put
   
   resources :options
   
