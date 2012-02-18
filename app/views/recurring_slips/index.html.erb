@@ -31,7 +31,7 @@
           <tr class="<%= cycle 'alt-row', '' %>">
             <td><%= slip.customer.title %></td>
             <td><%= slip.name %></td>
-            <td><%= number_to_currency(slip.rate) %></td>
+            <td class="nowrap"><%= number_to_currency(slip.rate) %></td>
             <td><%= slip.schedule %></td>
             <td class="<%= ' highlight' if slip.to_invoice? %>"><%= slip.next_occurrence ? slip.next_occurrence.strftime("%d/%m/%Y") : '-' %></td>
             <td>

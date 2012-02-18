@@ -924,3 +924,7 @@ span.circle {
 td.highlight {
   color: red;
 }
+
+td.nowrap {
+	white-space: nowrap;
+}
