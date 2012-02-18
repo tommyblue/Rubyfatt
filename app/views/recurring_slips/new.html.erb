@@ -4,7 +4,12 @@
 </div>
 <div class="content-box-content">
   <%= semantic_form_for @recurring_slip do |f| %>
-    <%= f.inputs :customer, :name, :rate %>
+    <fieldset class="inputs">
+      <ol>
+        <%= f.input :customer, :collection => current_user.customers.collect{ |customer| customer.title }.sort! %>
+      </ol>
+    </fieldset>
+    <%= f.inputs :name, :rate %>
     
     <fieldset class="inputs">
       <ol>
