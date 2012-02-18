@@ -6,7 +6,7 @@
   <%= semantic_form_for @recurring_slip do |f| %>
     <fieldset class="inputs">
       <ol>
-        <%= f.input :customer, :collection => current_user.customers.collect{ |customer| customer.title }.sort! %>
+        <%= f.input :customer, :collection => current_user.customers.collect{ |customer| [customer.title, customer.id] } %>
       </ol>
     </fieldset>
     <%= f.inputs :name, :rate %>
@@ -34,7 +34,7 @@
         </li>
       </ol>
     </fieldset>
-    
+
     <fieldset class="inputs">
       <ol>
         <li id="months_input" class="string input required stringish">
@@ -42,7 +42,7 @@
           Next occurrence
           <abbr title="required">*</abbr>
           </label>
-            <%= date_select 'schedule', 'next' %>
+            <%= text_field_tag 'schedule[next]', '', :class => :datepicker %>
         </li>
       </ol>
     </fieldset>
