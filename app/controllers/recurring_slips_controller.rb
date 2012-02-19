@@ -28,6 +28,19 @@ class RecurringSlipsController < ApplicationController
     end
   end
 
+  def edit
+    @recurring_slip = RecurringSlip.find(params[:id])
+  end
+
+  def update
+    @recurring_slip = RecurringSlip.find(params[:id])
+    if @recurring_slip.update_attributes(params[:recurring_slip])
+      redirect_to(recurring_slips_path, :notice => 'The reccurring slip was successfully updated.')
+    else
+      render :action => "edit"
+    end
+  end
+
   def destroy
     @recurring_slip = RecurringSlip.find(params[:id])
     if @recurring_slip.destroy
