@@ -9,7 +9,7 @@
     <%= f.inputs :date, :paid, :payment_date %>
     <%= f.input :slips, :as => :check_boxes, :collection => @slips %>
     <%= f.input :consolidated_tax, :as => :select, :collection => @consolidated_taxes %>
-    <%= f.buttons %>
+    <%= submit_tag "Create invoice" %>
   <% end %>
   </div>
 </article>

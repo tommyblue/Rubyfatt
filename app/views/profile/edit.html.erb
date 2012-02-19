@@ -14,7 +14,7 @@
 	<div class="module_content">
     <%= semantic_form_for @user, :url => '/profile/update' do |f| %>
       <%= f.inputs :name, :surname, :address, :zip_code, :town, :province, :country, :tax_code, :vat, :phone, :email %>
-      <%= f.buttons %>
+      <%= submit_tag "Update profile" %>
     <% end %>
   </div>
 </article>

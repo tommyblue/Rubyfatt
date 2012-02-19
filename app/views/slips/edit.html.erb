@@ -5,7 +5,7 @@
 	<div class="module_content">
 		<%= semantic_form_for [@customer, @slip] do |f| %>
 			<%= f.inputs %>
-			<%= f.buttons %>
+			<%= submit_tag "Update slip" %>
 		<% end %>
 	</div>
 </article>

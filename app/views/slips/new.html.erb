@@ -5,7 +5,7 @@
   <div class="module_content">
 	  <%= semantic_form_for [@customer, @slip] do |f| %>
 	    <%= f.inputs :name, :rate, :timed, :duration %>
-	    <%= f.buttons %>
+	    <%= submit_tag "Create slip" %>
 	  <% end %>
 	</div>
 </article>
