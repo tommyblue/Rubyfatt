@@ -1,10 +1,11 @@
-<div class="content-box-header">
-  <h3>New slip for <%= @customer.title %></h3>
-  <div class="clear"></div>
-</div>
-<div class="content-box-content">
-  <%= semantic_form_for [@customer, @slip] do |f| %>
-    <%= f.inputs :name, :rate, :timed, :duration %>
-    <%= f.buttons %>
-  <% end %>
-</div>
+<article class="module width_full">
+  <header>
+    <h3>New slip</h3>
+  </header>
+  <div class="module_content">
+	  <%= semantic_form_for [@customer, @slip] do |f| %>
+	    <%= f.inputs :name, :rate, :timed, :duration %>
+	    <%= f.buttons %>
+	  <% end %>
+	</div>
+</article>

@@ -1,16 +1,17 @@
-<div class="content-box-header">
-  <h3>Edit recurring slip</h3>
-  <div class="clear"></div>
-</div>
-<div class="content-box-content">
-  <%= semantic_form_for @recurring_slip do |f| %>
-    <fieldset class="inputs">
-      <ol>
-        <%= f.input :customer, :collection => current_user.customers.collect{ |customer| [customer.title, customer.id] } %>
-      </ol>
-    </fieldset>
-    <%= f.inputs :name %>
-    <%= f.inputs :rate, :as => :currency %>
-    <%= f.buttons %>
-  <% end %>
-</div>
+<article class="module width_full">
+  <header>
+    <h3>Edit recurring slip</h3>
+  </header>
+  <div class="module_content">
+    <%= semantic_form_for @recurring_slip do |f| %>
+      <fieldset class="inputs">
+        <ol>
+          <%= f.input :customer, :collection => current_user.customers.collect{ |customer| [customer.title, customer.id] } %>
+        </ol>
+      </fieldset>
+      <%= f.inputs :name %>
+      <%= f.inputs :rate, :as => :currency %>
+      <%= f.buttons %>
+    <% end %>
+  </div>
+</article>
