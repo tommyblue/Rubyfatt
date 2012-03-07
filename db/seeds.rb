@@ -1,12 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-user = User.create(:email => "tommaso.visconti@gmail.com", :password => "password", :name => "Tommaso", :surname => "Visconti", :address => "Via Rupe Canina 25", :zip_code => "50039", :town => "Vicchio", :province => "FI", :country => "", :tax_code => "VSCTMS83L27D612B", :vat => "05999900482", :phone => "+39.328.9478976")
+user = User.create(:email => "demo@example.com", :password => "password", :name => "John", :surname => "Doe", :address => "Via di qui, 1", :zip_code => "12345", :town => "Firenze", :province => "FI", :country => "", :tax_code => "ABCDEF00X00A123Z", :vat => "012345678910", :phone => "+39.333.1234567")
 user.save!
 
 user.options.create([{:name => 'NEXT_ESTIMATE_NUMBER', :value => 1, :integer => true}, {:name => 'NEXT_INVOICE_NUMBER', :value => 1, :integer => true}])
@@ -17,7 +9,7 @@ consolidated_tax.taxes << taxes
 user.taxes << taxes
 user.consolidated_taxes << consolidated_tax
 
-customer = user.customers.create(:title => "Christian Vibio", :name => "Christian", :surname => "Vibio", :address => "Via Eichenau 43", :zip_code => "50054", :town => "Budrio", :province => "BO", :country => "Italy", :tax_code => "VBICRS74M10B249A", :vat => "02703781209")
+customer = user.customers.create(:title => "Test customer", :name => "Bill", :surname => "Brown", :address => "Via Roma, 1", :zip_code => "123456", :town => "Roma", :province => "RO", :country => "Italy", :tax_code => "DEFABC00X00A123Z", :vat => "019876543210")
 
 slip1 = customer.slips.create(:customer_id => customer.id, :name => "Test slip 1", :rate => 14.32)
 slip2 = customer.slips.create(:customer_id => customer.id, :name => "Test slip 2", :rate => 46.40)
