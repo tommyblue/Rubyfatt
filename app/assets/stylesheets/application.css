@@ -872,6 +872,12 @@ td.nowrap {
 	white-space: nowrap;
 }
 
+tr.alt-row {
+  background-color: #FAFAFA;
+}
+tr.to_invoice {
+  background-color: #FDDDDD;
+}
 /* Button
 *******************************************************************************/
 input[type=submit] {

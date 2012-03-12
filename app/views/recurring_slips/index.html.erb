@@ -28,7 +28,7 @@
       </tfoot>
       <tbody>
         <% @recurring_slips.each do |slip| %>
-          <tr class="<%= cycle 'alt-row', '' %>">
+          <tr class="<%= cycle 'alt-row', '' %><%= ' to_invoice' if slip.to_invoice? %>">
             <td><%= slip.customer.title %></td>
             <td><%= slip.name %></td>
             <td class="nowrap"><%= number_to_currency(slip.rate) %></td>
