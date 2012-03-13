@@ -95,6 +95,10 @@ Al momento le gemme con cui sto testando il software sono:
 
 Di seguito i TAG git con le principali caratteristiche
 
+=== 0.2
+
+Fatture ricorrenti funzionanti (da perfezionare)
+
 === 0.1
 
 Versione con gestione clienti e fatture funzionanti. Da testare il funzionamento delle ricorrenze. Autenticazione con Devise ma manca la gestione dei permessi con CanCan. In generale può essere considerata una versione stabile nelle sue (ancora poche) funzionalità
