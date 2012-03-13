@@ -11,12 +11,30 @@ class RecurringInvoiceController < ApplicationController
   end
 
   def create
-    raise 's'
     @recurring_slip = RecurringSlip.find(params[:recurring_slip_id])
     @customer = @recurring_slip.customer
-    @customer = Customer.find(params[:customer_id])
+    recurring_slips_ids = []
+    params[:invoice][:recurring_slips].each do |recurring_slip_id|
+      recurring_slips_ids << recurring_slip_id if recurring_slip_id.strip != ''
+    end
+    params[:invoice].delete(:recurring_slips)
     @invoice = @customer.invoices.new(params[:invoice])
+    recurring_slips = []
+    recurring_slips_ids.each do |recurring_slip_id| # TODO: Check if they belongs to the user
+      if recurring_slip = RecurringSlip.find(recurring_slip_id)
+        recurring_slips << recurring_slip
+        slip = Slip.new
+        slip.customer = @customer
+        slip.name = recurring_slip.name
+        slip.rate = recurring_slip.rate
+        slip.timed = false
+        @invoice.slips << slip
+      end
+    end
     if @invoice.save
+      recurring_slips.each do |recurring_slip|
+        recurring_slip.goto_next_occurrence!
+      end
       redirect_to(customer_slips_path(@customer), :notice => 'The invoice was successfully created.')
     else
       flash[:warning] = "Error validating the invoice"

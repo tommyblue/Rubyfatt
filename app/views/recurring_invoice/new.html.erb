@@ -3,9 +3,9 @@
 <% end %>
 
 <article class="module width_full">
-	<header><h3>New recurring invoice</h3></header>
+	<header><h3>New invoice from recurring slip</h3></header>
 	<div class="module_content">
-  <%= semantic_form_for [ @customer, @invoice ] do |f| %>
+  <%= semantic_form_for [ @customer, @invoice ], :url => "/recurring_slips/#{@recurring_slip.id}/recurring_invoice" do |f| %>
     <%= f.inputs :date, :paid, :payment_date %>
     <%= f.input :recurring_slips, :as => :check_boxes, :collection => [ @recurring_slip ] %>
     <%= f.input :consolidated_tax, :as => :select, :collection => @consolidated_taxes %>

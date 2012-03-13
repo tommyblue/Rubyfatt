@@ -7,11 +7,17 @@ class RecurringSlip < ActiveRecord::Base
   validates_presence_of :name, :rate, :customer, :schedule
   
   before_save do
-    self.next_occurrence = self.schedule.next_occurrence unless self.next_occurrence
+    self.next_occurrence = self.schedule.next_occurrence unless self.next_occurrence # TODO: only on create
   end
   
   def to_invoice?
     self.next_occurrence and self.next_occurrence < Time.now
+  end
+  
+  # Changes the next occurrence of the slip
+  def goto_next_occurrence!
+    self.next_occurrence = self.schedule.next_occurrence
+    self.save!
   end
   
   def estimated?
