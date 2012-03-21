@@ -80,6 +80,7 @@
 		  <li class="icn_view_users"><%= link_to "Customers", customers_path %></li>
 		  <li class="icn_add_user"><%= link_to "New customer", new_customer_path %></li>
 		  <li class="icn_photo"><%= link_to "Recurring slips", recurring_slips_path %><%= expired_recurring_slips.html_safe %></li>
+		  <li class="icn_photo"><%= link_to "Unpaid invoices", unpaid_invoices_path %><%= unpaid_invoices.html_safe %></li>
 			<li class="icn_categories"><%= link_to "Taxes", consolidated_taxes_path %></li>
 			<li class="icn_settings"><%= link_to "Options", options_path %></li>
 			<li class="icn_jump_back"><%= link_to("Logout", destroy_user_session_path, :method => :delete, :title => 'Esci') %></li>

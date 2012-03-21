@@ -22,6 +22,8 @@ Easyfatt::Application.routes.draw do
     resources :recurring_invoice
   end
   
+  match 'invoices/unpaid' => 'reports#unpaid_invoices', :as => :unpaid_invoices
+  
   match 'profile/password/edit' => 'profile#password_edit'
   match 'profile/password/update' => 'profile#password_update', :via => :put
   match 'profile/edit' => 'profile#edit'
