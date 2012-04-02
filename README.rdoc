@@ -95,6 +95,11 @@ Al momento le gemme con cui sto testando il software sono:
 
 Di seguito i TAG git con le principali caratteristiche
 
+=== 0.3
+
+Corretto un grave errore che causava l'incremento della numerazione della prossima fattura ad ogni salvataggio di una fattura (ad esempio l'inserimento di un pagamento).
+Aggiornando a questa versione è necessario correggere la numerazione delle fatture che hanno ricevuto un pagamento dato che è stato modificato al momento dell'inserimento dello stesso.
+
 === 0.2
 
 Fatture ricorrenti funzionanti (da perfezionare)
