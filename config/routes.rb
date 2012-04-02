@@ -35,6 +35,8 @@ Easyfatt::Application.routes.draw do
     resources :taxes
   end
   
+  match 'invoices/all' => 'invoices#all', :as => :all_invoices
+  
   match 'invoice/:invoice_id/payment' => 'payments#create', :via => :post
   match 'invoice/:invoice_id/payment' => 'payments#new', :via => :get
   

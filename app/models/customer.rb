@@ -1,5 +1,5 @@
 class Customer < ActiveRecord::Base
-  default_scope order(:title, :id)
+  default_scope order('customers.title', 'customers.id')
   belongs_to :user
   has_many :estimates
   has_many :invoices

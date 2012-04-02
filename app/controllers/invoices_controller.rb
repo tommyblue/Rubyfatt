@@ -47,4 +47,10 @@ class InvoicesController < ApplicationController
       redirect_to(customer_slips_path(@customer), :error => "Can't destroy a paid invoice")
     end
   end
+  
+  # Shows all user's invoices
+  def all
+    @selected_year = params[:year] ? params[:year] : Time.now.year
+    @invoices = current_user.invoices.by_year(@selected_year)
+  end
 end

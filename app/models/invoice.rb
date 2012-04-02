@@ -3,6 +3,9 @@ class Invoice < ActiveRecord::Base
   belongs_to :customer
   has_many :slips
   
+  default_scope order('invoices.number', 'invoices.id')
+  scope :by_year, lambda {|year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31")}
+  
   validates_presence_of :date, :customer, :consolidated_tax
   
   before_save do
