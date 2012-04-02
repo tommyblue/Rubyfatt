@@ -8,11 +8,11 @@ class Invoice < ActiveRecord::Base
   
   validates_presence_of :date, :customer, :consolidated_tax
   
-  before_save do
+  before_create do
     self.number = self.customer.user.options.where(:name => 'NEXT_INVOICE_NUMBER').first.value.to_i
   end
     
-  after_save do
+  after_create do
     opt = self.customer.user.options.where(:name => 'NEXT_INVOICE_NUMBER').first
     opt.value = opt.value.to_i + 1
     opt.save!
