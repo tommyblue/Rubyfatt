@@ -4,25 +4,58 @@ Easyfatt è un'applicazione per la gestione delle fatture delle partite iva.
 
 Caratteristiche:
 
-* Multiutente (usa Devise e CanCan, ma è stato testato solo monoutente)
+* Multiutente (usa Devise e, presto, CanCan, ma è stato testato solo monoutente)
 * Gestione di differenti tipi di tassazione
 * Supporta più tasse calcolate sullo stesso imponibile
 * Gestione dei lavori ricorrenti
-* Trasformazione dei lavori in preventivi e fatture
-* Stampa PDF delle fatture
+* Trasformazione dei lavori in preventivi, progetti di notula e notule/fatture
+* Stampa PDF delle fatture e degli altri documenti
 * Gestione dei pagamenti
+* Riepilogo delle fatture emesse
 * Modifica della numerazione delle fatture e dei preventivi (ad esempio ad inizio anno)
+* Gestione delle coordinate bancarie
 
-<b>Lo stato dell'applicazione è da considerarsi alpha</b>. Io comunque lo uso per le mie fatture :)
+<b>Lo stato dell'applicazione è da considerarsi beta</b>. Io comunque lo uso per le mie fatture :)
 
 == Da fare
 
 Un sacco di cose, se hai voglia di partecipare scrivimi e sarai il benvenuto! :)
 Intanto ecco una lista:
 
-* Aggiungere gli _index_ alle tabelle
 * Gestire la creazione automatica delle opzioni se non presenti
 * Grafica con Twitter Bootstrap
+
+== Installazione
+
+Si installa come tutte le applicazioni rails:
+
+* Clona il repository in una cartella:
+
+  git clone git@github.com:tommyblue/Easyfatt.git
+  
+* Entra nella cartella e modifica il file _conf/databases.yml_ secondo le tue esigenze e personalizza _db/seeds.rb_ con i tuoi dati
+* Fai girare le migrazioni e il seed:
+
+  rake db:migrate
+  rake db:seed
+
+* Lancia il server con:
+
+  rails server
+  
+* Collegati all'applicazione dall'indirizzo http://localhost:3000/ e fai login con i dati di _db_seeds.rb_ (quelli di default sono _email "demo@example.com"_ e _password "password"_)
+
+== Aggiornamento
+
+L'aggiornamento consiste nell'aggiornare il repository git locale con:
+
+  git pull
+  
+e nell'aggiornamento del database con:
+
+  rake db:migrate
+  
+Ti consiglio comunque di leggere il changelog (più in basso) per eventuali istruzioni aggiuntive
 
 == Ambiente di sviluppo
 
@@ -99,6 +132,10 @@ Al momento le gemme con cui sto testando il software sono:
 == Changelog
 
 Di seguito i TAG git con le principali caratteristiche
+
+=== 0.5
+
+Gestione dei progetti di notula. Prima dell'aggiornamento modifica la migrazione _20120423154612_add_bank_coordinates.rb_ per inserire le tue coordinate bancarie oppure, successivamente alla migrazione, modifica l'opzione BANK_COORDINATES nell'apposita pagina
 
 === 0.4
 
