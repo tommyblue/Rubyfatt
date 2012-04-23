@@ -17,13 +17,14 @@ Caratteristiche:
 
 <b>Lo stato dell'applicazione è da considerarsi beta</b>. Io comunque lo uso per le mie fatture :)
 
-== Da fare
+== Da fare / To-do
 
 Un sacco di cose, se hai voglia di partecipare scrivimi e sarai il benvenuto! :)
 Intanto ecco una lista:
 
 * Gestire la creazione automatica delle opzioni se non presenti
 * Grafica con Twitter Bootstrap
+* Dalle fatture ricorrenti produrre un progetto di notula
 
 == Installazione
 
