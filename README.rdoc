@@ -44,7 +44,7 @@ Si installa come tutte le applicazioni rails:
 
   rails server
   
-* Collegati all'applicazione dall'indirizzo http://localhost:3000/ e fai login con i dati di _db_seeds.rb_ (quelli di default sono _email "demo@example.com"_ e _password "password"_)
+* Collegati all'applicazione dall'indirizzo http://localhost:3000/ e fai login con i dati di _db_seeds.rb_ (quelli di default sono _email_ _"demo@example.com"_ e _password_ _"password"_)
 
 == Aggiornamento
 
