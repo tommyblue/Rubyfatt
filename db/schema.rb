@@ -11,12 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120128174149) do
+ActiveRecord::Schema.define(:version => 20120423154612) do
 
   create_table "consolidated_taxes", :force => true do |t|
     t.integer "user_id"
     t.string  "name"
   end
+
+  add_index "consolidated_taxes", ["name"], :name => "index_consolidated_taxes_on_name"
 
   create_table "customers", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +36,10 @@ ActiveRecord::Schema.define(:version => 20120128174149) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "customers", ["name"], :name => "index_customers_on_name"
+  add_index "customers", ["surname"], :name => "index_customers_on_surname"
+  add_index "customers", ["title"], :name => "index_customers_on_title"
+
   create_table "estimates", :force => true do |t|
     t.integer  "customer_id"
     t.integer  "consolidated_tax_id"
@@ -43,6 +49,24 @@ ActiveRecord::Schema.define(:version => 20120128174149) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end
+
+  add_index "estimates", ["date"], :name => "index_estimates_on_date"
+  add_index "estimates", ["invoiced"], :name => "index_estimates_on_invoiced"
+  add_index "estimates", ["number"], :name => "index_estimates_on_number"
+
+  create_table "invoice_projects", :force => true do |t|
+    t.integer  "customer_id"
+    t.integer  "consolidated_tax_id"
+    t.date     "date",                                   :null => false
+    t.integer  "number",                                 :null => false
+    t.boolean  "invoiced",            :default => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "invoice_projects", ["date"], :name => "index_invoice_projects_on_date"
+  add_index "invoice_projects", ["invoiced"], :name => "index_invoice_projects_on_invoiced"
+  add_index "invoice_projects", ["number"], :name => "index_invoice_projects_on_number"
 
   create_table "invoices", :force => true do |t|
     t.integer  "customer_id"
@@ -55,6 +79,10 @@ ActiveRecord::Schema.define(:version => 20120128174149) do
     t.datetime "updated_at",                             :null => false
   end
 
+  add_index "invoices", ["date"], :name => "index_invoices_on_date"
+  add_index "invoices", ["number"], :name => "index_invoices_on_number"
+  add_index "invoices", ["paid"], :name => "index_invoices_on_paid"
+
   create_table "options", :force => true do |t|
     t.integer "user_id"
     t.string  "name"
@@ -62,25 +90,33 @@ ActiveRecord::Schema.define(:version => 20120128174149) do
     t.boolean "integer", :default => false
   end
 
+  add_index "options", ["name"], :name => "index_options_on_name"
+
   create_table "recurring_slips", :force => true do |t|
-    t.integer "customer_id"
-    t.integer "estimate_id"
-    t.integer "invoice_id"
-    t.string  "name"
-    t.decimal "rate",        :precision => 8, :scale => 2
+    t.integer  "customer_id"
+    t.string   "name"
+    t.decimal  "rate",            :precision => 8, :scale => 2
+    t.string   "schedule",                                      :default => "", :null => false
+    t.datetime "last_occurrence"
+    t.datetime "next_occurrence",                                               :null => false
   end
+
+  add_index "recurring_slips", ["name"], :name => "index_recurring_slips_on_name"
 
   create_table "slips", :force => true do |t|
     t.integer  "customer_id"
     t.integer  "estimate_id"
     t.integer  "invoice_id"
     t.string   "name"
-    t.decimal  "rate",        :precision => 8, :scale => 2
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.decimal  "rate",               :precision => 8, :scale => 2
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
     t.boolean  "timed"
     t.integer  "duration"
+    t.integer  "invoice_project_id"
   end
+
+  add_index "slips", ["name"], :name => "index_slips_on_name"
 
   create_table "taxes", :force => true do |t|
     t.integer "consolidated_tax_id"
@@ -90,6 +126,8 @@ ActiveRecord::Schema.define(:version => 20120128174149) do
     t.integer "rate"
     t.boolean "compound"
   end
+
+  add_index "taxes", ["name"], :name => "index_taxes_on_name"
 
   create_table "users", :force => true do |t|
     t.string   "name",                                                  :null => false

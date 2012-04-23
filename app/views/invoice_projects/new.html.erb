@@ -1,0 +1,15 @@
+<% content_for :title do %>
+  Invoice projects
+<% end %>
+
+<article class="module width_full">
+	<header><h3>New invoice project</h3></header>
+	<div class="module_content">
+  <%= semantic_form_for [@customer, @invoice_project] do |f| %>
+    <%= f.input :date%>
+    <%= f.input :slips, :as => :check_boxes, :collection => @slips %>
+    <%= f.input :consolidated_tax, :as => :select, :collection => @consolidated_taxes %>
+    <%= submit_tag "Create invoice project" %>
+  <% end %>
+  </div>
+</article>

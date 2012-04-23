@@ -7,6 +7,7 @@ class SlipsController < ApplicationController
     @slips = @customer.working_slips
     @estimates = @customer.estimates
     @invoices = @customer.invoices
+    @invoice_projects = @customer.invoice_projects
   end
   
   def show

@@ -76,7 +76,51 @@
           <td><%= number_to_currency(estimate.rate) %></td>
           <td><%= number_to_currency(estimate.total) %></td>
           <td><%= estimate.invoiced? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
-          <td><%= link_to(image_tag('icons/cross-circle.png', :alt => 'Delete estimate', :title => 'Delete estimate'), customer_estimate_path(@customer,estimate.id), :method => :delete, :confirm => "Are you sure to delete the estimate?\nATTENTION: You shouldn't destroy invoices unless you know what you're doing. Numbering won't be automatically restored...") %></td>
+          <td><%= link_to(image_tag('icons/cross-circle.png', :alt => 'Delete estimate', :title => 'Delete estimate'), customer_estimate_path(@customer,estimate.id), :method => :delete, :confirm => "Are you sure to delete the estimate?\nATTENTION: You shouldn't destroy it unless you know what you're doing. Numbering won't be automatically restored...") %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</article>
+
+<article class="module width_full">
+	<header><h3>Invoice projects</h3></header>
+	<div class="tab_container">
+    <table class="tablesorter" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Date</th>
+          <th>Rate</th>
+          <th>Total</th>
+          <th>Invoiced</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan="6">
+            <div class="bulk-actions align-left">
+              <%= link_to "New invoice project", new_customer_invoice_project_path(@customer), :class => "button" %>
+            </div>
+            <div class="clear"></div>
+          </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <% @invoice_projects.each do |project| %>
+        <tr class="<%= cycle 'alt-row', '' %>">
+          <td><%= project.number %></td>
+          <td><%= l project.date %></td>
+          <td><%= number_to_currency(project.rate) %></td>
+          <td><%= number_to_currency(project.total) %></td>
+          <td><%= project.invoiced? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
+          <td>
+            <%= link_to(image_tag('icons/cross-circle.png', :alt => 'Delete invoice project', :title => 'Delete invoice project'), customer_invoice_project_path(@customer,project.id), :method => :delete, :confirm => "Are you sure to delete the invoice project?\nATTENTION: You shouldn't destroy it unless you know what you're doing. Numbering won't be automatically restored...") %>
+            <%= link_to(image_tag('icons/inbox--arrow.png', :alt => 'Transform to invoice', :title => 'Transform to invoice' ), project_to_invoice_path(project.id), :confirm => "Transform the invoice project to invoice?") unless project.invoiced %>
+            <%= link_to image_tag('icons/document-pdf-text.png', :alt => 'Print invoice project', :title => 'Print invoice project' ), customer_invoice_project_path(@customer,project.id, :format => 'pdf') %>
+          </td>
         </tr>
         <% end %>
       </tbody>

@@ -1,8 +1,10 @@
 require 'prawn'
 include ActionView::Helpers::NumberHelper
 class InvoicePdf < Prawn::Document
-  def initialize(invoice, view)
+  def initialize(invoice, view, title = "Notula", bank_coordinates = nil)
     super()
+    @title = title
+    @bank_coordinates = bank_coordinates
     @invoice = invoice
     @view = view
     @subtotal = 0.0
@@ -12,8 +14,9 @@ class InvoicePdf < Prawn::Document
     self.slips()
     move_down 50
     self.consolidated_taxes()
+    self.bank_coordinates if @bank_coordinates
     self.print_total
-    #grid.show_all
+    #grid.show_all # Decomment to show pdf grids
   end
   
   # Initial setup
@@ -38,9 +41,16 @@ class InvoicePdf < Prawn::Document
   
   def header_bottom
     grid([2,0], [2,1]).bounding_box do 
-      text  "Notula", :size => 24, :style => :bold, :color => "5569A3"
+      text  @title, :size => 24, :style => :bold, :color => "5569A3"
       text "#{@invoice.customer.user.town}, #{@invoice.date.strftime("%d/%m/%Y")}", :align => :left, :color => "5569A3"
-      text "Notula n. #{@invoice.date.year}-#{@invoice.number.to_s.rjust(3,'0')}", :align => :left, :color => "5569A3"
+      text "#{@title} n. #{@invoice.date.year}-#{@invoice.number.to_s.rjust(3,'0')}", :align => :left, :color => "5569A3"
+    end
+  end
+  
+  def bank_coordinates
+    grid([7,0], [8,1]).bounding_box do 
+      text "Coordinate bancarie", :align => :left, :style => :bold, :color => "5569A3"
+      text "#{@bank_coordinates}", :align => :left, :color => "5569A3"
     end
   end
 

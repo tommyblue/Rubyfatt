@@ -15,7 +15,7 @@ Easyfatt::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :customers do
-    resources :slips, :estimates, :invoices
+    resources :slips, :estimates, :invoices, :invoice_projects
   end
   
   resources :recurring_slips do
@@ -23,6 +23,8 @@ Easyfatt::Application.routes.draw do
   end
   
   match 'invoices/unpaid' => 'reports#unpaid_invoices', :as => :unpaid_invoices
+  
+  match 'invoice_projects/:id/to_invoice' => 'invoice_projects#to_invoice', :as => :project_to_invoice
   
   match 'profile/password/edit' => 'profile#password_edit'
   match 'profile/password/update' => 'profile#password_update', :via => :put
