@@ -1,47 +1,34 @@
-<% content_for :title do %>
-  Recurring slips
-<% end %>
+<%- model_class = RecurringSlip.new.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<table class="table table-striped table-bordered table-condensed">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:customer) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:rate) %></th>
+      <th><%= model_class.human_attribute_name(:rule) %></th>
+      <th><%= model_class.human_attribute_name(:next_occurrence) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recurring_slips.each do |slip| %>
+      <tr>
+        <td><%= slip.customer.title %></td>
+        <td><%= slip.name %></td>
+        <td><%= number_to_currency(slip.rate) %></td>
+        <td><%= slip.schedule %></td>
+        <td><span class="<%= 'label label-important' if slip.to_invoice? %>"><%= slip.next_occurrence ? slip.next_occurrence.in_time_zone("Rome").strftime("%d/%m/%Y") : '-' %></span></td>
+        <td>
+          <%= link_to(image_tag('icons/blog--plus.png', :alt => 'Create invoice', :title => 'Create invoice'), new_recurring_slip_recurring_invoice_path(slip) ) if slip.to_invoice? %>
+          <%= link_to(image_tag('icons/document--pencil.png', :alt => 'Edit recurring slip', :title => 'Edit recurring slip'), edit_recurring_slip_path(slip)) %>
+          <%= link_to(image_tag('icons/cross-circle.png', :alt => 'Delete recurring slip', :title => 'Delete recurring slip'), recurring_slip_path(slip), :method => :delete, :confirm => "Are you sure to delete the recurring slip?") %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<article class="module width_full">
-	<header><h3>Recurring slips</h3></header>
-	<div class="tab_container">
-    <table class="tablesorter" cellspacing="0">
-      <thead>
-        <tr>
-          <th>Customer</th>
-          <th>Name</th>
-          <th>Rate</th>
-          <th>Rule</th>
-          <th>Next occurrence</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tfoot>
-        <tr>
-          <td colspan="6">
-            <div class="bulk-actions align-left">
-              <%= link_to "New recurring slip", new_recurring_slip_path, :class => "button" %>
-            </div>
-            <div class="clear"></div>
-          </td>
-        </tr>
-      </tfoot>
-      <tbody>
-        <% @recurring_slips.each do |slip| %>
-          <tr class="<%= cycle 'alt-row', '' %><%= ' to_invoice' if slip.to_invoice? %>">
-            <td><%= slip.customer.title %></td>
-            <td><%= slip.name %></td>
-            <td class="nowrap"><%= number_to_currency(slip.rate) %></td>
-            <td><%= slip.schedule %></td>
-            <td class="<%= ' highlight' if slip.to_invoice? %>"><%= slip.next_occurrence ? slip.next_occurrence.in_time_zone("Rome").strftime("%d/%m/%Y") : '-' %></td>
-            <td class="nowrap">
-              <%= link_to(image_tag('icons/blog--plus.png', :alt => 'Create invoice', :title => 'Create invoice'), new_recurring_slip_recurring_invoice_path(slip) ) if slip.to_invoice? %>
-              <%= link_to(image_tag('icons/document--pencil.png', :alt => 'Edit recurring slip', :title => 'Edit recurring slip'), edit_recurring_slip_path(slip)) %>
-              <%= link_to(image_tag('icons/cross-circle.png', :alt => 'Delete recurring slip', :title => 'Delete recurring slip'), recurring_slip_path(slip), :method => :delete, :confirm => "Are you sure to delete the recurring slip?") %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</article>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_recurring_slip_path,
+            :class => 'btn btn-primary' %>

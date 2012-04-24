@@ -1,36 +1,22 @@
-<% content_for :title do %>
-  Unpaid invoices
-<% end %>
-
-<article class="module width_full">
-	<header><h3>Invoices</h3></header>
-	<div class="tab_container">
-    <table class="tablesorter" cellspacing="0">
-      <thead>
-        <tr>
-          <th>Customer</th>
-          <th>Number</th>
-          <th>Date</th>
-          <th>Slips</th>
-          <th>Rate</th>
-          <th>Total</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tfoot>
-        <tr>
-          <td colspan="7">
-            <div class="bulk-actions align-left">
-            </div>
-            <div class="clear"></div>
-          </td>
-        </tr>
-      </tfoot>
-      <tbody>
-        <% @invoices.each do |invoice| %>
-        <tr class="<%= cycle 'alt-row', '' %>">
-          <td><%= invoice.customer.title %></td>
+<%- model_class = Invoice.new.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<table class="table table-striped table-bordered table-condensed">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:number) %></th>
+      <th><%= model_class.human_attribute_name(:customer) %></th>
+      <th><%= model_class.human_attribute_name(:date) %></th>
+      <th><%= model_class.human_attribute_name(:slips) %></th>
+      <th><%= model_class.human_attribute_name(:rate) %></th>
+      <th><%= model_class.human_attribute_name(:total) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
           <td><%= invoice.number %></td>
+          <td><%= invoice.customer.title %></td>
           <td><%= invoice.date.strftime("%d/%m/%Y") %></td>
           <td>
             <ul>
@@ -46,9 +32,7 @@
             <%= link_to(image_tag('icons/money-coin.png', :alt => 'Add payment', :title => 'Add payment'), "/invoice/#{invoice.id}/payment") unless invoice.paid? %>
             <%= link_to image_tag('icons/document-pdf-text.png', :alt => 'Print invoice', :title => 'Print invoice' ), customer_invoice_path(invoice.customer,invoice.id, :format => 'pdf') %>
           </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</article>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

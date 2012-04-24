@@ -93,26 +93,26 @@ ActiveRecord::Schema.define(:version => 20120423154612) do
   add_index "options", ["name"], :name => "index_options_on_name"
 
   create_table "recurring_slips", :force => true do |t|
-    t.integer  "customer_id"
-    t.string   "name"
-    t.decimal  "rate",            :precision => 8, :scale => 2
-    t.string   "schedule",                                      :default => "", :null => false
+    t.integer  "customer_id",                                   :null => false
+    t.string   "schedule",                                      :null => false
     t.datetime "last_occurrence"
-    t.datetime "next_occurrence",                                               :null => false
+    t.datetime "next_occurrence",                               :null => false
+    t.string   "name",                                          :null => false
+    t.decimal  "rate",            :precision => 8, :scale => 2, :null => false
   end
 
   add_index "recurring_slips", ["name"], :name => "index_recurring_slips_on_name"
 
   create_table "slips", :force => true do |t|
-    t.integer  "customer_id"
+    t.integer  "customer_id",                                                         :null => false
     t.integer  "estimate_id"
     t.integer  "invoice_id"
-    t.string   "name"
-    t.decimal  "rate",               :precision => 8, :scale => 2
-    t.datetime "created_at",                                       :null => false
-    t.datetime "updated_at",                                       :null => false
-    t.boolean  "timed"
+    t.string   "name",                                                                :null => false
+    t.decimal  "rate",               :precision => 8, :scale => 2,                    :null => false
+    t.boolean  "timed",                                            :default => false
     t.integer  "duration"
+    t.datetime "created_at",                                                          :null => false
+    t.datetime "updated_at",                                                          :null => false
     t.integer  "invoice_project_id"
   end
 
@@ -130,24 +130,24 @@ ActiveRecord::Schema.define(:version => 20120423154612) do
   add_index "taxes", ["name"], :name => "index_taxes_on_name"
 
   create_table "users", :force => true do |t|
-    t.string   "name",                                                  :null => false
-    t.string   "surname",                                               :null => false
-    t.string   "address",                                               :null => false
-    t.string   "zip_code",                                              :null => false
-    t.string   "town",                                                  :null => false
-    t.string   "province",                                              :null => false
+    t.string   "name",                                   :null => false
+    t.string   "surname",                                :null => false
+    t.string   "address",                                :null => false
+    t.string   "zip_code",                               :null => false
+    t.string   "town",                                   :null => false
+    t.string   "province",                               :null => false
     t.string   "country"
-    t.string   "tax_code",                                              :null => false
-    t.string   "vat",                                                   :null => false
-    t.string   "phone",                                                 :null => false
-    t.datetime "created_at",                                            :null => false
-    t.datetime "updated_at",                                            :null => false
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "tax_code",                               :null => false
+    t.string   "vat",                                    :null => false
+    t.string   "phone",                                  :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
+    t.integer  "sign_in_count",          :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
