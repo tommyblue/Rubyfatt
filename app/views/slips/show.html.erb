@@ -1,41 +1,38 @@
-<% content_for :title do %>
-  <%= @customer.title %>
-<% end %>
+<%- model_class = @slip.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
 
-<article class="module width_full">
-	<header><h3>Slip</h3></header>
-	<div class="tab_container">
-    <table class="tablesorter" cellspacing="0">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Rate</th>
-          <th>Created at</th>
-          <th>Timed</th>
-          <th>Duration</th>
-          <th>Estimated</th>
-        </tr>
-      </thead>
-      <tfoot>
-        <tr>
-          <td colspan="6">
-            <div class="bulk-actions align-left">
-              <%= link_to "New slip", new_customer_slip_path(@customer), :class => "button" %>
-            </div>
-            <div class="clear"></div>
-          </td>
-        </tr>
-      </tfoot>
-      <tbody>
-        <tr class="<%= cycle 'alt-row', '' %>">
-          <td><%= @slip.name %></td>
-          <td class="nowrap"><%= number_to_currency(@slip.rate) %></td>
-          <td><%= l @slip.created_at %></td>
-          <td><%= @slip.timed? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
-          <td><%= @slip.duration ? ChronicDuration.output(@slip.duration, :format => :short) : '-' %></td>
-          <td><%= @slip.estimated? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</article>
+<p>
+  <strong><%= model_class.human_attribute_name(:name) %>:</strong><br>
+  <%= @slip.name %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:rate) %>:</strong><br>
+  <%= number_to_currency(@slip.rate) %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:created_at) %>:</strong><br>
+  <%= l (@slip.created_at) %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:timed) %>:</strong><br>
+  <%= @slip.timed? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:duration) %>:</strong><br>
+  <%= @slip.duration ? ChronicDuration.output(@slip.duration, :format => :short) : '-' %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:estimated) %>:</strong><br>
+  <%= @slip.estimated? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %>
+</p>
+
+<div class="form-actions">
+              
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_slip_path(@slip), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              slip_path(@slip),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>

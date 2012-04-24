@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en">
+ 
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		
+		<title>Easyfatt | Login</title>
+		
+		<!--                       CSS                       -->
+	  <%= stylesheet_link_tag "login" %>
+	  <%= stylesheet_link_tag "red" %>
+	  
+  	<!--[if lt IE 9]>
+  	  <%= stylesheet_link_tag "ie" %>
+  	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+
+    <!--                       Javascripts                       -->
+    <%= javascript_include_tag "login" %>
+		
+  	<meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1.0" />
+
+  	<script type="text/javascript">
+      $(document).ready(function() {
+        $('#email').focus();
+  		});
+    </script>
+    <%= csrf_meta_tag %>
+	</head>
+  
+	<body id="login">
+		
+		<%= yield %>
+		
+  </body>
+  
+</html>

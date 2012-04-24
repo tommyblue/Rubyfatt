@@ -4,7 +4,7 @@ module ApplicationHelper
     if only_num
       expired
     else
-      expired > 0 ? '<span class="circle">' + expired.to_s + '</span>' : ''
+      expired > 0 ? '<span class="badge badge-error">' + expired.to_s + '</span>' : ''
     end
   end
   
@@ -13,7 +13,7 @@ module ApplicationHelper
     if only_num
       unpaid
     else
-      unpaid > 0 ? '<span class="circle">' + unpaid.to_s + '</span>' : ''
+      unpaid > 0 ? '<span class="badge badge-error">' + unpaid.to_s + '</span>' : ''
     end
   end
-end
+end 

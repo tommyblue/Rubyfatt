@@ -1,0 +1,25 @@
+<%= semantic_form_for [@customer, @invoice_project], :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :consolidated_taxes, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.input :consolidated_tax, :as => :select, :collection => @consolidated_taxes, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :slips, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.input :slips, :as => :check_boxes, :collection => @slips %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                customer_slips_path(@customer), :class => 'btn' %>
+  </div>
+<% end %>

@@ -1,133 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Easyfatt" %></title>
+    <%= csrf_meta_tags %>
 
-<head>
-	<meta charset="utf-8"/>
-	<title>EasyFatt</title>
-	
-	<%= stylesheet_link_tag "application" %>
-	<!--[if lt IE 9]>
-	<%= stylesheet_link_tag "ie" %>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<%= javascript_include_tag "application" %>
-	
-	<link rel="shortcut icon" href="/assets/favicon.ico" />
-	<meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1.0" />
-  <%= csrf_meta_tag %>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
 
-	<script type="text/javascript">
-	$(document).ready(function() 
-    	{ 
-      	  $(".tablesorter").tablesorter(); 
-   	 } 
-	);
-	$(document).ready(function() {
-    // Modifies the favicon adding the number of expired recurring slips
-    <% expired = expired_recurring_slips(true) %>
-    <% if expired > 0 %>
-      Tinycon.setBubble(<%= expired %>);
-    <% end %>
-	//When page loads...
-	$(".tab_content").hide(); //Hide all content
-	$("ul.tabs li:first").addClass("active").show(); //Activate first tab
-	$(".tab_content:first").show(); //Show first tab content
+    <%= stylesheet_link_tag "application", :media => "all" %>
 
-	//On Click Event
-	$("ul.tabs li").click(function() {
+    <link href="images/favicon.ico" rel="shortcut icon">
+    <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+  </head>
+  <body>
 
-		$("ul.tabs li").removeClass("active"); //Remove any "active" class
-		$(this).addClass("active"); //Add "active" class to selected tab
-		$(".tab_content").hide(); //Hide all tab content
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+          <div class="container-fluid">
+          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">Easyfatt</a>
+          <div class="container-fluid nav-collapse">
+            <ul class="nav">
+              <li><%= link_to "All invoices", all_invoices_path %></li>
+              <li><%= link_to ("Unpaid invoices #{unpaid_invoices}").html_safe, unpaid_invoices_path %></li>
+              <li><%= link_to ("Recurring slips #{expired_recurring_slips}").html_safe, recurring_slips_path %></li>
+              <li class="divider-vertical"></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Customers
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Show customers", customers_path %></li>
+                  <li><%= link_to "New customer", new_customer_path %></li>
+                </ul>
+              </li>
+              <li><%= link_to "Taxes", consolidated_taxes_path %></li>
+            </ul>
+            
+            <ul class="nav pull-right">
+              <li><%= link_to "Options", options_path %></li>
+              <li class="divider-vertical"></li>
+              <li><%= link_to("Logout", destroy_user_session_path, :method => :delete, :title => 'Esci') %></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
-		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
-		$(activeTab).fadeIn(); //Fade in the active ID content
-		return false;
-	});
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Customers</li>
+              <% current_user.customers.order(:title,:surname,:name).each do |customer| %>
+        			  <li><%= link_to customer.title, customer_slips_path(customer) %></li>
+        			<% end %>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <%= yield %>
+        </div>
+      </div><!--/row-->
 
-});
-    </script>
-    <script type="text/javascript">
-    $(function(){
-        $('.column').equalHeight();
-    });
-</script>
+      <footer>
+        <p><strong><%= link_to raw("Copyright &copy;"), "http://www.gnu.org/licenses/gpl.txt", :target => :blank %> <%= Time.now.year %> <%= link_to "Kreations Collective", "http://www.kreations.it", :target => :blank %></strong></p>
+  			<p><a href="https://github.com/tommyblue/Easyfatt" target="_blank">Get the source code on GitHub</a></p>
+      </footer>
 
-</head>
+    </div> <!-- /container -->
 
+    <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
 
-<body>
-
-	<header id="header">
-		<hgroup>
-			<h1 class="site_title"><%= link_to "Easyfatt", root_url %></h1>
-			<h2 class="section_title"><%= yield :title %></h2>
-		</hgroup>
-	</header> <!-- end of header bar -->
-	
-	<section id="secondary_bar">
-		<div class="user">
-			<p><%= link_to current_user.name.to_s + ' ' + current_user.surname.to_s, '/profile/edit', :title => 'Edit your profile' %></p>
-		</div>
-		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><%= link_to "Dashboard", root_url %> <div class="breadcrumb_divider"></div> <a class="current">current_page</a></article>
-		</div>
-	</section><!-- end of secondary bar -->
-	
-	<aside id="sidebar" class="column">
-		<h3>Content</h3>
-		<ul>
-		  <li class="icn_view_users"><%= link_to "Customers", customers_path %></li>
-		  <li class="icn_add_user"><%= link_to "New customer", new_customer_path %></li>
-		  <li class="icn_categories"><%= link_to "All invoices", all_invoices_path %></li>
-		  <li class="icn_photo"><%= link_to "Recurring slips", recurring_slips_path %><%= expired_recurring_slips.html_safe %></li>
-		  <li class="icn_photo"><%= link_to "Unpaid invoices", unpaid_invoices_path %><%= unpaid_invoices.html_safe %></li>
-			<li class="icn_categories"><%= link_to "Taxes", consolidated_taxes_path %></li>
-			<li class="icn_settings"><%= link_to "Options", options_path %></li>
-			<li class="icn_jump_back"><%= link_to("Logout", destroy_user_session_path, :method => :delete, :title => 'Esci') %></li>
-		</ul>
-		<h3>Customers</h3>
-		<ul>
-		  <% current_user.customers.order(:title,:surname,:name).each do |customer| %>
-			  <li class="icn_profile"><%= link_to customer.title, customer_slips_path(customer) %></li>
-			<% end %>
-		</ul>
-		
-		<footer>
-			<hr />
-			<p><strong><%= link_to raw("Copyright &copy;"), "http://www.gnu.org/licenses/gpl.txt", :target => :blank %> <%= Time.now.year %> <%= link_to "Kreations Collective", "http://www.kreations.it", :target => :blank %></strong></p>
-			<p><a href="https://github.com/tommyblue/Easyfatt" target="_blank">Get the source code on GitHub</a></p>
-			<p>Theme by <a href="http://www.medialoot.com">MediaLoot</a></p>
-			<p></p>
-		</footer>
-	</aside><!-- end of sidebar -->
-	
-	<section id="main" class="column">
-		<% if flash[:info] %>
-	    <h4 class="alert_info"><%= flash[:info] %></h4>
-	  <% end %>
-	  <% if flash[:warning] %>
-	    <h4 class="alert_warning"><%= flash[:warning] %></h4>
-	  <% end %>
-	  <% if flash[:error] %>
-	    <h4 class="alert_error"><%= flash[:error] %></h4>
-	  <% end %>
-	  <% if flash[:alert] %>
-	    <h4 class="alert_error"><%= flash[:alert] %></h4>
-	  <% end %>
-	  <% if flash[:notice] %>
-	    <h4 class="alert_success"><%= flash[:notice] %></h4>
-	  <% end %>
-	  <% if flash[:success] %>
-	    <h4 class="alert_success"><%= flash[:success] %></h4>
-	  <% end %>
-	  
-	  <%= yield %>
-		
-		<div class="spacer"></div>
-	</section>
-
-
-</body>
-
+  </body>
 </html>

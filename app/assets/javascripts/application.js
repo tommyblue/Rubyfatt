@@ -12,12 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
-//= require hideshow
-//= require jquery.tablesorter.min
-//= require jquery.equalHeight
+//= require twitter/bootstrap
 //= require_tree .
-jQuery(document).ready(function(){
-	jQuery('input.ui-datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
-	jQuery('.datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
-});

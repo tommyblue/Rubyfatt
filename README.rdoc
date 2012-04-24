@@ -25,6 +25,7 @@ Intanto ecco una lista:
 * Gestire la creazione automatica delle opzioni se non presenti
 * Grafica con Twitter Bootstrap
 * Dalle fatture ricorrenti produrre un progetto di notula
+* Riscrivere i form
 
 == Installazione
 
@@ -34,7 +35,13 @@ Si installa come tutte le applicazioni rails:
 
   git clone git@github.com:tommyblue/Easyfatt.git
   
-* Entra nella cartella e modifica il file _conf/databases.yml_ secondo le tue esigenze e personalizza _db/seeds.rb_ con i tuoi dati
+* Entra nella cartella e fai il checkout all'ultimo tag "stabile":
+
+  git checkout 0.5
+  
+Oppure lascia HEAD se ti piace il rischio :)
+
+* Modifica il file _conf/databases.yml_ secondo le tue esigenze e personalizza _db/seeds.rb_ con i tuoi dati
 * Fai girare le migrazioni e il seed:
 
   rake db:migrate
