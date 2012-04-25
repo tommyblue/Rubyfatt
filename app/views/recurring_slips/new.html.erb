@@ -1,53 +1,22 @@
-<article class="module width_full">
-  <header>
-    <h3>New recurring slip</h3>
-  </header>
-  <div class="module_content">
-    <%= semantic_form_for @recurring_slip do |f| %>
-      <fieldset class="inputs">
-        <ol>
-          <%= f.input :customer, :collection => current_user.customers.collect{ |customer| [customer.title, customer.id] } %>
-        </ol>
-      </fieldset>
-      <%= f.inputs :name, :rate %>
-      
-      <fieldset class="inputs">
-        <ol>
-          <li id="months_input" class="string input required stringish">
-            <label class=" label" for="recurring_slip_name">
-            Months of recurrency
-            <abbr title="required">*</abbr>
-            </label>
-              <%= select 'schedule', 'month', [ ["Every month", 1], ["Every 2 months", 2], ["Every 3 months", 3], ["Every 4 months", 4], ["Every 6 months", 6], ["Every year", 12], ["Every 2 years", 24] ] %>
-          </li>
-        </ol>
-      </fieldset>
-      
-      <fieldset class="inputs">
-        <ol>
-          <li id="months_input" class="string input required stringish">
-            <label class=" label" for="recurring_slip_name">
-            Day of expiration
-            <abbr title="required">*</abbr>
-            </label>
-              <%= select 'schedule', 'day', [['At the beginning of the month', 1], ['At the end of the month', -1]].concat(2.upto(30).collect { |n| ["on the #{n.ordinal}", n] }) %>
-          </li>
-        </ol>
-      </fieldset>
-
-      <fieldset class="inputs">
-        <ol>
-          <li id="months_input" class="string input required stringish">
-            <label class=" label" for="recurring_slip_name">
-            Next occurrence
-            <abbr title="required">*</abbr>
-            </label>
-              <%= text_field_tag 'schedule[next]', '', :class => :datepicker %>
-          </li>
-        </ol>
-      </fieldset>
-      
-      <%= submit_tag "Create recurring slip" %>
+<%= twitter_bootstrap_form_for @recurring_slip do |f| %>
+  <% f.inputs 'New recurring slip' do %>
+    <%= f.select :customer, 'Customer', current_user.customers.collect{ |customer| [customer.title, customer.id] } %>
+    <%= f.text_field :name %>
+    <%= f.text_field :rate %>
+    <div id="recurring_slip_schedule_input" class="clearfix">
+      <label>Months of recurrency</label>
+      <%= select 'schedule', 'month', [ ["Every month", 1], ["Every 2 months", 2], ["Every 3 months", 3], ["Every 4 months", 4], ["Every 6 months", 6], ["Every year", 12], ["Every 2 years", 24] ] %>
+    </div>
+    <div id="recurring_slip_slip_name_input" class="clearfix">
+      <label>Day of expiration</label>
+      <%= select 'schedule', 'day', [['At the beginning of the month', 1], ['At the end of the month', -1]].concat(2.upto(30).collect { |n| ["on the #{n.ordinal}", n] }) %>
+    </div>
+    <div id="recurring_slip_next_occurrence_input" class="clearfix">
+      <label>Next occurrence</label>
+      <%= text_field_tag 'schedule[next]', '' %>
+    </div>
+    <%= f.actions do %>
+      <%= f.submit 'Save' %>
     <% end %>
-  </div>
-</article>
+  <% end %>
+<% end %>

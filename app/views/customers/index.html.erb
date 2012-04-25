@@ -19,7 +19,7 @@
           <td><%= customer.address %> <%= customer.zip_code %> <%= customer.town %> <%= customer.province %></td>
           <td><%= customer.tax_code %></td>
           <td><%= customer.vat %></td>
-          <td><%= link_to(image_tag('icons/document--pencil.png', :alt => 'Edit customer', :title => 'Edit customer'), edit_customer_path(customer)) %></td>
+          <td><%= link_to(image_tag('icons/document--pencil.png', :alt => 'Edit customer', :title => 'Edit customer'), edit_customer_path(customer), :class => 'btn btn-mini') %></td>
       </tr>
     <% end %>
   </tbody>

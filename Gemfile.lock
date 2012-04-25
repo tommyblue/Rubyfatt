@@ -31,6 +31,7 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.0)
     bcrypt-ruby (3.0.1)
+    bootstrap-sass (2.0.2)
     builder (3.0.0)
     chronic_duration (0.9.6)
       numerizer (~> 0.1.1)
@@ -41,8 +42,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.2.0)
-    commonjs (0.2.5)
-    country-select (1.1.0)
+    country_select (0.0.2)
     devise (2.0.0)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -51,8 +51,6 @@ GEM
     erubis (2.7.0)
     execjs (1.3.0)
       multi_json (~> 1.0)
-    formtastic (2.0.2)
-      rails (~> 3.0)
     hike (1.2.1)
     i18n (0.6.0)
     ice_cube (0.7.6)
@@ -62,13 +60,6 @@ GEM
       thor (~> 0.14)
     json (1.6.5)
     kgio (2.7.2)
-    less (2.1.0)
-      commonjs (~> 0.2.0)
-      therubyracer (~> 0.10.0)
-    less-rails (2.2.1)
-      actionpack (>= 3.1)
-      less (~> 2.1.0)
-    libv8 (3.3.10.4)
     mail (2.4.1)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -117,22 +108,19 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    simple_form (2.0.1)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     sprockets (2.1.2)
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    therubyracer (0.10.1)
-      libv8 (~> 3.3.10)
     thor (0.14.6)
     tilt (1.3.3)
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
     ttfunk (1.0.3)
-    twitter-bootstrap-rails (2.0.6)
-      actionpack (>= 3.1)
-      less-rails (~> 2.2.0)
-      railties (>= 3.1)
     tzinfo (0.3.31)
     uglifier (1.2.3)
       execjs (>= 0.3.0)
@@ -149,18 +137,18 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass (~> 2.0.2)
   chronic_duration
   coffee-rails (~> 3.2.1)
-  country-select
+  country_select
   devise
-  formtastic
   ice_cube
   jquery-rails
   mysql2
   prawn (~> 1.0.0.rc1)
   rails (= 3.2.0)
   sass-rails (~> 3.2.3)
-  twitter-bootstrap-rails
+  simple_form
   uglifier (>= 1.0.3)
   unicorn
   vpim

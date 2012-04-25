@@ -20,9 +20,9 @@
         <td><%= slip.schedule %></td>
         <td><span class="<%= 'label label-important' if slip.to_invoice? %>"><%= slip.next_occurrence ? slip.next_occurrence.in_time_zone("Rome").strftime("%d/%m/%Y") : '-' %></span></td>
         <td>
-          <%= link_to(image_tag('icons/blog--plus.png', :alt => 'Create invoice', :title => 'Create invoice'), new_recurring_slip_recurring_invoice_path(slip) ) if slip.to_invoice? %>
-          <%= link_to(image_tag('icons/document--pencil.png', :alt => 'Edit recurring slip', :title => 'Edit recurring slip'), edit_recurring_slip_path(slip)) %>
-          <%= link_to(image_tag('icons/cross-circle.png', :alt => 'Delete recurring slip', :title => 'Delete recurring slip'), recurring_slip_path(slip), :method => :delete, :confirm => "Are you sure to delete the recurring slip?") %>
+          <%= link_to(image_tag('icons/blog--plus.png', :alt => 'Create invoice', :title => 'Create invoice'), new_recurring_slip_recurring_invoice_path(slip), :class => 'btn btn-mini' ) if slip.to_invoice? %>
+          <%= link_to(image_tag('icons/document--pencil.png', :alt => 'Edit recurring slip', :title => 'Edit recurring slip'), edit_recurring_slip_path(slip), :class => 'btn btn-mini') %>
+          <%= link_to(image_tag('icons/cross-circle.png', :alt => 'Delete recurring slip', :title => 'Delete recurring slip'), recurring_slip_path(slip), :method => :delete, :confirm => "Are you sure to delete the recurring slip?", :class => 'btn btn-mini') %>
         </td>
       </tr>
     <% end %>

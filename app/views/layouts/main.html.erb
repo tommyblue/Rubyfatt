@@ -13,7 +13,7 @@
 
     <%= stylesheet_link_tag "application", :media => "all" %>
 
-    <link href="images/favicon.ico" rel="shortcut icon">
+    <link href="/assets/favicon.ico" rel="shortcut icon">
     <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
     <link href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
     <link href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
@@ -86,6 +86,15 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    // Modifies the favicon adding the number of expired recurring slips
+    <% expired = expired_recurring_slips(true) %>
+    <% if expired > 0 %>
+      Tinycon.setBubble(<%= expired %>);
+    <% end %>
+    });
+    </script>
 
   </body>
 </html>

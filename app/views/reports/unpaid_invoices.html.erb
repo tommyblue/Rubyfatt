@@ -28,9 +28,9 @@
           <td><%= number_to_currency(invoice.rate) %></td>
           <td><%= number_to_currency(invoice.total) %></td>
           <td>
-            <%= link_to(image_tag('icons/blue-document-page-previous.png', :alt => 'Delete invoice and restore slips', :title => 'Delete invoice and restore slips'), customer_invoice_path(invoice.customer,invoice.id), :method => :delete, :confirm => "Are you sure to delete the invoice and restore the slips?\nATTENTION: You shouldn't destroy invoices unless you know what you're doing. Numbering won't be automatically restored...") unless invoice.paid? %>
-            <%= link_to(image_tag('icons/money-coin.png', :alt => 'Add payment', :title => 'Add payment'), "/invoice/#{invoice.id}/payment") unless invoice.paid? %>
-            <%= link_to image_tag('icons/document-pdf-text.png', :alt => 'Print invoice', :title => 'Print invoice' ), customer_invoice_path(invoice.customer,invoice.id, :format => 'pdf') %>
+            <%= link_to(image_tag('icons/blue-document-page-previous.png', :alt => 'Delete invoice and restore slips', :title => 'Delete invoice and restore slips'), customer_invoice_path(invoice.customer,invoice.id), :method => :delete, :confirm => "Are you sure to delete the invoice and restore the slips?\nATTENTION: You shouldn't destroy invoices unless you know what you're doing. Numbering won't be automatically restored...", :class => 'btn btn-mini') unless invoice.paid? %>
+            <%= link_to(image_tag('icons/money-coin.png', :alt => 'Add payment', :title => 'Add payment'), "/invoice/#{invoice.id}/payment", :class => 'btn btn-mini') unless invoice.paid? %>
+            <%= link_to image_tag('icons/document-pdf-text.png', :alt => 'Print invoice', :title => 'Print invoice' ), customer_invoice_path(invoice.customer,invoice.id, :format => 'pdf'), :class => 'btn btn-mini' %>
           </td>
       </tr>
     <% end %>
