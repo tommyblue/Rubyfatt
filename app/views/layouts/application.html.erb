@@ -38,15 +38,24 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Available actions</li>
+                <%= render :partial => "devise/shared/links" %>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
           <%= yield %>
         </div>
       </div><!--/row-->
 
       <footer>
         <p><strong><%= link_to raw("Copyright &copy;"), "http://www.gnu.org/licenses/gpl.txt", :target => :blank %> <%= Time.now.year %> <%= link_to "Kreations Collective", "http://www.kreations.it", :target => :blank %></strong></p>
+        <p><small><em>Easyfatt version <%= APP_VERSION %><a href="https://github.com/tommyblue/Easyfatt" target="_blank">Get the source code on GitHub</a></em></small></p>
       </footer>
 
     </div> <!-- /container -->
