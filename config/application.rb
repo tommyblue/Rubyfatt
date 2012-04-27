@@ -9,7 +9,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-APP_VERSION = `git describe --always` unless defined? APP_VERSION
+APP_VERSION = `git describe --tags` unless defined? APP_VERSION
 
 module Easyfatt
   class Application < Rails::Application
