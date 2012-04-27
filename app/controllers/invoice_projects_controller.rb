@@ -2,6 +2,10 @@ class InvoiceProjectsController < ApplicationController
   before_filter :authenticate_user!
   layout "main"
   
+  def index
+    @invoice_projects = current_user.invoice_projects
+  end
+  
   def new
     @customer = Customer.find(params[:customer_id])
     @invoice_project = @customer.invoice_projects.new

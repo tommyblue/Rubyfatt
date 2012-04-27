@@ -23,6 +23,7 @@ Easyfatt::Application.routes.draw do
   end
   
   match 'invoices/unpaid' => 'reports#unpaid_invoices', :as => :unpaid_invoices
+  match 'invoice_projects' => 'invoice_projects#index', :as => :invoice_projects
   
   match 'invoice_projects/:id/to_invoice' => 'invoice_projects#to_invoice', :as => :project_to_invoice
   

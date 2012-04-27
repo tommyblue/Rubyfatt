@@ -32,6 +32,7 @@
           <div class="container-fluid nav-collapse">
             <ul class="nav">
               <li><%= link_to "All invoices", all_invoices_path %></li>
+              <li><%= link_to ("Invoice projects #{invoice_projects}").html_safe, invoice_projects_path %></li>
               <li><%= link_to ("Unpaid invoices #{unpaid_invoices}").html_safe, unpaid_invoices_path %></li>
               <li><%= link_to ("Recurring slips #{expired_recurring_slips}").html_safe, recurring_slips_path %></li>
               <li class="divider-vertical"></li>
