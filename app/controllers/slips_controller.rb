@@ -18,6 +18,8 @@ class SlipsController < ApplicationController
   def new
     @customer = Customer.find(params[:customer_id])
     @slip = @customer.slips.new
+    #@slip.date = Time.now.strftime("%d/%m/%Y")
+    #Date.strptime(params[:schedule][:next], "%d/%m/%Y")
   end
 
   def create

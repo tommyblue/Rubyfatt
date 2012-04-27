@@ -1,11 +1,8 @@
-<article class="module width_full">
-	<header>
-		<h3>Edit slip <%= @slip.name %></h3>
-	</header>
-	<div class="module_content">
-		<%= semantic_form_for [@customer, @slip] do |f| %>
-			<%= f.inputs %>
-			<%= submit_tag "Update slip" %>
-		<% end %>
-	</div>
-</article>
+<% content_for :breadcrumb do %>
+  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
+  <li class="active">New article</li>
+<% end %>
+
+<h1>Edit slip <%= @slip.name %></h1>
+
+<%= render 'form' %>

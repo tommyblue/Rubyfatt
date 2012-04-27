@@ -1,11 +1,8 @@
-<article class="module width_full">
-  <header>
-    <h3>New slip</h3>
-  </header>
-  <div class="module_content">
-	  <%= semantic_form_for [@customer, @slip] do |f| %>
-	    <%= f.inputs :name, :rate, :timed, :duration %>
-	    <%= submit_tag "Create slip" %>
-	  <% end %>
-	</div>
-</article>
+<% content_for :breadcrumb do %>
+  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
+  <li class="active">New article</li>
+<% end %>
+
+<h1>New slip</h1>
+
+<%= render 'form' %>

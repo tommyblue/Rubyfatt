@@ -14,10 +14,10 @@ class RecurringInvoiceController < ApplicationController
     @recurring_slip = RecurringSlip.find(params[:recurring_slip_id])
     @customer = @recurring_slip.customer
     recurring_slips_ids = []
-    params[:invoice][:recurring_slips].each do |recurring_slip_id|
+    params[:invoice][:slip_ids].each do |recurring_slip_id|
       recurring_slips_ids << recurring_slip_id if recurring_slip_id.strip != ''
     end
-    params[:invoice].delete(:recurring_slips)
+    params[:invoice].delete(:slip_ids)
     @invoice = @customer.invoices.new(params[:invoice])
     recurring_slips = []
     recurring_slips_ids.each do |recurring_slip_id| # TODO: Check if they belongs to the user

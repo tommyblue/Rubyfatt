@@ -1,22 +1,8 @@
-<%= twitter_bootstrap_form_for @recurring_slip do |f| %>
-  <% f.inputs 'New recurring slip' do %>
-    <%= f.select :customer, 'Customer', current_user.customers.collect{ |customer| [customer.title, customer.id] } %>
-    <%= f.text_field :name %>
-    <%= f.text_field :rate %>
-    <div id="recurring_slip_schedule_input" class="clearfix">
-      <label>Months of recurrency</label>
-      <%= select 'schedule', 'month', [ ["Every month", 1], ["Every 2 months", 2], ["Every 3 months", 3], ["Every 4 months", 4], ["Every 6 months", 6], ["Every year", 12], ["Every 2 years", 24] ] %>
-    </div>
-    <div id="recurring_slip_slip_name_input" class="clearfix">
-      <label>Day of expiration</label>
-      <%= select 'schedule', 'day', [['At the beginning of the month', 1], ['At the end of the month', -1]].concat(2.upto(30).collect { |n| ["on the #{n.ordinal}", n] }) %>
-    </div>
-    <div id="recurring_slip_next_occurrence_input" class="clearfix">
-      <label>Next occurrence</label>
-      <%= text_field_tag 'schedule[next]', '' %>
-    </div>
-    <%= f.actions do %>
-      <%= f.submit 'Save' %>
-    <% end %>
-  <% end %>
+<% content_for :breadcrumb do %>
+  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
+  <li class="active">New article</li>
 <% end %>
+
+<h1>New recurring slip</h1>
+
+<%= render 'form' %>

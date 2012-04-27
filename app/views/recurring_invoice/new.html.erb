@@ -1,15 +1,8 @@
-<% content_for :title do %>
-  Invoices
+<% content_for :breadcrumb do %>
+  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
+  <li class="active">New invoice from recurring slip</li>
 <% end %>
 
-<article class="module width_full">
-	<header><h3>New invoice from recurring slip</h3></header>
-	<div class="module_content">
-  <%= semantic_form_for [ @customer, @invoice ], :url => "/recurring_slips/#{@recurring_slip.id}/recurring_invoice" do |f| %>
-    <%= f.inputs :date, :paid, :payment_date %>
-    <%= f.input :recurring_slips, :as => :check_boxes, :collection => [ @recurring_slip ] %>
-    <%= f.input :consolidated_tax, :as => :select, :collection => @consolidated_taxes %>
-    <%= submit_tag "Create recurring invoice" %>
-  <% end %>
-  </div>
-</article>
+<h1>New invoice from recurring slip</h1>
+
+<%= render 'form' %>

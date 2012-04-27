@@ -18,12 +18,15 @@
             <%= link_to tax.name, consolidated_tax_tax_path(consolidated_tax, tax) %><br />
           <% end %>
         </td>
-        <td></td>
+        <td class="nowrap"></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<% link_to t('.new', :default => t("helpers.links.new")),
             new_consolidated_tax_path,
             :class => 'btn btn-primary' %>
+<a class="btn btn-primary disabled" href="#">
+<span class="translation_missing" title="translation missing: en.helpers.links.new">New</span>
+</a>

@@ -1,13 +1,8 @@
-<% content_for :title do %>
-  Invoices
+<% content_for :breadcrumb do %>
+  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
+  <li class="active">New article</li>
 <% end %>
 
-<article class="module width_full">
-	<header><h3>Add payment</h3></header>
-	<div class="module_content">
-  <%= form_tag do %>
-    <%= date_select 'payment', 'date' %>
-    <%= submit_tag "Add payment" %>
-  <% end %>
-  </div>
-</article>
+<h1>Add Payment</h1>
+
+<%= render 'form' %>

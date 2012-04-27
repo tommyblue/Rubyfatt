@@ -1,20 +1,8 @@
-<% content_for :title do %>
-  User profile
+<% content_for :breadcrumb do %>
+  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
+  <li class="active">New article</li>
 <% end %>
 
-<article class="module width_full">
-	<header>
-	  <h3 class="tabs_involved">Edit your profile</h3>
-	  <ul class="tabs">
-      <li>
-        <%= link_to "Change your password", '/profile/password/edit' %>
-      </li>
-    </ul>
-	</header>
-	<div class="module_content">
-    <%= semantic_form_for @user, :url => '/profile/update' do |f| %>
-      <%= f.inputs :name, :surname, :address, :zip_code, :town, :province, :country, :tax_code, :vat, :phone, :email %>
-      <%= submit_tag "Update profile" %>
-    <% end %>
-  </div>
-</article>
+<h1>Edit your profile</h1>
+
+<%= render 'form' %>

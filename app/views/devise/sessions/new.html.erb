@@ -1,42 +1,19 @@
-<div id="login-wrapper" class="png_bg">
-	<div id="login-top">
-	
-		<h1>Sign in</h1>
-		<!-- Logo (221px width) -->
-		<%= image_tag "logo.png", :id => "logo", :alt => "Sign in" %>
-	</div> <!-- End #logn-top -->
-	
-	<div id="login-content">
-		
-		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-		  <% if flash[:alert] %>
-  	    <div class="notification error png_bg">
-  				<div>
-  					<%= flash[:alert] %>
-  				</div>
-  			</div>
-  	  <% end %>
-			
-			<p>
-				<%= f.label :email %> <%= f.email_field :email, :id => :email, :class => 'text-input' %>
-			</p>
-			<div class="clear"></div>
-			<p>
-				<%= f.label :password %> <%= f.password_field :password, :id => :password, :class => 'text-input' %>
-			</p>
-			<div class="clear"></div>
-			<% if devise_mapping.rememberable? -%>
-        <p id="remember-password">
-          <%= f.check_box :remember_me %> <%= f.label :remember_me %>
-        </p>
-      <% end %>
-			<div class="clear"></div>
-			<p>
-				<input class="submit_button" type="submit" value="Sign in" />
-			</p>
-			
-		<% end %>
-		<%= render :partial => "devise/shared/links" %>
-	</div> <!-- End #login-content -->
-	
-</div> <!-- End #login-wrapper -->
+<h1>Sign in</h1>
+
+<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "new_user form-horizontal"}) do |f| %>
+  <legend>Insert your credentials</legend>
+  <% if flash[:alert] %>
+    <div class="alert alert-error fade in">
+      <a class="close" data-dismiss="alert" href="#">&times;</a>
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+  
+  <%= f.input :email %>
+	<%= f.input :password %>
+	<%= f.input :remember_me, :as => :boolean %>
+  <div class="form-actions">
+    <%= f.submit 'Login', :class => 'btn-primary' %>
+  </div>
+<% end %>
+<%= render :partial => "devise/shared/links" %>

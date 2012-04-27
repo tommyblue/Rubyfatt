@@ -31,7 +31,7 @@
           <td><%= number_to_currency(invoice.total) %></td>
           <td><%= invoice.paid? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
           <td><%= invoice.payment_date.strftime("%d/%m/%Y") if invoice.paid and invoice.payment_date %></td>
-          <td>
+          <td class="nowrap">
             <%= link_to(image_tag('icons/blue-document-page-previous.png', :alt => 'Delete invoice and restore slips', :title => 'Delete invoice and restore slips'), customer_invoice_path(invoice.customer,invoice.id), :method => :delete, :confirm => "Are you sure to delete the invoice and restore the slips?\nATTENTION: You shouldn't destroy invoices unless you know what you're doing. Numbering won't be automatically restored...", :class => 'btn btn-mini') unless invoice.paid? %>
             <%= link_to(image_tag('icons/money-coin.png', :alt => 'Add payment', :title => 'Add payment'), "/invoice/#{invoice.id}/payment", :class => 'btn btn-mini') unless invoice.paid? %>
             <%= link_to image_tag('icons/document-pdf-text.png', :alt => 'Print invoice', :title => 'Print invoice' ), customer_invoice_path(invoice.customer,invoice.id, :format => 'pdf'), :class => 'btn btn-mini' %>
@@ -41,7 +41,7 @@
   </tbody>
 </table>
 
-<div class="span3 offset11">
+<div class="span3 offset9">
     <form method="get" class="form-inline pull-right">
 	<select class="span1" name="year">
 	  <% get_selectable_invoices_years.each do |year| %>

@@ -1,13 +1,8 @@
-<% content_for :title do %>
-  Customers
+<% content_for :breadcrumb do %>
+  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
+  <li class="active">New article</li>
 <% end %>
 
-<article class="module width_full">
-	<header><h3>Edit customer</h3></header>
-	<div class="module_content">
-  <%= semantic_form_for @customer do |f| %>
-    <%= f.inputs %>
-   <%= submit_tag "Update customer" %>
-  <% end %>
-  </div>
-</article>
+<h1>Edit customer</h1>
+
+<%= render 'form' %>

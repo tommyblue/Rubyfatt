@@ -1,0 +1,27 @@
+<%= simple_form_for [@customer, @invoice], :url => "/recurring_slips/#{@recurring_slip.id}/recurring_invoice", :html => {:class => 'form-horizontal' } do |f| %>
+
+  <% if f.error_notification %>
+    <div class="alert alert-error fade in">
+      <a class="close" data-dismiss="alert" href="#">&times;</a>
+      <%= f.error_notification %>
+    </div>
+  <% end %>
+  
+  <legend>Invoice for <%= @customer.title %></legend>
+  <%= f.input :date, :wrapper => :prepend, :label => 'Date' do %>
+    <%= content_tag :span, "<img src=\"/assets/icons/calendar-month.png\" alt=\"Calendar\" />".html_safe, :class => "add-on" %>
+    <%= f.input_field :date, :as => :datepicker %>
+  <% end %>
+  <%= f.input :paid %>
+  <%= f.input :payment_date, :wrapper => :prepend, :label => 'Payment date' do %>
+    <%= content_tag :span, "<img src=\"/assets/icons/calendar-month.png\" alt=\"Calendar\" />".html_safe, :class => "add-on" %>
+    <%= f.input_field :payment_date, :as => :datepicker %>
+  <% end %>
+  <%= f.association :consolidated_tax, :as => :radio, :collection => @consolidated_taxes %>
+  <%= f.association :slips, :as => :check_boxes, :collection => [ @recurring_slip ] %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger" %>
+  </div>
+<% end %>

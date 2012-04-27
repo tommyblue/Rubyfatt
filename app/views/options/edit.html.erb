@@ -1,13 +1,8 @@
-<% content_for :title do %>
-  Options
+<% content_for :breadcrumb do %>
+  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
+  <li class="active">New article</li>
 <% end %>
 
-<article class="module width_full">
-	<header><h3>Edit option "<%= @option.name %>"</h3></header>
-	<div class="module_content">
-  <%= semantic_form_for @option do |f| %>
-    <%= f.inputs :value %>
-    <%= submit_tag "Update option value" %>
-  <% end %>
-  </div>
-</article>
+<h1>Edit option "<%= @option.name %>"</h1>
+
+<%= render 'form' %>

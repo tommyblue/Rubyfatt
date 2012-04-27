@@ -1,0 +1,26 @@
+<%= simple_form_for @customer, :html => {:class => 'form-horizontal' } do |f| %>
+  
+  <% if f.error_notification %>
+    <div class="alert alert-error fade in">
+      <a class="close" data-dismiss="alert" href="#">&times;</a>
+      <%= f.error_notification %>
+    </div>
+  <% end %>
+  
+  <legend>Customer</legend>
+  <%= f.input :title, :input_html => { :class => "span6" } %>
+  <%= f.input :name, :input_html => { :class => "span6" } %>
+  <%= f.input :surname, :input_html => { :class => "span6" } %>
+  <%= f.input :address, :input_html => { :class => "span6" } %>
+  <%= f.input :zip_code, :input_html => { :class => "span6" } %>
+  <%= f.input :town, :input_html => { :class => "span6" } %>
+  <%= f.input :province, :input_html => { :class => "span6" } %>
+  <%= f.input :country, :priority => [ "Italy" ], :input_html => { :class => "span6" } %>
+  <%= f.input :tax_code, :input_html => { :class => "span6" } %>
+  <%= f.input :vat, :input_html => { :class => "span6" } %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger" %>
+  </div>
+<% end %>
