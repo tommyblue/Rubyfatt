@@ -1,3 +1,8 @@
+<%= content_for :breadcrumb do %>
+  <%= print_breadcrumbs([ 
+                      ['Invoices', all_invoices_path]
+                    ]).html_safe %>
+<% end %>
 <%- model_class = Invoice.new.class -%>
 <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 <table class="table table-striped table-bordered table-condensed">

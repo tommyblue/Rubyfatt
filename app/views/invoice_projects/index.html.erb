@@ -1,3 +1,9 @@
+<%= content_for :breadcrumb do %>
+  <%= print_breadcrumbs([ 
+                      ['Invoice projects', invoice_projects_path]
+                    ]).html_safe %>
+<% end %>
+
 <!-- INVOICE PROJECTS -->
 <%- model_class = InvoiceProject.new.class -%>
 <h1 class="sup-spaced"><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>

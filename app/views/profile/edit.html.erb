@@ -1,6 +1,8 @@
-<% content_for :breadcrumb do %>
-  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
-  <li class="active">New article</li>
+<%= content_for :breadcrumb do %>
+  <%= print_breadcrumbs([ 
+                      ["Profile", profile_path],
+                      ["Edit profile", nil]
+                    ]).html_safe %>
 <% end %>
 
 <h1>Edit your profile</h1>

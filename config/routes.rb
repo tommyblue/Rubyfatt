@@ -27,6 +27,7 @@ Easyfatt::Application.routes.draw do
   
   match 'invoice_projects/:id/to_invoice' => 'invoice_projects#to_invoice', :as => :project_to_invoice
   
+  match 'profile' => 'profile#index', :as => :profile
   match 'profile/password/edit' => 'profile#password_edit', :as => :edit_password
   match 'profile/password/update' => 'profile#password_update', :via => :put
   match 'profile/edit' => 'profile#edit', :as => :edit_profile

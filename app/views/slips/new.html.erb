@@ -1,6 +1,8 @@
-<% content_for :breadcrumb do %>
-  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
-  <li class="active">New article</li>
+<%= content_for :breadcrumb do %>
+  <%= print_breadcrumbs([ 
+                      ["#{@customer.title}", customer_slips_path(@customer)],
+                      ["New slip", nil]
+                    ]).html_safe %>
 <% end %>
 
 <h1>New slip</h1>

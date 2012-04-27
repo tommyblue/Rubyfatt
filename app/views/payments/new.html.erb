@@ -1,6 +1,8 @@
-<% content_for :breadcrumb do %>
-  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
-  <li class="active">New article</li>
+<%= content_for :breadcrumb do %>
+  <%= print_breadcrumbs([ 
+                      ["#{@invoice.customer.title}", customer_slips_path(@invoice.customer)],
+                      ["Add payment", nil]
+                    ]).html_safe %>
 <% end %>
 
 <h1>Add Payment</h1>

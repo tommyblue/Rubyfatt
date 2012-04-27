@@ -1,6 +1,8 @@
-<% content_for :breadcrumb do %>
-  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
-  <li class="active">New article</li>
+<%= content_for :breadcrumb do %>
+  <%= print_breadcrumbs([ 
+                      ["Recurring slips", recurring_slips_path],
+                      ["New recurring slip", nil]
+                    ]).html_safe %>
 <% end %>
 
 <h1>New recurring slip</h1>
