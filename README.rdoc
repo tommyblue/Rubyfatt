@@ -36,7 +36,7 @@ Si installa come tutte le applicazioni rails:
   
 * Entra nella cartella e fai il checkout all'ultimo tag "stabile":
 
-  git checkout 0.7
+  git checkout 0.7.1
   
 Oppure lascia HEAD se ti piace il rischio :)
 
@@ -151,6 +151,10 @@ Al momento le gemme con cui sto testando il software sono:
 == Changelog
 
 Di seguito i TAG git con le principali caratteristiche
+
+=== 0.7.1
+
+Fix nella creazione dei progetti di notula
 
 === 0.7
 

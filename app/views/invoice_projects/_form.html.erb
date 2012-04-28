@@ -13,7 +13,7 @@
     <%= f.input_field :date, :as => :datepicker %>
   <% end %>
   
-  <%= f.input :consolidated_tax, :as => :radio, :collection => @consolidated_taxes %>
+  <%= f.association :consolidated_tax, :as => :radio, :collection => @consolidated_taxes %>
   <%= f.association :slips, :as => :check_boxes, :collection => @slips %>
 
   <div class="form-actions">
