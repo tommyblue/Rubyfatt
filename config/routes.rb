@@ -22,6 +22,8 @@ Easyfatt::Application.routes.draw do
     resources :recurring_invoice
   end
   
+  match 'slips/working' => 'slips#working', :as => :working_slips
+  
   match 'invoices/unpaid' => 'reports#unpaid_invoices', :as => :unpaid_invoices
   match 'invoice_projects' => 'invoice_projects#index', :as => :invoice_projects
   

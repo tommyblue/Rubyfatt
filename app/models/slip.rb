@@ -6,6 +6,8 @@ class Slip < ActiveRecord::Base
   
   validates_presence_of :name, :rate, :customer
   
+  scope :working, where("invoice_id IS NULL AND invoice_project_id IS NULL")
+  
   def estimated?
     self.estimate != nil
   end

@@ -95,7 +95,7 @@
     <script type="text/javascript">
     $(document).ready(function() {
     // Modifies the favicon adding the number of expired recurring slips
-    <% expired = expired_recurring_slips(true) %>
+    <% expired = expired_recurring_slips_badge(true) %>
     <% if expired > 0 %>
       Tinycon.setBubble(<%= expired %>);
     <% end %>

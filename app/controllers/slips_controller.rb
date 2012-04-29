@@ -46,4 +46,8 @@ class SlipsController < ApplicationController
       render :action => "edit"
     end
   end
+  
+  def working
+    @slips = Slip.working
+  end
 end
