@@ -29,11 +29,11 @@ class InvoiceProjectsController < ApplicationController
   def show
     @customer = Customer.find(params[:customer_id])
     @invoice_project = InvoiceProject.find(params[:id])
-    bank_coordinates = current_user.options.find_by_name('BANK_COORDINATES')
+    bank_coordinates = current_user.bank_coordinates
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = InvoicePdf.new(@invoice_project, view_context, I18n.t('pdf.invoice.label'), bank_coordinates.nil? ? nil : bank_coordinates.value)
+        pdf = InvoicePdf.new(@invoice_project, view_context, I18n.t('pdf.invoice.label'), (bank_coordinates.nil? || bank_coordinates.strip == '' ) ? nil : bank_coordinates)
         send_data pdf.render, filename: "invoice_project_#{@invoice_project.date.year}-#{@invoice_project.number.to_s.rjust(3,'0')}.pdf",
         type: "application/pdf"
       end

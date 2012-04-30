@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120423154612) do
+ActiveRecord::Schema.define(:version => 20120430201357) do
 
   create_table "consolidated_taxes", :force => true do |t|
     t.integer "user_id"
@@ -152,6 +152,7 @@ ActiveRecord::Schema.define(:version => 20120423154612) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.text     "bank_coordinates"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
