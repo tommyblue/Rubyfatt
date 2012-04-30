@@ -111,6 +111,8 @@ it:
       invoice_projects: "Progetti di notula"
       unpaid_invoices: "Notule insolute"
       recurring_slips: "Progetti ricorrenti"
+      reports:
+        title: "Report"
       customers: 
         title: "Clienti"
         show: "Visualizza i clienti"
@@ -122,6 +124,7 @@ it:
         edit: "Modifica i tuoi dati"
         change_password: "Cambia la password"
       logout: "Esci"
+      logout_confirm: "Confermi di voler uscire?"
   #
   # BREADCRUMBS
   #
@@ -184,6 +187,19 @@ it:
   Total: "Totale"
   Value: "Valore"
   Vat: "P. IVA"
+  #
+  # DASHBOARD
+  #
+  dashboard:
+    customers_account_summary:
+      title: "Resoconto per cliente"
+      customer: "Cliente"
+      billed: "Fatturato"
+      paid: "Pagato"
+      unpaid: "Da avere"
+    current_year_invoices:
+      title: "Notule dell'anno"
+      total: "Totale"
   #
   # CONSOLIDATED TAXES
   #

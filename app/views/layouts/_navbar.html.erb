@@ -10,11 +10,19 @@
       <div class="container-fluid nav-collapse">
         <ul class="nav">
           <li<%= active_navbar_helper(/^\/slips\/working$/).html_safe %>><%= link_to (t('.working_slips', :default => "Working slips")+" #{working_slips_badge}").html_safe, working_slips_path %></li>
-          <li<%= active_navbar_helper(/^\/invoices\/all$/).html_safe %>><%= link_to t('.all_invoices', :default => "All invoices"), all_invoices_path %></li>
           <li<%= active_navbar_helper(/^\/invoice_projects$/).html_safe %>><%= link_to (t('.invoice_projects', :default => "Invoice projects")+" #{invoice_projects_badge}").html_safe, invoice_projects_path %></li>
           <li<%= active_navbar_helper(/^\/invoices\/unpaid$/).html_safe %>><%= link_to (t('.unpaid_invoices', :default => "Unpaid invoices")+" #{unpaid_invoices_badge}").html_safe, unpaid_invoices_path %></li>
           <li<%= active_navbar_helper(/^\/recurring_slips$/).html_safe %>><%= link_to (t('.recurring_slips', :default => "Recurring slips")+" #{expired_recurring_slips_badge}").html_safe, recurring_slips_path %></li>
           <li class="divider-vertical"></li>
+          <li class="dropdown<%= active_navbar_helper(/^\/reports[\/]*.*$/, true).html_safe %>">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%=t '.reports.title', :default => "Reports" %>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to t('.all_invoices', :default => "All invoices"), all_invoices_path %></li>
+            </ul>
+          </li>
           <li class="dropdown<%= active_navbar_helper(/^\/customers[\/]*.*$/, true).html_safe %>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%=t '.customers.title', :default => "Customers" %>
@@ -41,7 +49,7 @@
             </ul>
           </li>
           <li class="divider-vertical"></li>
-          <li><%= link_to(t('.logout', :default => "Logout"), destroy_user_session_path, :method => :delete, :title => 'Esci') %></li>
+          <li><%= link_to(t('.logout', :default => "Logout"), destroy_user_session_path, :method => :delete, :confirm => t('.logout_confirm', :default => "Are you sure to sign out?"), :title => 'Esci') %></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>

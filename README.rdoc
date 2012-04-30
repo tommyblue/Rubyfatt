@@ -29,6 +29,7 @@ Intanto ecco una lista:
 * Aggiungere un modello per i conti correnti
 * Gestire alcuni dati dei PDF dall'interfaccia
 * Gestione dei preventivi
+* Gestione di progetti personali
 
 == Installazione
 
@@ -166,7 +167,7 @@ Di seguito i TAG git con le principali caratteristiche
 
 === 0.8
 
-Localizzazione Italiana (impostata come default) e verifica del responsive layout
+Localizzazione Italiana (impostata come default) e verifica del responsive layout. Qualche resoconto in home page.
 
 === 0.7.2
 

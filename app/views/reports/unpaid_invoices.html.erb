@@ -1,6 +1,6 @@
 <%= content_for :breadcrumb do %>
   <%= print_breadcrumbs([ 
-                      [t('breadcrumb.invoices', :default => 'Invoices'), all_invoices_path],
+                      [t('breadcrumb.invoices.index', :default => 'Invoices'), all_invoices_path],
                       [t('breadcrumb.unpaid_invoices', :default => 'Unpaid invoices'), nil]
                     ]).html_safe %>
 <% end %>
