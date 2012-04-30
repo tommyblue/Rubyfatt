@@ -7,7 +7,7 @@
     </div>
   <% end %>
   
-  <legend>Invoice</legend>
+  <legend><%=t '.legend', :default => "Personal data" %></legend>
   <%= f.input :name %>
   <%= f.input :surname %>
   <%= f.input :address %>
@@ -22,6 +22,6 @@
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
-    <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger" %>
+    <%= submit_tag t('helpers.buttons.cancel', :default => 'Cancel'), :type => :reset, :class => "btn btn-danger" %>
   </div>
 <% end %>

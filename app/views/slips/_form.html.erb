@@ -7,14 +7,14 @@
     </div>
   <% end %>
   
-  <legend>Slip</legend>
+  <legend></legend>
   <%= f.input :name %>
   <%= f.input :rate %>
   <%= f.input :timed %>
-  <%= f.input :duration %>
+  <%= f.input :duration, :hint => :duration %>
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
-    <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger" %>
+    <%= submit_tag t('helpers.buttons.cancel', :default => 'Cancel'), :type => :reset, :class => "btn btn-danger" %>
   </div>
 <% end %>

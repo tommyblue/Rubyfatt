@@ -17,7 +17,7 @@ class ConsolidatedTaxesController < ApplicationController
   def create
     @consolidated_tax = current_user.ConsolidatedTax.new(params[:tax])
     if @consolidated_tax.save
-      redirect_to(@consolidated_tax, :notice => 'The Tax was successfully created.')
+      redirect_to(@consolidated_tax, :notice => t('controllers.consolidated_taxes.create.success', :default => 'The Tax was successfully created.'))
     else
       render :action => "new"
     end
@@ -30,7 +30,7 @@ class ConsolidatedTaxesController < ApplicationController
   def update
     @consolidated_tax = ConsolidatedTax.find(params[:id])
     if @consolidated_tax.update_attributes(params[:tax])
-      redirect_to(@consolidated_tax, :notice => 'The Tax was successfully updated.')
+      redirect_to(@consolidated_tax, :notice => t('controllers.consolidated_taxes.update.success', :default => 'The Tax was successfully updated.'))
     else
       render :action => "edit"
     end
@@ -38,7 +38,11 @@ class ConsolidatedTaxesController < ApplicationController
 
   def destroy
     consolidated_tax = ConsolidatedTax.find(params[:id])
-    consolidated_tax.destroy
+    if consolidated_tax.destroy
+      flash[:success] = t('controllers.consolidated_taxes.destroy.success', :default => "The consolidated tax was successfully destroied")
+    else
+      flash[:error] = t('controllers.consolidated_taxes.destroy.error', :default => "Error while destroying the consolidated tax")
+    end
     redirect_to(taxes_url)
   end
 end

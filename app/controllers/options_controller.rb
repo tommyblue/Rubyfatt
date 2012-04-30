@@ -13,7 +13,7 @@ class OptionsController < ApplicationController
   def update
     @option = Option.find(params[:id])
     if @option.update_attributes(params[:option])
-      redirect_to(options_path, :notice => 'The option was successfully updated.')
+      redirect_to(options_path, :notice => t('controllers.options.update.success', :default => 'The option was successfully updated.'))
     else
       render :action => "edit"
     end

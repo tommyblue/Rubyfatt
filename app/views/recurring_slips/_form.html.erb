@@ -7,15 +7,15 @@
     </div>
   <% end %>
   
-  <legend>Recurring slip</legend>
-  <%= f.association :customer, :collection => current_user.customers.collect{ |customer| [customer.title, customer.id] }, :prompt => 'Select a customer' %>
+  <legend><%=t '.insert_data' %></legend>
+  <%= f.association :customer, :collection => current_user.customers.collect{ |customer| [customer.title, customer.id] }, :prompt => t('simple_form.prompts.customer', :default => "Select a customer") %>
   <%= f.input :name %>
   <%= f.input :rate %>
   
   <div class="control-group select required">
     <label class="select required control-label" for="recurring_slip_customer">
       <abbr title="required">*</abbr>
-      Months of recurrency
+      <%=t 'simple_form.labels.recurring_slip.schedule_months', :default => "Months of recurrency"%>
     </label>
     <div class="controls">
       <%= select 'schedule', 'month', schedule_month_options %>
@@ -25,7 +25,7 @@
   <div class="control-group select required">
     <label class="select required control-label" for="recurring_slip_customer">
       <abbr title="required">*</abbr>
-      Day of expiration
+      <%=t 'simple_form.labels.recurring_slip.day_of_expiration', :default => "Day of expiration"%>
     </label>
     <div class="controls">
       <%= select 'schedule', 'day', schedule_day_options %>
@@ -33,7 +33,9 @@
   </div>
 
   <div class="control-group string optional">
-    <label class="string optional control-label" for="invoice_name">Next occurrence</label>
+    <label class="string optional control-label" for="invoice_name">
+      <%=t 'simple_form.labels.recurring_slip.next_occurrence', :default => "Next occurrence"%>
+    </label>
     <div class="controls">
       <div class="input-prepend">
         <span class="add-on">
@@ -46,6 +48,6 @@
   
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
-    <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger" %>
+    <%= submit_tag t('helpers.buttons.cancel', :default => 'Cancel'), :type => :reset, :class => "btn btn-danger" %>
   </div>
 <% end %>

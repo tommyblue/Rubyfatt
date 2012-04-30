@@ -1,10 +1,11 @@
 <%= content_for :breadcrumb do %>
   <%= print_breadcrumbs([ 
-                      ['Customers', customers_path],
-                      ['Edit customer', nil]
+                      [t('breadcrumb.customers.index', :default => 'Customers'), customers_path],
+                      [t('breadcrumb.customers.edit', :default => 'Edit customer'), nil]
                     ]).html_safe %>
 <% end %>
 
-<h1>Edit customer</h1>
+<%- model_class = Customer.new.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 
 <%= render 'form' %>

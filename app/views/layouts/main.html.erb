@@ -24,7 +24,7 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Customers</li>
+              <li class="nav-header"><%=t '.sidebar.title', :default => "Customers" %></li>
               <% current_user.customers.order(:title,:surname,:name).each do |customer| %>
         			  <li><%= link_to customer.title, customer_slips_path(customer) %></li>
         			<% end %>
@@ -37,42 +37,41 @@
           <% if flash[:info] %>
       	    <div class="alert alert-info fade in" data-alert="alert">
               <a class="close" data-dismiss='alert' href="#">×</a>
-              <h4 class="alert-heading">Info</h4>
+              <h4 class="alert-heading"><%=t '.info', :default => "Info" %></h4>
               <p><%= flash[:info] %></p>
             </div>
       	  <% end %>
       	  <% if flash[:warning] %>
       	    <div class="alert fade in" data-alert="alert">
               <a class="close" data-dismiss='alert' href="#">×</a>
-              <h4 class="alert-heading">Warning!</h4>
+              <h4 class="alert-heading"><%=t '.warning', :default => "Warning!" %></h4>
               <p><%= flash[:warning] %></p>
             </div>
       	  <% end %>
       	  <% if flash[:error] %>
       	    <div class="alert alert-error fade in" data-alert="alert">
               <a class="close" data-dismiss='alert' href="#">×</a>
-              <h4 class="alert-heading">Error!</h4>
+              <h4 class="alert-heading"><%=t '.error', :default => "Error!" %></h4>
               <p><%= flash[:error] %></p>
             </div>
       	  <% end %>
       	  <% if flash[:alert] %>
       	    <div class="alert alert-error fade in" data-alert="alert">
               <a class="close" data-dismiss='alert' href="#">×</a>
-              <h4 class="alert-heading">Alert!</h4>
+              <h4 class="alert-heading"><%=t '.alert', :default => "Alert!" %></h4>
               <p><%= flash[:alert] %></p>
             </div>
       	  <% end %>
       	  <% if flash[:notice] %>
       	    <div class="alert alert-success fade in" data-alert="alert">
               <a class="close" data-dismiss='alert' href="#">×</a>
-              <h4 class="alert-heading">Notice</h4>
               <p><%= flash[:notice] %></p>
             </div>
       	  <% end %>
       	  <% if flash[:success] %>
       	    <div class="alert alert-success fade in" data-alert="alert">
               <a class="close" data-dismiss='alert' href="#">×</a>
-              <h4 class="alert-heading">Success!</h4>
+              <h4 class="alert-heading"><%=t '.success', :default => "Success!" %></h4>
               <p><%= flash[:success] %></p>
             </div>
       	  <% end %>
@@ -83,7 +82,7 @@
 
       <footer>
         <p><strong><%= link_to raw("Copyright &copy;"), "http://www.gnu.org/licenses/gpl.txt", :target => :blank %> <%= Time.now.year %> <%= link_to "Kreations Collective", "http://www.kreations.it", :target => :blank %></strong></p>
-        <p><small><em>Easyfatt version <%= APP_VERSION %><a href="https://github.com/tommyblue/Easyfatt" target="_blank">Get the source code on GitHub</a></em></small></p>
+        <p><small><em>Easyfatt <%=t '.sidebar.version', :default => "version" %> <%= APP_VERSION %><a href="https://github.com/tommyblue/Easyfatt" target="_blank"><%=t '.sidebar.source_code', :default => "Get the source code on GitHub" %></a></em></small></p>
       </footer>
 
     </div> <!-- /container -->
@@ -92,6 +91,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
+    <% if I18n.locale == :it %>
+      <%= javascript_include_tag "jquery.ui.datepicker-it" %>
+    <% end %>
     <script type="text/javascript">
     $(document).ready(function() {
     // Modifies the favicon adding the number of expired recurring slips

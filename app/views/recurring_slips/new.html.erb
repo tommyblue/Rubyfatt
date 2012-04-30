@@ -1,10 +1,11 @@
 <%= content_for :breadcrumb do %>
   <%= print_breadcrumbs([ 
-                      ["Recurring slips", recurring_slips_path],
-                      ["New recurring slip", nil]
+                      [t('breadcrumb.recurring_slips', :default => 'Recurring slips'), recurring_slips_path],
+                      [t('breadcrumb.new_recurring_slip', :default => "New recurring slip"), nil]
                     ]).html_safe %>
 <% end %>
 
-<h1>New recurring slip</h1>
+<%- model_class = RecurringSlip.new.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 
 <%= render 'form' %>

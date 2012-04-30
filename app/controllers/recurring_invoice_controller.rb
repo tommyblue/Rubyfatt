@@ -35,9 +35,8 @@ class RecurringInvoiceController < ApplicationController
       recurring_slips.each do |recurring_slip|
         recurring_slip.goto_next_occurrence!
       end
-      redirect_to(customer_slips_path(@customer), :notice => 'The invoice was successfully created.')
+      redirect_to(customer_slips_path(@customer), :notice => t('controllers.recurring_invoice.create.success', :default => 'The invoice was successfully created.'))
     else
-      flash[:warning] = "Error validating the invoice"
       render :action => "new"
     end
   end

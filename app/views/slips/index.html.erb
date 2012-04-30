@@ -5,17 +5,17 @@
 <% end %>
 <!-- SLIPS -->
 <%- model_class = Slip.new.class -%>
-<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<h1><%=t '.slips.title', :default => model_class.model_name.human.pluralize %></h1>
 <table class="table table-striped table-bordered table-condensed">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:rate) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%= model_class.human_attribute_name(:timed) %></th>
-      <th><%= model_class.human_attribute_name(:duration) %></th>
-      <th><%= model_class.human_attribute_name(:estimated) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%=t model_class.human_attribute_name(:name) %></th>
+      <th><%=t model_class.human_attribute_name(:rate) %></th>
+      <th><%=t model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t model_class.human_attribute_name(:timed) %></th>
+      <th><%=t model_class.human_attribute_name(:duration) %></th>
+      <th><%=t model_class.human_attribute_name(:estimated) %></th>
+      <th><%=t 'actions', :default => "Actions" %></th>
     </tr>
   </thead>
   <tbody>
@@ -28,30 +28,31 @@
         <td><%= slip.duration ? ChronicDuration.output(slip.duration, :format => :short) : '-' %></td>
         <td><%= slip.estimated? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
         <td>
-          <%= link_to(image_tag('icons/document--pencil.png', :alt => 'Edit slip', :title => 'Edit slip'), edit_customer_slip_path(@customer, slip), :class => 'btn btn-mini') %>
+          <%= link_to(image_tag('icons/document--pencil.png', :alt => t('.slips.edit', :default => 'Edit slip'), :title => t('.slips.edit', :default => 'Edit slip')), edit_customer_slip_path(@customer, slip), :class => 'btn btn-mini') %>
+          <%= link_to(image_tag('icons/cross-circle.png', :alt => t('.slips.delete', :default => 'Delete slip'), :title => t('.slips.delete', :default => 'Delete slip')), customer_slip_path(@customer,slip.id), :method => :delete, :confirm => t(".slips.delete_confirm", :default => "Are you sure to delete the slip?"), :class => 'btn btn-mini') %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.slips.new', :default => "helpers.links.new"),
             new_customer_slip_path(@customer),
             :class => 'btn btn-primary' %>
 <!-- /SLIPS -->
 
 <!-- ESTIMATES -->
 <%- model_class = Estimate.new.class -%>
-<h1 class="sup-spaced"><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<h1 class="sup-spaced"><%=t '.estimates.title', :default => model_class.model_name.human.pluralize %></h1>
 <table class="table table-striped table-bordered table-condensed">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:number) %></th>
-      <th><%= model_class.human_attribute_name(:date) %></th>
-      <th><%= model_class.human_attribute_name(:rate) %></th>
-      <th><%= model_class.human_attribute_name(:total) %></th>
-      <th><%= model_class.human_attribute_name(:invoiced) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%=t model_class.human_attribute_name(:number) %></th>
+      <th><%=t model_class.human_attribute_name(:date) %></th>
+      <th><%=t model_class.human_attribute_name(:rate) %></th>
+      <th><%=t model_class.human_attribute_name(:total) %></th>
+      <th><%=t model_class.human_attribute_name(:invoiced) %></th>
+      <th><%=t 'actions', :default => "Actions" %></th>
     </tr>
   </thead>
   <tbody>
@@ -62,18 +63,18 @@
         <td><%= number_to_currency(estimate.rate) %></td>
         <td><%= number_to_currency(estimate.total) %></td>
         <td><%= estimate.invoiced? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
-        <td><%= link_to(image_tag('icons/cross-circle.png', :alt => 'Delete estimate', :title => 'Delete estimate'), customer_estimate_path(@customer,estimate.id), :method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => "Are you sure to delete the estimate?\nATTENTION: You shouldn't destroy it unless you know what you're doing. Numbering won't be automatically restored...")), :class => 'btn btn-mini') %></td>
+        <td><%= link_to(image_tag('icons/cross-circle.png', :alt => t('.estimates.delete', :default => 'Delete estimate'), :title => t('.estimates.delete', :default => 'Delete estimate')), customer_estimate_path(@customer,estimate.id), :method => :delete, :confirm => t('.estimates.delete_confirm', :default => "Are you sure to delete the estimate?\nATTENTION: You shouldn't destroy it unless you know what you're doing. Numbering won't be automatically restored..."), :class => 'btn btn-mini') %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<% link_to t('.new', :default => t("helpers.links.new")),
+<% link_to t('.estimates.new', :default => "helpers.links.new"),
             new_customer_estimate_path(@customer),
             :class => 'btn btn-primary' %>
 
 <a class="btn btn-primary disabled" href="#">
-<span class="translation_missing" title="translation missing: en.helpers.links.new">New</span>
+<%=t '.estimates.new', :default => "helpers.links.new" %>
 </a>
 <!-- /ESTIMATES -->
 
@@ -81,16 +82,16 @@
 
 <!-- INVOICE PROJECTS -->
 <%- model_class = InvoiceProject.new.class -%>
-<h1 class="sup-spaced"><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<h1 class="sup-spaced"><%=t '.invoice_projects.title', :default => model_class.model_name.human.pluralize %></h1>
 <table class="table table-striped table-bordered table-condensed">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:number) %></th>
-      <th><%= model_class.human_attribute_name(:date) %></th>
-      <th><%= model_class.human_attribute_name(:rate) %></th>
-      <th><%= model_class.human_attribute_name(:total) %></th>
-      <th><%= model_class.human_attribute_name(:invoiced) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%=t model_class.human_attribute_name(:number) %></th>
+      <th><%=t model_class.human_attribute_name(:date) %></th>
+      <th><%=t model_class.human_attribute_name(:rate) %></th>
+      <th><%=t model_class.human_attribute_name(:total) %></th>
+      <th><%=t model_class.human_attribute_name(:invoiced) %></th>
+      <th><%=t 'actions', :default => "Actions" %></th>
     </tr>
   </thead>
   <tbody>
@@ -102,16 +103,16 @@
         <td><%= number_to_currency(project.total) %></td>
         <td><%= project.invoiced? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
         <td>
-          <%= link_to(image_tag('icons/cross-circle.png', :alt => 'Delete invoice project', :title => 'Delete invoice project'), customer_invoice_project_path(@customer,project.id), :method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => "Are you sure to delete the invoice project?\nATTENTION: You shouldn't destroy it unless you know what you're doing. Numbering won't be automatically restored...")), :class => 'btn btn-mini') %>
-          <%= link_to(image_tag('icons/inbox--arrow.png', :alt => 'Transform to invoice', :title => 'Transform to invoice' ), project_to_invoice_path(project.id), :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => "Transform the invoice project to invoice?")), :class => 'btn btn-mini') unless project.invoiced %>
-          <%= link_to image_tag('icons/document-pdf-text.png', :alt => 'Print invoice project', :title => 'Print invoice project' ), customer_invoice_project_path(@customer,project.id, :format => 'pdf'), :class => 'btn btn-mini' %>
+          <%= link_to(image_tag('icons/cross-circle.png', :alt => t('.invoice_projects.delete', :default => 'Delete invoice project'), :title => t('.invoice_projects.delete', :default => 'Delete invoice project')), customer_invoice_project_path(@customer,project.id), :method => :delete, :confirm => t(".invoice_projects.delete_confirm", :default => "Are you sure to delete the invoice project?\nATTENTION: You shouldn't destroy it unless you know what you're doing. Numbering won't be automatically restored..."), :class => 'btn btn-mini') %>
+          <%= link_to(image_tag('icons/inbox--arrow.png', :alt => t('.invoice_projects.transform_to_invoice', :default => 'Transform to invoice'), :title => t('.invoice_projects.transform_to_invoice', :default => 'Transform to invoice') ), project_to_invoice_path(project.id), :confirm => t('.invoice_projects.transform_to_invoice_confirm', :default => "Transform the invoice project to invoice?"), :class => 'btn btn-mini') unless project.invoiced %>
+          <%= link_to image_tag('icons/document-pdf-text.png', :alt => t('.invoice_projects.print', :default => 'Print invoice project'), :title => t('.invoice_projects.print', :default => 'Print invoice project') ), customer_invoice_project_path(@customer,project.id, :format => 'pdf'), :class => 'btn btn-mini' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.invoice_projects.new', :default => "helpers.links.new"),
             new_customer_invoice_project_path(@customer),
             :class => 'btn btn-primary' %>
 <!-- /INVOICE PROJECTS -->
@@ -119,18 +120,18 @@
 
 <!-- INVOICES -->
 <%- model_class = Invoice.new.class -%>
-<h1 class="sup-spaced"><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<h1 class="sup-spaced"><%=t '.invoices.title', :default => model_class.model_name.human.pluralize %></h1>
 <table class="table table-striped table-bordered table-condensed">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:number) %></th>
-      <th><%= model_class.human_attribute_name(:date) %></th>
-      <th><%= model_class.human_attribute_name(:slips) %></th>
-      <th><%= model_class.human_attribute_name(:rate) %></th>
-      <th><%= model_class.human_attribute_name(:total) %></th>
-      <th><%= model_class.human_attribute_name(:paid) %></th>
-      <th><%= model_class.human_attribute_name(:payment_date) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%=t model_class.human_attribute_name(:number) %></th>
+      <th><%=t model_class.human_attribute_name(:date) %></th>
+      <th><%=t model_class.human_attribute_name(:slips) %></th>
+      <th><%=t model_class.human_attribute_name(:rate) %></th>
+      <th><%=t model_class.human_attribute_name(:total) %></th>
+      <th><%=t model_class.human_attribute_name(:paid) %></th>
+      <th><%=t model_class.human_attribute_name(:payment_date) %></th>
+      <th><%=t 'actions', :default => "Actions" %></th>
     </tr>
   </thead>
   <tbody>
@@ -150,16 +151,16 @@
         <td><%= invoice.paid? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
         <td><%= invoice.payment_date.strftime("%d/%m/%Y") if invoice.paid and invoice.payment_date %></td>
         <td>
-          <%= link_to(image_tag('icons/blue-document-page-previous.png', :alt => 'Delete invoice and restore slips', :title => 'Delete invoice and restore slips'), customer_invoice_path(@customer,invoice.id), :method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => "Are you sure to delete the invoice and restore the slips?\nATTENTION: You shouldn't destroy invoices unless you know what you're doing. Numbering won't be automatically restored...")), :class => 'btn btn-mini') unless invoice.paid? %>
-          <%= link_to(image_tag('icons/money-coin.png', :alt => 'Add payment', :title => 'Add payment'), "/invoice/#{invoice.id}/payment", :class => 'btn btn-mini') unless invoice.paid? %>
-          <%= link_to image_tag('icons/document-pdf-text.png', :alt => 'Print invoice', :title => 'Print invoice' ), customer_invoice_path(@customer,invoice.id, :format => 'pdf'), :class => 'btn btn-mini' %>
+          <%= link_to(image_tag('icons/blue-document-page-previous.png', :alt => t('.invoices.delete_and_restore', :default => 'Delete invoice and restore slips' ), :title => t('.invoices.delete_and_restore', :default => 'Delete invoice and restore slips' )), customer_invoice_path(@customer,invoice.id), :method => :delete, :confirm => t('.invoices.delete_and_restore_confirm', :default => "Are you sure to delete the invoice and restore the slips?\nATTENTION: You shouldn't destroy invoices unless you know what you're doing. Numbering won't be automatically restored..."), :class => 'btn btn-mini') unless invoice.paid? %>
+          <%= link_to(image_tag('icons/money-coin.png', :alt => t('.invoices.add_payment', :default => 'Add payment'), :title => t('.invoices.add_payment', :default => 'Add payment')), "/invoice/#{invoice.id}/payment", :class => 'btn btn-mini') unless invoice.paid? %>
+          <%= link_to image_tag('icons/document-pdf-text.png', :alt => t('.invoices.print', :default => 'Print invoice'), :title => t('.invoices.print', :default => 'Print invoice') ), customer_invoice_path(@customer,invoice.id, :format => 'pdf'), :class => 'btn btn-mini' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.invoices.new', :default => "helpers.links.new"),
             new_customer_invoice_path(@customer),
             :class => 'btn btn-primary' %>
 <!-- /INVOICES -->

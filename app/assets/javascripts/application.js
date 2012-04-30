@@ -12,7 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require bootstrap
-//= require_tree .
+//= require tinycon.min
+// require_tree .
 
-$('input.datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
+$(document).ready(function(){
+    $('input.datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
+})

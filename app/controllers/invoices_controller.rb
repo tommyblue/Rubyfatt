@@ -17,10 +17,11 @@ class InvoicesController < ApplicationController
   def create
     @customer = Customer.find(params[:customer_id])
     @invoice = @customer.invoices.new(params[:invoice])
+    @slips = @customer.working_slips
+    @consolidated_taxes = current_user.consolidated_taxes
     if @invoice.save
-      redirect_to(customer_slips_path(@customer), :notice => 'The invoice was successfully created.')
+      redirect_to(customer_slips_path(@customer), :notice => t('controllers.invoices.create.success', :default => 'The invoice was successfully created.'))
     else
-      flash[:warning] = "Error validating the invoice"
       render :action => "new"
     end
   end
@@ -42,9 +43,9 @@ class InvoicesController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @invoice = Invoice.find(params[:id])
     if @invoice.restore_slips_and_destroy
-      redirect_to(customer_slips_path(@customer), :notice => 'The invoice was successfully destroyed and its slips was restored')
+      redirect_to(customer_slips_path(@customer), :notice => t('controllers.invoices.create.success', :default => 'The invoice was successfully destroyed and its slips was restored'))
     else
-      redirect_to(customer_slips_path(@customer), :error => "Can't destroy a paid invoice")
+      redirect_to(customer_slips_path(@customer), :error => t('controllers.invoices.create.success', :default => "Can't destroy a paid invoice"))
     end
   end
   

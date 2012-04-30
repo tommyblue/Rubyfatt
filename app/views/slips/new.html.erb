@@ -1,10 +1,10 @@
 <%= content_for :breadcrumb do %>
   <%= print_breadcrumbs([ 
                       ["#{@customer.title}", customer_slips_path(@customer)],
-                      ["New slip", nil]
+                      [t('breadcrumb.slip.new', :default => "New slip"), nil]
                     ]).html_safe %>
 <% end %>
 
-<h1>New slip</h1>
+<h1><%=t '.title', :default=> "New slip" %></h1>
 
 <%= render 'form' %>

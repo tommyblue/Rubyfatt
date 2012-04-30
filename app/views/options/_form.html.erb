@@ -7,11 +7,11 @@
     </div>
   <% end %>
   
-  <legend>Option</legend>
+  <legend><%=t '.insert_data' %></legend>
   <%= f.input :value %>
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
-    <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger" %>
+    <%= submit_tag t('helpers.buttons.cancel', :default => 'Cancel'), :type => :reset, :class => "btn btn-danger" %>
   </div>
 <% end %>

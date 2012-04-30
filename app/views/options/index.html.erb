@@ -1,6 +1,6 @@
 <%= content_for :breadcrumb do %>
   <%= print_breadcrumbs([ 
-                      ["Options", options_path]
+                      [t('breadcrumb.options.index', :default => "Options"), options_path]
                     ]).html_safe %>
 <% end %>
 <%- model_class = Option.new.class -%>
@@ -8,9 +8,9 @@
 <table class="table table-striped table-bordered table-condensed">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:value) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%=t model_class.human_attribute_name(:name) %></th>
+      <th><%=t model_class.human_attribute_name(:value) %></th>
+      <th><%=t 'actions', :default => "Actions" %></th>
     </tr>
   </thead>
   <tbody>
@@ -18,13 +18,13 @@
       <tr>
         <td><%= option.name %></td>
         <td><%= option.value %></td>
-        <td><%= link_to(image_tag('icons/document--pencil.png', :alt => 'Edit option', :title => 'Edit option'), edit_option_path(option), :class => 'btn btn-mini') %></td>
+        <td><%= link_to(image_tag('icons/document--pencil.png', :alt => t('.edit', :default => 'Edit option'), :title => t('.edit', :default => 'Edit option')), edit_option_path(option), :class => 'btn btn-mini') %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <div class="alert alert-info">
-  <h4 class="alert-heading">Pay attention!</h4>
-  Options keys are used to determine various aspects of slips and invoices workflow. Pay a lot of attention while managing them!
+  <h4 class="alert-heading"><%=t '.alert.title', :default => "Pay attention!" %></h4>
+  <%=t '.alert.message', :default => "Options keys are used to determine various aspects of slips and invoices workflow. Pay a lot of attention while managing them!" %>
 </div>

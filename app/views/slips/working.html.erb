@@ -1,6 +1,6 @@
 <%= content_for :breadcrumb do %>
   <%= print_breadcrumbs([ 
-                      ["Working slips", nil]
+                      [t('breadcrumb.working_slips', :default => "Working slips"), nil]
                     ]).html_safe %>
 <% end %>
 <!-- SLIPS -->
@@ -9,14 +9,14 @@
 <table class="table table-striped table-bordered table-condensed">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:customer) %></th>
-      <th><%= model_class.human_attribute_name(:rate) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%= model_class.human_attribute_name(:timed) %></th>
-      <th><%= model_class.human_attribute_name(:duration) %></th>
-      <th><%= model_class.human_attribute_name(:estimated) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%=t model_class.human_attribute_name(:name) %></th>
+      <th><%=t model_class.human_attribute_name(:customer) %></th>
+      <th><%=t model_class.human_attribute_name(:rate) %></th>
+      <th><%=t model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t model_class.human_attribute_name(:timed) %></th>
+      <th><%=t model_class.human_attribute_name(:duration) %></th>
+      <th><%=t model_class.human_attribute_name(:estimated) %></th>
+      <th><%=t 'actions', :default => "Actions" %></th>
     </tr>
   </thead>
   <tbody>
@@ -30,7 +30,8 @@
         <td><%= slip.duration ? ChronicDuration.output(slip.duration, :format => :short) : '-' %></td>
         <td><%= slip.estimated? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
         <td>
-          <%= link_to(image_tag('icons/document--pencil.png', :alt => 'Edit slip', :title => 'Edit slip'), edit_customer_slip_path(slip.customer, slip), :class => 'btn btn-mini') %>
+          <%= link_to(image_tag('icons/document--pencil.png', :alt => t('.edit', :default => 'Edit slip'), :title => t('.edit', :default => 'Edit slip')), edit_customer_slip_path(slip.customer, slip), :class => 'btn btn-mini') %>
+          <%= link_to(image_tag('icons/cross-circle.png', :alt => t('.delete', :default => 'Delete slip'), :title => t('.delete', :default => 'Delete slip')), customer_slip_path(slip.customer,slip.id), :method => :delete, :confirm => t(".delete_confirm", :default => "Are you sure to delete the slip?"), :class => 'btn btn-mini') %>
         </td>
       </tr>
     <% end %>

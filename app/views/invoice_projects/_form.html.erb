@@ -7,8 +7,9 @@
     </div>
   <% end %>
   
-  <legend>Slip</legend>
-  <%= f.input :date, :wrapper => :prepend, :label => 'Date' do %>
+  <legend><%=t '.legend', :default => 'Insert data' %></legend>
+  
+  <%= f.input :date, :wrapper => :prepend do %>
     <%= content_tag :span, "<img src=\"/assets/icons/calendar-month.png\" alt=\"Calendar\" />".html_safe, :class => "add-on" %>
     <%= f.input_field :date, :as => :datepicker %>
   <% end %>
@@ -18,6 +19,6 @@
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
-    <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger" %>
+    <%= submit_tag t('helpers.buttons.cancel', :default => 'Cancel'), :type => :reset, :class => "btn btn-danger" %>
   </div>
 <% end %>

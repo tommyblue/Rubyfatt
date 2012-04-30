@@ -7,20 +7,20 @@
     </div>
   <% end %>
   
-  <legend>Customer</legend>
-  <%= f.input :title, :input_html => { :class => "span6" } %>
-  <%= f.input :name, :input_html => { :class => "span6" } %>
-  <%= f.input :surname, :input_html => { :class => "span6" } %>
-  <%= f.input :address, :input_html => { :class => "span6" } %>
-  <%= f.input :zip_code, :input_html => { :class => "span6" } %>
-  <%= f.input :town, :input_html => { :class => "span6" } %>
-  <%= f.input :province, :input_html => { :class => "span6" } %>
-  <%= f.input :country, :priority => [ "Italy" ], :input_html => { :class => "span6" } %>
-  <%= f.input :tax_code, :input_html => { :class => "span6" } %>
-  <%= f.input :vat, :input_html => { :class => "span6" } %>
+  <legend><%=t '.insert_data' %></legend>
+  <%= f.input :title %>
+  <%= f.input :name %>
+  <%= f.input :surname %>
+  <%= f.input :address %>
+  <%= f.input :zip_code %>
+  <%= f.input :town %>
+  <%= f.input :province %>
+  <%= f.input :country, :priority => [ "Italy" ] %>
+  <%= f.input :tax_code %>
+  <%= f.input :vat %>
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
-    <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger" %>
+    <%= submit_tag t('helpers.buttons.cancel', :default => 'Cancel'), :type => :reset, :class => "btn btn-danger" %>
   </div>
 <% end %>

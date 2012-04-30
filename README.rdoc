@@ -14,6 +14,7 @@ Caratteristiche:
 * Riepilogo delle fatture emesse
 * Modifica della numerazione delle fatture e dei preventivi (ad esempio ad inizio anno)
 * Gestione delle coordinate bancarie
+* Completamente multilingua, di default in italiano (disponibile la lingua inglese)
 * Responsive layout con Twitter Bootstrap
 
 <b>Lo stato dell'applicazione è da considerarsi beta</b>. Io comunque lo uso per le mie fatture :)
@@ -25,6 +26,9 @@ Intanto ecco una lista:
 
 * Gestire la creazione automatica delle opzioni se non presenti
 * Dalle fatture ricorrenti produrre un progetto di notula
+* Aggiungere un modello per i conti correnti
+* Gestire alcuni dati dei PDF dall'interfaccia
+* Gestione dei preventivi
 
 == Installazione
 
@@ -36,7 +40,7 @@ Si installa come tutte le applicazioni rails:
   
 * Entra nella cartella e fai il checkout all'ultimo tag "stabile":
 
-  git checkout 0.7.2
+  git checkout 0.8
   
 Oppure lascia HEAD se ti piace il rischio :)
 
@@ -148,9 +152,21 @@ Al momento le gemme con cui sto testando il software sono:
     vpim (0.695)
     warden (1.1.0)
 
+== Roadmap
+
+Elenco i buoni propositi per il futuro :)
+
+=== 1.0
+
+Pubblicherò la versione 1.0 quando avrò completato le validazioni e inserito il supporto a Cancan
+
 == Changelog
 
 Di seguito i TAG git con le principali caratteristiche
+
+=== 0.8
+
+Localizzazione Italiana (impostata come default) e verifica del responsive layout
 
 === 0.7.2
 

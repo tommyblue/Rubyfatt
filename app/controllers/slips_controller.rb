@@ -18,15 +18,13 @@ class SlipsController < ApplicationController
   def new
     @customer = Customer.find(params[:customer_id])
     @slip = @customer.slips.new
-    #@slip.date = Time.now.strftime("%d/%m/%Y")
-    #Date.strptime(params[:schedule][:next], "%d/%m/%Y")
   end
 
   def create
     @customer = Customer.find(params[:customer_id])
     @slip = @customer.slips.new(params[:slip])
     if @slip.save
-      redirect_to(customer_slips_path(@customer), :notice => 'The slip was successfully created.')
+      redirect_to(customer_slips_path(@customer), :notice => t('controllers.slips.create.success', :default => 'The slip was successfully created.'))
     else
       render :action => "new"
     end
@@ -41,7 +39,7 @@ class SlipsController < ApplicationController
     @slip = Slip.find(params[:id])
     @customer = @slip.customer
     if @slip.update_attributes(params[:slip])
-      redirect_to(customer_slips_path(@customer), :notice => 'The slip was successfully updated.')
+      redirect_to(customer_slips_path(@customer), :notice => t('controllers.slips.update.success', :default => 'The slip was successfully updated.'))
     else
       render :action => "edit"
     end
@@ -49,5 +47,16 @@ class SlipsController < ApplicationController
   
   def working
     @slips = Slip.working
+  end
+  
+  def destroy
+    slip = Slip.find(params[:id])
+    customer = slip.customer
+    if slip.destroy
+      flash[:notice] = t('controllers.taxes.destroy.success', :default => "Slip deleted")
+    else
+      flash[:error] = t('controllers.taxes.destroy.error', :default => "Error deleting the slip")
+    end
+    redirect_to(customer_slips_path(customer))
   end
 end
