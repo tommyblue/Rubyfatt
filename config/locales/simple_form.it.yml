@@ -96,6 +96,7 @@ it:
         country: "Stato"
         tax_code: "Codice Fiscale"
         vat: "P. IVA"
+        bank_coordinates: "Coordinate bancarie"
         phone: "Recapito telefonico"
         password: "Password"
         remember_me: "Ricordami"

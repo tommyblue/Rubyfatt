@@ -19,7 +19,7 @@
   <%= f.input :vat %>
   <%= f.input :phone %>
   <%= f.input :email %>
-  <%= f.input :bank_coordinates %>
+  <%= f.input :bank_coordinates, :input_html => { :class => 'input-xlarge', :rows => 8 } %>
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
