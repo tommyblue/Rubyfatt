@@ -55,6 +55,9 @@ it:
     recurring_invoice:
       create:
         success: "La notula derivante dal progetto ricorrente è stata creata con successo"
+    recurring_invoice_project:
+      create:
+        success: "Il progetto di notula derivante dal progetto ricorrente è stato creato con successo"
     recurring_slips:
       create:
         success: "Il progetto ricorrente è stato creato con successo"
@@ -153,9 +156,14 @@ it:
     invoice_projects: 
       index: "Progetti di notula"
       new: "Nuovo progetto di notula"
-    recurring_slips: "Progetti ricorrenti"
-    new_recurring_slip: "Nuovo"
-    edit_recurring_slip: "Modifica"
+    recurring_slips: 
+      index: "Progetti ricorrenti"
+      new:: "Nuovo"
+      edit: "Modifica"
+    recurring_invoices:
+      new: "Nuova notula"
+    recurring_invoice_projects:
+      new: "Nuovo progetto di notula"
     slip:
       edit: "Modifica"
       new: "Nuovo"
@@ -293,7 +301,8 @@ it:
     index:
       title: "Progetti ricorrenti"
       new: "Crea un nuovo progetto ricorrente"
-      create_invoice: "Crea una notula derivante da questo progetto"
+      create_invoice: "Crea una notula derivante da questo progetto ricorrente"
+      create_invoice_project: "Crea un progetto di notula derivante da questo progetto ricorrente"
       edit: "Modifica il progetto ricorrente"
       delete: "Elimina il progetto ricorrente"
       delete_confirm: "Si conferma di voler eliminare il progetto ricorrente?"
@@ -303,6 +312,14 @@ it:
       title: "Modifica il progetto ricorrente"
     form:
       insert_data: "Inserisci i dati"
+  #
+  # RECURRING INVOICE
+  #
+  recurring_invoice:
+    new:
+      title: "Nuova notula da progetto ricorrente"
+    form:
+      legend: "Notula per"
   #
   # INVOICE PROJECTS
   #
@@ -318,6 +335,9 @@ it:
       title: "Nuovo progetto di notula"
     form:
       legend: "Inserisci i dati"
+    from_recurring_slip:
+      title: "Nuovo progetto di notula da progetto ricorrente"
+      legend: "Progetto di notula per"
   #
   # INVOICES
   #
@@ -382,7 +402,7 @@ it:
     - Venerdì
     - Sabato
     formats:
-      default: ! '%d-%m-%Y'
+      default: ! '%d/%m/%Y'
       long: ! '%d %B %Y'
       short: ! '%d %b'
     month_names:
@@ -543,7 +563,7 @@ it:
   time:
     am: am
     formats:
-      default: ! '%a %d %B %Y, %H:%M'
+      default: ! '%d/%m/%Y - %H:%M'
       long: ! '%d %B %Y %H:%M'
       short: ! '%d %b %H:%M'
     pm: pm

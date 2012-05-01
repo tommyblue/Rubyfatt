@@ -1,7 +1,7 @@
 <%= content_for :breadcrumb do %>
   <%= print_breadcrumbs([ 
-                      [t('breadcrumb.recurring_slips', :default => 'Recurring slips'), recurring_slips_path],
-                      [t('breadcrumb.new_recurring_slip', :default => "New recurring slip"), nil]
+                      [t('breadcrumb.recurring_slips.index', :default => 'Recurring slips'), recurring_slips_path],
+                      [t('breadcrumb.recurring_slips.new', :default => "New recurring slip"), nil]
                     ]).html_safe %>
 <% end %>
 

@@ -18,6 +18,7 @@ Easyfatt::Application.routes.draw do
     resources :slips, :estimates, :invoices, :invoice_projects
   end
   
+  # TODO: Migliorare queste risorse, non tutte le path generate vengono usate
   resources :recurring_slips do
     resources :recurring_invoice
   end
@@ -27,6 +28,8 @@ Easyfatt::Application.routes.draw do
   match 'invoices/unpaid' => 'reports#unpaid_invoices', :as => :unpaid_invoices
   match 'invoice_projects' => 'invoice_projects#index', :as => :invoice_projects
   
+  match 'invoice_projects/:id/from_recurring_slip' => 'invoice_projects#from_recurring_slip', :via => :get, :as => :new_recurring_slip_invoice_project
+  match 'invoice_projects/:id/from_recurring_slip' => 'invoice_projects#create_from_recurring_slip', :via => :post
   match 'invoice_projects/:id/to_invoice' => 'invoice_projects#to_invoice', :as => :project_to_invoice
   
   match 'profile' => 'profile#index', :as => :profile

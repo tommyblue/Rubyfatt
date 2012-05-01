@@ -1,6 +1,6 @@
 <%= content_for :breadcrumb do %>
   <%= print_breadcrumbs([ 
-                      [t('breadcrumb.recurring_slips', :default => 'Recurring slips'), recurring_slips_path]
+                      [t('breadcrumb.recurring_slips.index', :default => 'Recurring slips'), recurring_slips_path]
                     ]).html_safe %>
 <% end %>
 
@@ -26,7 +26,8 @@
         <td><%= slip.schedule %></td>
         <td><span class="<%= 'label label-important' if slip.to_invoice? %>"><%= slip.next_occurrence ? slip.next_occurrence.in_time_zone("Rome").strftime("%d/%m/%Y") : '-' %></span></td>
         <td class="nowrap">
-          <%= link_to(image_tag('icons/blog--plus.png', :alt => t('.create_invoice', :default => 'Create invoice'), :title => t('.create_invoice', :default => 'Create invoice')), new_recurring_slip_recurring_invoice_path(slip), :class => 'btn btn-mini' ) if slip.to_invoice? %>
+          <%= link_to(image_tag('icons/blog--plus.png', :alt => t('.create_invoice_project', :default => 'Create invoice project'), :title => t('.create_invoice_project', :default => 'Create invoice project') ), new_recurring_slip_invoice_project_path(slip), :class => 'btn btn-mini') if slip.to_invoice? %>
+          <%= link_to(image_tag('icons/inbox--arrow.png', :alt => t('.create_invoice', :default => 'Create invoice'), :title => t('.create_invoice', :default => 'Create invoice')), new_recurring_slip_recurring_invoice_path(slip), :class => 'btn btn-mini' ) if slip.to_invoice? %>
           <%= link_to(image_tag('icons/document--pencil.png', :alt => t('.edit', :default => 'Edit recurring slip'), :title => t('.edit', :default => 'Edit recurring slip')), edit_recurring_slip_path(slip), :class => 'btn btn-mini') %>
           <%= link_to(image_tag('icons/cross-circle.png', :alt => t('.delete', :default => 'Delete recurring slip'), :title => t('.delete', :default => 'Delete recurring slip')), recurring_slip_path(slip), :method => :delete, :confirm => t('.delete_confirm', :default => "Are you sure to delete the recurring slip?"), :class => 'btn btn-mini') %>
         </td>

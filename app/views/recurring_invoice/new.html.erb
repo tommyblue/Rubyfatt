@@ -1,10 +1,10 @@
 <%= content_for :breadcrumb do %>
   <%= print_breadcrumbs([ 
-                      ["Recurring slips", recurring_slips_path],
-                      ["New recurring invoice", nil]
+                      [t('breadcrumb.recurring_slips.index', :default => 'Recurring slips'), recurring_slips_path],
+                      [t('breadcrumb.recurring_invoices.new', :default => "New recurring invoice"), nil]
                     ]).html_safe %>
 <% end %>
 
-<h1>New invoice from recurring slip</h1>
+<h1><%=t '.title', :default => "New invoice from recurring slip" %></h1>
 
 <%= render 'form' %>

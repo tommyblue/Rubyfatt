@@ -1,4 +1,13 @@
-<%= simple_form_for [@customer, @invoice], :url => "/recurring_slips/#{@recurring_slip.id}/recurring_invoice", :html => {:class => 'form-horizontal' } do |f| %>
+<%= content_for :breadcrumb do %>
+  <%= print_breadcrumbs([ 
+                      [t('breadcrumb.recurring_slips.index', :default => 'Recurring slips'), recurring_slips_path],
+                      [t('breadcrumb.recurring_invoice_projects.new', :default => "New recurring invoice project"), nil]
+                    ]).html_safe %>
+<% end %>
+
+<h1><%=t '.title', :default => "New invoice project from recurring slip" %></h1>
+
+<%= simple_form_for [@customer, @invoice_project], :url => "/invoice_projects/#{@recurring_slip.id}/from_recurring_slip", :html => {:class => 'form-horizontal' } do |f| %>
 
   <% if f.error_notification %>
     <div class="alert alert-error fade in">
@@ -7,15 +16,10 @@
     </div>
   <% end %>
   
-  <legend><%=t '.legend', :default => "Invoice for" %> <%= @customer.title %></legend>
+  <legend><%=t '.legend', :default => "Invoice project for" %> <%= @customer.title %></legend>
   <%= f.input :date, :wrapper => :prepend do %>
     <%= content_tag :span, "<img src=\"/assets/icons/calendar-month.png\" alt=\"Calendar\" />".html_safe, :class => "add-on" %>
     <%= f.input_field :date, :as => :datepicker %>
-  <% end %>
-  <%= f.input :paid %>
-  <%= f.input :payment_date, :wrapper => :prepend do %>
-    <%= content_tag :span, "<img src=\"/assets/icons/calendar-month.png\" alt=\"Calendar\" />".html_safe, :class => "add-on" %>
-    <%= f.input_field :payment_date, :as => :datepicker %>
   <% end %>
   <%= f.association :consolidated_tax, :as => :radio, :collection => @consolidated_taxes %>
   <%= f.association :slips, :as => :check_boxes, :collection => [ @recurring_slip ] %>

@@ -41,7 +41,7 @@ Si installa come tutte le applicazioni rails:
   
 * Entra nella cartella e fai il checkout all'ultimo tag "stabile":
 
-  git checkout 0.8.2
+  git checkout 0.9
   
 Oppure lascia HEAD se ti piace il rischio :)
 
@@ -68,6 +68,10 @@ e nell'aggiornamento del database con:
   rake db:migrate
   
 Ti consiglio comunque di leggere il changelog (più in basso) per eventuali istruzioni aggiuntive
+
+=== Logo
+
+Il logo usato nella generazione dei pdf è in _lib/assets/images/logo-notule.png_ (PNG, 570x250 pixel)
 
 == Ambiente di sviluppo
 
@@ -163,53 +167,64 @@ Pubblicherò la versione 1.0 quando avrò completato le validazioni e inserito i
 
 == Changelog
 
-Di seguito i TAG git con le principali caratteristiche
+Di seguito i TAG git con le principali caratteristiche e cambiamenti
+
+=== 0.9
+
+- Trasformazione dei progetti ricorrenti in progetti di notula
+- Fix minori
 
 === 0.8.2
 
-Mancava la traduzione del label delle coordinate bancarie. Fix alla grandezza della textarea.
+- Mancava la traduzione del label delle coordinate bancarie
+- Fix alla grandezza della textarea.
 
 === 0.8.1
 
-Aggiunte le coordinate bancarie al profilo utente
+- Aggiunte le coordinate bancarie al profilo utente
 
 === 0.8
 
-Localizzazione Italiana (impostata come default) e verifica del responsive layout. Qualche resoconto in home page.
+- Localizzazione Italiana (impostata come default)
+- Verifica del responsive layout
+- Qualche resoconto in home page.
 
 === 0.7.2
 
-Aggiunta la pagina "Working slips"
+- Aggiunta la pagina dei progetti in corso ("Working slips")
 
 === 0.7.1
 
-Fix nella creazione dei progetti di notula
+- Fix nella creazione dei progetti di notula
 
 === 0.7
 
-Aggiunti i breadcrumbs e la gestione dei link attivi nella navbar
+- Aggiunti i breadcrumbs
+- Gestione dei link attivi nella navbar
 
 === 0.6
 
-Passaggio del template a Twitter Bootstrap e riscrittura di tutti i form con simple_form
+- Passaggio del template a Twitter Bootstrap
+- Riscrittura di tutti i form con simple_form
 
 === 0.5
 
-Gestione dei progetti di notula. Prima dell'aggiornamento modifica la migrazione _20120423154612_add_bank_coordinates.rb_ per inserire le tue coordinate bancarie oppure, successivamente alla migrazione, modifica l'opzione BANK_COORDINATES nell'apposita pagina
+- Gestione dei progetti di notula. Prima dell'aggiornamento modifica la migrazione _20120423154612_add_bank_coordinates.rb_ per inserire le tue coordinate bancarie oppure, successivamente alla migrazione, modifica l'opzione BANK_COORDINATES nell'apposita pagina
 
 === 0.4
 
-Corretto il bug #2
+- Corretto il bug #2
 
 === 0.3
 
-Corretto un grave errore che causava l'incremento della numerazione della prossima fattura ad ogni salvataggio di una fattura (ad esempio l'inserimento di un pagamento).
-Aggiornando a questa versione è necessario correggere la numerazione delle fatture che hanno ricevuto un pagamento dato che è stato modificato al momento dell'inserimento dello stesso.
+- Corretto un grave errore che causava l'incremento della numerazione della prossima fattura ad ogni salvataggio di una fattura (ad esempio l'inserimento di un pagamento). *Aggiornando a questa versione è necessario correggere la numerazione delle fatture che hanno ricevuto un pagamento dato che è stato modificato al momento dell'inserimento dello stesso*
 
 === 0.2
 
-Fatture ricorrenti funzionanti (da perfezionare)
+- Fatture ricorrenti funzionanti (da perfezionare)
 
 === 0.1
 
-Versione con gestione clienti e fatture funzionanti. Da testare il funzionamento delle ricorrenze. Autenticazione con Devise ma manca la gestione dei permessi con CanCan. In generale può essere considerata una versione stabile nelle sue (ancora poche) funzionalità
+- Versione con gestione clienti e fatture funzionanti. Da testare il funzionamento delle ricorrenze. 
+- Autenticazione con Devise ma manca la gestione dei permessi con CanCan. 
+- *In generale può essere considerata una versione stabile nelle sue (ancora poche) funzionalità*

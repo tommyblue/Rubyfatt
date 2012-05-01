@@ -138,7 +138,7 @@
     <% @invoices.each do |invoice| %>
       <tr>
         <td><%= invoice.number %></td>
-        <td><%= invoice.date.strftime("%d/%m/%Y") %></td>
+        <td><%=l invoice.date %></td>
         <td>
           <ul>
             <% invoice.slips.each do |slip| %>
