@@ -22,7 +22,7 @@
       <tr>
         <td><%= slip.customer.title %></td>
         <td><%= slip.name %></td>
-        <td><%= number_to_currency(slip.rate) %></td>
+        <td class="nowrap"><%= number_to_currency(slip.rate) %></td>
         <td><%= slip.schedule %></td>
         <td><span class="<%= 'label label-important' if slip.to_invoice? %>"><%= slip.next_occurrence ? slip.next_occurrence.in_time_zone("Rome").strftime("%d/%m/%Y") : '-' %></span></td>
         <td class="nowrap">
