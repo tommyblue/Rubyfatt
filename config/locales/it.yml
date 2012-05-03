@@ -208,6 +208,14 @@ it:
     current_year_invoices:
       title: "Notule dell'anno"
       total: "Totale"
+    incomes_this_year:
+      title: "Incassi anno in corso"
+      month: "Mese"
+      total: "Subtotale"
+    incomes_per_year:
+      title: "Incassi per anno"
+      year: "Anno"
+      total: "Subtotale"
   #
   # CONSOLIDATED TAXES
   #

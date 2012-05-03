@@ -21,15 +21,10 @@ Caratteristiche:
 
 == Da fare / To-do
 
-Un sacco di cose, se hai voglia di partecipare scrivimi e sarai il benvenuto! :)
-Intanto ecco una lista:
-
-* Gestire la creazione automatica delle opzioni se non presenti
-* Dalle fatture ricorrenti produrre un progetto di notula
-* Aggiungere un modello per i conti correnti
-* Gestire alcuni dati dei PDF dall'interfaccia
-* Gestione dei preventivi
-* Gestione di progetti personali
+Easyfatt è nato *di corsa* con la necessità di poter produrre notule in pochi giorni e alcuni aspetti, talvolta banali, sono stati tralasciati.
+I bug e le cose da fare sono tracciate nelle [issues di GitHub](https://github.com/tommyblue/Easyfatt/issues). se vuoi contribuire al progetto forkalo,lavora su qualche **issue** e fai una **pull request**.
+Tutte le informazioni che ti servono le trovi sull'help ufficiale di GitHub: [http://help.github.com/send-pull-requests/](http://help.github.com/send-pull-requests/)
+Se trovi un errore o hai un suggerimento, ma non hai modo/tempo/voglia di correggerlo, [crea una nuova issue](https://github.com/tommyblue/Easyfatt/issues/new) e cercherò di lavorarci.
 
 == Installazione
 
@@ -41,7 +36,7 @@ Si installa come tutte le applicazioni rails:
   
 * Entra nella cartella e fai il checkout all'ultimo tag "stabile":
 
-  git checkout 0.9
+  git checkout 0.10
   
 Oppure lascia HEAD se ti piace il rischio :)
 
@@ -163,11 +158,16 @@ Elenco i buoni propositi per il futuro :)
 
 === 1.0
 
-Pubblicherò la versione 1.0 quando avrò completato le validazioni e inserito il supporto a Cancan
+Pubblicherò la versione 1.0 quando avrò completato le validazioni e inserito il supporto a Cancan. Puoi vedere i bug da chiudere per la 1.0 nella pagina [issues su GitHub](https://github.com/tommyblue/Easyfatt/issues/).
 
 == Changelog
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
+
+=== 0.10
+
+- Aggiunte le icone per device iOS
+- Fix minori
 
 === 0.9
 
