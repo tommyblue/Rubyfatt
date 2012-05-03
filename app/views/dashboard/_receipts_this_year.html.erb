@@ -1,0 +1,20 @@
+<div id="receipts_this_year_chart" style="width: 100%; height: 500px;"></div>
+<script type="text/javascript">
+google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+          ['<%=t '.receipts_this_year.month', :default => "Month" %>', '<%=t '.receipts_this_year.total', :default => "Total" %>'],
+          ['Jan',  1030],
+          ['Feb',  2310]
+      ]);
+
+      var options = {
+          title: '<%=t '.receipts_this_year.title', :default => "Receipts this year" %>',
+          vAxis: {title: '<%=t '.receipts_this_year.month', :default => "Month" %>',  titleTextStyle: {color: 'red'}}
+      };
+
+      var chart = new google.visualization.BarChart(document.getElementById('receipts_this_year_chart'));
+      chart.draw(data, options);
+  }
+</script>
