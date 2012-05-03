@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Hello World!
-tagline: Supporting tagline
+title: Easyfatt
+tagline: Gestione fatture per partite IVA
 ---
 {% include JB/setup %}
 
