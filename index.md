@@ -5,7 +5,7 @@ tagline: Gestione fatture per partite IVA
 ---
 {% include JB/setup %}
 
-## Easyfatt![Easyfatt](/assets/easyfatt-logo.png)
+## Easyfatt![Easyfatt](assets/easyfatt-logo.png)
 
 Easyfatt è un'applicazione per la gestione delle fatture delle partite iva.
 
