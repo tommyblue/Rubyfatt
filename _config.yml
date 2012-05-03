@@ -39,7 +39,7 @@ author :
 # Else if you are pushing to username.github.com, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://tommyblue.github.com/Easyfatt/
+production_url : http://tommyblue.github.com/Easyfatt
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
@@ -83,9 +83,9 @@ JB :
   # These paths are to the main pages Jekyll-Bootstrap ships with.
   # Some JB helpers refer to these paths; change theme here if needed.
   #
-  archive_path: /archive/
-  categories_path : /categories/
-  tags_path : /tags/
+  archive_path: /archive.html
+  categories_path : /categories.html
+  tags_path : /tags.html
 
   # Settings for comments helper
   # Set 'provider' to the comment provider you want to use.

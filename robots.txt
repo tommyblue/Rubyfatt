@@ -1,0 +1,6 @@
+---
+title: Robots
+---
+User-agent: *
+
+Sitemap: {{site.production_url}}/sitemap.txt
