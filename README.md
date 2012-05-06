@@ -1,6 +1,6 @@
 ## Rubyfatt
 
-### [http://tommyblue.github.com/Rubyfatt/](http://tommyblue.github.com/Rubyfatt/)
+### [http://rubyfatt.kreations.it/](http://rubyfatt.kreations.it/)
 
 Rubyfatt è un'applicazione per la gestione delle fatture delle partite iva.
 
