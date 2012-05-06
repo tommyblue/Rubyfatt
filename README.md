@@ -24,8 +24,11 @@ Caratteristiche:
 ## Da fare / To-do
 
 Rubyfatt è nato *di corsa* con la necessità di poter produrre notule in pochi giorni e alcuni aspetti, talvolta banali, sono stati tralasciati.
+
 I bug e le cose da fare sono tracciate nelle [issues di GitHub](https://github.com/tommyblue/Rubyfatt/issues). se vuoi contribuire al progetto forkalo,lavora su qualche **issue** e fai una **pull request**.
+
 Tutte le informazioni che ti servono le trovi sull'help ufficiale di GitHub: [http://help.github.com/send-pull-requests/](http://help.github.com/send-pull-requests/)
+
 Se trovi un errore o hai un suggerimento, ma non hai modo/tempo/voglia di correggerlo, [crea una nuova issue](https://github.com/tommyblue/Rubyfatt/issues/new) e cercherò di lavorarci.
 
 ## Installazione
