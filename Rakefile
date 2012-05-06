@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Korund::Application.load_tasks
+Rubyfatt::Application.load_tasks

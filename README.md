@@ -1,8 +1,8 @@
-## Korund
+## Rubyfatt
 
-### [http://tommyblue.github.com/Korund/](http://tommyblue.github.com/korund/)
+### [http://tommyblue.github.com/Rubyfatt/](http://tommyblue.github.com/Rubyfatt/)
 
-Korund è un'applicazione per la gestione delle fatture delle partite iva.
+Rubyfatt è un'applicazione per la gestione delle fatture delle partite iva.
 
 Caratteristiche:
 
@@ -23,10 +23,10 @@ Caratteristiche:
 
 ## Da fare / To-do
 
-Korund è nato *di corsa* con la necessità di poter produrre notule in pochi giorni e alcuni aspetti, talvolta banali, sono stati tralasciati.
-I bug e le cose da fare sono tracciate nelle [issues di GitHub](https://github.com/tommyblue/korund/issues). se vuoi contribuire al progetto forkalo,lavora su qualche **issue** e fai una **pull request**.
+Rubyfatt è nato *di corsa* con la necessità di poter produrre notule in pochi giorni e alcuni aspetti, talvolta banali, sono stati tralasciati.
+I bug e le cose da fare sono tracciate nelle [issues di GitHub](https://github.com/tommyblue/Rubyfatt/issues). se vuoi contribuire al progetto forkalo,lavora su qualche **issue** e fai una **pull request**.
 Tutte le informazioni che ti servono le trovi sull'help ufficiale di GitHub: [http://help.github.com/send-pull-requests/](http://help.github.com/send-pull-requests/)
-Se trovi un errore o hai un suggerimento, ma non hai modo/tempo/voglia di correggerlo, [crea una nuova issue](https://github.com/tommyblue/korund/issues/new) e cercherò di lavorarci.
+Se trovi un errore o hai un suggerimento, ma non hai modo/tempo/voglia di correggerlo, [crea una nuova issue](https://github.com/tommyblue/Rubyfatt/issues/new) e cercherò di lavorarci.
 
 ## Installazione
 
@@ -34,7 +34,7 @@ Si installa come tutte le applicazioni rails:
 
 Clona il repository in una cartella:
 
-	git clone git@github.com:tommyblue/korund.git
+	git clone git@github.com:tommyblue/Rubyfatt.git
   
 Entra nella cartella e fai il checkout all'ultimo tag "stabile":
 
@@ -65,6 +65,16 @@ e nell'aggiornamento del database con:
 	rake db:migrate
   
 Ti consiglio comunque di leggere il changelog (più in basso) per eventuali istruzioni aggiuntive
+
+## Easyfatt?
+
+Fino alla versione 0.10 il software si chiamava **Easyfatt**. Scoperta l'esistenza di un software commerciale di fatturazione con lo stesso nome ho deciso di cambiare il nome dell'applicazione in **Rubyfatt**.
+
+**Rubyfatt** è in perfetta continuità con la vecchia versione, quindi se hai installato **Easyfatt** e vuoi passare a **Rubyfatt** tutto ciò che devi fare è modificare l'URL del repository con:
+
+	git remote set-url origin git@github.com:tommyblue/Rubyfatt.git
+	
+Fai soltanto attenzione che il nome del repository sia *origin* (di solito lo è), altrimenti modifica il comando di conseguenza.
 
 ### Logo
 
@@ -160,11 +170,15 @@ Elenco i buoni propositi per il futuro :)
 
 ### 1.0
 
-Pubblicherò la versione 1.0 quando avrò completato le validazioni e inserito il supporto a Cancan. Puoi vedere i bug da chiudere per la 1.0 nella pagina [issues su GitHub](https://github.com/tommyblue/korund/issues/).
+Pubblicherò la versione 1.0 quando avrò completato le validazioni e inserito il supporto a Cancan. Puoi vedere i bug da chiudere per la 1.0 nella pagina [issues su GitHub](https://github.com/tommyblue/Rubyfatt/issues/).
 
 ## Changelog
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
+
+### 0.11
+
+- Rinominata l'app in **Rubyfatt**
 
 ### 0.10
 
