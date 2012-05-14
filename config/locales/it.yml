@@ -1,8 +1,10 @@
 it:
   # Title inside the generated pdf
   pdf:
-    invoice:
+    invoice_project:
       label: "Progetto di notula"
+    estimate:
+      label: "Preventivo"
   ##########################################################
   #                                                        #
   #                    CONTROLLERS                         #

@@ -65,6 +65,7 @@
         <td><%= estimate.invoiced? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
         <td>
           <%= link_to(image_tag('icons/document--pencil.png', :alt => t('.estimates.edit', :default => 'Edit estimate'), :title => t('.estimates.edit', :default => 'Edit estimate')), edit_customer_estimate_path(@customer, estimate), :class => 'btn btn-mini') %>
+          <%= link_to image_tag('icons/document-pdf-text.png', :alt => t('.estimates.print', :default => 'Print estimate'), :title => t('.estimates.print', :default => 'Print estimate') ), customer_estimate_path(@customer, estimate.id, :format => 'pdf'), :class => 'btn btn-mini' %>
           <%= link_to(image_tag('icons/cross-circle.png', :alt => t('.estimates.delete', :default => 'Delete estimate'), :title => t('.estimates.delete', :default => 'Delete estimate')), customer_estimate_path(@customer,estimate.id), :method => :delete, :confirm => t('.estimates.delete_confirm', :default => "Are you sure to delete the estimate?\nATTENTION: Numbering won't be automatically restored..."), :class => 'btn btn-mini') %>
         </td>
       </tr>

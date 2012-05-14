@@ -35,11 +35,11 @@ Si installa come tutte le applicazioni rails:
 Clona il repository in una cartella:
 
 	git clone git@github.com:tommyblue/Rubyfatt.git
-  
+
 Entra nella cartella e fai il checkout all'ultimo tag "stabile":
 
-	git checkout 0.10
-  
+	git checkout 0.12
+
 Oppure lascia HEAD se ti piace il rischio :)
 
 Modifica il file **conf/databases.yml** secondo le tue esigenze e personalizza **db/seeds.rb** con i tuoi dati
@@ -51,7 +51,7 @@ Fai girare le migrazioni e il seed:
 Lancia il server con:
 
 	rails server
-  
+
 Collegati all'applicazione dall'indirizzo [http://localhost:3000](http://localhost:3000/) e fai login con i dati di **db_seeds.rb** (quelli di default sono **email** **"demo@example.com"** e **password** **"password"**)
 
 ## Aggiornamento
@@ -59,11 +59,11 @@ Collegati all'applicazione dall'indirizzo [http://localhost:3000](http://localho
 L'aggiornamento consiste nell'aggiornare il repository git locale con:
 
 	git pull
-  
+
 e nell'aggiornamento del database con:
 
 	rake db:migrate
-  
+
 Ti consiglio comunque di leggere il changelog (più in basso) per eventuali istruzioni aggiuntive
 
 ## Easyfatt?
@@ -73,7 +73,7 @@ Fino alla versione 0.10 il software si chiamava **Easyfatt**. Scoperta l'esisten
 **Rubyfatt** è in perfetta continuità con la vecchia versione, quindi se hai installato **Easyfatt** e vuoi passare a **Rubyfatt** tutto ciò che devi fare è modificare l'URL del repository con:
 
 	git remote set-url origin git@github.com:tommyblue/Rubyfatt.git
-	
+
 Fai soltanto attenzione che il nome del repository sia *origin* (di solito lo è), altrimenti modifica il comando di conseguenza.
 
 ### Logo
@@ -176,6 +176,10 @@ Pubblicherò la versione 1.0 quando avrò completato le validazioni e inserito i
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### 0.12
+
+- Gestione preventivi
+
 ### 0.11
 
 - Rinominata l'app in **Rubyfatt**
@@ -241,6 +245,6 @@ Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
 ### 0.1
 
-- Versione con gestione clienti e fatture funzionanti. Da testare il funzionamento delle ricorrenze. 
-- Autenticazione con Devise ma manca la gestione dei permessi con CanCan. 
+- Versione con gestione clienti e fatture funzionanti. Da testare il funzionamento delle ricorrenze.
+- Autenticazione con Devise ma manca la gestione dei permessi con CanCan.
 - *In generale può essere considerata una versione stabile nelle sue (ancora poche) funzionalità*

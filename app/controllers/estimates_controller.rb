@@ -48,7 +48,7 @@ class EstimatesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = InvoicePdf.new(@estimate, view_context)
+        pdf = InvoicePdf.new(@estimate, view_context, I18n.t('pdf.estimate.label'))
         send_data pdf.render, filename: "estimate_#{@estimate.date.year}-#{@estimate.number.to_s.rjust(3,'0')}.pdf",
         type: "application/pdf"
       end

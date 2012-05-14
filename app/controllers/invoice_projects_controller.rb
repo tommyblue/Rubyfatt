@@ -1,11 +1,11 @@
 class InvoiceProjectsController < ApplicationController
   before_filter :authenticate_user!
   layout "main"
-  
+
   def index
     @invoice_projects = current_user.invoice_projects
   end
-  
+
   def new
     @customer = Customer.find(params[:customer_id])
     @invoice_project = @customer.invoice_projects.new
@@ -13,7 +13,7 @@ class InvoiceProjectsController < ApplicationController
     @slips = @customer.working_slips
     @consolidated_taxes = current_user.consolidated_taxes
   end
-  
+
   def create
     @customer = Customer.find(params[:customer_id])
     @invoice_project = @customer.invoice_projects.new(params[:invoice_project])
@@ -25,7 +25,7 @@ class InvoiceProjectsController < ApplicationController
       render :action => "new"
     end
   end
-  
+
   def show
     @customer = Customer.find(params[:customer_id])
     @invoice_project = InvoiceProject.find(params[:id])
@@ -33,13 +33,13 @@ class InvoiceProjectsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = InvoicePdf.new(@invoice_project, view_context, I18n.t('pdf.invoice.label'), (bank_coordinates.nil? || bank_coordinates.strip == '' ) ? nil : bank_coordinates)
+        pdf = InvoicePdf.new(@invoice_project, view_context, I18n.t('pdf.invoice_project.label'), (bank_coordinates.nil? || bank_coordinates.strip == '' ) ? nil : bank_coordinates)
         send_data pdf.render, filename: "invoice_project_#{@invoice_project.date.year}-#{@invoice_project.number.to_s.rjust(3,'0')}.pdf",
         type: "application/pdf"
       end
     end
   end
-  
+
   def destroy
     @customer = Customer.find(params[:customer_id])
     @invoice_project = InvoiceProject.find(params[:id])
@@ -49,7 +49,7 @@ class InvoiceProjectsController < ApplicationController
       redirect_to(customer_slips_path(@customer), :error => t('controllers.invoice_projects.destroy.error', :default => "Error during the operation."))
     end
   end
-  
+
   # Creates invoice from invoice project
   def to_invoice
     @invoice_project = InvoiceProject.find(params[:id])
@@ -59,7 +59,7 @@ class InvoiceProjectsController < ApplicationController
       redirect_to(customer_slips_path(@invoice_project.customer), :error => t('controllers.invoice_projects.to_invoice.error', :default => "Error during the operation."))
     end
   end
-  
+
   # Creates an invoice project from an expired recurring slip
   def from_recurring_slip
     @recurring_slip = RecurringSlip.find(params[:id])
@@ -68,7 +68,7 @@ class InvoiceProjectsController < ApplicationController
     @invoice_project.date = Time.now
     @consolidated_taxes = current_user.consolidated_taxes
   end
-  
+
   def create_from_recurring_slip
     @recurring_slip = RecurringSlip.find(params[:id])
     @customer = @recurring_slip.customer
