@@ -32,6 +32,14 @@ it:
       destroy:
         success: "La notula è stata eliminata correttamente"
         error: "Non è stato possibile eliminare la notula. Si faccia attenzione al fatto che non è possibile eliminare una notula pagata"
+    estimates:
+      create:
+        success: "Il preventivo è stato creato correttamente"
+      update:
+        success: "Il preventivo è stato aggiornato con successo"
+      destroy:
+        success: "Il preventivo è stato eliminato correttamente"
+        error: "Non è stato possibile eliminare il preventivo"
     invoice_projects:
       create:
         success: "Il progetto di notula è stato creato correttamente"
@@ -87,7 +95,7 @@ it:
   #                      VIEWS                             #
   #                                                        #
   ##########################################################
-  
+
   #
   # LAYOUTS
   #
@@ -112,18 +120,19 @@ it:
       job_status: "Stato dei lavori"
       working_slips: "Progetti in corso"
       all_invoices: "Tutte le notule"
+      estimates: "Preventivi"
       invoice_projects: "Progetti di notula"
       unpaid_invoices: "Notule insolute"
       recurring_slips: "Progetti ricorrenti"
       reports:
         title: "Report"
-      customers: 
+      customers:
         title: "Clienti"
         show: "Visualizza i clienti"
         new: "Crea un nuovo cliente"
       taxes: "Regimi di tassazione"
       options: "Opzioni"
-      profile: 
+      profile:
         title: "Profilo"
         edit: "Modifica i tuoi dati"
         change_password: "Cambia la password"
@@ -136,7 +145,7 @@ it:
     dashboard: "Scrivania"
     consolidated_taxes:
       index: "Regime di tassazione"
-    customers: 
+    customers:
       index: "Clienti"
       new: "Nuovo"
       edit: "Modifica"
@@ -150,14 +159,17 @@ it:
     working_slips: "Progetti in corso"
     payments:
       add: "Registra un pagamento"
-    invoices: 
+    invoices:
       index: "Notule"
       new: "Nuova notula"
     unpaid_invoices: "Notule insolute"
-    invoice_projects: 
+    invoice_projects:
       index: "Progetti di notula"
       new: "Nuovo progetto di notula"
-    recurring_slips: 
+    estimates:
+      index: "Preventivi"
+      new: "Nuovo preventivo"
+    recurring_slips:
       index: "Progetti ricorrenti"
       new:: "Nuovo"
       edit: "Modifica"
@@ -330,6 +342,21 @@ it:
     form:
       legend: "Notula per"
   #
+  # ESTIMATES
+  #
+  estimates:
+    index:
+      title: "Preventivi"
+      print_invoice_projects: "Stampa PDF del preventivo"
+      delete_invoice_project: "Elimina il preventivo"
+      delete_invoice_project_confirm: "Si conferma di voler eliminare il preventivo?\nATTENZIONE: la numerazione sequenziale dei preventivi non verrà ripristinata"
+    new:
+      title: "Nuovo preventivo"
+    edit:
+      title: "Modifica il preventivo"
+    form:
+      legend: "Inserisci i dati"
+  #
   # INVOICE PROJECTS
   #
   invoice_projects:
@@ -389,7 +416,7 @@ it:
     - Ven
     - Sab
     abbr_month_names:
-    - 
+    -
     - Gen
     - Feb
     - Mar
@@ -415,7 +442,7 @@ it:
       long: ! '%d %B %Y'
       short: ! '%d %b'
     month_names:
-    - 
+    -
     - Gennaio
     - Febbraio
     - Marzo
@@ -583,4 +610,4 @@ it:
   activerecord:
     errors:
       <<: *errors
-  
+

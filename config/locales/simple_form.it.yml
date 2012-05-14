@@ -12,7 +12,6 @@ it:
         beginning: "All'inizio del mese"
         end: "L'ultimo giorno del mese"
         day: "Il %{count}º giorno del mese"
-        
     buttons:
       cancel: "Resetta il form"
     submit:
@@ -26,6 +25,9 @@ it:
       recurring_slip:
         create: "Crea il progetto"
         update: "Aggiorna il progetto"
+      estimate:
+        create: "Crea il preventivo"
+        update: "Aggiorna il preventivo"
       invoice_project:
         create: "Crea il progetto di notula"
         update: "Aggiorna il progetto di notula"
@@ -66,6 +68,10 @@ it:
         schedule_months: "Periodo di ricorrenza"
         day_of_expiration: "Giorno di scadenza"
         next_occurrence: "Prossima scadenza"
+      estimate:
+        date: "Data"
+        consolidated_tax: "Regime di tassazione"
+        slips: "Progetti"
       invoice_project:
         date: "Data"
         consolidated_tax: "Regime di tassazione"
@@ -102,7 +108,7 @@ it:
         remember_me: "Ricordami"
     hints:
       user:
-        password_edit: 
+        password_edit:
           password_confirmation: "Ripeti la password due volte per conferma"
       slip:
         duration: "La durata è espressa con valori interi"

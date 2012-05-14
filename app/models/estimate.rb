@@ -3,7 +3,10 @@ class Estimate < ActiveRecord::Base
   belongs_to :customer
   has_many :slips
 
-  validates_presence_of :date
+  default_scope order('estimates.number', 'estimates.id')
+  scope :by_year, lambda {|year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31")}
+
+  validates_presence_of :date, :customer, :consolidated_tax
 
   before_create do
     self.number = self.customer.user.options.where(:name => 'NEXT_ESTIMATE_NUMBER').first.value.to_i
@@ -36,7 +39,7 @@ class Estimate < ActiveRecord::Base
       end
     end
 
-     compounds.each { |compound| sum += compound }
+    compounds.each { |compound| sum += compound }
     sum
   end
 end

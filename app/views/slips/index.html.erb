@@ -1,5 +1,5 @@
 <%= content_for :breadcrumb do %>
-  <%= print_breadcrumbs([ 
+  <%= print_breadcrumbs([
                       ["#{@customer.title}", customer_slips_path(@customer)]
                     ]).html_safe %>
 <% end %>
@@ -63,19 +63,18 @@
         <td><%= number_to_currency(estimate.rate) %></td>
         <td><%= number_to_currency(estimate.total) %></td>
         <td><%= estimate.invoiced? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
-        <td><%= link_to(image_tag('icons/cross-circle.png', :alt => t('.estimates.delete', :default => 'Delete estimate'), :title => t('.estimates.delete', :default => 'Delete estimate')), customer_estimate_path(@customer,estimate.id), :method => :delete, :confirm => t('.estimates.delete_confirm', :default => "Are you sure to delete the estimate?\nATTENTION: You shouldn't destroy it unless you know what you're doing. Numbering won't be automatically restored..."), :class => 'btn btn-mini') %></td>
+        <td>
+          <%= link_to(image_tag('icons/document--pencil.png', :alt => t('.estimates.edit', :default => 'Edit estimate'), :title => t('.estimates.edit', :default => 'Edit estimate')), edit_customer_estimate_path(@customer, estimate), :class => 'btn btn-mini') %>
+          <%= link_to(image_tag('icons/cross-circle.png', :alt => t('.estimates.delete', :default => 'Delete estimate'), :title => t('.estimates.delete', :default => 'Delete estimate')), customer_estimate_path(@customer,estimate.id), :method => :delete, :confirm => t('.estimates.delete_confirm', :default => "Are you sure to delete the estimate?\nATTENTION: Numbering won't be automatically restored..."), :class => 'btn btn-mini') %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<% link_to t('.estimates.new', :default => "helpers.links.new"),
+<%= link_to t('.estimates.new', :default => "helpers.links.new"),
             new_customer_estimate_path(@customer),
             :class => 'btn btn-primary' %>
-
-<a class="btn btn-primary disabled" href="#">
-<%=t '.estimates.new', :default => "helpers.links.new" %>
-</a>
 <!-- /ESTIMATES -->
 
 
