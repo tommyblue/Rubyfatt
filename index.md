@@ -47,7 +47,7 @@ Clona il repository in una cartella:
 
 Entra nella cartella e fai il checkout all'ultimo tag "stabile":
 
-	git checkout 0.12
+	git checkout 0.13
 
 Oppure lascia HEAD se ti piace il rischio :)
 
@@ -184,6 +184,10 @@ Pubblicherò la versione 1.0 quando avrò completato le validazioni e inserito i
 ## Changelog
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
+
+### 0.13
+
+- Aggiunto il metodo *Option.get_option(user, key)* per ottenere un'opzione o crearla al volo se non esiste
 
 ### 0.12
 
