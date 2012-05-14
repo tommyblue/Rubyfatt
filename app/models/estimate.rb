@@ -9,13 +9,14 @@ class Estimate < ActiveRecord::Base
   validates_presence_of :date, :customer, :consolidated_tax
 
   before_create do
-    self.number = self.customer.user.options.where(:name => 'NEXT_ESTIMATE_NUMBER').first.value.to_i
+    option = Option.get_option(self.customer.user, 'NEXT_ESTIMATE_NUMBER')
+    self.number = option.value.to_i
   end
 
   after_create do
-    opt = self.customer.user.options.where(:name => 'NEXT_ESTIMATE_NUMBER').first
-    opt.value = opt.value.to_i + 1
-    opt.save!
+    option = Option.get_option(self.customer.user, 'NEXT_ESTIMATE_NUMBER')
+    option.value = option.value.to_i + 1
+    option.save!
   end
 
   # Get the sum of the slips' rates

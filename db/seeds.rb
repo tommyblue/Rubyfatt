@@ -1,7 +1,9 @@
 user = User.create(:email => "demo@example.com", :password => "password", :name => "John", :surname => "Doe", :address => "Via di qui, 1", :zip_code => "12345", :town => "Firenze", :province => "FI", :country => "", :tax_code => "ABCDEF00X00A123Z", :vat => "012345678910", :phone => "+39.333.1234567")
 user.save!
 
-user.options.create([{:name => 'NEXT_ESTIMATE_NUMBER', :value => 1, :integer => true}, {:name => 'NEXT_INVOICE_NUMBER', :value => 1, :integer => true}, {:name => 'NEXT_INVOICE_PROJECT_NUMBER', :value => 1, :integer => true}])
+# La creazione delle opzioni e' automatica dalla versione 0.13. Se si usa una versione precedente scommentare la riga qui sotto
+# user.options.create([{:name => 'NEXT_ESTIMATE_NUMBER', :value => 1, :integer => true}, {:name => 'NEXT_INVOICE_NUMBER', :value => 1, :integer => true}, {:name => 'NEXT_INVOICE_PROJECT_NUMBER', :value => 1, :integer => true}])
+
 taxes = Tax.create([{:order => 0, :name => 'INPS 4%', :rate => 4, :compound => false}, {:order => 1, :name => 'IVA 21%', :rate => 21, :compound => true}, {:order => 2, :name => "Ritenuta d'acconto -20%", :rate => -20, :compound => true}])
 consolidated_tax = ConsolidatedTax.create(:name => "P. IVA")
 consolidated_tax.taxes << taxes
