@@ -67,8 +67,12 @@ html, body {
 	background:#57A957;
 	border:1px solid #4C964D;
 	color:#FFF;
-}	
+}
 
 #rubyfattrubyfatt img {
 	float: right;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Buenard', serif;
 }
