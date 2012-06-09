@@ -19,10 +19,12 @@
     </tr>
   </thead>
   <tbody>
+    <% total = 0 %>
     <% @slips.each do |slip| %>
       <tr>
         <td><%= slip.name %></td>
         <td><%= number_to_currency(slip.rate) %></td>
+        <% total += slip.rate %>
         <td><%= l slip.created_at %></td>
         <td><%= slip.timed? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
         <td><%= slip.duration ? ChronicDuration.output(slip.duration, :format => :short) : '-' %></td>
@@ -33,6 +35,11 @@
         </td>
       </tr>
     <% end %>
+    <tr>
+      <th>Totale</th>
+      <th><%= number_to_currency(total) %></th>
+      <td colspan="5"></td>
+    </tr>
   </tbody>
 </table>
 
