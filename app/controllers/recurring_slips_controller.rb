@@ -1,11 +1,11 @@
 class RecurringSlipsController < ApplicationController
   before_filter :authenticate_user!
   layout "main"
-  
+
   def index
-    @recurring_slips = current_user.recurring_slips.all
+    @recurring_slips = current_user.recurring_slips.order('next_occurrence ASC').all
   end
-  
+
   def show
     @recurring_slip = RecurringSlip.find(params[:id])
   end
