@@ -1,11 +1,8 @@
 class PaymentsController < ApplicationController
-  before_filter :authenticate_user!
-  layout "main"
-  
   def new
     @invoice = Invoice.find(params[:invoice_id])
   end
-  
+
   def create
     @invoice = Invoice.find(params[:invoice_id])
     @customer = @invoice.customer

@@ -1,11 +1,8 @@
 class TaxesController < ApplicationController
-  before_filter :authenticate_user!
-  layout "main"
-  
   def index
     @taxes = current_user.taxes
   end
-  
+
   def show
     @tax = Tax.find(params[:id])
   end

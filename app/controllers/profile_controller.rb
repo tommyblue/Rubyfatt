@@ -1,7 +1,4 @@
 class ProfileController < ApplicationController
-  before_filter :authenticate_user!
-  layout "main"
-  
   def edit
     @user = current_user
   end
@@ -15,7 +12,7 @@ class ProfileController < ApplicationController
       render :action => "edit"
     end
   end
-  
+
   def password_edit
     @user = current_user
   end

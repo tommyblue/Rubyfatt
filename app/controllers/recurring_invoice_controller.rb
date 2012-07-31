@@ -1,7 +1,4 @@
 class RecurringInvoiceController < ApplicationController
-  before_filter :authenticate_user!
-  layout "main"
-  
   def new
     @recurring_slip = RecurringSlip.find(params[:recurring_slip_id])
     @customer = @recurring_slip.customer

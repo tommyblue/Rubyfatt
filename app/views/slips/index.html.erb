@@ -26,12 +26,12 @@
         <td><%= number_to_currency(slip.rate) %></td>
         <% total += slip.rate %>
         <td><%= l slip.created_at %></td>
-        <td><%= slip.timed? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
+        <td><%= slip.timed? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td><%= slip.duration ? ChronicDuration.output(slip.duration, :format => :short) : '-' %></td>
-        <td><%= slip.estimated? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
+        <td><%= slip.estimated? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td>
-          <%= link_to(image_tag('icons/document--pencil.png', :alt => t('.slips.edit', :default => 'Edit slip'), :title => t('.slips.edit', :default => 'Edit slip')), edit_customer_slip_path(@customer, slip), :class => 'btn btn-mini') %>
-          <%= link_to(image_tag('icons/cross-circle.png', :alt => t('.slips.delete', :default => 'Delete slip'), :title => t('.slips.delete', :default => 'Delete slip')), customer_slip_path(@customer,slip.id), :method => :delete, :confirm => t(".slips.delete_confirm", :default => "Are you sure to delete the slip?"), :class => 'btn btn-mini') %>
+          <%= link_to('<i class="icon-edit"></i> '.html_safe+t('.slips.edit', :default => 'Edit'), edit_customer_slip_path(@customer, slip), :class => 'btn btn-mini btn-warning') %>
+          <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.slips.delete', :default => 'Delete'), customer_slip_path(@customer,slip.id), :method => :delete, :confirm => t(".slips.delete_confirm", :default => "Are you sure to delete the slip?"), :class => 'btn btn-mini btn-danger') %>
         </td>
       </tr>
     <% end %>
@@ -69,11 +69,11 @@
         <td><%= l estimate.date %></td>
         <td><%= number_to_currency(estimate.rate) %></td>
         <td><%= number_to_currency(estimate.total) %></td>
-        <td><%= estimate.invoiced? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
+        <td><%= estimate.invoiced? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td>
-          <%= link_to(image_tag('icons/document--pencil.png', :alt => t('.estimates.edit', :default => 'Edit estimate'), :title => t('.estimates.edit', :default => 'Edit estimate')), edit_customer_estimate_path(@customer, estimate), :class => 'btn btn-mini') %>
-          <%= link_to image_tag('icons/document-pdf-text.png', :alt => t('.estimates.print', :default => 'Print estimate'), :title => t('.estimates.print', :default => 'Print estimate') ), customer_estimate_path(@customer, estimate.id, :format => 'pdf'), :class => 'btn btn-mini' %>
-          <%= link_to(image_tag('icons/cross-circle.png', :alt => t('.estimates.delete', :default => 'Delete estimate'), :title => t('.estimates.delete', :default => 'Delete estimate')), customer_estimate_path(@customer,estimate.id), :method => :delete, :confirm => t('.estimates.delete_confirm', :default => "Are you sure to delete the estimate?\nATTENTION: Numbering won't be automatically restored..."), :class => 'btn btn-mini') %>
+          <%= link_to('<i class="icon-edit"></i> '.html_safe+t('.estimates.edit', :default => 'Edit'), edit_customer_estimate_path(@customer, estimate), :class => 'btn btn-mini btn-warning') %>
+          <%= link_to '<i class="icon-print"></i> '.html_safe+t('.estimates.print', :default => 'PDF'), customer_estimate_path(@customer, estimate.id, :format => 'pdf'), :class => 'btn btn-mini btn-primary' %>
+          <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.estimates.delete', :default => 'Delete'), customer_estimate_path(@customer,estimate.id), :method => :delete, :confirm => t('.estimates.delete_confirm', :default => "Are you sure to delete the estimate?\nATTENTION: Numbering won't be automatically restored..."), :class => 'btn btn-mini btn-danger') %>
         </td>
       </tr>
     <% end %>
@@ -108,11 +108,11 @@
         <td><%= l project.date %></td>
         <td><%= number_to_currency(project.rate) %></td>
         <td><%= number_to_currency(project.total) %></td>
-        <td><%= project.invoiced? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
+        <td><%= project.invoiced? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td>
-          <%= link_to(image_tag('icons/cross-circle.png', :alt => t('.invoice_projects.delete', :default => 'Delete invoice project'), :title => t('.invoice_projects.delete', :default => 'Delete invoice project')), customer_invoice_project_path(@customer,project.id), :method => :delete, :confirm => t(".invoice_projects.delete_confirm", :default => "Are you sure to delete the invoice project?\nATTENTION: You shouldn't destroy it unless you know what you're doing. Numbering won't be automatically restored..."), :class => 'btn btn-mini') %>
-          <%= link_to(image_tag('icons/inbox--arrow.png', :alt => t('.invoice_projects.transform_to_invoice', :default => 'Transform to invoice'), :title => t('.invoice_projects.transform_to_invoice', :default => 'Transform to invoice') ), project_to_invoice_path(project.id), :confirm => t('.invoice_projects.transform_to_invoice_confirm', :default => "Transform the invoice project to invoice?"), :class => 'btn btn-mini') unless project.invoiced %>
-          <%= link_to image_tag('icons/document-pdf-text.png', :alt => t('.invoice_projects.print', :default => 'Print invoice project'), :title => t('.invoice_projects.print', :default => 'Print invoice project') ), customer_invoice_project_path(@customer,project.id, :format => 'pdf'), :class => 'btn btn-mini' %>
+          <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.invoice_projects.delete', :default => 'Delete'), customer_invoice_project_path(@customer,project.id), :method => :delete, :confirm => t(".invoice_projects.delete_confirm", :default => "Are you sure to delete the invoice project?\nATTENTION: You shouldn't destroy it unless you know what you're doing. Numbering won't be automatically restored..."), :class => 'btn btn-mini btn-danger') %>
+          <%= link_to('<i class="icon-copy"></i> '.html_safe+t('.invoice_projects.transform_to_invoice', :default => 'Transform to invoice'), project_to_invoice_path(project.id), :confirm => t('.invoice_projects.transform_to_invoice_confirm', :default => "Transform the invoice project to invoice?"), :class => 'btn btn-mini btn-primary') unless project.invoiced %>
+          <%= link_to '<i class="icon-print"></i> '.html_safe+t('.invoice_projects.print', :default => 'PDF'), customer_invoice_project_path(@customer,project.id, :format => 'pdf'), :class => 'btn btn-mini btn-primary' %>
         </td>
       </tr>
     <% end %>
@@ -155,12 +155,12 @@
         </td>
         <td><%= number_to_currency(invoice.rate) %></td>
         <td><%= number_to_currency(invoice.total) %></td>
-        <td><%= invoice.paid? ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
+        <td><%= invoice.paid? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td><%= invoice.payment_date.strftime("%d/%m/%Y") if invoice.paid and invoice.payment_date %></td>
         <td>
-          <%= link_to(image_tag('icons/blue-document-page-previous.png', :alt => t('.invoices.delete_and_restore', :default => 'Delete invoice and restore slips' ), :title => t('.invoices.delete_and_restore', :default => 'Delete invoice and restore slips' )), customer_invoice_path(@customer,invoice.id), :method => :delete, :confirm => t('.invoices.delete_and_restore_confirm', :default => "Are you sure to delete the invoice and restore the slips?\nATTENTION: You shouldn't destroy invoices unless you know what you're doing. Numbering won't be automatically restored..."), :class => 'btn btn-mini') unless invoice.paid? %>
-          <%= link_to(image_tag('icons/money-coin.png', :alt => t('.invoices.add_payment', :default => 'Add payment'), :title => t('.invoices.add_payment', :default => 'Add payment')), "/invoice/#{invoice.id}/payment", :class => 'btn btn-mini') unless invoice.paid? %>
-          <%= link_to image_tag('icons/document-pdf-text.png', :alt => t('.invoices.print', :default => 'Print invoice'), :title => t('.invoices.print', :default => 'Print invoice') ), customer_invoice_path(@customer,invoice.id, :format => 'pdf'), :class => 'btn btn-mini' %>
+          <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.invoices.delete_and_restore', :default => 'Delete' ), customer_invoice_path(@customer,invoice.id), :method => :delete, :confirm => t('.invoices.delete_and_restore_confirm', :default => "Are you sure to delete the invoice and restore the slips?\nATTENTION: You shouldn't destroy invoices unless you know what you're doing. Numbering won't be automatically restored..."), :class => 'btn btn-mini btn-danger') unless invoice.paid? %>
+          <%= link_to('<i class="icon-money"></i> '.html_safe+t('.invoices.add_payment', :default => 'Add payment'), "/invoice/#{invoice.id}/payment", :class => 'btn btn-mini btn-success') unless invoice.paid? %>
+          <%= link_to '<i class="icon-print"></i> '.html_safe+t('.invoices.print', :default => 'PDF'), customer_invoice_path(@customer,invoice.id, :format => 'pdf'), :class => 'btn btn-mini btn-primary' %>
         </td>
       </tr>
     <% end %>

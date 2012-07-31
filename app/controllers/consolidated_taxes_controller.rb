@@ -1,11 +1,8 @@
 class ConsolidatedTaxesController < ApplicationController
-  before_filter :authenticate_user!
-  layout "main"
-  
   def index
     @consolidated_taxes = current_user.consolidated_taxes
   end
-  
+
   def show
     @consolidated_tax = ConsolidatedTax.find(params[:id])
   end

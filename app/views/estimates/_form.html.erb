@@ -1,17 +1,13 @@
 <%= simple_form_for [@customer, @estimate], :html => {:class => 'form-horizontal' } do |f| %>
 
   <% if f.error_notification %>
-    <div class="alert alert-error fade in">
-      <a class="close" data-dismiss="alert" href="#">&times;</a>
-      <%= f.error_notification %>
-    </div>
+    <%= f.error_notification %>
   <% end %>
 
   <legend><%=t '.legend', :default => 'Insert data' %></legend>
 
   <%= f.input :date, :wrapper => :prepend do %>
-    <%= content_tag :span, "<img src=\"/assets/icons/calendar-month.png\" alt=\"Calendar\" />".html_safe, :class => "add-on" %>
-    <%= f.input_field :date, :as => :datepicker %>
+    <%= content_tag :span, "<img src=\"/icons/calendar-month.png\" alt=\"Calendar\" />".html_safe, :class => "add-on" %><%= f.input_field :date, :as => :datepicker %>
   <% end %>
 
   <%= f.association :consolidated_tax, :as => :radio, :collection => @consolidated_taxes %>

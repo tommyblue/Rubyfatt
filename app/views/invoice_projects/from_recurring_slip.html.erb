@@ -10,16 +10,12 @@
 <%= simple_form_for [@customer, @invoice_project], :url => "/invoice_projects/#{@recurring_slip.id}/from_recurring_slip", :html => {:class => 'form-horizontal' } do |f| %>
 
   <% if f.error_notification %>
-    <div class="alert alert-error fade in">
-      <a class="close" data-dismiss="alert" href="#">&times;</a>
-      <%= f.error_notification %>
-    </div>
+    <%= f.error_notification %>
   <% end %>
   
   <legend><%=t '.legend', :default => "Invoice project for" %> <%= @customer.title %></legend>
   <%= f.input :date, :wrapper => :prepend do %>
-    <%= content_tag :span, "<img src=\"/assets/icons/calendar-month.png\" alt=\"Calendar\" />".html_safe, :class => "add-on" %>
-    <%= f.input_field :date, :as => :datepicker %>
+    <%= content_tag :span, "<img src=\"/icons/calendar-month.png\" alt=\"Calendar\" />".html_safe, :class => "add-on" %><%= f.input_field :date, :as => :datepicker %>
   <% end %>
   <%= f.association :consolidated_tax, :as => :radio, :collection => @consolidated_taxes %>
   <%= f.association :slips, :as => :check_boxes, :collection => [ @recurring_slip ] %>

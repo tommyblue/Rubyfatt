@@ -16,44 +16,38 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
-
-    <!-- Javascripts
-    ================================================== -->
-    <%= javascript_include_tag "application" %>
-    <% if I18n.locale == :it %>
-      <%= javascript_include_tag "jquery.ui.datepicker-it" %>
-    <% end %>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        // Modifies the favicon adding the number of expired recurring slips
-        <% expired = expired_recurring_slips_badge(true) %>
-        <% if expired > 0 %>
-          Tinycon.setBubble(<%= expired %>);
-        <% end %>
-      });
-    </script>
   </head>
   <body>
 
-    <%= render('layouts/navbar') %>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+          <div class="container-fluid">
+          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">Rubyfatt</a>
+          <div class="container-fluid nav-collapse">
+            <ul class="nav">
+              
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header"><%=t '.sidebar.title', :default => "Customers" %></li>
-              <% current_user.customers.order(:title,:surname,:name).each do |customer| %>
-        			  <li><%= link_to customer.title, customer_slips_path(customer) %></li>
-        			<% end %>
+              <li class="nav-header"><%=t '.sidebar.title', :default => "Available actions" %></li>
+                <%= render :partial => "devise/shared/links" %>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
-          <%= content_for?(:breadcrumb) ? yield(:breadcrumb) : render('layouts/breadcrumb') %>
-
-          <%= render :partial => "layouts/flashes" %>
-
           <%= yield %>
         </div>
       </div><!--/row-->
@@ -64,5 +58,11 @@
       </footer>
 
     </div> <!-- /container -->
+
+    <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
+
   </body>
 </html>

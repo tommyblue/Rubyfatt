@@ -1,0 +1,36 @@
+<% if flash[:info] %>
+  <div class="alert alert-info fade in" data-alert="alert">
+    <a class="close" data-dismiss='alert' href="#">×</a>
+    <p><%= flash[:info] %></p>
+  </div>
+<% end %>
+<% if flash[:warning] %>
+  <div class="alert fade in" data-alert="alert">
+    <a class="close" data-dismiss='alert' href="#">×</a>
+    <p><%= flash[:warning] %></p>
+  </div>
+<% end %>
+<% if flash[:error] %>
+  <div class="alert alert-error fade in" data-alert="alert">
+    <a class="close" data-dismiss='alert' href="#">×</a>
+    <p><%= flash[:error] %></p>
+  </div>
+<% end %>
+<% if flash[:alert] %>
+  <div class="alert alert-error fade in" data-alert="alert">
+    <a class="close" data-dismiss='alert' href="#">×</a>
+    <p><%= flash[:alert] %></p>
+  </div>
+<% end %>
+<% if flash[:notice] %>
+  <div class="alert alert-success fade in" data-alert="alert">
+    <a class="close" data-dismiss='alert' href="#">×</a>
+    <p><%= flash[:notice] %></p>
+  </div>
+<% end %>
+<% if flash[:success] %>
+  <div class="alert alert-success fade in" data-alert="alert">
+    <a class="close" data-dismiss='alert' href="#">×</a>
+    <p><%= flash[:success] %></p>
+  </div>
+<% end %>

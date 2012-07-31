@@ -1,5 +1,5 @@
 <%= content_for :breadcrumb do %>
-  <%= print_breadcrumbs([ 
+  <%= print_breadcrumbs([
                       [t('breadcrumb.options.index', :default => "Options"), options_path]
                     ]).html_safe %>
 <% end %>
@@ -18,7 +18,7 @@
       <tr>
         <td><%= option.name %></td>
         <td><%= option.value %></td>
-        <td><%= link_to(image_tag('icons/document--pencil.png', :alt => t('.edit', :default => 'Edit option'), :title => t('.edit', :default => 'Edit option')), edit_option_path(option), :class => 'btn btn-mini') %></td>
+        <td><%= link_to('<i class="icon-edit"></i> '.html_safe+t('.edit', :default => 'Edit option'), edit_option_path(option), :class => 'btn btn-mini btn-warning') %></td>
       </tr>
     <% end %>
   </tbody>

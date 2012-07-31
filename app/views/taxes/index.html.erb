@@ -20,7 +20,7 @@
       <tr>
         <td><%= tax.name %></td>
         <td><%= tax.rate %>%</td>
-        <td><%= tax.compound ? image_tag("icons/tick-circle.png") : image_tag("icons/slash.png") %></td>
+        <td><%= tax.compound ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td><%= tax.order %></td>
         <td></td>
       </tr>

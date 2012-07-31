@@ -1,7 +1,4 @@
 class InvoiceProjectsController < ApplicationController
-  before_filter :authenticate_user!
-  layout "main"
-
   def index
     @invoiced_invoice_projects = current_user.invoice_projects.invoiced
     @uninvoiced_invoice_projects = current_user.invoice_projects.uninvoiced

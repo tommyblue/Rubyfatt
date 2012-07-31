@@ -1,12 +1,9 @@
 <%= simple_form_for @option, :html => {:class => 'form-horizontal' } do |f| %>
 
   <% if f.error_notification %>
-    <div class="alert alert-error fade in">
-      <a class="close" data-dismiss="alert" href="#">&times;</a>
-      <%= f.error_notification %>
-    </div>
+    <%= f.error_notification %>
   <% end %>
-  
+
   <legend><%=t '.insert_data' %></legend>
   <%= f.input :value %>
 

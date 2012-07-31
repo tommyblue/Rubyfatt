@@ -260,7 +260,7 @@ it:
   options:
     index:
       title: "Opzioni"
-      edit: "Modifica il valore dell'opzione"
+      edit: "Modifica"
       alert:
         title: "Fai attenzione!"
         message: "Le opzioni sono usate per determinare vari aspetti del flusso di lavoro. Fai molta attenzione nel modificarne i valori!"
@@ -287,37 +287,39 @@ it:
       slips:
         title: "Progetti in corso"
         new: "Nuovo progetto"
-        edit: "Modifica il progetto"
-        delete: "Elimina il progetto"
+        edit: "Modifica"
+        delete: "Elimina"
         delete_confirm: "Si conferma di voler eliminare il progetto?"
       estimates:
         title: "Preventivi"
         new: "Nuovo preventivo"
-        delete: "Elimina il preventivo"
+        delete: "Elimina"
         delete_confirm: "Si conferma di voler eliminare il preventivo?\nATTENZIONE: Non dovresti eliminare un preventivo senza sapere cosa stai facendo. Ricorda che la numerazione sequenziale dei preventivi non verrà ripristinata..."
       invoice_projects:
         title: "Progetti di notula"
         new: "Nuovo progetto di notula"
-        print: "Stampa PDF del progetto di notula"
-        transform_to_invoice: "Trasforma in notula"
+        print: "PDF"
+        transform_to_invoice: "Fattura"
         transform_to_invoice_confirm: "Trasformare il progetto di notula in notula?"
-        delete: "Elimina il progetto di notula"
+        delete: "Elimina"
         delete_confirm: "Si conferma di voler eliminare il progetto di notula?\nATTENZIONE: Non dovresti eliminare un progetto di notula senza sapere cosa stai facendo. Ricorda che la numerazione sequenziale dei progetti di notula non verrà ripristinata..."
       invoices:
         title: "Notule"
         new: "Nuova notula"
-        delete_and_restore: "Eliminare la notula e ripristinare i progetti?"
+        delete_and_restore: "Elimina"
+        delete_and_restore_hint: "Eliminare la notula e ripristinare i progetti?"
         delete_and_restore_confirm: "Si conferma di voler eliminare la notula e ripristinare i suoi progetti?\nATTENZIONE: Non dovresti eliminare una notula senza sapere cosa stai facendo. Ricorda che la numerazione sequenziale delle notule non verrà ripristinata..."
-        add_payment: "Segnala il pagamento della notula"
-        print: "Stampa PDF della notula"
+        add_payment: "Pagamento"
+        add_payment_hint: "Segnala il pagamento della notula"
+        print: "PDF"
     new:
       title: "Nuovo progetto"
     edit:
       title: "Modifica il progetto"
     working:
       title: "Progetti in corso"
-      edit: "Modifica il progetto"
-      delete: "Elimina il progetto"
+      edit: "Modifica"
+      delete: "Elimina"
       delete_confirm: "Si conferma di voler eliminare il progetto?"
   #
   # RECURRING SLIPS
@@ -326,10 +328,14 @@ it:
     index:
       title: "Progetti ricorrenti"
       new: "Crea un nuovo progetto ricorrente"
-      create_invoice: "Crea una notula derivante da questo progetto ricorrente"
-      create_invoice_project: "Crea un progetto di notula derivante da questo progetto ricorrente"
-      edit: "Modifica il progetto ricorrente"
-      delete: "Elimina il progetto ricorrente"
+      create_invoice: "Fattura"
+      create_invoice_hint: "Crea una notula derivante da questo progetto ricorrente"
+      create_invoice_project: "Progetto di notula"
+      create_invoice_project_hint: "Crea un progetto di notula derivante da questo progetto ricorrente"
+      edit: "Modifica"
+      edit_hint: "Modifica il progetto ricorrente"
+      delete: "Elimina"
+      delete_hint: "Elimina il progetto ricorrente"
       delete_confirm: "Si conferma di voler eliminare il progetto ricorrente?"
     new:
       title: "Nuovo progetto ricorrente"
@@ -351,8 +357,8 @@ it:
   estimates:
     index:
       title: "Preventivi"
-      print_invoice_projects: "Stampa PDF del preventivo"
-      delete_invoice_project: "Elimina il preventivo"
+      print_invoice_projects: "PDF"
+      delete_invoice_project: "Elimina"
       delete_invoice_project_confirm: "Si conferma di voler eliminare il preventivo?\nATTENZIONE: la numerazione sequenziale dei preventivi non verrà ripristinata"
     new:
       title: "Nuovo preventivo"
@@ -368,10 +374,10 @@ it:
       title: "Progetti di notula"
       uninvoiced: "Non fatturati"
       invoiced: "Fatturati"
-      print_invoice_projects: "Stampa PDF del progetto di notula"
-      transform_to_invoice: "Trasforma in notula"
+      print_invoice_projects: "PDF"
+      transform_to_invoice: "Fattura"
       transform_to_invoice_confirm: "Trasformare il progetto di notula in notula?"
-      delete_invoice_project: "Elimina il progetto di notula"
+      delete_invoice_project: "Elimina"
       delete_invoice_project_confirm: "Si conferma di voler eliminare il progetto di notula?\nATTENZIONE: Non dovresti eliminare un progetto di notula senza sapere cosa stai facendo. Ricorda che la numerazione sequenziale dei progetti di notula non verrà ripristinata..."
     new:
       title: "Nuovo progetto di notula"
@@ -384,10 +390,10 @@ it:
   # INVOICES
   #
   invoices:
-    delete_and_restore: "Elimina la notula e ripristina il progetto"
+    delete_and_restore: "Elimina"
     delete_and_restore_confirm: "Si conferma di voler eliminare la notula e ripristinare il progetto?\nATTENZIONE: Non dovresti eliminare una notula emessa senza sapere cosa stai facendo. Ricorda che la numerazione sequenziale delle notule non verrà ripristinata..."
-    add_payment: "Registra il pagamento"
-    print_invoice: "Stampa PDF della notula"
+    add_payment: "Pagamento"
+    print_invoice: "PDF"
     all:
       title: "Notule"
       filter_by_year: "Filtra per anno"

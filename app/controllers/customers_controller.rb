@@ -1,7 +1,4 @@
 class CustomersController < ApplicationController
-  before_filter :authenticate_user!
-  layout "main"
-
   def index
     @customers = current_user.customers.order(:title,:surname,:name)
   end

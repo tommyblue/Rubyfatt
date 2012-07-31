@@ -1,5 +1,5 @@
 <%= content_for :breadcrumb do %>
-  <%= print_breadcrumbs([ 
+  <%= print_breadcrumbs([
                       [t('breadcrumb.invoices.index', :default => 'Invoices'), all_invoices_path],
                       [t('breadcrumb.unpaid_invoices', :default => 'Unpaid invoices'), nil]
                     ]).html_safe %>
@@ -33,10 +33,10 @@
           </td>
           <td><%= number_to_currency(invoice.rate) %></td>
           <td><%= number_to_currency(invoice.total) %></td>
-          <td class="nowrap">
-            <%= link_to(image_tag('icons/blue-document-page-previous.png', :alt => t('invoices.delete_and_restore', :default => 'Delete invoice and restore slips'), :title => t('invoices.delete_and_restore', :default => 'Delete invoice and restore slips')), customer_invoice_path(invoice.customer,invoice.id), :method => :delete, :confirm => t('invoices.delete_and_restore_confirm', :default => "Are you sure to delete the invoice and restore the slips?\nATTENTION: You shouldn't destroy invoices unless you know what you're doing. Numbering won't be automatically restored..."), :class => 'btn btn-mini') unless invoice.paid? %>
-            <%= link_to(image_tag('icons/money-coin.png', :alt => t('invoices.add_payment', :default => 'Add payment'), :title => t('invoices.add_payment', :default => 'Add payment')), "/invoice/#{invoice.id}/payment", :class => 'btn btn-mini') unless invoice.paid? %>
-            <%= link_to image_tag('icons/document-pdf-text.png', :alt => t('invoices.print_invoice', :default => 'Print invoice'), :title => t('invoices.print_invoice', :default => 'Print invoice') ), customer_invoice_path(invoice.customer,invoice.id, :format => 'pdf'), :class => 'btn btn-mini' %>
+          <td>
+            <%= link_to('<i class="icon-remove"></i> '.html_safe+t('invoices.delete_and_restore', :default => 'Delete invoice and restore slips'), customer_invoice_path(invoice.customer,invoice.id), :method => :delete, :confirm => t('invoices.delete_and_restore_confirm', :default => "Are you sure to delete the invoice and restore the slips?\nATTENTION: You shouldn't destroy invoices unless you know what you're doing. Numbering won't be automatically restored..."), :class => 'btn btn-mini btn-danger') unless invoice.paid? %>
+            <%= link_to('<i class="icon-money"></i> '.html_safe+t('invoices.add_payment', :default => 'Add payment'), "/invoice/#{invoice.id}/payment", :class => 'btn btn-mini btn-success') unless invoice.paid? %>
+            <%= link_to '<i class="icon-print"></i> '.html_safe+t('invoices.print_invoice', :default => 'Print invoice'), customer_invoice_path(invoice.customer,invoice.id, :format => 'pdf'), :class => 'btn btn-mini btn-primary' %>
           </td>
       </tr>
     <% end %>

@@ -1,11 +1,8 @@
 class InvoicesController < ApplicationController
-  before_filter :authenticate_user!
-  layout "main"
-  
   def index
-    
+
   end
-  
+
   def new
     @customer = Customer.find(params[:customer_id])
     @invoice = @customer.invoices.new
@@ -25,7 +22,7 @@ class InvoicesController < ApplicationController
       render :action => "new"
     end
   end
-  
+
   def show
     @customer = Customer.find(params[:customer_id])
     @invoice = Invoice.find(params[:id])
@@ -38,7 +35,7 @@ class InvoicesController < ApplicationController
       end
     end
   end
-  
+
   def destroy
     @customer = Customer.find(params[:customer_id])
     @invoice = Invoice.find(params[:id])
@@ -48,7 +45,7 @@ class InvoicesController < ApplicationController
       redirect_to(customer_slips_path(@customer), :error => t('controllers.invoices.create.success', :default => "Can't destroy a paid invoice"))
     end
   end
-  
+
   # Shows all user's invoices
   def all
     @selected_year = params[:year] ? params[:year] : Time.now.year

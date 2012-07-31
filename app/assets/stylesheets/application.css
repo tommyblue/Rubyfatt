@@ -20,3 +20,8 @@ body {
 .nowrap {
   white-space: nowrap;
 }
+
+td a.btn.btn-mini {
+  min-width: 70px;
+  margin-bottom: 2px;
+}

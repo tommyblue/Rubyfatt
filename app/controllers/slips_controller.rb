@@ -1,7 +1,4 @@
 class SlipsController < ApplicationController
-  before_filter :authenticate_user!
-  layout "main"
-
   def index
     @customer = Customer.find(params[:customer_id])
     @slips = @customer.working_slips
