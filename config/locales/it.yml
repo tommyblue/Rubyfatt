@@ -364,6 +364,8 @@ it:
   invoice_projects:
     index:
       title: "Progetti di notula"
+      uninvoiced: "Non fatturati"
+      invoiced: "Fatturati"
       print_invoice_projects: "Stampa PDF del progetto di notula"
       transform_to_invoice: "Trasforma in notula"
       transform_to_invoice_confirm: "Trasformare il progetto di notula in notula?"

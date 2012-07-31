@@ -3,7 +3,8 @@ class InvoiceProjectsController < ApplicationController
   layout "main"
 
   def index
-    @invoice_projects = current_user.invoice_projects
+    @invoiced_invoice_projects = current_user.invoice_projects.invoiced
+    @uninvoiced_invoice_projects = current_user.invoice_projects.uninvoiced
   end
 
   def new

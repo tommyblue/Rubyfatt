@@ -5,6 +5,8 @@ class InvoiceProject < ActiveRecord::Base
 
   default_scope order('invoice_projects.number', 'invoice_projects.id')
   scope :by_year, lambda {|year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31")}
+  scope :uninvoiced, where(invoiced: false)
+  scope :invoiced, where(invoiced: true)
 
   validates_presence_of :date, :customer, :consolidated_tax
 
