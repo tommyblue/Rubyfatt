@@ -201,6 +201,8 @@ it:
   Paid: "Pagato"
   Payment date: "Data di pagamento"
   Rate: "Prezzo"
+  value: "Valore"
+  Compound: "Composta"
   Rule: "Regola"
   Slips: "Progetti"
   Tax code: "Codice Fiscale"
@@ -236,8 +238,12 @@ it:
   #
   consolidated_taxes:
     index:
-      title: "Regime di tassazione"
+      title: "Regimi di tassazione"
       new: "Crea un nuovo regime di tassazione"
+      new_tax: "Nuova tassa"
+      edit: "Modifica"
+      delete: "Elimina"
+      delete_tax_confirm: "Confermi di voler eliminare la tassa?"
   #
   # CUSTOMERS
   #
