@@ -13,7 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require bootstrap
+// require bootstrap
+//= require bootstrap-dropdown
+//= require bootstrap-alert
+//= require bootstrap-transition
 //= require tinycon.min
 // require_tree .
 

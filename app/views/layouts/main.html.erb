@@ -17,6 +17,21 @@
 
     <%= stylesheet_link_tag "application", :media => "all" %>
 
+    <!-- Javascripts
+    ================================================== -->
+    <%= javascript_include_tag "application" %>
+    <% if I18n.locale == :it %>
+      <%= javascript_include_tag "jquery.ui.datepicker-it" %>
+    <% end %>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        // Modifies the favicon adding the number of expired recurring slips
+        <% expired = expired_recurring_slips_badge(true) %>
+        <% if expired > 0 %>
+          Tinycon.setBubble(<%= expired %>);
+        <% end %>
+      });
+    </script>
   </head>
   <body>
 
@@ -36,7 +51,7 @@
         </div><!--/span-->
         <div class="span9">
           <%= content_for?(:breadcrumb) ? yield(:breadcrumb) : render('layouts/breadcrumb') %>
-          
+
           <% if flash[:info] %>
       	    <div class="alert alert-info fade in" data-alert="alert">
               <a class="close" data-dismiss='alert' href="#">×</a>
@@ -78,7 +93,7 @@
               <p><%= flash[:success] %></p>
             </div>
       	  <% end %>
-      	  
+
           <%= yield %>
         </div>
       </div><!--/row-->
@@ -89,23 +104,5 @@
       </footer>
 
     </div> <!-- /container -->
-
-    <!-- Javascripts
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "application" %>
-    <% if I18n.locale == :it %>
-      <%= javascript_include_tag "jquery.ui.datepicker-it" %>
-    <% end %>
-    <script type="text/javascript">
-    $(document).ready(function() {
-    // Modifies the favicon adding the number of expired recurring slips
-    <% expired = expired_recurring_slips_badge(true) %>
-    <% if expired > 0 %>
-      Tinycon.setBubble(<%= expired %>);
-    <% end %>
-    });
-    </script>
-
   </body>
 </html>
