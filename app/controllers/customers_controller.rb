@@ -1,11 +1,11 @@
 class CustomersController < ApplicationController
   before_filter :authenticate_user!
   layout "main"
-  
+
   def index
     @customers = current_user.customers.order(:title,:surname,:name)
   end
-  
+
   def show
     @customer = Customer.find(params[:id])
   end
@@ -38,7 +38,7 @@ class CustomersController < ApplicationController
 
   def destroy
     customer = Customer.find(params[:id])
-    if customer.destroy
+    if customer.can_be_deleted? and customer.destroy
       flash[:success] = t('controllers.customers.destroy.success', :default => "The customer was successfully destroied")
     else
       flash[:error] = t('controllers.customers.destroy.error', :default => "Error while destroying the customer")

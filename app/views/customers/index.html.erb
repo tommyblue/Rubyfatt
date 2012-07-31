@@ -1,5 +1,5 @@
 <%= content_for :breadcrumb do %>
-  <%= print_breadcrumbs([ 
+  <%= print_breadcrumbs([
                       [t('breadcrumb.customers.index', :default => 'Customers'), customers_path]
                     ]).html_safe %>
 <% end %>
@@ -25,7 +25,10 @@
           <td><%= customer.address %> <%= customer.zip_code %> <%= customer.town %> <%= customer.province %></td>
           <td><%= customer.tax_code %></td>
           <td><%= customer.vat %></td>
-          <td><%= link_to(image_tag('icons/document--pencil.png', :alt => t('.edit', :default => 'Edit customer'), :title => t('.edit', :default => 'Edit customer')), edit_customer_path(customer), :class => 'btn btn-mini') %></td>
+          <td>
+            <%= link_to( '<i class="icon-edit"></i> '.html_safe+t('.edit', :default => 'Edit customer'), edit_customer_path(customer), :class => 'btn btn-mini btn-primary') %>
+            <%= link_to( '<i class="icon-remove"></i> '.html_safe+t('.delete', :default => 'Delete customer'), customer_path(customer), :method => :delete, :class => 'btn btn-mini btn-danger', :confirm => t('.delete_confirm', :default => 'Are you sure to delete the customer?')) if customer.can_be_deleted? %>
+          </td>
       </tr>
     <% end %>
   </tbody>

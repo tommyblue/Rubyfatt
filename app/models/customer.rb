@@ -26,4 +26,12 @@ class Customer < ActiveRecord::Base
     self.invoices.each { |invoice| sum += invoice.total unless invoice.paid }
     sum
   end
+
+  def can_be_deleted?
+    if self.estimates.empty? and self.invoices.empty? and self.invoice_projects.empty? and self.slips.empty? and self.recurring_slips.empty?
+      return true
+    else
+      return false
+    end
+  end
 end

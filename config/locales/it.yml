@@ -245,7 +245,9 @@ it:
     index:
       title: "Clienti"
       new: "Crea un nuovo cliente"
-      edit: "Modifica i dati del cliente"
+      edit: "Modifica"
+      delete: "Elimina"
+      delete_confirm: "Eliminare definitivamente il cliente?"
     new:
       title: "Crea un nuovo cliente"
     edit:
