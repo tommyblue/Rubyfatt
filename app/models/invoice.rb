@@ -2,6 +2,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :consolidated_tax
   belongs_to :customer
   has_many :slips
+  belongs_to :invoice_project
 
   default_scope order('invoices.number', 'invoices.id')
   scope :by_year, lambda {|year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31")}

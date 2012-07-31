@@ -2,6 +2,7 @@ class InvoiceProject < ActiveRecord::Base
   belongs_to :consolidated_tax
   belongs_to :customer
   has_many :slips
+  has_one :invoice
 
   default_scope order('invoice_projects.number', 'invoice_projects.id')
   scope :by_year, lambda {|year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31")}
@@ -63,6 +64,9 @@ class InvoiceProject < ActiveRecord::Base
     self.slips.each do |slip|
       invoice.slips << slip
     end
+
+    # Link invoice to generating invoice project
+    invoice.invoice_project_id = self.id
 
     if res = invoice.save
       self.update_attribute(:invoiced, true)

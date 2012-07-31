@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120430201357) do
+ActiveRecord::Schema.define(:version => 20120731164122) do
 
   create_table "consolidated_taxes", :force => true do |t|
     t.integer "user_id"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20120430201357) do
     t.date     "payment_date"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "invoice_project_id"
   end
 
   add_index "invoices", ["date"], :name => "index_invoices_on_date"
@@ -93,26 +94,26 @@ ActiveRecord::Schema.define(:version => 20120430201357) do
   add_index "options", ["name"], :name => "index_options_on_name"
 
   create_table "recurring_slips", :force => true do |t|
-    t.integer  "customer_id"
-    t.string   "name"
-    t.decimal  "rate",            :precision => 8, :scale => 2
-    t.string   "schedule",                                      :default => "", :null => false
+    t.integer  "customer_id",                                   :null => false
+    t.string   "schedule",                                      :null => false
     t.datetime "last_occurrence"
-    t.datetime "next_occurrence",                                               :null => false
+    t.datetime "next_occurrence",                               :null => false
+    t.string   "name",                                          :null => false
+    t.decimal  "rate",            :precision => 8, :scale => 2, :null => false
   end
 
   add_index "recurring_slips", ["name"], :name => "index_recurring_slips_on_name"
 
   create_table "slips", :force => true do |t|
-    t.integer  "customer_id"
+    t.integer  "customer_id",                                                         :null => false
     t.integer  "estimate_id"
     t.integer  "invoice_id"
-    t.string   "name"
-    t.decimal  "rate",               :precision => 8, :scale => 2
-    t.datetime "created_at",                                       :null => false
-    t.datetime "updated_at",                                       :null => false
-    t.boolean  "timed"
+    t.string   "name",                                                                :null => false
+    t.decimal  "rate",               :precision => 8, :scale => 2,                    :null => false
+    t.boolean  "timed",                                            :default => false
     t.integer  "duration"
+    t.datetime "created_at",                                                          :null => false
+    t.datetime "updated_at",                                                          :null => false
     t.integer  "invoice_project_id"
   end
 
