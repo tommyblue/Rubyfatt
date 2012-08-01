@@ -176,6 +176,24 @@ Pubblicherò la versione 1.0 quando avrò completato le validazioni e inserito i
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### HEAD
+
+- Viene mostrato il totale dei progetti in corso nella pagina riassuntiva del cliente
+- Il badge del progetti di notula, nel menù "Stato dei lavori" mostra soltanto i progetti di notula non fatturati
+- La pagina riassuntiva dei progetti di notula mostra i progetti divisi in due tabelle: fatturati e non
+- Modificato l'ordine dei progetti ricorrenti secondo la scadenza
+- Collegata la notula al progetto di notula da cui viene generata (**richiede migrazione del database**)
+- Eliminate le icone Fugue e aggiunto Font Awesome
+- Eliminazione di un cliente se non ha dati associati
+- Gestione della tassazione (tasse e regimi di tassazione)
+- Viene evidenziato il cliente attivo nella sidebar
+- Creazione notule e progetti di notula direttamente dalla pagina dei lavori in corso
+- Scelta della data di fatturazione in fase di trasformazione di un progetto di notula in notula
+- Settaggio dei dati di una notula quando generata dai progetti di notula
+- Bloccato l'aggiornamento massivo degli attributi non specificati in `attr_accessible`
+- Verificate e implementate le validazioni dei modelli
+- Fix minori
+
 ### 0.13
 
 - Aggiunto il metodo *Option.get_option(user, key)* per ottenere un'opzione o crearla al volo se non esiste
