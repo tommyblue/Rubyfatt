@@ -3,10 +3,17 @@ class Estimate < ActiveRecord::Base
   belongs_to :customer
   has_many :slips
 
+  attr_accessible :date, :number, :invoiced, :consolidated_tax_id, :slip_ids
+
   default_scope order('estimates.number', 'estimates.id')
   scope :by_year, lambda {|year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31")}
 
-  validates_presence_of :date, :customer, :consolidated_tax
+  validates :date, :presence => true
+  validates :customer, :presence => true
+  validates :consolidated_tax, :presence => true
+  validates :slips, :presence => true
+  validate :customer_must_exist
+  validate :consolidated_tax_must_exist
 
   before_create do
     option = Option.get_option(self.customer.user, 'NEXT_ESTIMATE_NUMBER')
@@ -43,4 +50,17 @@ class Estimate < ActiveRecord::Base
     compounds.each { |compound| sum += compound }
     sum
   end
+
+  private
+    def customer_must_exist
+      unless self.customer_id.nil?
+        errors[:base] << "The customer doesn't exist" unless Customer.find_by_id(self.customer_id)
+      end
+    end
+
+    def consolidated_tax_must_exist
+      unless self.consolidated_tax_id.nil?
+        errors[:base] << "The consolidated tax doesn't exist" unless ConsolidatedTax.find_by_id(self.consolidated_tax_id)
+      end
+    end
 end

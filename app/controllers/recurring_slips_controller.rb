@@ -17,7 +17,7 @@ class RecurringSlipsController < ApplicationController
     schedule = IceCube::Schedule.new
     schedule.add_recurrence_rule rule
     @recurring_slip.schedule = schedule
-    @recurring_slip.start_date = Date.strptime(params[:schedule][:next], "%d/%m/%Y")
+    @recurring_slip.start_date = Date.strptime(params[:schedule][:next], "%d/%m/%Y") unless params[:schedule][:next].empty?
     if @recurring_slip.save
       redirect_to(recurring_slips_path, :notice => t('controllers.recurring_slips.create.success', :default => 'The recurring slip was successfully created.'))
     else

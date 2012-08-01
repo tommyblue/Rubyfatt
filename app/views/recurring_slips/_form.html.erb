@@ -5,7 +5,7 @@
   <% end %>
 
   <legend></legend>
-  <%= f.association :customer, :collection => current_user.customers.collect{ |customer| [customer.title, customer.id] }, :prompt => t('simple_form.prompts.customer', :default => "Select a customer") %>
+  <%= f.association :customer, :collection => current_user.customers.order('title, name, surname').collect{ |customer| [customer.title, customer.id] }, :prompt => t('simple_form.prompts.customer', :default => "Select a customer") %>
   <%= f.input :name %>
   <%= f.input :rate %>
 

@@ -1,6 +1,11 @@
 class Option < ActiveRecord::Base
   belongs_to :user
-  validates_presence_of :value
+
+  attr_accessible :name, :value, :integer
+
+  validates :name, :presence => true, :uniqueness => { :scope => :user_id }
+  validates :value, :presence => true
+  validate :user_must_exist
 
   DEFAULT_VALUES = [
     {
@@ -37,4 +42,11 @@ class Option < ActiveRecord::Base
     end
     raise 'OPTION NOT FOUND'
   end
+
+  private
+    def user_must_exist
+      unless self.user_id.nil?
+        errors[:base] << "The user doesn't exist" unless User.find_by_id(self.user_id)
+      end
+    end
 end

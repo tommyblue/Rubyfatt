@@ -4,12 +4,19 @@ class InvoiceProject < ActiveRecord::Base
   has_many :slips
   has_one :invoice
 
+  attr_accessible :date, :number, :invoiced, :consolidated_tax_id, :slip_ids
+
   default_scope order('invoice_projects.number', 'invoice_projects.id')
   scope :by_year, lambda {|year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31")}
   scope :uninvoiced, where(invoiced: false)
   scope :invoiced, where(invoiced: true)
 
-  validates_presence_of :date, :customer, :consolidated_tax
+  validates :date, :presence => true
+  validates :customer, :presence => true
+  validates :consolidated_tax, :presence => true
+  validates :slips, :presence => true
+  validate :customer_must_exist
+  validate :consolidated_tax_must_exist
 
   before_create do
     option = Option.get_option(self.customer.user, 'NEXT_INVOICE_PROJECT_NUMBER')
@@ -81,5 +88,17 @@ class InvoiceProject < ActiveRecord::Base
   private
     def clear_invoice_relation
       self.invoice.update_attribute(:invoice_project_id, nil) if self.invoice
+    end
+
+    def customer_must_exist
+      unless self.customer_id.nil?
+        errors[:base] << "The customer doesn't exist" unless Customer.find_by_id(self.customer_id)
+      end
+    end
+
+    def consolidated_tax_must_exist
+      unless self.consolidated_tax_id.nil?
+        errors[:base] << "The consolidated tax doesn't exist" unless ConsolidatedTax.find_by_id(self.consolidated_tax_id)
+      end
     end
 end
