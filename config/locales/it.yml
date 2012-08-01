@@ -18,7 +18,7 @@ it:
         success: "Il regime di tassazione è stato aggiornato con successo"
       destroy:
         success: "Il regime di tassazione è stato eliminato correttamente"
-        error: "Non è stato possibile eliminare il regime di tassazione"
+        error: "Non è stato possibile eliminare il regime di tassazione, forse esistono dati legati ad esso"
     customers:
       create:
         success: "Il cliente è stato creato con successo"
@@ -237,13 +237,31 @@ it:
   # CONSOLIDATED TAXES
   #
   consolidated_taxes:
+    new:
+      title: "Regime di tassazione"
+    edit:
+      title: "Regime di tassazione"
     index:
       title: "Regimi di tassazione"
       new: "Crea un nuovo regime di tassazione"
       new_tax: "Nuova tassa"
       edit: "Modifica"
       delete: "Elimina"
+      delete_confirm: "Confermi di voler eliminare il regime di tassazione e le relative tasse?"
+      edit_tax_confirm: "ATTENZIONE: Modificando il valore di una tassa verranno modificati i documenti già emessi"
       delete_tax_confirm: "Confermi di voler eliminare la tassa?"
+  #
+  # TAXES
+  #
+  taxes:
+    new:
+      title: "Tasse"
+    edit:
+      title: "Tasse"
+    form:
+      order_hint: "Determina l'ordine con cui vengono calcolate le tasse sui progetti"
+      rate_hint: "Inserire il valore della tassazione. Ad esempio inserire 21 per calcolare una tassa del 21%"
+      compound_hint: "Le tasse non composte vengon calcolate sulla somma dei progetti e il risultato è l'imponibile. Su di esso vengono calcolate le tasse composte."
   #
   # CUSTOMERS
   #

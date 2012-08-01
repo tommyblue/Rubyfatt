@@ -4,11 +4,11 @@
     <%= f.error_notification %>
   <% end %>
 
-  <legend><%=t '.insert_data' %></legend>
-  <%= f.input :order %>
+  <legend></legend>
+  <%= f.input :order, :hint => t('.order_hint', :default => "The order to calculate the taxes") %>
   <%= f.input :name %>
-  <%= f.input :rate %>
-  <%= f.input :compound %>
+  <%= f.input :rate, :hint => t('.rate_hint', :default => "Insert tax percentage value (e.g. insert 21 to calculate a tax of 21%)") %>
+  <%= f.input :compound, :hint => t('.compound_hint', :default => "Compound taxes are calculated after the other taxes") %>
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>

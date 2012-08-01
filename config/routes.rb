@@ -40,7 +40,7 @@ Rubyfatt::Application.routes.draw do
 
   resources :options
 
-  resources :consolidated_taxes do
+  resources :consolidated_taxes, :except => :show do
     resources :taxes, :except => [:index, :show]
   end
 

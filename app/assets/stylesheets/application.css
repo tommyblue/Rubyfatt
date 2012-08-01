@@ -25,3 +25,8 @@ td a.btn.btn-mini {
   min-width: 70px;
   margin-bottom: 2px;
 }
+
+form .help-block {
+  font-size: 80%;
+  font-style: italic;
+}

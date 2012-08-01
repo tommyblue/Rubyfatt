@@ -40,7 +40,11 @@ module ApplicationHelper
     last_element = array_path.pop
 
     array_path.each do |path|
-      return_value += "<li><a href=\"#{path[1]}\">#{path[0]}</a><span class=\"divider\">/</span></li>\n\t"
+      if path[1]
+        return_value += "<li><a href=\"#{path[1]}\">#{path[0]}</a><span class=\"divider\">/</span></li>\n\t"
+      else
+        return_value += "<li>#{path[0]}<span class=\"divider\">/</span></li>\n\t"
+      end
     end
 
     return_value += "<li class=\"active\">#{last_element[0]}</li>\n\t"

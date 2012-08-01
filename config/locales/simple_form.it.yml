@@ -15,6 +15,12 @@ it:
     buttons:
       cancel: "Resetta il form"
     submit:
+      consolidated_tax:
+        create: "Crea il regime di tassazione"
+        update: "Modifica il regime di tassazione"
+      tax:
+        create: "Crea la tassa"
+        update: "Modifica la tassa"
       user:
         update: "Salva le modifiche"
       option:
@@ -50,6 +56,13 @@ it:
     labels:
       option:
         value: "Valore"
+      consolidated_tax:
+        name: "Nome"
+      tax:
+        order: "Ordine"
+        name: "Nome"
+        rate: "Valore"
+        compound: "Composta"
       customer:
         title: "Titolo"
         name: "Nome"

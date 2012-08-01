@@ -4,7 +4,7 @@
     <%= f.error_notification %>
   <% end %>
 
-  <legend><%=t '.insert_data' %></legend>
+  <legend></legend>
   <%= f.association :customer, :collection => current_user.customers.collect{ |customer| [customer.title, customer.id] }, :prompt => t('simple_form.prompts.customer', :default => "Select a customer") %>
   <%= f.input :name %>
   <%= f.input :rate %>
