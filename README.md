@@ -38,7 +38,7 @@ Clona il repository in una cartella:
 
 Entra nella cartella e fai il checkout all'ultimo tag "stabile":
 
-	git checkout 0.13
+	git checkout 0.14
 
 Oppure lascia HEAD se ti piace il rischio :)
 
@@ -176,7 +176,7 @@ Pubblicherò la versione 1.0 quando avrò completato le validazioni e inserito i
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
-### HEAD
+### HEAD - 0.14
 
 - Viene mostrato il totale dei progetti in corso nella pagina riassuntiva del cliente
 - Il badge del progetti di notula, nel menù "Stato dei lavori" mostra soltanto i progetti di notula non fatturati
