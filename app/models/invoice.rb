@@ -45,11 +45,16 @@ class Invoice < ActiveRecord::Base
     sum
   end
 
-  # Destroy the invoice restoring the slips
-  def restore_slips_and_destroy
+  # Destroy the invoice restoring the slips or the invoice project if present
+  def restore_and_destroy
+    if self.invoice_project
+      self.invoice_project.update_attribute(:invoiced, false)
+    end
+
     self.slips.each do |slip|
       slip.restore
     end
+
     self.destroy
   end
 end

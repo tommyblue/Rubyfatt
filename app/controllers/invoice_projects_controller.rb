@@ -49,12 +49,20 @@ class InvoiceProjectsController < ApplicationController
   end
 
   # Creates invoice from invoice project
+  def to_invoice_form
+    @invoice_project = InvoiceProject.find(params[:invoice_project_id])
+    @customer = @invoice_project.customer
+    @invoice = Invoice.new
+    @invoice.date = @invoice_project.date
+  end
+
   def to_invoice
-    @invoice_project = InvoiceProject.find(params[:id])
-    if @invoice_project.to_invoice
+    @invoice_project = InvoiceProject.find(params[:invoice_project_id])
+    if @invoice_project.to_invoice(params[:invoice])
       redirect_to(customer_slips_path(@invoice_project.customer), :notice => t('controllers.invoice_projects.to_invoice.success', :default => 'The invoice project was successfully tranformed to invoice'))
     else
-      redirect_to(customer_slips_path(@invoice_project.customer), :error => t('controllers.invoice_projects.to_invoice.error', :default => "Error during the operation."))
+      flash.now[:error] = t('controllers.invoice_projects.to_invoice.error', :default => "Error during the operation.")
+      render :to_invoice_form
     end
   end
 

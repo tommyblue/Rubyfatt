@@ -30,7 +30,8 @@ Rubyfatt::Application.routes.draw do
 
   match 'invoice_projects/:id/from_recurring_slip' => 'invoice_projects#from_recurring_slip', :via => :get, :as => :new_recurring_slip_invoice_project
   match 'invoice_projects/:id/from_recurring_slip' => 'invoice_projects#create_from_recurring_slip', :via => :post
-  match 'invoice_projects/:id/to_invoice' => 'invoice_projects#to_invoice', :as => :project_to_invoice
+  match 'invoice_projects/:invoice_project_id/to_invoice_form' => 'invoice_projects#to_invoice_form', :as => :project_to_invoice_form
+  match 'invoice_projects/:invoice_project_id/to_invoice' => 'invoice_projects#to_invoice', :as => :project_to_invoice, :via => :post
 
   match 'profile' => 'profile#index', :as => :profile
   match 'profile/password/edit' => 'profile#password_edit', :as => :edit_password

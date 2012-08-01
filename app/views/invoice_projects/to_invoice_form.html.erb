@@ -1,0 +1,29 @@
+<%= content_for :breadcrumb do %>
+  <%= print_breadcrumbs([
+                      ["#{@customer.title}", customer_slips_path(@customer)],
+                      [t('breadcrumb.invoices.new', :default => 'New invoice'), nil]
+                    ]).html_safe %>
+<% end %>
+
+<h1><%=t '.title', :default => "New invoice" %></h1>
+
+<%= simple_form_for @invoice, :url => project_to_invoice_path(@invoice_project), :html => {:class => 'form-horizontal' } do |f| %>
+
+  <% if f.error_notification %>
+    <%= f.error_notification %>
+  <% end %>
+
+  <legend></legend>
+  <%= f.input :date, :wrapper => :prepend do %>
+    <%= content_tag :span, "<img src=\"/icons/calendar-month.png\" alt=\"Calendar\" />".html_safe, :class => "add-on" %><%= f.input_field :date, :as => :datepicker %>
+  <% end %>
+  <%= f.input :paid %>
+  <%= f.input :payment_date, :wrapper => :prepend do %>
+    <%= content_tag :span, "<img src=\"/icons/calendar-month.png\" alt=\"Calendar\" />".html_safe, :class => "add-on" %><%= f.input_field :payment_date, :as => :datepicker %>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+  </div>
+<% end %>
+

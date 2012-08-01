@@ -146,7 +146,11 @@ it:
   breadcrumb:
     dashboard: "Scrivania"
     consolidated_taxes:
-      index: "Regime di tassazione"
+      index: "Regimi di tassazione"
+      new_tax: "Nuova tassa"
+      edit_tax: "Modifica la tassa"
+      new: "Nuovo"
+      edit: "Modifica"
     customers:
       index: "Clienti"
       new: "Nuovo"
@@ -405,6 +409,8 @@ it:
       transform_to_invoice_confirm: "Trasformare il progetto di notula in notula?"
       delete_invoice_project: "Elimina"
       delete_invoice_project_confirm: "Si conferma di voler eliminare il progetto di notula?\nATTENZIONE: Non dovresti eliminare un progetto di notula senza sapere cosa stai facendo. Ricorda che la numerazione sequenziale dei progetti di notula non verrà ripristinata..."
+    to_invoice_form:
+      title: "Nuova notula relativa al progetto di notula"
     new:
       title: "Nuovo progetto di notula"
     form:
@@ -417,7 +423,7 @@ it:
   #
   invoices:
     delete_and_restore: "Elimina"
-    delete_and_restore_confirm: "Si conferma di voler eliminare la notula e ripristinare il progetto?\nATTENZIONE: Non dovresti eliminare una notula emessa senza sapere cosa stai facendo. Ricorda che la numerazione sequenziale delle notule non verrà ripristinata..."
+    delete_and_restore_confirm: "Si conferma di voler eliminare la notula? Verrà ripristinato il progetto di notula, se presente, oppure verranno ripristinati i suoi progetti\nATTENZIONE: Non dovresti eliminare una notula emessa senza sapere cosa stai facendo. Ricorda che la numerazione sequenziale delle notule non verrà ripristinata..."
     add_payment: "Pagamento"
     print_invoice: "PDF"
     all:

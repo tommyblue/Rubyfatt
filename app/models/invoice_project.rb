@@ -22,6 +22,8 @@ class InvoiceProject < ActiveRecord::Base
     option.save!
   end
 
+  before_destroy :clear_invoice_relation
+
   # Get the sum of the slips' rates
   def rate
     sum = 0
@@ -56,10 +58,12 @@ class InvoiceProject < ActiveRecord::Base
   end
 
   # Transforms invoice project to invoice
-  def to_invoice
+  def to_invoice(invoice_data)
     invoice = self.customer.invoices.new
     invoice.consolidated_tax = self.consolidated_tax
-    invoice.date = self.date
+    invoice.date = invoice_data[:date]
+    invoice.paid = invoice_data[:paid]
+    invoice.payment_date = invoice_data[:payment_date]
 
     self.slips.each do |slip|
       invoice.slips << slip
@@ -73,4 +77,9 @@ class InvoiceProject < ActiveRecord::Base
     end
     res
   end
+
+  private
+    def clear_invoice_relation
+      self.invoice.update_attribute(:invoice_project_id, nil) if self.invoice
+    end
 end
