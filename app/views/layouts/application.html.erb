@@ -44,7 +44,7 @@
             <ul class="nav nav-list">
               <li class="nav-header"><%=t '.sidebar.title', :default => "Customers" %></li>
               <% current_user.customers.order(:title,:surname,:name).each do |customer| %>
-        			  <li><%= link_to customer.title, customer_slips_path(customer) %></li>
+        			  <li class="<%= "active" if @customer and @customer.id == customer.id %>"><%= link_to customer.title, customer_slips_path(customer) %></li>
         			<% end %>
             </ul>
           </div><!--/.well -->

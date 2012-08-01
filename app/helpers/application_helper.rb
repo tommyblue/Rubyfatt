@@ -13,7 +13,7 @@ module ApplicationHelper
     if only_num
       unpaid
     else
-      unpaid > 0 ? '<span class="badge badge-error">' + unpaid.to_s + '</span>' : ''
+      unpaid > 0 ? '<span class="badge badge-important">' + unpaid.to_s + '</span>' : ''
     end
   end
 
