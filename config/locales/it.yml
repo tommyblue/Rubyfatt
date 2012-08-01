@@ -342,6 +342,8 @@ it:
       title: "Modifica il progetto"
     working:
       title: "Progetti in corso"
+      new_invoice_project: "Progetto di notula"
+      new_invoice: "Fattura"
       edit: "Modifica"
       delete: "Elimina"
       delete_confirm: "Si conferma di voler eliminare il progetto?"

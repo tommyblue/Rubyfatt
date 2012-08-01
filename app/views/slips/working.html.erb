@@ -30,7 +30,9 @@
         <td><%= slip.duration ? ChronicDuration.output(slip.duration, :format => :short) : '-' %></td>
         <td><%= slip.estimated? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td>
-          <%= link_to('<i class="icon-edit"></i> '.html_safe+t('.edit', :default => 'Edit'), edit_customer_slip_path(slip.customer, slip), :class => 'btn btn-mini btn-primary') %>
+          <%= link_to '<i class="icon-copy"></i> '.html_safe+t('.new_invoice_project', :default => "Create invoice project"), new_customer_invoice_project_path(slip.customer), :class => 'btn btn-mini btn-primary' %>
+          <%= link_to '<i class="icon-copy"></i> '.html_safe+t('.new_invoice', :default => "Create invoice"), new_customer_invoice_path(slip.customer), :class => 'btn btn-mini btn-primary' %>
+          <%= link_to('<i class="icon-edit"></i> '.html_safe+t('.edit', :default => 'Edit'), edit_customer_slip_path(slip.customer, slip), :class => 'btn btn-mini btn-warning') %>
           <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.delete', :default => 'Delete'), customer_slip_path(slip.customer,slip.id), :method => :delete, :confirm => t(".delete_confirm", :default => "Are you sure to delete the slip?"), :class => 'btn btn-mini btn-danger') %>
         </td>
       </tr>
