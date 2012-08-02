@@ -2,28 +2,26 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.7'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+#----- SQLite or MySQL or..
 #gem 'sqlite3'
 gem 'mysql2'
 
 gem 'devise'
+gem 'cancan'
 
-#gem 'formtastic'
-#gem 'country-select'
-
+#----- PDF Generation
 gem 'prawn',  '~> 1.0.0.rc1'
 
+#----- Recurring invoices time management
 gem 'chronic_duration'
-
 gem 'ice_cube'
-
 gem 'vpim'
 
+#----- Forms made easy
 gem 'simple_form'
 gem 'country_select'
 
+#----- Twitter bootstrap with SASS
 gem 'bootstrap-sass', '~> 2.0.2'
 
 # Gems used only for assets and not required
@@ -40,17 +38,5 @@ end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
 # Use unicorn as the web server
 gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'

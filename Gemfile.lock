@@ -33,6 +33,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.0.4.0)
     builder (3.0.0)
+    cancan (1.6.7)
     chronic_duration (0.9.6)
       numerizer (~> 0.1.1)
     coffee-rails (3.2.2)
@@ -138,6 +139,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 2.0.2)
+  cancan
   chronic_duration
   coffee-rails (~> 3.2.1)
   country_select

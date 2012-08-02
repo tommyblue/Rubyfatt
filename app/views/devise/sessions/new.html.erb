@@ -8,11 +8,11 @@
       <%= flash[:alert] %>
     </div>
   <% end %>
-  
+
   <%= f.input :email %>
 	<%= f.input :password %>
 	<%= f.input :remember_me, :as => :boolean %>
   <div class="form-actions">
-    <%= f.submit t('.sign_in' , :default => "Sign in"), :class => 'btn-primary' %>
+    <%= f.submit t('.sign_in' , :default => "Sign in"), :class => 'btn btn-primary' %>
   </div>
 <% end %>
