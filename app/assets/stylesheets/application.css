@@ -30,3 +30,13 @@ form .help-block {
   font-size: 80%;
   font-style: italic;
 }
+.password-strenght-wrapper {
+  margin-bottom: 0 !important;
+  margin-top: -10px !important
+}
+#password-strenght {
+  width: 220px;
+}
+#password-strenght .bar {
+  width: 1%;
+}
