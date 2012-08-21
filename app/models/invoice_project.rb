@@ -85,6 +85,11 @@ class InvoiceProject < ActiveRecord::Base
     res
   end
 
+  # Set the invoice project as downloaded
+  def update_download_status
+    self.update_attribute(:downloaded, true) unless self.downloaded
+  end
+
   private
     def clear_invoice_relation
       self.invoice.update_attribute(:invoice_project_id, nil) if self.invoice

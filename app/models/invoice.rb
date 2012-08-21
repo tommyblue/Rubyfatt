@@ -65,6 +65,11 @@ class Invoice < ActiveRecord::Base
     self.destroy
   end
 
+  # Set the invoice as downloaded
+  def update_download_status
+    self.update_attribute(:downloaded, true) unless self.downloaded
+  end
+
   private
     def customer_must_exist
       unless self.customer_id.nil?

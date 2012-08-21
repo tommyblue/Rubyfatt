@@ -1,14 +1,16 @@
 class ConsolidatedTaxesController < ApplicationController
+  load_and_authorize_resource
+
   def index
-    @consolidated_taxes = current_user.consolidated_taxes
+    @consolidated_taxes = @consolidated_taxes.includes(:taxes)
   end
 
   def new
-    @consolidated_tax = current_user.consolidated_taxes.new
+    #@consolidated_tax = current_user.consolidated_taxes.new
   end
 
   def create
-    @consolidated_tax = current_user.consolidated_taxes.new(params[:consolidated_tax])
+    #@consolidated_tax = current_user.consolidated_taxes.new(params[:consolidated_tax])
     if @consolidated_tax.save
       redirect_to(consolidated_taxes_path, :notice => t('controllers.consolidated_taxes.create.success', :default => 'The consolidated tax was successfully created.'))
     else
@@ -17,11 +19,11 @@ class ConsolidatedTaxesController < ApplicationController
   end
 
   def edit
-    @consolidated_tax = current_user.consolidated_taxes.where(id: params[:id]).first
+    #@consolidated_tax = current_user.consolidated_taxes.where(id: params[:id]).first
   end
 
   def update
-    @consolidated_tax = current_user.consolidated_taxes.where(id: params[:id]).first
+    #@consolidated_tax = current_user.consolidated_taxes.where(id: params[:id]).first
     if @consolidated_tax.update_attributes(params[:consolidated_tax])
       redirect_to(consolidated_taxes_path, :notice => t('controllers.consolidated_taxes.update.success', :default => 'The Tax was successfully updated.'))
     else
@@ -30,7 +32,7 @@ class ConsolidatedTaxesController < ApplicationController
   end
 
   def destroy
-    @consolidated_tax = current_user.consolidated_taxes.where(id: params[:id]).first
+    #@consolidated_tax = current_user.consolidated_taxes.where(id: params[:id]).first
     if @consolidated_tax.can_be_deleted? and @consolidated_tax.destroy
       flash[:success] = t('controllers.consolidated_taxes.destroy.success', :default => "The consolidated tax was successfully destroied")
     else

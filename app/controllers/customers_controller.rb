@@ -1,18 +1,14 @@
 class CustomersController < ApplicationController
-  def index
-    @customers = current_user.customers.order(:title,:surname,:name)
-  end
+  load_and_authorize_resource
 
-  def show
-    @customer = Customer.find(params[:id])
+  def index
+    @customers = @customers.order(:title,:surname,:name)
   end
 
   def new
-    @customer = current_user.customers.new
   end
 
   def create
-    @customer = current_user.customers.new(params[:customer])
     if @customer.save
       redirect_to(customers_path, :notice => t('controllers.customers.create.success', :default => 'The customer was successfully created.'))
     else
@@ -21,11 +17,9 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
   end
 
   def update
-    @customer = Customer.find(params[:id])
     if @customer.update_attributes(params[:customer])
       redirect_to(customers_path, :notice => t('controllers.customers.update.success', :default => 'The customer was successfully updated.'))
     else
@@ -34,12 +28,11 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-    customer = Customer.find(params[:id])
-    if customer.can_be_deleted? and customer.destroy
+    if @customer.can_be_deleted? and @customer.destroy
       flash[:success] = t('controllers.customers.destroy.success', :default => "The customer was successfully destroied")
     else
       flash[:error] = t('controllers.customers.destroy.error', :default => "Error while destroying the customer")
     end
-    redirect_to(customers_url)
+    redirect_to(customers_path)
   end
 end

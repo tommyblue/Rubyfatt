@@ -5,18 +5,11 @@ class Tax < ActiveRecord::Base
 
   validates :order, :numericality => true, :presence => true
   validates :rate, :numericality => true, :presence => true
-  validates :name, :presence => true, :uniqueness => { :scope => :user_id }
+  validates :name, :presence => true, :uniqueness => { :scope => :consolidated_tax_id }
   validates :compound, :inclusion => { :in => [true, false] }
-  validate :user_must_exist
   validate :consolidated_tax_must_exist
 
   private
-    def user_must_exist
-      unless self.user_id.nil?
-        errors[:base] << "The user doesn't exist" unless User.find_by_id(self.user_id)
-      end
-    end
-
     def consolidated_tax_must_exist
       unless self.consolidated_tax_id.nil?
         errors[:base] << "The consolidated tax doesn't exist" unless ConsolidatedTax.find_by_id(self.consolidated_tax_id)

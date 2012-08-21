@@ -1,4 +1,6 @@
 class RecurringInvoiceController < ApplicationController
+  load_and_authorize_resource
+
   def new
     @recurring_slip = RecurringSlip.find(params[:recurring_slip_id])
     @customer = @recurring_slip.customer

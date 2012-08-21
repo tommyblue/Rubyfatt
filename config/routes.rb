@@ -1,21 +1,9 @@
 Rubyfatt::Application.routes.draw do
   devise_for :users
 
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-  resources :customers do
-    resources :slips, :estimates, :invoices, :invoice_projects
+  resources :customers, :except => :show do
+    resources :slips, :except => :show
+    resources :estimates, :invoices, :invoice_projects
   end
 
   # TODO: Migliorare queste risorse, non tutte le path generate vengono usate
@@ -39,7 +27,7 @@ Rubyfatt::Application.routes.draw do
   match 'profile/edit' => 'profile#edit', :as => :edit_profile
   match 'profile/update' => 'profile#update', :via => :put
 
-  resources :options
+  resources :options, :only => [:index, :edit, :update]
 
   resources :consolidated_taxes, :except => :show do
     resources :taxes, :except => [:index, :show]

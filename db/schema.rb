@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120731164122) do
+ActiveRecord::Schema.define(:version => 20120821155703) do
 
   create_table "consolidated_taxes", :force => true do |t|
     t.integer "user_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20120731164122) do
     t.boolean  "invoiced",            :default => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.boolean  "downloaded",          :default => false
   end
 
   add_index "invoice_projects", ["date"], :name => "index_invoice_projects_on_date"
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20120731164122) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.integer  "invoice_project_id"
+    t.boolean  "downloaded",          :default => false
   end
 
   add_index "invoices", ["date"], :name => "index_invoices_on_date"
@@ -121,7 +123,6 @@ ActiveRecord::Schema.define(:version => 20120731164122) do
 
   create_table "taxes", :force => true do |t|
     t.integer "consolidated_tax_id"
-    t.integer "user_id"
     t.integer "order"
     t.string  "name"
     t.integer "rate"

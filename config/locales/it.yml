@@ -1,4 +1,8 @@
 it:
+  ## CanCan messages
+  unauthorized:
+    manage:
+      all: "Non hai i permessi per accedere all'area selezionata"
   # Title inside the generated pdf
   pdf:
     invoice_project:
@@ -202,7 +206,8 @@ it:
   Name: "Nome"
   Next occurrence: "Prossima scadenza"
   Number: "Numero"
-  Paid: "Pagato"
+  Downloaded: "Download"
+  Paid: "Pagata"
   Payment date: "Data di pagamento"
   Rate: "Prezzo"
   value: "Valore"

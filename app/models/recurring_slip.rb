@@ -3,6 +3,7 @@ class RecurringSlip < ActiveRecord::Base
   serialize :schedule, Hash
 
   belongs_to :customer
+  has_one :user, :through => :customer
 
   attr_accessible :schedule, :last_occurrence, :next_occurrence, :name, :rate, :customer_id
 
@@ -78,8 +79,6 @@ class RecurringSlip < ActiveRecord::Base
 
   private
     def customer_must_exist
-      unless self.customer_id.nil?
-        errors[:base] << "The customer doesn't exist" unless Customer.find_by_id(self.customer_id)
-      end
+      errors[:base] << "The customer doesn't exist" unless Customer.find_by_id(self.customer_id)
     end
 end

@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
   layout :layout_by_resource
 
+  rescue_from CanCan::AccessDenied do |exception|
+    Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"
+    redirect_to root_url, :alert => exception.message
+  end
+
   protected
 
   def layout_by_resource

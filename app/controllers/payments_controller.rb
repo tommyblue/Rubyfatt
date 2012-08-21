@@ -1,4 +1,6 @@
 class PaymentsController < ApplicationController
+  load_and_authorize_resource Invoice
+
   def new
     @invoice = Invoice.find(params[:invoice_id])
   end

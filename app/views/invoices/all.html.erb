@@ -14,6 +14,7 @@
       <th><%=t model_class.human_attribute_name(:slips) %></th>
       <th><%=t model_class.human_attribute_name(:rate) %></th>
       <th><%=t model_class.human_attribute_name(:total) %></th>
+      <th><%=t model_class.human_attribute_name(:downloaded) %></th>
       <th><%=t model_class.human_attribute_name(:paid) %></th>
       <th><%=t model_class.human_attribute_name(:payment_date) %></th>
       <th><%=t 'actions', :default => "Actions" %></th>
@@ -34,6 +35,7 @@
           </td>
           <td class="nowrap"><%= number_to_currency(invoice.rate) %></td>
           <td class="nowrap"><%= number_to_currency(invoice.total) %></td>
+          <td><%= invoice.downloaded? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
           <td><%= invoice.paid? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
           <td><%= invoice.payment_date.strftime("%d/%m/%Y") if invoice.paid and invoice.payment_date %></td>
           <td>
@@ -46,13 +48,18 @@
   </tbody>
 </table>
 
-<div class="span3 offset9">
-    <form method="get" class="form-inline pull-right">
-	<select class="span1" name="year">
-	  <% get_selectable_invoices_years.each do |year| %>
-	    <option value="<%= year %>"<%= ' selected' if @selected_year.to_i == year %>><%= year %></option>
-	  <% end %>
-	</select>
-	<input class="btn" type="submit" value="<%=t '.filter_by_year', :default => "Filter by year" %>">
-    </form>
-</div>
+<%
+years = get_selectable_invoices_years
+if years.size > 1
+%>
+  <div>
+      <form method="get" class="form-inline pull-right">
+      <select name="year">
+        <% years.each do |year| %>
+          <option value="<%= year %>"<%= ' selected' if @selected_year.to_i == year %>><%= year %></option>
+        <% end %>
+      </select>
+      <input class="btn" type="submit" value="<%=t '.filter_by_year', :default => "Filter by year" %>">
+      </form>
+  </div>
+<% end %>

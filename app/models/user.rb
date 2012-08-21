@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   has_many :customers
   has_many :options
   has_many :consolidated_taxes, :class_name => 'ConsolidatedTax'
-  has_many :taxes, :class_name => 'Tax'
   has_many :slips, :through => :customers
   has_many :recurring_slips, :through => :customers
   has_many :invoices, :through => :customers

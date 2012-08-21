@@ -18,6 +18,7 @@
       <th><%=t model_class.human_attribute_name(:date) %></th>
       <th><%=t model_class.human_attribute_name(:rate) %></th>
       <th><%=t model_class.human_attribute_name(:total) %></th>
+      <th><%=t model_class.human_attribute_name(:downloaded) %></th>
       <th><%=t model_class.human_attribute_name(:invoiced) %></th>
       <th><%=t 'actions', :default => "Actions" %></th>
     </tr>
@@ -30,10 +31,11 @@
         <td><%= l project.date %></td>
         <td><%= number_to_currency(project.rate) %></td>
         <td><%= number_to_currency(project.total) %></td>
+        <td><%= project.downloaded? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td><%= project.invoiced? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td>
           <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.delete_invoice_project', :default => 'Delete'), customer_invoice_project_path(project.customer, project.id), :method => :delete, :confirm => t(".delete_invoice_project_confirm", :default => "Are you sure to delete the invoice project?\nATTENTION: You shouldn't destroy it unless you know what you're doing. Numbering won't be automatically restored..."), :class => 'btn btn-mini btn-danger') %>
-          <%= link_to('<i class="icon-file"></i> '.html_safe+t('.transform_to_invoice', :default => 'Transform to invoice'), project_to_invoice_path(project.id), :confirm => t('.transform_to_invoice_confirm', :default => "Transform the invoice project to invoice?"), :class => 'btn btn-mini btn-primary') unless project.invoiced %>
+          <%= link_to('<i class="icon-file"></i> '.html_safe+t('.transform_to_invoice', :default => 'Transform to invoice'), project_to_invoice_form_path(project.id), :class => 'btn btn-mini btn-primary') unless project.invoiced %>
           <%= link_to '<i class="icon-print"></i> '.html_safe+t('.print_invoice_projects', :default => 'Print invoice project'), customer_invoice_project_path(project.customer,project.id, :format => 'pdf'), :class => 'btn btn-mini btn-primary' %>
         </td>
       </tr>
@@ -51,6 +53,7 @@
       <th><%=t model_class.human_attribute_name(:date) %></th>
       <th><%=t model_class.human_attribute_name(:rate) %></th>
       <th><%=t model_class.human_attribute_name(:total) %></th>
+      <th><%=t model_class.human_attribute_name(:downloaded) %></th>
       <th><%=t model_class.human_attribute_name(:invoiced) %></th>
       <th><%=t 'actions', :default => "Actions" %></th>
     </tr>
@@ -63,6 +66,7 @@
         <td><%= l project.date %></td>
         <td><%= number_to_currency(project.rate) %></td>
         <td><%= number_to_currency(project.total) %></td>
+        <td><%= project.downloaded? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td><%= project.invoiced? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td>
           <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.delete_invoice_project', :default => 'Delete'), customer_invoice_project_path(project.customer,project.id), :method => :delete, :confirm => t(".delete_invoice_project_confirm", :default => "Are you sure to delete the invoice project?\nATTENTION: You shouldn't destroy it unless you know what you're doing. Numbering won't be automatically restored..."), :class => 'btn btn-mini btn-danger') %>
