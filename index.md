@@ -7,35 +7,35 @@ tagline: Gestione fatture per partite IVA
 
 ## Rubyfatt![Rubyfatt](assets/rubyfatt-logo.png)
 
-Rubyfatt è un'applicazione per la gestione delle fatture delle partite IVA.
+Rubyfatt è un'applicazione open-source multiutente per la gestione delle partite iva.
 
-Caratteristiche:
+Gestisce preventivi, fatture, notule e progetti di notula, pagamenti, regimi di tassazione completamente configurabili, fatture ricorrenti.
+Ha un piccolo sistema di report con statistiche e grafici sugli incassi, le notule da incassare, ecc. Questo aspetto verrà ulteriormente sviluppato nelle prossime versioni.
 
-* Multiutente (usa Devise e, presto, CanCan, ma è stato testato solo monoutente)
+### Caratteristiche principali:
+
 * Gestione di differenti tipi di tassazione
-* Supporta più tasse calcolate sullo stesso imponibile
+* Supporta più tasse calcolate sullo stesso imponibile (ad esempio imponibile calcolato con INPS 4% e Iva 21% e ritenuta d'acconto 20% entrambe calcolate sull'imponibile). Ottimo per ogni tipo di partita iva
 * Gestione dei lavori ricorrenti
+* Gestione dei progetti di notula e loro trasformazione in notule
 * Trasformazione dei lavori in preventivi, progetti di notula e notule/fatture
-* Stampa PDF delle fatture e degli altri documenti
+* Stampa/download PDF delle fatture e degli altri documenti
 * Gestione dei pagamenti
 * Riepilogo delle fatture emesse
 * Modifica della numerazione delle fatture e dei preventivi (ad esempio ad inizio anno)
-* Gestione delle coordinate bancarie
+* Gestione delle coordinate bancarie stampate nei progetti di notula
+* Multiutente
 * Completamente multilingua, di default in italiano (disponibile la lingua inglese)
 * Responsive layout con Twitter Bootstrap
 
-**Lo stato dell'applicazione è da considerarsi beta**. Io comunque lo uso per le mie fatture :)
+Rubyfatt è un'applicazione **Ruby on Rails** e pertanto fruibile via web (sul proprio pc, su una rete locale o via internet).
 
-## Da fare / To-do
+## Come contribuire
 
-Rubyfatt è nato *di corsa* con la necessità di poter produrre notule in pochi giorni e alcuni aspetti, talvolta banali, sono stati tralasciati.
-
-I bug e le cose da fare sono tracciate nelle [issues di GitHub](https://github.com/tommyblue/Rubyfatt/issues). se vuoi contribuire al progetto forkalo,lavora su qualche **issue** e fai una **pull request**.
-
+I bug e le cose da fare sono tracciate nelle [segnalazioni di GitHub](https://github.com/tommyblue/Rubyfatt/issues). se vuoi contribuire al progetto forkalo, lavora su qualche **segnalazione** e fai una **pull request**.
 Tutte le informazioni che ti servono le trovi sull'help ufficiale di GitHub: [http://help.github.com/send-pull-requests/](http://help.github.com/send-pull-requests/)
 
-Se trovi un errore o hai un suggerimento, ma non hai modo/tempo/voglia di correggerlo, [crea una nuova issue](https://github.com/tommyblue/Rubyfatt/issues/new) e cercherò di lavorarci.
-
+Se trovi un errore o hai un suggerimento, ma non hai modo/tempo/voglia di correggerlo, [crea una nuova segnalazione](https://github.com/tommyblue/Rubyfatt/issues/new) e cercherò di lavorarci.
 
 ## Installazione
 
@@ -45,17 +45,25 @@ Clona il repository in una cartella:
 
 	git clone git@github.com:tommyblue/Rubyfatt.git
 
-Entra nella cartella e fai il checkout all'ultimo tag "stabile":
+Entra nella cartella e fai il checkout all'ultimo tag stabile:
 
-	git checkout 0.13
+	git checkout 0.14
 
-Oppure lascia HEAD se ti piace il rischio :)
+Oppure lascia HEAD se vuoi tutte le ultime novità ti piace il rischio :)
+
+## Configurazione
 
 Modifica il file **conf/databases.yml** secondo le tue esigenze e personalizza **db/seeds.rb** con i tuoi dati
 Fai girare le migrazioni e il seed:
 
 	rake db:migrate
 	rake db:seed
+
+Modifica il valore:
+
+    config.mailer_sender
+
+in `config/initializers/devise.rb` in modo che rispecchi la configurazione della tua rete.
 
 Lancia il server con:
 
@@ -69,11 +77,21 @@ L'aggiornamento consiste nell'aggiornare il repository git locale con:
 
 	git pull
 
+nello spostarsi nel tag corretto, ad esempio:
+
+    git checkout 0.14
+
 e nell'aggiornamento del database con:
 
 	rake db:migrate
 
-Ti consiglio comunque di leggere il changelog (più in basso) per eventuali istruzioni aggiuntive
+Ti consiglio comunque di leggere il changelog (più in basso) per eventuali istruzioni aggiuntive relative alla versione a cui stai aggiornando
+
+## Deploy in produzione
+
+Prima di poter mettere in produzione il software è necessario compilare gli assets con:
+
+    bundle exec rake assets:precompile
 
 ## Easyfatt?
 
@@ -85,9 +103,9 @@ Fino alla versione 0.10 il software si chiamava **Easyfatt**. Scoperta l'esisten
 
 Fai soltanto attenzione che il nome del repository sia *origin* (di solito lo è), altrimenti modifica il comando di conseguenza.
 
-### Logo
+## Logo
 
-Il logo usato nella generazione dei pdf è in **lib/assets/images/logo-notule.png** (PNG, 570x250 pixel)
+Il logo usato nella generazione dei pdf è in **lib/assets/images/logo-notule.png** (PNG, 570x250 pixel), basta sostituirlo con il tuo (presto questo aspetto sarà gestibile direttamente dal software).
 
 ## Ambiente di sviluppo
 
@@ -97,93 +115,38 @@ Il logo usato nella generazione dei pdf è in **lib/assets/images/logo-notule.pn
 * Lanciare il server di sviluppo con `rails s` e collegarsi a [http://localhost:3000/](http://localhost:3000)
 * In produzione lanciare anche `bundle exec rake assets:precompile RAILS_ENV=production`
 
-Al momento le gemme con cui sto testando il software sono:
-
-	actionmailer (3.2.0)
-	actionpack (3.2.0)
-	activemodel (3.2.0)
-	activerecord (3.2.0)
-	activeresource (3.2.0)
-	activesupport (3.2.0)
-	arel (3.0.0)
-	Ascii85 (1.0.1)
-	bcrypt-ruby (3.0.1)
-	bootstrap-sass (2.0.2)
-	builder (3.0.0)
-	bundler (1.0.21)
-	cancan (1.6.7)
-	chronic_duration (0.9.6)
-	coderay (1.0.6)
-	coffee-rails (3.2.2, 3.2.1)
-	coffee-script (2.2.0)
-	coffee-script-source (1.2.0)
-	commonjs (0.2.5)
-	country-select (1.1.0)
-	country_select (0.0.2)
-	devise (2.0.0, 1.5.3)
-	erubis (2.7.0)
-	execjs (1.3.0)
-	formtastic (2.0.2)
-	hike (1.2.1)
-	i18n (0.6.0)
-	ice_cube (0.7.6)
-	journey (1.0.1, 1.0.0)
-	jquery-rails (2.0.0)
-	json (1.6.5)
-	kgio (2.7.2)
-	less (2.1.0)
-	less-rails (2.2.1)
-	libv8 (3.3.10.4 x86_64-darwin-11)
-	mail (2.4.1)
-	method_source (0.7.1)
-	mime-types (1.17.2)
-	money (4.0.1)
-	multi_json (1.0.4)
-	mysql2 (0.3.11)
-	numerizer (0.1.1)
-	orm_adapter (0.0.6)
-	pdf-reader (1.0.0)
-	polyglot (0.3.3)
-	prawn (1.0.0.rc1)
-	pry (0.9.9.3)
-	rack (1.4.1)
-	rack-cache (1.1)
-	rack-ssl (1.3.2)
-	rack-test (0.6.1)
-	rails (3.2.0)
-	railties (3.2.0)
-	raindrops (0.8.0)
-	rake (0.9.2.2, 0.8.7)
-	rdoc (3.12)
-	ruby-rc4 (0.1.4)
-	sass (3.1.12)
-	sass-rails (3.2.4, 3.2.3)
-	simple_form (2.0.1)
-	slop (2.4.4)
-	sprockets (2.1.2)
-	sqlite3 (1.3.5)
-	therubyracer (0.10.1)
-	thor (0.14.6)
-	tilt (1.3.3)
-	treetop (1.4.10)
-	ttfunk (1.0.3)
-	tzinfo (0.3.31)
-	uglifier (1.2.3, 1.2.2)
-	unicorn (4.2.0)
-	vpim (0.695)
-	warden (1.1.0)
-
 ## Roadmap
 
-Elenco i buoni propositi per il futuro :)
-
-### 1.0
-
-Pubblicherò la versione 1.0 quando avrò completato le validazioni e inserito il supporto a Cancan. Puoi vedere i bug da chiudere per la 1.0 nella pagina [issues su GitHub](https://github.com/tommyblue/Rubyfatt/issues/).
+L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni di GitHub](https://github.com/tommyblue/Rubyfatt/issues?labels=enhancement&page=1&state=open) con la label *enhancement*.
 
 ## Changelog
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
+
+### HEAD
+
+- Gestione dei permessi con CanCan (ancora un po' da testare)
+- Tolta l'associazione di una tassa con l'utente, adesso passa da ConsolidatedTax (**richiede migrazione del database**)
+- Quanto una notula o un progetto di notula vengono scaricati, l'informazione viene salvata (**richiede migrazione del database**)
+- Fix minori
+
+### 0.14
+
+- Viene mostrato il totale dei progetti in corso nella pagina riassuntiva del cliente
+- Il badge del progetti di notula, nel menù "Stato dei lavori" mostra soltanto i progetti di notula non fatturati
+- La pagina riassuntiva dei progetti di notula mostra i progetti divisi in due tabelle: fatturati e non
+- Modificato l'ordine dei progetti ricorrenti secondo la scadenza
+- Collegata la notula al progetto di notula da cui viene generata (**richiede migrazione del database**)
+- Eliminate le icone Fugue e aggiunto Font Awesome
+- Eliminazione di un cliente se non ha dati associati
+- Gestione della tassazione (tasse e regimi di tassazione)
+- Viene evidenziato il cliente attivo nella sidebar
+- Creazione notule e progetti di notula direttamente dalla pagina dei lavori in corso
+- Scelta della data di fatturazione in fase di trasformazione di un progetto di notula in notula
+- Settaggio dei dati di una notula quando generata dai progetti di notula
+- Bloccato l'aggiornamento massivo degli attributi non specificati in `attr_accessible`
+- Verificate e implementate le validazioni dei modelli
+- Fix minori
 
 ### 0.13
 
