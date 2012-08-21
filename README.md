@@ -2,28 +2,34 @@
 
 ### [http://rubyfatt.kreations.it/](http://rubyfatt.kreations.it/)
 
-Rubyfatt è un'applicazione per la gestione delle fatture delle partite iva.
+Rubyfatt è un'applicazione open-source multiutente per la gestione delle partite iva.
 
-Caratteristiche:
+Gestisce preventivi, fatture, notule e progetti di notula, pagamenti, regimi di tassazione completamente configurabili, fatture ricorrenti.
+Ha un piccolo sistema di report con statistiche e grafici sugli incassi, le notule da incassare, ecc. Questo aspetto verrà ulteriormente sviluppato nelle prossime versioni.
 
-* Multiutente
+### Caratteristiche principali:
+
 * Gestione di differenti tipi di tassazione
-* Supporta più tasse calcolate sullo stesso imponibile (ad esempio imponibile calcolato con INPS 4% e Iva 21% e ritenuta d'acconto 20% entrambe calcolate sull'imponibile)
+* Supporta più tasse calcolate sullo stesso imponibile (ad esempio imponibile calcolato con INPS 4% e Iva 21% e ritenuta d'acconto 20% entrambe calcolate sull'imponibile). Ottimo per ogni tipo di partita iva
 * Gestione dei lavori ricorrenti
 * Gestione dei progetti di notula e loro trasformazione in notule
 * Trasformazione dei lavori in preventivi, progetti di notula e notule/fatture
-* Stampa PDF delle fatture e degli altri documenti
+* Stampa/download PDF delle fatture e degli altri documenti
 * Gestione dei pagamenti
 * Riepilogo delle fatture emesse
 * Modifica della numerazione delle fatture e dei preventivi (ad esempio ad inizio anno)
 * Gestione delle coordinate bancarie stampate nei progetti di notula
+* Multiutente
 * Completamente multilingua, di default in italiano (disponibile la lingua inglese)
 * Responsive layout con Twitter Bootstrap
 
-## Da fare / To-do
+Rubyfatt è un'applicazione **Ruby on Rails** e pertanto fruibile via web (sul proprio pc, su una rete locale o via internet).
 
-I bug e le cose da fare sono tracciate nelle [segnalazioni di GitHub](https://github.com/tommyblue/Rubyfatt/issues). se vuoi contribuire al progetto forkalo,lavora su qualche **segnalazione** e fai una **pull request**.
+## Come contribuire
+
+I bug e le cose da fare sono tracciate nelle [segnalazioni di GitHub](https://github.com/tommyblue/Rubyfatt/issues). se vuoi contribuire al progetto forkalo, lavora su qualche **segnalazione** e fai una **pull request**.
 Tutte le informazioni che ti servono le trovi sull'help ufficiale di GitHub: [http://help.github.com/send-pull-requests/](http://help.github.com/send-pull-requests/)
+
 Se trovi un errore o hai un suggerimento, ma non hai modo/tempo/voglia di correggerlo, [crea una nuova segnalazione](https://github.com/tommyblue/Rubyfatt/issues/new) e cercherò di lavorarci.
 
 ## Installazione
@@ -34,11 +40,11 @@ Clona il repository in una cartella:
 
 	git clone git@github.com:tommyblue/Rubyfatt.git
 
-Entra nella cartella e fai il checkout all'ultimo tag "stabile":
+Entra nella cartella e fai il checkout all'ultimo tag stabile:
 
 	git checkout 0.14
 
-Oppure lascia HEAD se ti piace il rischio :)
+Oppure lascia HEAD se vuoi tutte le ultime novità ti piace il rischio :)
 
 ## Configurazione
 
@@ -52,7 +58,7 @@ Modifica il valore:
 
     config.mailer_sender
 
-in `config/initializers/devise.rb`
+in `config/initializers/devise.rb` in modo che rispecchi la configurazione della tua rete.
 
 Lancia il server con:
 
@@ -74,7 +80,7 @@ e nell'aggiornamento del database con:
 
 	rake db:migrate
 
-Ti consiglio comunque di leggere il changelog (più in basso) per eventuali istruzioni aggiuntive
+Ti consiglio comunque di leggere il changelog (più in basso) per eventuali istruzioni aggiuntive relative alla versione a cui stai aggiornando
 
 ## Deploy in produzione
 
@@ -94,7 +100,7 @@ Fai soltanto attenzione che il nome del repository sia *origin* (di solito lo è
 
 ## Logo
 
-Il logo usato nella generazione dei pdf è in **lib/assets/images/logo-notule.png** (PNG, 570x250 pixel)
+Il logo usato nella generazione dei pdf è in **lib/assets/images/logo-notule.png** (PNG, 570x250 pixel), basta sostituirlo con il tuo (presto questo aspetto sarà gestibile direttamente dal software).
 
 ## Ambiente di sviluppo
 
@@ -114,7 +120,7 @@ Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
 ### HEAD
 
-- Gestione dei permessi con CanCan
+- Gestione dei permessi con CanCan (ancora un po' da testare)
 - Tolta l'associazione di una tassa con l'utente, adesso passa da ConsolidatedTax (**richiede migrazione del database**)
 - Quanto una notula o un progetto di notula vengono scaricati, l'informazione viene salvata (**richiede migrazione del database**)
 - Fix minori
