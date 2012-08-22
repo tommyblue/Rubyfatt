@@ -1,7 +1,7 @@
 class EstimatesController < ApplicationController
   before_filter :load_useful_data, :only => [:new, :create, :edit, :update]
 
-  load_and_authorize_resource :customer, :through => :current_user
+  load_and_authorize_resource :customer
   load_and_authorize_resource :estimate, :through => :customer
 
   def index

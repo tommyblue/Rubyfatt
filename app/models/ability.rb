@@ -6,10 +6,7 @@ class Ability
     can :manage,          ConsolidatedTax, :user_id => user.id
     can :manage,          Customer,        :user_id => user.id
     can :manage,          Option,          :user_id => user.id
-    can :manage,          Estimate,        :customer => { :user_id => user.id }, :consolidated_tax => { :user_id => user.id }
-    cannot :update, Estimate do |e|
-      e.consolidated_tax.user_id != user.id
-    end
+    can :manage,          Estimate,        :customer => { :user_id => user.id }
     can :manage,          Invoice,         :customer => { :user_id => user.id }
     can :manage,          InvoiceProject,  :customer => { :user_id => user.id }
     can :manage,          RecurringSlip,   :customer => { :user_id => user.id }
