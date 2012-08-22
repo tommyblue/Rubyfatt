@@ -17,6 +17,10 @@ class RecurringSlip < ActiveRecord::Base
     self.next_occurrence = self.schedule.next_occurrence unless self.next_occurrence
   end
 
+  def force_next_occurrence(next_occurrence)
+    self.update_attribute(:next_occurrence, next_occurrence)
+  end
+
   def to_invoice?
     self.next_occurrence and self.next_occurrence < Time.now
   end
