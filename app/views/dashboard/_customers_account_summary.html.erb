@@ -15,7 +15,13 @@
       <td><%= customer.title %></td>
       <td class="nowrap"><%= number_to_currency(customer.billed) %></td>
       <td class="nowrap"><%= number_to_currency(customer.paid) %></td>
-      <td class="nowrap"><%= number_to_currency(customer.unpaid) %></td>
+      <td class="nowrap">
+        <% if customer.unpaid > 0 %>
+          <span class="label label-important"><%= number_to_currency(customer.unpaid) %></span>
+        <% else %>
+          <%= number_to_currency(customer.unpaid) %>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>
