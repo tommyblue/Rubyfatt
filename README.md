@@ -25,90 +25,16 @@ Ha un piccolo sistema di report con statistiche e grafici sugli incassi, le notu
 
 Rubyfatt è un'applicazione **Ruby on Rails** e pertanto fruibile via web (sul proprio pc, su una rete locale o via internet).
 
+## Guide
+
+Tutte le guide (installazione, aggiornamento, deploy, ecc.) le puoi trovare nella [wiki su GitHub](https://github.com/tommyblue/Rubyfatt/wiki)
+
 ## Come contribuire
 
 I bug e le cose da fare sono tracciate nelle [segnalazioni di GitHub](https://github.com/tommyblue/Rubyfatt/issues). se vuoi contribuire al progetto forkalo, lavora su qualche **segnalazione** e fai una **pull request**.
 Tutte le informazioni che ti servono le trovi sull'help ufficiale di GitHub: [http://help.github.com/send-pull-requests/](http://help.github.com/send-pull-requests/)
 
 Se trovi un errore o hai un suggerimento, ma non hai modo/tempo/voglia di correggerlo, [crea una nuova segnalazione](https://github.com/tommyblue/Rubyfatt/issues/new) e cercherò di lavorarci.
-
-## Installazione
-
-Si installa come tutte le applicazioni rails:
-
-Clona il repository in una cartella:
-
-	git clone git@github.com:tommyblue/Rubyfatt.git
-
-Entra nella cartella e fai il checkout all'ultimo tag stabile:
-
-	git checkout 0.14
-
-Oppure lascia HEAD se vuoi tutte le ultime novità ti piace il rischio :)
-
-## Configurazione
-
-Modifica il file **conf/databases.yml** secondo le tue esigenze e personalizza **db/seeds.rb** con i tuoi dati
-Fai girare le migrazioni e il seed:
-
-	rake db:migrate
-	rake db:seed
-
-Modifica il valore:
-
-    config.mailer_sender
-
-in `config/initializers/devise.rb` in modo che rispecchi la configurazione della tua rete.
-
-Lancia il server con:
-
-	rails server
-
-Collegati all'applicazione dall'indirizzo [http://localhost:3000](http://localhost:3000/) e fai login con i dati di **db_seeds.rb** (quelli di default sono **email** **"demo@example.com"** e **password** **"password"**)
-
-## Aggiornamento
-
-L'aggiornamento consiste nell'aggiornare il repository git locale con:
-
-	git pull
-
-nello spostarsi nel tag corretto, ad esempio:
-
-    git checkout 0.14
-
-e nell'aggiornamento del database con:
-
-	rake db:migrate
-
-Ti consiglio comunque di leggere il changelog (più in basso) per eventuali istruzioni aggiuntive relative alla versione a cui stai aggiornando
-
-## Deploy in produzione
-
-Prima di poter mettere in produzione il software è necessario compilare gli assets con:
-
-    bundle exec rake assets:precompile
-
-## Easyfatt?
-
-Fino alla versione 0.10 il software si chiamava **Easyfatt**. Scoperta l'esistenza di un software commerciale di fatturazione con lo stesso nome ho deciso di cambiare il nome dell'applicazione in **Rubyfatt**.
-
-**Rubyfatt** è in perfetta continuità con la vecchia versione, quindi se hai installato **Easyfatt** e vuoi passare a **Rubyfatt** tutto ciò che devi fare è modificare l'URL del repository con:
-
-	git remote set-url origin git@github.com:tommyblue/Rubyfatt.git
-
-Fai soltanto attenzione che il nome del repository sia *origin* (di solito lo è), altrimenti modifica il comando di conseguenza.
-
-## Logo
-
-Il logo usato nella generazione dei pdf è in **lib/assets/images/logo-notule.png** (PNG, 570x250 pixel), basta sostituirlo con il tuo (presto questo aspetto sarà gestibile direttamente dal software).
-
-## Ambiente di sviluppo
-
-* Installare le gemme necessarie con `bundle install`
-* Configurare il file **config/database.yml**
-* Modificare l'utente di default in **db/seeds.rb** e lanciare `rake db:setup`
-* Lanciare il server di sviluppo con `rails s` e collegarsi a [http://localhost:3000/](http://localhost:3000)
-* In produzione lanciare anche `bundle exec rake assets:precompile RAILS_ENV=production`
 
 ## Roadmap
 
@@ -118,11 +44,11 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
-### HEAD
+### 1.0
 
-- Gestione dei permessi con CanCan (ancora un po' da testare)
+- Gestione dei permessi con CanCan
 - Tolta l'associazione di una tassa con l'utente, adesso passa da ConsolidatedTax (**richiede migrazione del database**)
-- Quanto una notula o un progetto di notula vengono scaricati, l'informazione viene salvata (**richiede migrazione del database**)
+- Quando una notula o un progetto di notula vengono scaricati, l'informazione viene salvata (**richiede migrazione del database**)
 - Fix minori
 
 ### 0.14

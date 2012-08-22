@@ -6,6 +6,7 @@ gem 'rails', '3.2.7'
 #gem 'sqlite3'
 gem 'mysql2'
 
+#----- Authentication and authorization
 gem 'devise'
 gem 'cancan'
 
@@ -39,4 +40,4 @@ end
 gem 'jquery-rails'
 
 # Use unicorn as the web server
-gem 'unicorn'
+#gem 'unicorn'
