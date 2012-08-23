@@ -1,0 +1,172 @@
+---
+layout: page
+title: Rubyfatt
+tagline: Gestione di fatturazione per partite IVA
+---
+{% include JB/setup %}
+
+<h2 id='rubyfattrubyfatt'>Rubyfatt<img alt='Rubyfatt' src='assets/rubyfatt-logo.png' /></h2>
+
+<p>Rubyfatt è un&#8217;applicazione open-source multiutente per la gestione delle partite IVA.</p>
+
+<p><strong>Gestisce preventivi, fatture, notule e progetti di notula, pagamenti, regimi di tassazione completamente configurabili, fatture ricorrenti.</strong></p>
+
+<p>Ha un sistema di report con <strong>statistiche e grafici</strong> sugli incassi, le notule da incassare, ecc. per tenere sempre sotto controllo il proprio lavoro.</p>
+
+<p>Utilizzando i progetti ricorrenti è possibile <strong>generare in automatico notule a scadenze regolari</strong>.</p>
+
+<h3 id='caratteristiche_principali'>Caratteristiche principali:</h3>
+
+<ul>
+<li>Gestione di differenti tipi di tassazione</li>
+
+<li>Supporta più tasse calcolate sullo stesso imponibile (ad esempio imponibile calcolato con INPS 4% e Iva 21% e ritenuta d&#8217;acconto 20% entrambe calcolate sull&#8217;imponibile). Ottimo per ogni tipo di partita iva</li>
+
+<li>Gestione dei lavori ricorrenti</li>
+
+<li>Gestione dei progetti di notula e loro trasformazione in notule</li>
+
+<li>Trasformazione dei lavori in preventivi, progetti di notula e notule/fatture</li>
+
+<li>Stampa/download PDF delle fatture e degli altri documenti</li>
+
+<li>Gestione dei pagamenti</li>
+
+<li>Riepilogo delle fatture emesse</li>
+
+<li>Modifica della numerazione delle fatture e dei preventivi (ad esempio ad inizio anno)</li>
+
+<li>Gestione delle coordinate bancarie stampate nei progetti di notula</li>
+
+<li>Multiutente</li>
+
+<li>Completamente multilingua, di default in italiano (disponibile la lingua inglese)</li>
+
+<li>Responsive layout con Twitter Bootstrap</li>
+</ul>
+
+<p>Rubyfatt è un&#8217;applicazione <strong>Ruby on Rails</strong> e pertanto fruibile via web (sul proprio pc, su una rete locale o via internet). È nato come progetto personale in seno a <a target="_blank" href='http://www.kreations.it'>Kreations Collective</a> e ha raggiunto un&#8217;apprezzabile maturità con la versione 1.0.</p>
+
+<h2 id="video">Video dimostrativo</h2>
+
+<iframe width="940" height="528" src="http://player.vimeo.com/video/48064911?color=d60927" frameborder="0" webkitAllowFullScreen= mozallowfullscreen allowFullScreen></iframe>
+
+<h2 id='demo'>Demo</h2>
+
+<p>Una versione dimostrativa è online all&#8217;indirizzo <a target="_blank" href='http://rubyfatt-demo.kreations.it'>http://rubyfatt-demo.kreations.it</a></p>
+
+<p>Si può effettuare il login con:</p>
+
+<ul>
+<li><strong>Username</strong>: demo@example.com</li>
+
+<li><strong>Password</strong>: password</li>
+</ul>
+
+<p>Sei pregato di usare la demo con parsimonia e senza stressare troppo il server, ma per il resto puoi divertirti come vuoi :)</p>
+
+<p><strong>Il database viene reinizializzato ogni ora</strong></p>
+
+<h2 id='guide'>Guide</h2>
+
+<p>Tutte le guide e gli how-to (installazione, aggiornamento, deploy, ecc.) si possono trovare nella <a target="_blank" href='https://github.com/tommyblue/Rubyfatt/wiki'>wiki del progetto su GitHub</a></p>
+
+<h2 id='come_contribuire'>Come contribuire</h2>
+
+<p>I bug e le cose da fare sono tracciate nelle <a target="_blank" href='https://github.com/tommyblue/Rubyfatt/issues'>segnalazioni di GitHub</a>. se vuoi contribuire al progetto forkalo, lavora su qualche <strong>segnalazione</strong> e fai una <strong>pull request</strong>. Tutte le informazioni che ti servono le trovi sull&#8217;help ufficiale di GitHub: <a target="_blank" href='http://help.github.com/send-pull-requests/'>http://help.github.com/send-pull-requests/</a></p>
+
+<p>Se trovi un errore o hai un suggerimento, ma non hai modo/tempo/voglia di correggerlo, <a target="_blank" href='https://github.com/tommyblue/Rubyfatt/issues/new'>crea una nuova segnalazione</a> e cercherò di lavorarci.</p>
+
+<h2 id='roadmap'>Roadmap</h2>
+
+<p>L&#8217;elenco dei buoni propositi per il futuro lo puoi trovare nelle <a target="_blank" href='https://github.com/tommyblue/Rubyfatt/issues?labels=enhancement&amp;page=1&amp;state=open'>segnalazioni di GitHub</a> con la label <em>enhancement</em>.</p>
+
+<h2 id='changelog'>Changelog</h2>
+
+<p>Di seguito i TAG git con le principali caratteristiche e cambiamenti</p>
+
+<h3 id='10'>1.0</h3>
+
+<ul>
+<li>Gestione dei permessi con CanCan</li>
+
+<li>Tolta l&#8217;associazione di una tassa con l&#8217;utente, adesso passa da ConsolidatedTax (<strong>richiede migrazione del database</strong>)</li>
+
+<li>Quando una notula o un progetto di notula vengono scaricati, l&#8217;informazione viene salvata (<strong>richiede migrazione del database</strong>)</li>
+
+<li>Fix minori</li>
+</ul>
+
+<h3 id='014'>0.14</h3>
+
+<ul>
+<li>Viene mostrato il totale dei progetti in corso nella pagina riassuntiva del cliente</li>
+
+<li>Il badge del progetti di notula, nel menù &#8220;Stato dei lavori&#8221; mostra soltanto i progetti di notula non fatturati</li>
+
+<li>La pagina riassuntiva dei progetti di notula mostra i progetti divisi in due tabelle: fatturati e non</li>
+
+<li>Modificato l&#8217;ordine dei progetti ricorrenti secondo la scadenza</li>
+
+<li>Collegata la notula al progetto di notula da cui viene generata (<strong>richiede migrazione del database</strong>)</li>
+
+<li>Eliminate le icone Fugue e aggiunto Font Awesome</li>
+
+<li>Eliminazione di un cliente se non ha dati associati</li>
+
+<li>Gestione della tassazione (tasse e regimi di tassazione)</li>
+
+<li>Viene evidenziato il cliente attivo nella sidebar</li>
+
+<li>Creazione notule e progetti di notula direttamente dalla pagina dei lavori in corso</li>
+
+<li>Scelta della data di fatturazione in fase di trasformazione di un progetto di notula in notula</li>
+
+<li>Settaggio dei dati di una notula quando generata dai progetti di notula</li>
+
+<li>Bloccato l&#8217;aggiornamento massivo degli attributi non specificati in <code>attr_accessible</code></li>
+
+<li>Verificate e implementate le validazioni dei modelli</li>
+
+<li>Fix minori</li>
+</ul>
+
+<h3 id='013'>0.13</h3>
+
+<ul>
+<li>Aggiunto il metodo <em>Option.get_option(user, key)</em> per ottenere un&#8217;opzione o crearla al volo se non esiste</li>
+</ul>
+
+<h3 id='012'>0.12</h3>
+
+<ul>
+<li>Gestione preventivi</li>
+</ul>
+
+<h3 id='011'>0.11</h3>
+
+<ul>
+<li>Rinominata l&#8217;app in <strong>Rubyfatt</strong></li>
+</ul>
+
+<h3 id='010'>0.10</h3>
+
+<ul>
+<li>Aggiunte le icone per device iOS</li>
+
+<li>Fix minori</li>
+</ul>
+
+<h3 id='09'>0.9</h3>
+
+<ul>
+<li>Trasformazione dei progetti ricorrenti in progetti di notula</li>
+
+<li>Fix minori</li>
+</ul>
+
+<h3>Versioni precedenti</h3>
+
+<ul>
+<li>Per il changelog completo vedere il <a href="https://github.com/tommyblue/Rubyfatt/blob/master/README.md" target="_blank">file README del progetto</a></li>
+</ul>
