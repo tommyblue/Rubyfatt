@@ -31,6 +31,7 @@ class RecurringSlipsController < ApplicationController
 
   def update
     if @recurring_slip.update_attributes(params[:recurring_slip])
+      @recurring_slip.force_next_occurrence(Date.strptime(params[:schedule][:next], "%d/%m/%Y")) unless params[:schedule][:next].empty?
       redirect_to(recurring_slips_path, :notice => t('controllers.recurring_slips.update.success', :default => 'The reccurring slip was successfully updated.'))
     else
       render :action => "edit"
