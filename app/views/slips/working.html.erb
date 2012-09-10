@@ -23,7 +23,7 @@
     <% @slips.each do |slip| %>
       <tr>
         <td><%= slip.name %></td>
-        <td><%= slip.customer.title %></td>
+        <td><%= link_to slip.customer.title, customer_slips_path(slip.customer) %></td>
         <td><%= number_to_currency(slip.rate) %></td>
         <td><%= l slip.created_at %></td>
         <td><%= slip.timed? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
