@@ -17,9 +17,11 @@
 //= require bootstrap-dropdown
 //= require bootstrap-alert
 //= require bootstrap-transition
+//= require bootstrap-tooltip
 //= require tinycon.min
 // require_tree .
 
 $(document).ready(function(){
     $('input.datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
+    $('[rel=tooltip]').tooltip();
 })
