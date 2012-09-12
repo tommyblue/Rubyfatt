@@ -13,6 +13,7 @@
       <th><%=t model_class.human_attribute_name(:rate) %></th>
       <th><%=t model_class.human_attribute_name(:created_at) %></th>
       <th><%=t model_class.human_attribute_name(:timed) %></th>
+      <th><%=t '.hours' %></th>
       <th><%=t model_class.human_attribute_name(:duration) %></th>
       <th><%=t model_class.human_attribute_name(:estimated) %></th>
       <th><%=t 'actions', :default => "Actions" %></th>
@@ -25,9 +26,50 @@
         <td><%= slip.name %></td>
         <td><%= number_to_currency(slip.rate) %></td>
         <% total += slip.rate %>
-        <td><%= l slip.created_at %></td>
+        <td><%= l slip.created_at, :format => :date %></td>
         <td><%= slip.timed? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
-        <td><%= slip.duration ? ChronicDuration.output(slip.duration, :format => :short) : '-' %></td>
+        <td>
+          <%= slip.timed ? link_to(slip.total_hours, "#time_entries_#{slip.id}", 'data-toggle' => 'modal') : "-" %> <%= link_to('<i class="icon-plus"></i>'.html_safe, new_customer_slip_time_entry_path(@customer, slip), :class => "bt btn-mini btn-success", :rel => "tooltip", :title => t('tooltip.time_entries.new', :default => "Add new time entry")) if slip.timed %>
+          <% if slip.timed %>
+            <div class="modal modal-format-notes hide" id="time_entries_<%= slip.id %>">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3><%=t '.time_entries.title', :default => "Time entries for" %> <%= slip.name %></h3>
+              </div>
+              <div class="modal-body">
+                <table class="table table-striped table-bordered table-condensed">
+                  <thead>
+                    <tr>
+                      <% time_entry_class = TimeEntry.new.class %>
+                      <th><%=t time_entry_class.human_attribute_name(:date) %></th>
+                      <th><%=t time_entry_class.human_attribute_name(:hours) %></th>
+                      <th><%=t time_entry_class.human_attribute_name(:comments) %></th>
+                      <th><%=t time_entry_class.human_attribute_name(:category) %></th>
+                      <th><%=t 'actions', :default => "Actions" %></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% slip.time_entries.order(:date).each do |time_entry| %>
+                      <tr>
+                        <td><%=l time_entry.date %></td>
+                        <td><%= time_entry.hours %></td>
+                        <td><%= time_entry.comments %></td>
+                        <td><%= time_entry.work_category.label if time_entry.work_category %></td>
+                        <td>
+                          <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.time_entries.delete', :default => 'Delete'), customer_slip_time_entry_path(@customer, slip, time_entry), :method => :delete, :confirm => t(".time_entries.delete_confirm", :default => "Are you sure to delete the time entry?"), :class => 'btn btn-mini btn-danger') %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <a href="#" class="btn btn-primary" data-dismiss="modal"><i class="icon-remove"></i> <%=t '.time_entries.close', :default => "Close" %></a>
+              </div>
+            </div>
+          <% end %>
+        </td>
+        <td><%= slip.duration ? slip.duration : '-' %></td>
         <td><%= slip.estimated? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td>
           <%= link_to('<i class="icon-edit"></i> '.html_safe+t('.slips.edit', :default => 'Edit'), edit_customer_slip_path(@customer, slip), :class => 'btn btn-mini btn-warning') %>
@@ -38,7 +80,7 @@
     <tr>
       <th>Totale</th>
       <th><%= number_to_currency(total) %></th>
-      <td colspan="5"></td>
+      <td colspan="6"></td>
     </tr>
   </tbody>
 </table>

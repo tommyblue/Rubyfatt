@@ -1,0 +1,11 @@
+<%= content_for :breadcrumb do %>
+  <%= print_breadcrumbs([
+                      [@customer.title, customer_slips_path(@customer)],
+                      [@slip.name, nil],
+                      [t('breadcrumb.time_entries.new', :default => "New time entry"), nil]
+                    ]).html_safe %>
+<% end %>
+
+<h1><%=t '.title', :default => "Add time entry" %></h1>
+
+<%= render :partial => 'form' %>

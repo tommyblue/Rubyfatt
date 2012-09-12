@@ -44,8 +44,17 @@
         </ul>
 
         <ul class="nav pull-right">
-          <li<%= active_navbar_helper(/^\/consolidated_taxes$/).html_safe %>><%= link_to t('.taxes', :default => "Taxes"), consolidated_taxes_path %></li>
-          <li<%= active_navbar_helper(/^\/options$/).html_safe %>><%= link_to t('.options', :default => "Options"), options_path %></li>
+          <li class="dropdown<%= active_navbar_helper(/^\/consolidated_taxes$|^\/options$|^\/work_categories$/, true).html_safe %>">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%=t '.configurations', :default => "Configurations" %>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li<%= active_navbar_helper(/^\/consolidated_taxes$/).html_safe %>><%= link_to t('.taxes', :default => "Taxes"), consolidated_taxes_path %></li>
+              <li<%= active_navbar_helper(/^\/options$/).html_safe %>><%= link_to t('.options', :default => "Options"), options_path %></li>
+              <li<%= active_navbar_helper(/^\/work_categories$/).html_safe %>><%= link_to t('.work_categories', :default => "Categories"), work_categories_path %></li>
+            </ul>
+          </li>
           <li class="dropdown<%= active_navbar_helper(/^\/profile[\/]*.*$/, true).html_safe %>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%=t '.profile.title', :default => "Profile" %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120821155703) do
+ActiveRecord::Schema.define(:version => 20120910164846) do
 
   create_table "consolidated_taxes", :force => true do |t|
     t.integer "user_id"
@@ -131,6 +131,18 @@ ActiveRecord::Schema.define(:version => 20120821155703) do
 
   add_index "taxes", ["name"], :name => "index_taxes_on_name"
 
+  create_table "time_entries", :force => true do |t|
+    t.integer  "slip_id"
+    t.integer  "work_category_id"
+    t.date     "date"
+    t.float    "hours"
+    t.string   "comments"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "time_entries", ["slip_id"], :name => "index_time_entries_on_slip_id"
+
   create_table "users", :force => true do |t|
     t.string   "name",                                                  :null => false
     t.string   "surname",                                               :null => false
@@ -159,5 +171,13 @@ ActiveRecord::Schema.define(:version => 20120821155703) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "work_categories", :force => true do |t|
+    t.integer "user_id"
+    t.string  "label",   :null => false
+  end
+
+  add_index "work_categories", ["label"], :name => "index_work_categories_on_label"
+  add_index "work_categories", ["user_id"], :name => "index_work_categories_on_user_id"
 
 end

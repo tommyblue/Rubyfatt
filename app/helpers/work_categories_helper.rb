@@ -1,0 +1,2 @@
+module WorkCategoriesHelper
+end

@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :recurring_slips, :through => :customers
   has_many :invoices, :through => :customers
   has_many :invoice_projects, :through => :customers
+  has_many :work_categories
 
   validates_presence_of :email, :name, :surname, :address, :zip_code, :town, :province, :tax_code, :vat, :phone
   validates_uniqueness_of :email

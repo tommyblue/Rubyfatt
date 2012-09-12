@@ -3,6 +3,7 @@ class Slip < ActiveRecord::Base
   belongs_to :invoice
   belongs_to :invoice_project
   belongs_to :customer
+  has_many :time_entries
 
   attr_accessible :name, :rate, :timed, :duration
 
@@ -15,6 +16,10 @@ class Slip < ActiveRecord::Base
   validate :invoice_must_exist
 
   scope :working, where("invoice_id IS NULL AND invoice_project_id IS NULL")
+
+  def total_hours
+    (self.timed and self.time_entries.size > 0) ? self.time_entries.map(&:hours).inject(:+) : 0
+  end
 
   def estimated?
     self.estimate != nil

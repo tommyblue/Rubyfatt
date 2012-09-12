@@ -1,0 +1,11 @@
+<%= content_for :breadcrumb do %>
+  <%= print_breadcrumbs([
+                      [t('breadcrumb.work_categories.index', :default => "Category"), work_categories_path],
+                      [t('breadcrumb.work_categories.edit', :default => "Edit category"), nil]
+                    ]).html_safe %>
+<% end %>
+
+<h1><%=t '.title', :default => "Edit category" %></h1>
+
+<%= render :partial => 'form' %>
+

@@ -14,7 +14,6 @@ gem 'cancan'
 gem 'prawn',  '~> 1.0.0.rc1'
 
 #----- Recurring invoices time management
-gem 'chronic_duration'
 gem 'ice_cube'
 gem 'vpim'
 

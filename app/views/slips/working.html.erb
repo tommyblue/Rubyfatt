@@ -14,6 +14,7 @@
       <th><%=t model_class.human_attribute_name(:rate) %></th>
       <th><%=t model_class.human_attribute_name(:created_at) %></th>
       <th><%=t model_class.human_attribute_name(:timed) %></th>
+      <th><%=t '.hours' %></th>
       <th><%=t model_class.human_attribute_name(:duration) %></th>
       <th><%=t model_class.human_attribute_name(:estimated) %></th>
       <th><%=t 'actions', :default => "Actions" %></th>
@@ -25,9 +26,10 @@
         <td><%= slip.name %></td>
         <td><%= link_to slip.customer.title, customer_slips_path(slip.customer) %></td>
         <td><%= number_to_currency(slip.rate) %></td>
-        <td><%= l slip.created_at %></td>
+        <td><%= l slip.created_at, :format => :date %></td>
         <td><%= slip.timed? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
-        <td><%= slip.duration ? ChronicDuration.output(slip.duration, :format => :short) : '-' %></td>
+        <td><%= slip.total_hours %> <%= link_to('<i class="icon-plus"></i>'.html_safe, new_customer_slip_time_entry_path(slip.customer, slip), :class => "bt btn-mini btn-success", :rel => "tooltip", :title => t('tooltip.time_entries.new', :default => "Add new time entry")) if slip.timed %></td>
+        <td><%= slip.duration ? slip.duration : '-' %></td>
         <td><%= slip.estimated? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td>
           <%= link_to '<i class="icon-copy"></i> '.html_safe+t('.new_invoice_project', :default => "Create invoice project"), new_customer_invoice_project_path(slip.customer), :class => 'btn btn-mini btn-primary' %>

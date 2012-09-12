@@ -2,7 +2,9 @@ Rubyfatt::Application.routes.draw do
   devise_for :users
 
   resources :customers, :except => :show do
-    resources :slips, :except => :show
+    resources :slips, :except => :show do
+      resources :time_entries, :only => [ :new, :create, :destroy ]
+    end
     resources :estimates, :invoices, :invoice_projects
   end
 
@@ -28,6 +30,7 @@ Rubyfatt::Application.routes.draw do
   match 'profile/update' => 'profile#update', :via => :put
 
   resources :options, :only => [:index, :edit, :update]
+  resources :work_categories, :except => [:show]
 
   resources :consolidated_taxes, :except => :show do
     resources :taxes, :except => [:index, :show]

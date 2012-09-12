@@ -94,8 +94,22 @@ it:
       update:
         success: "Il progetto è stato aggiornato con successo"
       destroy:
-        success: "Il progetto è stato eliminato correttamente"
+        success: "Il progetto è stato eliminato con successo"
         error: "Non è stato possibile eliminare il progetto"
+    time_entries:
+      create:
+        success: "Le ore sono state registrate con successo"
+      destroy:
+        success: "Le ore sono state eliminate con successo"
+        error: "Non è stato possibile eliminare le ore"
+    work_categories:
+      create:
+        success: "La categoria è stata creata con successo"
+      update:
+        success: "La categoria è stata aggiornata con successo"
+      destroy:
+        success: "La categoria è stata eliminata con successo"
+        error: "Non è stato possibile eliminare la categoria"
   ##########################################################
   #                                                        #
   #                      VIEWS                             #
@@ -136,14 +150,22 @@ it:
         title: "Clienti"
         show: "Visualizza i clienti"
         new: "Crea un nuovo cliente"
+      configurations: "Configurazioni"
       taxes: "Regimi di tassazione"
       options: "Opzioni"
+      work_categories: "Categorie"
       profile:
         title: "Profilo"
         edit: "Modifica i tuoi dati"
         change_password: "Cambia la password"
       logout: "Esci"
       logout_confirm: "Confermi di voler uscire?"
+  #
+  # TOOLTIPS
+  #
+  tooltip:
+    time_entries:
+      new: "Registra nuove ore sul progetto"
   #
   # BREADCRUMBS
   #
@@ -155,6 +177,8 @@ it:
       edit_tax: "Modifica la tassa"
       new: "Nuovo"
       edit: "Modifica"
+    time_entries:
+      new: "Registra ore svolte"
     customers:
       index: "Clienti"
       new: "Nuovo"
@@ -181,7 +205,7 @@ it:
       new: "Nuovo preventivo"
     recurring_slips:
       index: "Progetti ricorrenti"
-      new:: "Nuovo"
+      new: "Nuovo"
       edit: "Modifica"
     recurring_invoices:
       new: "Nuova notula"
@@ -190,19 +214,27 @@ it:
     slip:
       edit: "Modifica"
       new: "Nuovo"
+    work_categories:
+      index: "Categorie"
+      new: "Nuova categoria"
+      edit: "Modifica la categoria"
   #
   # MODEL CLASS ATTRIBUTES NAMES
   # Alphabetically ordered
   #
   actions: Azioni
   Address: "Indirizzo"
+  Category: "Categoria"
   Ceo: "Referente"
+  Comments: "Commento"
   Created at: "Data di creazione"
   Customer: "Cliente"
   Date: "Data"
-  Duration: "Durata"
+  Duration: "Ore stimate"
   Estimated: "Preventivato"
+  Hours: "Ore"
   Invoiced: "Fatturato"
+  Label: "Etichetta"
   Name: "Nome"
   Next occurrence: "Prossima scadenza"
   Number: "Numero"
@@ -302,6 +334,31 @@ it:
     form:
       insert_data: "Inserisci il valore dell'opzione"
   #
+  # TIME ENTRY
+  #
+  time_entries:
+    new:
+      title: "Registra le ore svolte"
+    form:
+      legend: ''
+      hours_hint: "Puoi inserire frazioni di ore (es. 0.5 indica mezz'ora)"
+  #
+  # WORK CATEGORIES
+  #
+  work_categories:
+    index:
+      title: "Categorie"
+      new: "Nuova categoria"
+      edit: 'Modifica'
+      delete: "Elimina"
+      delete_confirm: "Si conferma di voler eliminare la categoria?"
+    new:
+      title: "Nuova categoria"
+    edit:
+      title: "Modifica la categoria"
+    form:
+      legend: ''
+  #
   # PROFILE
   #
   profile:
@@ -317,6 +374,12 @@ it:
   #
   slips:
     index:
+      hours: "Ore"
+      time_entries:
+        title: "Ore svolte per"
+        delete: "Elimina"
+        delete_confirm: "Confermi di voler eliminare le ore svolte"
+        close: "Chiudi"
       slips:
         title: "Progetti in corso"
         new: "Nuovo progetto"
@@ -351,6 +414,7 @@ it:
       title: "Modifica il progetto"
     working:
       title: "Progetti in corso"
+      hours: "Ore"
       new_invoice_project: "Progetto di notula"
       new_invoice: "Fattura"
       edit: "Modifica"
@@ -651,6 +715,7 @@ it:
       default: ! '%d/%m/%Y - %H:%M'
       long: ! '%d %B %Y %H:%M'
       short: ! '%d %b %H:%M'
+      date: ! '%d/%m/%Y'
     pm: pm
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
