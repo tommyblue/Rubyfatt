@@ -44,6 +44,12 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### 1.1
+
+- Aggiunta la gestione delle ore svolte per ogni progetto a tempo
+- Gestione delle categorie di lavoro per le ore svolte in un progetto
+- Fix minori
+
 ### 1.0
 
 - Gestione dei permessi con CanCan
