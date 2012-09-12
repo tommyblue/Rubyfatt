@@ -16,6 +16,7 @@
 // require bootstrap
 //= require bootstrap-dropdown
 //= require bootstrap-alert
+//= require bootstrap-modal
 //= require bootstrap-transition
 //= require bootstrap-tooltip
 //= require tinycon.min
