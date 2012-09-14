@@ -44,6 +44,11 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### 1.1.1
+
+- Disabilitato Twitter Responsive per problemi con il menù
+- Passaggio delle versioni a 3 cifre
+
 ### 1.1
 
 - Aggiunta la gestione delle ore svolte per ogni progetto a tempo
