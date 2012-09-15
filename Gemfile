@@ -22,7 +22,7 @@ gem 'simple_form'
 gem 'country_select'
 
 #----- Twitter bootstrap with SASS
-gem 'bootstrap-sass', '~> 2.0.2'
+gem 'bootstrap-sass', '~> 2.1.0.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
