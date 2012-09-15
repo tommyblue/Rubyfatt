@@ -69,7 +69,7 @@
             </div>
           <% end %>
         </td>
-        <td><%= slip.duration ? slip.duration : '-' %></td>
+        <td><%= slip.duration ? check_slip_duration(slip).html_safe : '-' %></td>
         <td><%= slip.estimated? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td>
           <%= link_to('<i class="icon-edit"></i> '.html_safe+t('.slips.edit', :default => 'Edit'), edit_customer_slip_path(@customer, slip), :class => 'btn btn-mini btn-warning') %>
