@@ -11,14 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120910164846) do
+ActiveRecord::Schema.define(:version => 20120916165851) do
 
   create_table "consolidated_taxes", :force => true do |t|
     t.integer "user_id"
     t.string  "name"
+    t.text    "notes"
   end
 
   add_index "consolidated_taxes", ["name"], :name => "index_consolidated_taxes_on_name"
+  add_index "consolidated_taxes", ["user_id"], :name => "index_consolidated_taxes_on_user_id"
 
   create_table "customers", :force => true do |t|
     t.integer  "user_id"
@@ -39,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20120910164846) do
   add_index "customers", ["name"], :name => "index_customers_on_name"
   add_index "customers", ["surname"], :name => "index_customers_on_surname"
   add_index "customers", ["title"], :name => "index_customers_on_title"
+  add_index "customers", ["user_id"], :name => "index_customers_on_user_id"
 
   create_table "estimates", :force => true do |t|
     t.integer  "customer_id"
@@ -50,6 +53,8 @@ ActiveRecord::Schema.define(:version => 20120910164846) do
     t.datetime "updated_at",                             :null => false
   end
 
+  add_index "estimates", ["consolidated_tax_id"], :name => "index_estimates_on_consolidated_tax_id"
+  add_index "estimates", ["customer_id"], :name => "index_estimates_on_customer_id"
   add_index "estimates", ["date"], :name => "index_estimates_on_date"
   add_index "estimates", ["invoiced"], :name => "index_estimates_on_invoiced"
   add_index "estimates", ["number"], :name => "index_estimates_on_number"
@@ -65,6 +70,8 @@ ActiveRecord::Schema.define(:version => 20120910164846) do
     t.boolean  "downloaded",          :default => false
   end
 
+  add_index "invoice_projects", ["consolidated_tax_id"], :name => "index_invoice_projects_on_consolidated_tax_id"
+  add_index "invoice_projects", ["customer_id"], :name => "index_invoice_projects_on_customer_id"
   add_index "invoice_projects", ["date"], :name => "index_invoice_projects_on_date"
   add_index "invoice_projects", ["invoiced"], :name => "index_invoice_projects_on_invoiced"
   add_index "invoice_projects", ["number"], :name => "index_invoice_projects_on_number"
@@ -82,7 +89,10 @@ ActiveRecord::Schema.define(:version => 20120910164846) do
     t.boolean  "downloaded",          :default => false
   end
 
+  add_index "invoices", ["consolidated_tax_id"], :name => "index_invoices_on_consolidated_tax_id"
+  add_index "invoices", ["customer_id"], :name => "index_invoices_on_customer_id"
   add_index "invoices", ["date"], :name => "index_invoices_on_date"
+  add_index "invoices", ["invoice_project_id"], :name => "index_invoices_on_invoice_project_id"
   add_index "invoices", ["number"], :name => "index_invoices_on_number"
   add_index "invoices", ["paid"], :name => "index_invoices_on_paid"
 
@@ -94,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20120910164846) do
   end
 
   add_index "options", ["name"], :name => "index_options_on_name"
+  add_index "options", ["user_id"], :name => "index_options_on_user_id"
 
   create_table "recurring_slips", :force => true do |t|
     t.integer  "customer_id",                                   :null => false
@@ -104,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20120910164846) do
     t.decimal  "rate",            :precision => 8, :scale => 2, :null => false
   end
 
+  add_index "recurring_slips", ["customer_id"], :name => "index_recurring_slips_on_customer_id"
   add_index "recurring_slips", ["name"], :name => "index_recurring_slips_on_name"
 
   create_table "slips", :force => true do |t|
@@ -119,6 +131,10 @@ ActiveRecord::Schema.define(:version => 20120910164846) do
     t.integer  "invoice_project_id"
   end
 
+  add_index "slips", ["customer_id"], :name => "index_slips_on_customer_id"
+  add_index "slips", ["estimate_id"], :name => "index_slips_on_estimate_id"
+  add_index "slips", ["invoice_id"], :name => "index_slips_on_invoice_id"
+  add_index "slips", ["invoice_project_id"], :name => "index_slips_on_invoice_project_id"
   add_index "slips", ["name"], :name => "index_slips_on_name"
 
   create_table "taxes", :force => true do |t|
@@ -129,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20120910164846) do
     t.boolean "compound"
   end
 
+  add_index "taxes", ["consolidated_tax_id"], :name => "index_taxes_on_consolidated_tax_id"
   add_index "taxes", ["name"], :name => "index_taxes_on_name"
 
   create_table "time_entries", :force => true do |t|

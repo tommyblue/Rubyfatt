@@ -63,6 +63,7 @@ it:
         value: "Valore"
       consolidated_tax:
         name: "Nome"
+        notes: "Note"
       tax:
         order: "Ordine"
         name: "Nome"

@@ -6,6 +6,7 @@
 
   <legend></legend>
   <%= f.input :name %>
+  <%= f.input :notes, :input_html => { :class => 'input-xlarge', :rows => 8 }, :hint => t('.notes_hint', :default => "Will be added to PDF as tax notes") %>
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>

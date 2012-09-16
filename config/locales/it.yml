@@ -291,6 +291,8 @@ it:
       delete_confirm: "Confermi di voler eliminare il regime di tassazione e le relative tasse?"
       edit_tax_confirm: "ATTENZIONE: Modificando il valore di una tassa verranno modificati i documenti già emessi"
       delete_tax_confirm: "Confermi di voler eliminare la tassa?"
+    form:
+      notes_hint: "Verranno inserite nei PDF come note alla tassazione"
   #
   # TAXES
   #
