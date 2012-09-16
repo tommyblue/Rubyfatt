@@ -27,7 +27,7 @@
           <td><%= customer.vat %></td>
           <td>
             <%= link_to( '<i class="icon-edit"></i> '.html_safe+t('.edit', :default => 'Edit customer'), edit_customer_path(customer), :class => 'btn btn-mini btn-primary') %>
-            <%= link_to( '<i class="icon-remove"></i> '.html_safe+t('.delete', :default => 'Delete customer'), customer_path(customer), :method => :delete, :class => 'btn btn-mini btn-danger', :confirm => t('.delete_confirm', :default => 'Are you sure to delete the customer?')) if customer.can_be_deleted? %>
+            <%= link_to( '<i class="icon-remove"></i> '.html_safe+t('.delete', :default => 'Delete customer'), customer_path(customer), :method => :delete, :class => 'btn btn-mini btn-danger', :data => { :confirm => t('.delete_confirm', :default => 'Are you sure to delete the customer?') }) if customer.can_be_deleted? %>
           </td>
       </tr>
     <% end %>

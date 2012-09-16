@@ -11,7 +11,7 @@
   </div>
   <div style="margin-bottom: 10px;" class="pull-right">
     <%= link_to '<i class="icon-edit"></i> '.html_safe+t('.edit', :default => "Edit"), edit_consolidated_tax_path(consolidated_tax), :class => "btn btn-warning" %>
-    <%= link_to '<i class="icon-remove"></i> '.html_safe+t('.delete', :default => "Delete"), consolidated_tax_path(consolidated_tax), :method => :delete, :confirm => t('.delete_confirm', :default => "Are you sure to delete the consolidated tax and its taxes?"), :class => "btn btn-danger" %>
+    <%= link_to '<i class="icon-remove"></i> '.html_safe+t('.delete', :default => "Delete"), consolidated_tax_path(consolidated_tax), :method => :delete, :data => { :confirm => t('.delete_confirm', :default => "Are you sure to delete the consolidated tax and its taxes?") }, :class => "btn btn-danger" %>
   </div>
   <table class="table table-striped table-bordered table-condensed">
     <thead>
@@ -35,8 +35,8 @@
             <%= tax.compound ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %>
           </td>
           <td>
-            <%= link_to '<i class="icon-edit"></i> '.html_safe+t('.edit', :default => "Edit"), edit_consolidated_tax_tax_path(consolidated_tax, tax), :confirm => t('.edit_tax_confirm', :default => "WARNING: change the rate of the tax will change every document using it"), :class => "btn btn-mini btn-warning"%>
-            <%= link_to '<i class="icon-remove"></i> '.html_safe+t('.delete', :default => "Delete"), consolidated_tax_tax_path(consolidated_tax, tax), :method => :delete, :confirm => t('.delete_tax_confirm', :default => "Are you sure to delete the tax?"), :class => "btn btn-mini btn-danger"%>
+            <%= link_to '<i class="icon-edit"></i> '.html_safe+t('.edit', :default => "Edit"), edit_consolidated_tax_tax_path(consolidated_tax, tax), :data => { :confirm => t('.edit_tax_confirm', :default => "WARNING: change the rate of the tax will change every document using it") }, :class => "btn btn-mini btn-warning"%>
+            <%= link_to '<i class="icon-remove"></i> '.html_safe+t('.delete', :default => "Delete"), consolidated_tax_tax_path(consolidated_tax, tax), :method => :delete, :data => { :confirm => t('.delete_tax_confirm', :default => "Are you sure to delete the tax?") }, :class => "btn btn-mini btn-danger"%>
           </td>
         </tr>
       <% end %>

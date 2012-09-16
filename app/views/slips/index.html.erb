@@ -56,7 +56,7 @@
                         <td><%= time_entry.comments %></td>
                         <td><%= time_entry.work_category.label if time_entry.work_category %></td>
                         <td>
-                          <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.time_entries.delete', :default => 'Delete'), customer_slip_time_entry_path(@customer, slip, time_entry), :method => :delete, :confirm => t(".time_entries.delete_confirm", :default => "Are you sure to delete the time entry?"), :class => 'btn btn-mini btn-danger') %>
+                          <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.time_entries.delete', :default => 'Delete'), customer_slip_time_entry_path(@customer, slip, time_entry), :method => :delete, :data => { :confirm => t(".time_entries.delete_confirm", :default => "Are you sure to delete the time entry?") }, :class => 'btn btn-mini btn-danger') %>
                         </td>
                       </tr>
                     <% end %>
@@ -73,7 +73,7 @@
         <td><%= slip.estimated? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td>
           <%= link_to('<i class="icon-edit"></i> '.html_safe+t('.slips.edit', :default => 'Edit'), edit_customer_slip_path(@customer, slip), :class => 'btn btn-mini btn-warning') %>
-          <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.slips.delete', :default => 'Delete'), customer_slip_path(@customer,slip.id), :method => :delete, :confirm => t(".slips.delete_confirm", :default => "Are you sure to delete the slip?"), :class => 'btn btn-mini btn-danger') %>
+          <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.slips.delete', :default => 'Delete'), customer_slip_path(@customer,slip.id), :method => :delete, :data => { :confirm => t(".slips.delete_confirm", :default => "Are you sure to delete the slip?") }, :class => 'btn btn-mini btn-danger') %>
         </td>
       </tr>
     <% end %>
@@ -115,7 +115,7 @@
         <td>
           <%= link_to('<i class="icon-edit"></i> '.html_safe+t('.estimates.edit', :default => 'Edit'), edit_customer_estimate_path(@customer, estimate), :class => 'btn btn-mini btn-warning') %>
           <%= link_to '<i class="icon-print"></i> '.html_safe+t('.estimates.print', :default => 'PDF'), customer_estimate_path(@customer, estimate.id, :format => 'pdf'), :class => 'btn btn-mini btn-primary' %>
-          <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.estimates.delete', :default => 'Delete'), customer_estimate_path(@customer,estimate.id), :method => :delete, :confirm => t('.estimates.delete_confirm', :default => "Are you sure to delete the estimate?\nATTENTION: Numbering won't be automatically restored..."), :class => 'btn btn-mini btn-danger') %>
+          <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.estimates.delete', :default => 'Delete'), customer_estimate_path(@customer,estimate.id), :method => :delete, :data => { :confirm => t('.estimates.delete_confirm', :default => "Are you sure to delete the estimate?\nATTENTION: Numbering won't be automatically restored...") }, :class => 'btn btn-mini btn-danger') %>
         </td>
       </tr>
     <% end %>
@@ -154,7 +154,7 @@
         <td><%= project.downloaded? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td><%= project.invoiced? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td>
-          <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.invoice_projects.delete', :default => 'Delete'), customer_invoice_project_path(@customer,project.id), :method => :delete, :confirm => t(".invoice_projects.delete_confirm", :default => "Are you sure to delete the invoice project?\nATTENTION: You shouldn't destroy it unless you know what you're doing. Numbering won't be automatically restored..."), :class => 'btn btn-mini btn-danger') %>
+          <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.invoice_projects.delete', :default => 'Delete'), customer_invoice_project_path(@customer,project.id), :method => :delete, :data => { :confirm => t(".invoice_projects.delete_confirm", :default => "Are you sure to delete the invoice project?\nATTENTION: You shouldn't destroy it unless you know what you're doing. Numbering won't be automatically restored...") }, :class => 'btn btn-mini btn-danger') %>
           <%= link_to('<i class="icon-copy"></i> '.html_safe+t('.invoice_projects.transform_to_invoice', :default => 'Transform to invoice'), project_to_invoice_form_path(project.id), :class => 'btn btn-mini btn-primary') unless project.invoiced %>
           <%= link_to '<i class="icon-print"></i> '.html_safe+t('.invoice_projects.print', :default => 'PDF'), customer_invoice_project_path(@customer,project.id, :format => 'pdf'), :class => 'btn btn-mini btn-primary' %>
         </td>
@@ -204,7 +204,7 @@
         <td><%= invoice.paid? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
         <td><%= invoice.payment_date.strftime("%d/%m/%Y") if invoice.paid and invoice.payment_date %></td>
         <td>
-          <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.invoices.delete_and_restore', :default => 'Delete' ), customer_invoice_path(@customer,invoice.id), :method => :delete, :confirm => t('.invoices.delete_and_restore_confirm', :default => "Are you sure to delete the invoice and restore the slips?\nATTENTION: You shouldn't destroy invoices unless you know what you're doing. Numbering won't be automatically restored..."), :class => 'btn btn-mini btn-danger') unless invoice.paid? %>
+          <%= link_to('<i class="icon-remove"></i> '.html_safe+t('.invoices.delete_and_restore', :default => 'Delete' ), customer_invoice_path(@customer,invoice.id), :method => :delete, :data => { :confirm => t('.invoices.delete_and_restore_confirm', :default => "Are you sure to delete the invoice and restore the slips?\nATTENTION: You shouldn't destroy invoices unless you know what you're doing. Numbering won't be automatically restored...") }, :class => 'btn btn-mini btn-danger') unless invoice.paid? %>
           <%= link_to('<i class="icon-money"></i> '.html_safe+t('.invoices.add_payment', :default => 'Add payment'), "/invoice/#{invoice.id}/payment", :class => 'btn btn-mini btn-success') unless invoice.paid? %>
           <%= link_to '<i class="icon-print"></i> '.html_safe+t('.invoices.print', :default => 'PDF'), customer_invoice_path(@customer,invoice.id, :format => 'pdf'), :class => 'btn btn-mini btn-primary' %>
         </td>

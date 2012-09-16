@@ -26,7 +26,7 @@
         <td><%= number_to_currency(estimate.rate) %></td>
         <td><%= number_to_currency(estimate.total) %></td>
         <td><%= estimate.invoiced? ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %></td>
-        <td><%= link_to('<i class="icon-remove"></i> '.html_safe+t('.estimates.delete', :default => 'Delete'), customer_estimate_path(@customer,estimate.id), :method => :delete, :confirm => t('.estimates.delete_confirm', :default => "Are you sure to delete the estimate?\nATTENTION: You shouldn't destroy it unless you know what you're doing. Numbering won't be automatically restored..."), :class => 'btn btn-mini btn-danger') %></td>
+        <td><%= link_to('<i class="icon-remove"></i> '.html_safe+t('.estimates.delete', :default => 'Delete'), customer_estimate_path(@customer,estimate.id), :method => :delete, :data => { :confirm => t('.estimates.delete_confirm', :default => "Are you sure to delete the estimate?\nATTENTION: You shouldn't destroy it unless you know what you're doing. Numbering won't be automatically restored...") }, :class => 'btn btn-mini btn-danger') %></td>
       </tr>
     <% end %>
   </tbody>
