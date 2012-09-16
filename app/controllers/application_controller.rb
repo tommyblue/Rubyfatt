@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :authenticate_user!
+  before_filter :set_locale
   layout :layout_by_resource
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -9,6 +10,14 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def set_locale
+    if current_user
+      I18n.locale = current_user.language.to_sym || I18n.default_locale
+    else
+      I18n.default_locale
+    end
+  end
 
   def layout_by_resource
     if devise_controller?

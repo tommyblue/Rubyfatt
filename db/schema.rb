@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120916165851) do
+ActiveRecord::Schema.define(:version => 20120916175611) do
 
   create_table "consolidated_taxes", :force => true do |t|
     t.integer "user_id"
@@ -161,20 +161,20 @@ ActiveRecord::Schema.define(:version => 20120916165851) do
   add_index "time_entries", ["slip_id"], :name => "index_time_entries_on_slip_id"
 
   create_table "users", :force => true do |t|
-    t.string   "name",                                                  :null => false
-    t.string   "surname",                                               :null => false
-    t.string   "address",                                               :null => false
-    t.string   "zip_code",                                              :null => false
-    t.string   "town",                                                  :null => false
-    t.string   "province",                                              :null => false
+    t.string   "name",                                                    :null => false
+    t.string   "surname",                                                 :null => false
+    t.string   "address",                                                 :null => false
+    t.string   "zip_code",                                                :null => false
+    t.string   "town",                                                    :null => false
+    t.string   "province",                                                :null => false
     t.string   "country"
-    t.string   "tax_code",                                              :null => false
-    t.string   "vat",                                                   :null => false
-    t.string   "phone",                                                 :null => false
-    t.datetime "created_at",                                            :null => false
-    t.datetime "updated_at",                                            :null => false
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "tax_code",                                                :null => false
+    t.string   "vat",                                                     :null => false
+    t.string   "phone",                                                   :null => false
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.string   "email",                                 :default => "",   :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",   :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(:version => 20120916165851) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.text     "bank_coordinates"
+    t.string   "language",                              :default => "it"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -130,6 +130,7 @@ it:
         phone: "Recapito telefonico"
         password: "Password"
         remember_me: "Ricordami"
+        language: "Lingua dell'interfaccia"
       work_category:
         label: "Etichetta"
     hints:

@@ -8,6 +8,7 @@ class ProfileController < ApplicationController
   def update
     if @user.update_attributes(params[:user])
       sign_in @user, :bypass => true
+      I18n.locale = @user.language.to_sym
       redirect_to(edit_profile_path, :notice => t('controllers.profile.update.success', :default => 'Your profile was successfully updated.'))
     else
       render :action => "edit"

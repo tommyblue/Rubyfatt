@@ -3,10 +3,11 @@
   <% if f.error_notification %>
     <%= f.error_notification %>
   <% end %>
-  
+
   <legend><%=t '.legend', :default => "Personal data" %></legend>
   <%= f.input :name %>
   <%= f.input :surname %>
+  <%= f.input :language, :as => :radio_buttons, :collection => [['Italiano', 'it'], ['English', 'en']] %>
   <%= f.input :address %>
   <%= f.input :zip_code %>
   <%= f.input :town %>
