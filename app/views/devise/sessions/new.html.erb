@@ -1,4 +1,8 @@
-<h1><%=t '.sign_in', :default => "Sign in"%></h1>
+<div id="login_welcome">
+  <%= image_tag "rubyfatt-logo.png", style: "float:left;", id: "logo_image", alt: "Rubyfatt" %>
+  <h1><%=t '.title', default: "Rubyfatt"%></h1>
+  <h3><%=t '.slogan', default: "VAT manager" %></h3>
+</div>
 
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "new_user form-horizontal"}) do |f| %>
   <legend><%=t '.insert_credentials', :default => "Insert your credentials" %></legend>

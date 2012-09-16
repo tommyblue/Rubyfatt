@@ -3,7 +3,7 @@ class Slip < ActiveRecord::Base
   belongs_to :invoice
   belongs_to :invoice_project
   belongs_to :customer
-  has_many :time_entries
+  has_many :time_entries, dependent: :destroy
 
   attr_accessible :name, :rate, :timed, :duration
 

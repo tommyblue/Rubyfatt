@@ -31,8 +31,10 @@ it:
         inactive: "Il tuo account non è stato ancora attivato."
     sessions:
       new:
-        sign_in: "Accedi"
-        insert_credentials: "Inserisci le tue credenziali"
+        title: "Rubyfatt"
+        slogan: "Gestionale di fatturazione per P.IVA"
+        insert_credentials: "Inserisci le tue credenziali per accedere"
+        sign_in: "Entra"
       user:
         signed_in: "Accesso effettuato con successo."
         signed_out: "Sei uscito correttamente."
