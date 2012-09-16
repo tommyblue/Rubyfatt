@@ -10,7 +10,7 @@
     <%= content_tag :span, "<img src=\"/icons/calendar-month.png\" alt=\"Calendar\" />".html_safe, :class => "add-on" %><%= f.input_field :date, :as => :datepicker %>
   <% end %>
 
-  <%= f.association :consolidated_tax, :as => :radio, :collection => @consolidated_taxes %>
+  <%= f.association :consolidated_tax, :as => :radio_buttons, :collection => @consolidated_taxes %>
   <%= f.association :slips, :as => :check_boxes, :collection => @slips %>
 
   <div class="form-actions">

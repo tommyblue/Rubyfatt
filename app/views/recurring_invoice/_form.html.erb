@@ -3,7 +3,7 @@
   <% if f.error_notification %>
     <%= f.error_notification %>
   <% end %>
-  
+
   <legend><%=t '.legend', :default => "Invoice for" %> <%= @customer.title %></legend>
   <%= f.input :date, :wrapper => :prepend do %>
     <%= content_tag :span, "<img src=\"/icons/calendar-month.png\" alt=\"Calendar\" />".html_safe, :class => "add-on" %><%= f.input_field :date, :as => :datepicker %>
@@ -12,7 +12,7 @@
   <%= f.input :payment_date, :wrapper => :prepend do %>
     <%= content_tag :span, "<img src=\"/icons/calendar-month.png\" alt=\"Calendar\" />".html_safe, :class => "add-on" %><%= f.input_field :payment_date, :as => :datepicker %>
   <% end %>
-  <%= f.association :consolidated_tax, :as => :radio, :collection => @consolidated_taxes %>
+  <%= f.association :consolidated_tax, :as => :radio_buttons, :collection => @consolidated_taxes %>
   <%= f.association :slips, :as => :check_boxes, :collection => [ @recurring_slip ] %>
 
   <div class="form-actions">
