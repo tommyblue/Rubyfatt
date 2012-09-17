@@ -11,7 +11,7 @@ google.load("visualization", "1", {packages:["corechart"]});
   function drawChart() {
       var data = google.visualization.arrayToDataTable([
           ['<%=t '.month', :default => "Month" %>', '<%=t '.total', :default => "Total" %>'],
-          <%= invoices.join(',').to_s %>
+          <%= invoices.join(',').html_safe %>
       ]);
 
       var options = {
