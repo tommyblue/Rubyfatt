@@ -18,6 +18,12 @@ class ConsolidatedTax < ActiveRecord::Base
     end
   end
 
+  def suggest_order
+    order = 0
+    self.taxes.each { |tax| order = tax.order.to_i if tax.order.to_i > order }
+    order + 1
+  end
+
   private
     def user_must_exist
       unless self.user_id.nil?

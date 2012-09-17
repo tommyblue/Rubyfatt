@@ -3,6 +3,7 @@ class TaxesController < ApplicationController
   load_and_authorize_resource :tax, :through => :consolidated_tax
 
   def new
+    @tax.order = @consolidated_tax.suggest_order
   end
 
   def create
