@@ -30,6 +30,12 @@ gem "paperclip", "~> 3.0"
 #----- Exception notification
 gem 'exception_notification'
 
+group :development do
+  gem "jeweler", "> 1.6.4"
+  gem 'i18n-spec'
+  gem 'localeapp'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
