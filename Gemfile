@@ -27,6 +27,9 @@ gem 'bootstrap-sass', '~> 2.1.0.0'
 #----- Paperclip
 gem "paperclip", "~> 3.0"
 
+#----- Exception notification
+gem 'exception_notification'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -42,4 +45,4 @@ end
 gem 'jquery-rails'
 
 # Use unicorn as the web server
-#gem 'unicorn'
+gem 'unicorn'
