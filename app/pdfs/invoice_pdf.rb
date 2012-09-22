@@ -91,8 +91,10 @@ class InvoicePdf < Prawn::Document
 
   ## Logo
   def logo
-    logopath =  "#{Rails.root}/lib/assets/images/logo-notule.png"
-    image logopath, :width => 137, :height => 60
+    if @invoice.customer.user.logo.present?
+      logopath =  @invoice.customer.user.logo.path
+      image logopath, :width => 137, :height => 60
+    end
   end
 
   ## Slips

@@ -28,6 +28,7 @@ Rubyfatt::Application.routes.draw do
   match 'profile/password/update' => 'profile#password_update', :via => :put
   match 'profile/edit' => 'profile#edit', :as => :edit_profile
   match 'profile/update' => 'profile#update', :via => :put
+  match 'profile/destroy_logo' => 'profile#destroy_logo', :via => :delete, :as => 'destroy_logo'
 
   resources :options, :only => [:index, :edit, :update]
   resources :work_categories, :except => [:show]

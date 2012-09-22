@@ -1,4 +1,4 @@
-<%= simple_form_for @user, :url => '/profile/update', :html => {:class => 'form-horizontal' } do |f| %>
+<%= simple_form_for @user, :url => '/profile/update', :html => {:class => 'form-horizontal', :multipart => true } do |f| %>
 
   <% if f.error_notification %>
     <%= f.error_notification %>
@@ -18,6 +18,17 @@
   <%= f.input :phone %>
   <%= f.input :email %>
   <%= f.input :bank_coordinates, :input_html => { :class => 'input-xlarge', :rows => 8 } %>
+  <%= f.input :logo, :hint => t('.logo_hint', :default => 'Size ratio in PDFs: ') + '137x60' do %>
+    <div class="profile_logo">
+      <% if @user.logo.present? %>
+        <%= image_tag(@user.logo) %>
+        <%= link_to '<i class="icon-trash"></i> '.html_safe + t('.delete_logo'), destroy_logo_path, :method => :delete, :data => { :confirm => t('.delete_logo_confirm') }, :class => "btn btn-danger btn-mini" %>
+      <% else %>
+        <small><em><%= t('.no_logo') %></em></small>
+      <% end %>
+    </div>
+    <%= f.file_field :logo %>
+  <% end %>
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>

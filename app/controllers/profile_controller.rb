@@ -27,6 +27,15 @@ class ProfileController < ApplicationController
     end
   end
 
+  def destroy_logo
+    if @user.destroy_logo
+      flash[:notice] = I18n.t('controllers.profile.logo_destroy.success', :default => "The logo was successfully deleted")
+    else
+      flash[:error] = I18n.t('controllers.profile.logo_destroy.error', :default => "Error deleting the logo")
+    end
+    redirect_to :back
+  end
+
   private
     def load_current_user
       @user = current_user

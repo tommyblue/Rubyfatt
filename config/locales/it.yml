@@ -66,6 +66,9 @@ it:
         success: "Il tuo profilo è stato aggiornato con successo"
       password_update:
         success: "La password è stata aggiornata con successo"
+      logo_destroy:
+        success: "Il logo è stato eliminato correttamente"
+        error: "Non è stato possibile eliminare il logo"
     recurring_invoice:
       create:
         success: "La notula derivante dal progetto ricorrente è stata creata con successo"
@@ -368,6 +371,10 @@ it:
       title: "Modifica i tuoi dati"
     form:
       legend: "Dati personali"
+      no_logo: "Logo non presente"
+      logo_hint: "Rapporto dimensioni nel PDF: "
+      delete_logo: "Elimina il logo"
+      delete_logo_confirm: "Si vuole veramente eliminare il logo?"
     password_edit:
       title: "Cambia la tua password"
       legend: "Inserisci la nuova password"

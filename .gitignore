@@ -14,5 +14,9 @@
 /log/*.log
 /tmp
 
+# MAC and Vim files
 .DS_Store
 *.swp
+
+# Ignore logos
+/public/system

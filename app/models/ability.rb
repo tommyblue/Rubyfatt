@@ -23,5 +23,6 @@ class Ability
     can :update,          User,             :id => user.id
     can :password_edit,   User,             :id => user.id
     can :password_update, User,             :id => user.id
+    can :destroy_logo, User,             :id => user.id
   end
 end
