@@ -44,6 +44,20 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### 1.2.0
+
+- Gestione logo nei PDF
+- Quando si crea una tassa viene suggerito l'ordine
+- Gestione della la lingua dalla pagina del profilo
+- Note sulla tassazione
+- Evidenziato se il numero di ore svolte ha superato le ore stimate
+- Fixes per Rails 4
+- Twitter bootstrap 2.1.0.0
+- Nuovo logo e pagina di login
+- Rails 3.2.8 e aggiornamento gemme
+- Riabilitato layout responsive
+- Fix vari
+
 ### 1.1.1
 
 - Disabilitato Twitter Responsive per problemi con il menù
