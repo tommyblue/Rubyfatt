@@ -14,11 +14,12 @@
   <% end %>
 
   <legend><%=t '.legend', :default => "Invoice project for" %> <%= @customer.title %></legend>
+  <h3><%= @recurring_slip.name %></h3>
   <%= f.input :date, :wrapper => :prepend do %>
     <%= content_tag :span, "<img src=\"/icons/calendar-month.png\" alt=\"Calendar\" />".html_safe, :class => "add-on" %><%= f.input_field :date, :as => :datepicker %>
   <% end %>
   <%= f.association :consolidated_tax, :as => :radio_buttons, :collection => @consolidated_taxes %>
-  <%= f.association :slips, :as => :check_boxes, :collection => [ @recurring_slip ] %>
+  <%= f.association :slips, :as => :check_boxes, :collection => @slips, label: t('.working_slips', default: "Other slips") %>
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>

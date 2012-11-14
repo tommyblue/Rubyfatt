@@ -44,6 +44,10 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### 1.2.1
+
+- Possibilità di inserire progetti in corso in un progetto di notula ricorrente
+
 ### 1.2.0
 
 - Gestione logo nei PDF
