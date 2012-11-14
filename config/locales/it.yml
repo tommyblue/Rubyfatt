@@ -496,6 +496,8 @@ it:
     from_recurring_slip:
       title: "Nuovo progetto di notula da progetto ricorrente"
       legend: "Progetto di notula per"
+      recurring_slip: "Progetto scaduto"
+      working_slips: "Altri progetti"
   #
   # INVOICES
   #
