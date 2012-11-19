@@ -36,6 +36,11 @@ Tutte le informazioni che ti servono le trovi sull'help ufficiale di GitHub: [ht
 
 Se trovi un errore o hai un suggerimento, ma non hai modo/tempo/voglia di correggerlo, [crea una nuova segnalazione](https://github.com/tommyblue/Rubyfatt/issues/new) e cercherò di lavorarci.
 
+## Licenza
+
+Rubyfatt è distribuito con licenza GNU Affero General Public License http://www.gnu.org/licenses/agpl.html
+Ruby on Rails, software su cui è basato Rubyfatt, è distribuito con licenza MIT http://opensource.org/licenses/MIT
+
 ## Roadmap
 
 L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni di GitHub](https://github.com/tommyblue/Rubyfatt/issues?labels=enhancement&page=1&state=open) con la label *enhancement*.
