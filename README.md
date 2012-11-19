@@ -39,6 +39,7 @@ Se trovi un errore o hai un suggerimento, ma non hai modo/tempo/voglia di correg
 ## Licenza
 
 Rubyfatt è distribuito con licenza GNU Affero General Public License http://www.gnu.org/licenses/agpl.html
+
 Ruby on Rails, software su cui è basato Rubyfatt, è distribuito con licenza MIT http://opensource.org/licenses/MIT
 
 ## Roadmap
