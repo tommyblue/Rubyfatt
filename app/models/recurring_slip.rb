@@ -84,7 +84,7 @@ class RecurringSlip < ActiveRecord::Base
 
   def check_customer_on_save
     if customer.user_id != current_user.user_id
-      errors.add(:check_customer, "Customer incorrect")
+      errors.add(:check_customer, t('controllers.recurring_slips.save.error', :default => "Customer incorrect"))
     end
   end
 
