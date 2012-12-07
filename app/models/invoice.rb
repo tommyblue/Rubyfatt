@@ -70,20 +70,20 @@ class Invoice < ActiveRecord::Base
     self.update_attribute(:downloaded, true) unless self.downloaded
   end
 
-  def self.this_year current_user_id
+  def this_year
     self.unscoped
       .select("#{Dbadapter.get_month "invoices.date"} AS month_number,SUM(slips.rate) AS month_income")
       .joins(:slips, :customer)
-      .where("customers.user_id = ? AND #{Dbadapter.get_year "invoices.date"} = ? AND invoices.paid = ?", current_user_id, Time.now.year, true)
+      .where("customers.user_id = ? AND #{Dbadapter.get_year "invoices.date"} = ? AND invoices.paid = ?", current_user.id, Time.now.year, true)
       .group("#{Dbadapter.get_month "invoices.date"}")
       .order('month_number')
   end
 
-  def self.receipts_per_year current_user_id
+  def receipts_per_year
     self.unscoped
       .select("#{Dbadapter.get_year "invoices.date"} AS year_number,SUM(slips.rate) AS year_income")
       .joins(:slips, :customer)
-      .where("customers.user_id = ?", current_user_id)
+      .where("customers.user_id = ?", current_user.id)
       .group("#{Dbadapter.get_year "invoices.date"}")
       .order('year_number')
   end

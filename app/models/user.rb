@@ -13,7 +13,25 @@ class User < ActiveRecord::Base
   has_many :consolidated_taxes, :class_name => 'ConsolidatedTax'
   has_many :slips, :through => :customers
   has_many :recurring_slips, :through => :customers
-  has_many :invoices, :through => :customers
+  has_many :invoices, :through => :customers do
+    def this_year
+      self.unscoped
+        .select("#{DbAdapter.get_month "invoices.date"} AS month_number,SUM(slips.rate) AS month_income")
+        .joins(:slips, :customer)
+        .where("#{DbAdapter.get_year "invoices.date"} = ? AND invoices.paid = ?", Time.now.year, true)
+        .group("#{DbAdapter.get_month "invoices.date"}")
+        .order('month_number')
+    end
+
+    def receipts_per_year
+      self.unscoped
+        .select("#{DbAdapter.get_year "invoices.date"} AS year_number,SUM(slips.rate) AS year_income")
+        .joins(:slips, :customer)
+        .group("#{DbAdapter.get_year "invoices.date"}")
+        .order('year_number')
+    end    
+  end
+
   has_many :invoice_projects, :through => :customers
   has_many :work_categories
 

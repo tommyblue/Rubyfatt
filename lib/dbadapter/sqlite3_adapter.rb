@@ -1,4 +1,4 @@
-class Sqllite3Adapter
+class Sqlite3Adapter
   def self.get_month value
   	get_date_part "m", value
   end
