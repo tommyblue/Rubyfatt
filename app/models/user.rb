@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :recurring_slips, :through => :customers
   has_many :invoices, :through => :customers do
     def this_year
-      self.unscoped
+      self
         .select("#{DbAdapter.get_month "invoices.date"} AS month_number,SUM(slips.rate) AS month_income")
         .joins(:slips, :customer)
         .where("#{DbAdapter.get_year "invoices.date"} = ? AND invoices.paid = ?", Time.now.year, true)
@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
     end
 
     def receipts_per_year
-      self.unscoped
+      self
         .select("#{DbAdapter.get_year "invoices.date"} AS year_number,SUM(slips.rate) AS year_income")
         .joins(:slips, :customer)
         .group("#{DbAdapter.get_year "invoices.date"}")
