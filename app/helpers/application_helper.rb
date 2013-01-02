@@ -1,4 +1,9 @@
 module ApplicationHelper
+  # Shows the number of the objects (invoices, invoice projects, estimates) as YYYY-XXX
+  def print_number(object)
+    "#{object.date.year}-#{object.number.to_s.rjust 3 ,'0'}"
+  end
+
   def expired_recurring_slips_badge(only_num = false)
     expired = RecurringSlip.expired
     if only_num

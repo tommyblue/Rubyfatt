@@ -6,7 +6,7 @@ class Invoice < ActiveRecord::Base
 
   attr_accessible :date, :number, :paid, :payment_date, :consolidated_tax_id, :slip_ids
 
-  default_scope order('invoices.number', 'invoices.id')
+  default_scope order('YEAR(invoices.date)', 'invoices.number', 'invoices.id')
   scope :by_year, lambda {|year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31")}
 
   validates :date, :presence => true

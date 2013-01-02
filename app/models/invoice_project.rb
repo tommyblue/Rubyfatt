@@ -6,7 +6,7 @@ class InvoiceProject < ActiveRecord::Base
 
   attr_accessible :date, :number, :invoiced, :consolidated_tax_id, :slip_ids
 
-  default_scope order('invoice_projects.number', 'invoice_projects.id')
+  default_scope order('YEAR(invoice_projects.date)', 'invoice_projects.number', 'invoice_projects.id')
   scope :by_year, lambda {|year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31")}
   scope :uninvoiced, where(invoiced: false)
   scope :invoiced, where(invoiced: true)

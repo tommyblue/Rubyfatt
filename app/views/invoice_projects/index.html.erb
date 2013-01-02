@@ -26,7 +26,7 @@
   <tbody>
     <% @uninvoiced_invoice_projects.each do |project| %>
       <tr>
-        <td><%= project.number %></td>
+        <td><%= print_number project %></td>
         <td><%= project.customer.title %> <em><small>(<%= "#{project.customer.surname} #{project.customer.name}" %>)</small></em></td>
         <td><%= l project.date %></td>
         <td><%= number_to_currency(project.rate) %></td>
@@ -61,7 +61,7 @@
   <tbody>
     <% @invoiced_invoice_projects.each do |project| %>
       <tr>
-        <td><%= project.number %></td>
+        <td><%= print_number project %></td>
         <td><%= project.customer.title %> <em><small>(<%= "#{project.customer.surname} #{project.customer.name}" %>)</small></em></td>
         <td><%= l project.date %></td>
         <td><%= number_to_currency(project.rate) %></td>

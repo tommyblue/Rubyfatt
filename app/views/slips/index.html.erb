@@ -107,7 +107,7 @@
   <tbody>
     <% @estimates.each do |estimate| %>
       <tr>
-        <td><%= estimate.number %></td>
+        <td><%= print_number estimate %></td>
         <td><%= l estimate.date %></td>
         <td><%= number_to_currency(estimate.rate) %></td>
         <td><%= number_to_currency(estimate.total) %></td>
@@ -147,7 +147,7 @@
   <tbody>
     <% @invoice_projects.each do |project| %>
       <tr>
-        <td><%= project.number %></td>
+        <td><%= print_number project %></td>
         <td><%= l project.date %></td>
         <td><%= number_to_currency(project.rate) %></td>
         <td><%= number_to_currency(project.total) %></td>
@@ -189,7 +189,7 @@
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
-        <td><%= invoice.number %></td>
+        <td><%= print_number invoice %></td>
         <td><%=l invoice.date %></td>
         <td>
           <ul>

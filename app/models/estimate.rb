@@ -5,7 +5,7 @@ class Estimate < ActiveRecord::Base
 
   attr_accessible :date, :number, :invoiced, :consolidated_tax_id, :slip_ids
 
-  default_scope order('estimates.number', 'estimates.id')
+  default_scope order('YEAR(estimates.date)', 'estimates.number', 'estimates.id')
   scope :by_year, lambda {|year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31")}
 
   validates :date, :presence => true
