@@ -36,6 +36,10 @@ group :development do
   gem 'localeapp'
 end
 
+group :production do
+  gem "airbrake_user_attributes"
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

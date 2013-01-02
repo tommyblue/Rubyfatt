@@ -55,6 +55,7 @@ Di seguito i TAG git con le principali caratteristiche e cambiamenti
 - Fix nel grafico della dashboard se non sono presenti pagamenti per l'anno in corso
 - Modificata la visualizzazione dei numeri dei documenti per tenere conto anche dell'anno di emissione
 - Modificato di conseguenza l'ordine dei documenti (anno, numero, ID)
+- Gemma per Errbit
 
 ### 1.2.2
 
