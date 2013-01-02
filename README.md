@@ -50,11 +50,15 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
-### 1.2.2 (02/01/2013)
+### 1.2.3 (02/01/2013)
 
 - Fix nel grafico della dashboard se non sono presenti pagamenti per l'anno in corso
 - Modificata la visualizzazione dei numeri dei documenti per tenere conto anche dell'anno di emissione
 - Modificato di conseguenza l'ordine dei documenti (anno, numero, ID)
+
+### 1.2.2
+
+- Inserita la licenza
 
 ### 1.2.1
 
