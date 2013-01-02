@@ -18,7 +18,7 @@ class RecurringSlipsController < ApplicationController
     @recurring_slip.schedule = schedule
     next_occurrence = params[:schedule][:next].empty? ? nil : Date.strptime(params[:schedule][:next], "%d/%m/%Y")
     @recurring_slip.start_date = next_occurrence if next_occurrence
-    if @recurring_slip.customer.user_id == current_user.id and @recurring_slip.save
+    if @recurring_slip.save
       @recurring_slip.force_next_occurrence(next_occurrence) if next_occurrence
       redirect_to(recurring_slips_path, :notice => t('controllers.recurring_slips.create.success', :default => 'The recurring slip was successfully created.'))
     else
