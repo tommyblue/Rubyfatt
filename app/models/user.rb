@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
   has_many :consolidated_taxes, :class_name => 'ConsolidatedTax'
   has_many :slips, :through => :customers
   has_many :recurring_slips, :through => :customers
-  has_many :invoices, :through => :customers
+  has_many :invoices, :through => :customers, :extend => InvoicePerYear
+
   has_many :invoice_projects, :through => :customers
   has_many :work_categories
 

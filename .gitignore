@@ -20,4 +20,5 @@
 
 # Ignore logos
 /public/system
-.localeapp
+
+.localeapp/
