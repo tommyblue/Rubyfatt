@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.10'
 
 #----- SQLite or MySQL or..
 #gem 'sqlite3'
@@ -30,11 +30,11 @@ gem "paperclip", "~> 3.0"
 #----- Exception notification
 gem 'exception_notification'
 
-group :development do
-  gem "jeweler", "> 1.6.4"
-  gem 'i18n-spec'
-  gem 'localeapp'
-end
+# group :development do
+#   gem "jeweler", "> 1.6.4"
+#   gem 'i18n-spec'
+#   gem 'localeapp'
+# end
 
 group :production do
   gem "airbrake_user_attributes"
