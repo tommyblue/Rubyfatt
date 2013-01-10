@@ -50,6 +50,10 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### 1.2.4 (06/01/2013)
+
+- Aggiornato a Rails 3.2.10 per fix CVE-2012-5664 https://groups.google.com/forum/?fromgroups=#!topic/rubyonrails-security/DCNTNp_qjFM
+
 ### 1.2.3 (02/01/2013)
 
 - Fix nel grafico della dashboard se non sono presenti pagamenti per l'anno in corso
