@@ -11,3 +11,5 @@ Thumbs.db
 
 log/
 tmp/
+public/system/
+.localeapp
