@@ -3,7 +3,7 @@ server "galois.linusse.org", :web, :app, :db, primary: true
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 
-set :branch, "deploy"
+set :branch, "fatture"
 set :rails_env, "production"
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
