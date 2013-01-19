@@ -5,6 +5,7 @@ set :deploy_via, :remote_cache
 
 set :branch, "fatture"
 set :rails_env, "production"
+set :asset_env, "RAILS_GROUPS=assets"
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
 
@@ -22,6 +23,13 @@ namespace :deploy do
     end
   end
 
+  task :prepare_install do
+    run "ln -nfs #{shared_path}/public/images/ #{release_path}/public/"
+    run "ln -nfs #{shared_path}/public/javascripts/ #{release_path}/public/"
+    run "ln -nfs #{shared_path}/public/stylesheets/ #{release_path}/public/"
+  end
+  before "deploy:finalize_update", "deploy:prepare_install"
+
   namespace :assets do
     task :precompile, roles: :web, except: {no_release: true} do
       from = source.next_revision(current_revision)
@@ -35,9 +43,6 @@ namespace :deploy do
 
   task :create_symlink do
     run "ln -nfs #{shared_path}/system/ #{release_path}/"
-    run "ln -nfs #{shared_path}/public/images/ #{release_path}/public/"
-    run "ln -nfs #{shared_path}/public/javascripts/ #{release_path}/public/"
-    run "ln -nfs #{shared_path}/public/stylesheets/ #{release_path}/public/"
     run "rm -f #{current_path} && ln -s #{release_path} #{current_path}"
   end
 
