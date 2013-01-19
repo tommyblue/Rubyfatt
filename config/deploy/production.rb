@@ -35,6 +35,7 @@ namespace :deploy do
 
   task :create_symlink do
     run "ln -nfs #{shared_path}/system/ #{release_path}/"
+    run "rm -f #{current_path} && ln -s #{release_path} #{current_path}"
   end
 
   task :setup_config, roles: :app do
@@ -46,7 +47,6 @@ namespace :deploy do
 
   task :symlink_config, roles: :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-    run "rm -f #{current_path} && ln -s #{release_path} #{current_path}"
   end
   after "deploy:finalize_update", "deploy:symlink_config"
 
