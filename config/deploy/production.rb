@@ -34,7 +34,7 @@ namespace :deploy do
   end
 
   task :create_symlink do
-    run "ln -nfs #{shared_path}/system/ #{release_path}/system/"
+    run "ln -nfs #{shared_path}/system/ #{release_path}/"
   end
 
   task :setup_config, roles: :app do
