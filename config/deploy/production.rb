@@ -33,7 +33,7 @@ namespace :deploy do
     end
   end
 
-  task :deploy:create_symlink do
+  task :create_symlink do
     run "ln -nfs #{shared_path}/system/ #{release_path}/system/"
   end
 
