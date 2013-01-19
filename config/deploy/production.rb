@@ -35,6 +35,9 @@ namespace :deploy do
 
   task :create_symlink do
     run "ln -nfs #{shared_path}/system/ #{release_path}/"
+    run "ln -nfs #{shared_path}/public/images/ #{release_path}/public/"
+    run "ln -nfs #{shared_path}/public/javascripts/ #{release_path}/public/"
+    run "ln -nfs #{shared_path}/public/stylesheets/ #{release_path}/public/"
     run "rm -f #{current_path} && ln -s #{release_path} #{current_path}"
   end
 
