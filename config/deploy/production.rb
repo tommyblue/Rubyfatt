@@ -46,16 +46,17 @@ namespace :deploy do
 
   task :symlink_config, roles: :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "rm -f #{current_path} && ln -s #{release_path} #{current_path}"
   end
   after "deploy:finalize_update", "deploy:symlink_config"
 
-  desc "Make sure local git is in sync with remote."
-  task :check_revision, roles: :web do
-    unless `git rev-parse HEAD` == `git rev-parse origin/#{branch}`
-      puts "WARNING: HEAD is not the same as origin/#{branch}"
-      puts "Run `git push` to sync changes."
-      exit
-    end
-  end
-  before "deploy", "deploy:check_revision"
+  # desc "Make sure local git is in sync with remote."
+  # task :check_revision, roles: :web do
+  #   unless `git rev-parse HEAD` == `git rev-parse kreations/#{branch}`
+  #     puts "WARNING: HEAD is not the same as kreations/#{branch}"
+  #     puts "Run `git push` to sync changes."
+  #     exit
+  #   end
+  # end
+  # before "deploy", "deploy:check_revision"
 end
