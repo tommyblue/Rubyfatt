@@ -3,7 +3,7 @@ server "rubyfatt-demo.kreations.it", :web, :app, :db, primary: true
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 
-set :branch, "master"
+set :branch, "fatture"
 set :rails_env, "production"
 set :asset_env, "RAILS_GROUPS=assets"
 
