@@ -3,8 +3,9 @@ server "rubyfatt-demo.kreations.it", :web, :app, :db, primary: true
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 
-set :branch, "deploy"
+set :branch, "master"
 set :rails_env, "production"
+set :asset_env, "RAILS_GROUPS=assets"
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
 
@@ -13,14 +14,21 @@ namespace :deploy do
     desc "#{command} unicorn server"
     task command, roles: :app, except: {no_release: true} do
       if command == "start"
-        sudo "/usr/bin/svc -u /etc/service/fatture.kreations.it"
+        sudo "/usr/bin/svc -u /etc/service/rubyfatt"
       elsif command == "stop"
-        sudo "/usr/bin/svc -d /etc/service/fatture.kreations.it"
+        sudo "/usr/bin/svc -d /etc/service/rubyfatt"
       else
-        sudo "/usr/bin/svc -t /etc/service/fatture.kreations.it"
+        sudo "/usr/bin/svc -t /etc/service/rubyfatt"
       end
     end
   end
+
+  task :prepare_install do
+    run "ln -nfs #{shared_path}/public/images/ #{release_path}/public/"
+    run "ln -nfs #{shared_path}/public/javascripts/ #{release_path}/public/"
+    run "ln -nfs #{shared_path}/public/stylesheets/ #{release_path}/public/"
+  end
+  before "deploy:finalize_update", "deploy:prepare_install"
 
   namespace :assets do
     task :precompile, roles: :web, except: {no_release: true} do
@@ -31,6 +39,11 @@ namespace :deploy do
         logger.info "Skipping asset pre-compilation because there were no asset changes"
       end
     end
+  end
+
+  task :create_symlink do
+    run "ln -nfs #{shared_path}/system/ #{release_path}/"
+    run "rm -f #{current_path} && ln -s #{release_path} #{current_path}"
   end
 
   task :setup_config, roles: :app do
