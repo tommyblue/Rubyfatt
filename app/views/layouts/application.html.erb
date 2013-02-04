@@ -58,10 +58,7 @@
         </div>
       </div><!--/row-->
 
-      <footer>
-        <p><strong><%= link_to raw("Copyright &copy;"), "http://www.gnu.org/licenses/agpl.html", :target => :blank %> <%= Time.now.year %> <%= link_to "Kreations Collective", "http://www.kreations.it", :target => :blank %></strong></p>
-        <p><small><em>Rubyfatt <%=t '.sidebar.version', :default => "version" %> <%= APP_VERSION %> is distributed under the terms of the GNU AGPL. <a href="https://github.com/tommyblue/Rubyfatt" target="_blank"><%=t '.sidebar.source_code', :default => "Get the source code on GitHub" %></a></em></small></p>
-      </footer>
+      <%= render partial: 'layouts/footer' %>
 
     </div> <!-- /container -->
   </body>
