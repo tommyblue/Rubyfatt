@@ -20,6 +20,9 @@
   </head>
   <body>
 
+    <!-- GitHub Ribbon -->
+    <a href="https://github.com/tommyblue/Rubyfatt"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 9999;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork Rubyfatt on GitHub"></a>
+
     <div class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
           <div class="container-fluid">
@@ -53,10 +56,7 @@
         </div>
       </div><!--/row-->
 
-      <footer>
-        <p><strong><%= link_to raw("Copyright &copy;"), "http://www.gnu.org/licenses/gpl.txt", :target => :blank %> <%= Time.now.year %> <%= link_to "Kreations Collective", "http://www.kreations.it", :target => :blank %></strong></p>
-        <p><small><em>Rubyfatt <%=t '.sidebar.version', :default => "version" %> <%= APP_VERSION %><a href="https://github.com/tommyblue/Rubyfatt" target="_blank"><%=t '.sidebar.source_code', :default => "Get the source code on GitHub" %></a></em></small></p>
-      </footer>
+      <%= render partial: 'layouts/footer' %>
 
     </div> <!-- /container -->
 
