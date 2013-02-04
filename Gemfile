@@ -1,28 +1,28 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.10'
+gem 'rails', '3.2.11'
 
 #----- SQLite or MySQL or..
 #gem 'sqlite3'
 gem 'mysql2'
 
 #----- Authentication and authorization
-gem 'devise'
-gem 'cancan'
+gem 'devise', '~> 2.2.3'
+gem 'cancan', '~> 1.6.8'
 
 #----- PDF Generation
 gem 'prawn',  '~> 1.0.0.rc1'
 
 #----- Recurring invoices time management
-gem 'ice_cube'
-gem 'vpim'
+gem 'ice_cube', '~> 0.9.3'
+gem 'vpim', '~> 0.695'
 
 #----- Forms made easy
-gem 'simple_form'
-gem 'country_select'
+gem 'simple_form', '~> 2.0.4'
+gem 'country_select', '~> 1.1.3'
 
 #----- Twitter bootstrap with SASS
-gem 'bootstrap-sass', '~> 2.1.0.0'
+gem 'bootstrap-sass', '~> 2.2.2.0'
 
 #----- Paperclip
 gem "paperclip", "~> 3.0"
