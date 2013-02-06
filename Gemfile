@@ -2,9 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 
-#----- SQLite or MySQL or..
-#gem 'sqlite3'
+#----- SQLite or MySQL or PostgreSQL or..
+# gem 'sqlite3'
 gem 'mysql2'
+# gem 'pg'
 
 #----- Authentication and authorization
 gem 'devise', '~> 2.2.3'
@@ -29,6 +30,21 @@ gem "paperclip", "~> 3.0"
 
 #----- Exception notification
 gem 'exception_notification'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'annotate'
+  gem 'railroady'
+end
+
+gem "rspec-rails", :group => [:test, :development]
+group :test do
+  gem "factory_girl_rails"
+  gem "capybara"
+  gem "guard-rspec"
+end
+
 
 # group :development do
 #   gem "jeweler", "> 1.6.4"
