@@ -1,25 +1,41 @@
 <%
   invoices = []
   @receipts_per_year.each do |invoice|
-    invoices << "['#{invoice.year_number}', #{invoice.year_income}]"
+    invoices << "{'x': #{invoice.year_number}, 'y': #{invoice.year_income}}"
   end
+  invoices = ["{'x': 0, 'y': 0}"] if invoices.size == 0
 %>
-<div id="receipts_per_year_chart" style="width: 100%; height: 350px;"></div>
-<script type="text/javascript">
-google.load("visualization", "1", {packages:["corechart"]});
-  google.setOnLoadCallback(drawChart);
-  function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-          ['<%=t '.year', :default => "Year" %>', '<%=t '.total', :default => "Total" %>'],
-          <%= invoices.join(',').html_safe %>
-      ]);
+<figure style="width:100%;height:350px;margin:0;" id="incomes_per_year_chart"></figure>
+<%= content_for :javascripts do %>
+  <script type="text/javascript">
+    var tt = $('<div class="ex-tooltip">').appendTo('body'), topOffset = -32;
+    var data = {
+      "xScale": "ordinal",
+      "yScale": "linear",
+      "main": [
+        {
+          "className": ".incomes",
+          "data": [
+            <%= invoices.join(',').html_safe %>
+          ]
+        }
+      ]
+    }
+    var opts = {
+        "tickHintX": 5,
+        "mouseover": function (d, i) {
+          var pos = $(this).offset();
 
-      var options = {
-          title: '<%=t '.title', :default => "Receipts per year" %>',
-          vAxis: {title: '<%=t '.year', :default => "Year" %>',  titleTextStyle: {color: 'red'}}
+          tt.text('<%=t '.year', :default => "Year" %> '+d.x+': '+d.y+'<%=t '.total', :default => "Total" %>').css({
+            top: topOffset + pos.top,
+            left: pos.left
+          }).show();
+        },
+
+        "mouseout": function (x) {
+          tt.hide();
+        }
       };
-
-      var chart = new google.visualization.BarChart(document.getElementById('receipts_per_year_chart'));
-      chart.draw(data, options);
-  }
-</script>
+    var incomes_per_year_chart = new xChart('bar', data, '#incomes_per_year_chart', opts);
+  </script>
+<% end %>

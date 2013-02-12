@@ -20,6 +20,8 @@
 //= require bootstrap-transition
 //= require bootstrap-tooltip
 //= require tinycon.min
+//= require d3.v3
+//= require xcharts
 // require_tree .
 
 $(document).ready(function(){

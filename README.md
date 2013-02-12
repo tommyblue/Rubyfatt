@@ -50,6 +50,11 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+- Aggiornato a Rails 3.2.11
+- Invertito l'ordine di visualizzazione delle ore svolte
+- Fix per il supporto SQLite e PostgreSQL
+- Aggiunti primi test
+
 ### 1.2.4 (06/01/2013)
 
 - Aggiornato a Rails 3.2.10 per fix CVE-2012-5664 https://groups.google.com/forum/?fromgroups=#!topic/rubyonrails-security/DCNTNp_qjFM

@@ -1,26 +1,25 @@
 <%
   invoices = []
   @this_year.each do |invoice|
-    invoices << "['#{l(Date.strptime("{#{invoice.month_number}}","{%m}"), :format => "%b")}', #{invoice.month_income}]"
+    invoices << "{'x' : '#{l(Date.strptime("{#{invoice.month_number}}","{%m}"), :format => "%b")}', 'y': #{invoice.month_income}}"
   end
-  invoices = [0, 0] if invoices.size == 0
+  invoices = ["{'x': 0, 'y': 0}"] if invoices.size == 0
 %>
-<div id="receipts_this_year_chart" style="width: 100%; height: 350px;"></div>
-<script type="text/javascript">
-google.load("visualization", "1", {packages:["corechart"]});
-  google.setOnLoadCallback(drawChart);
-  function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-          ['<%=t '.month', :default => "Month" %>', '<%=t '.total', :default => "Total" %>'],
-          <%= invoices.join(',').html_safe %>
-      ]);
-
-      var options = {
-          title: '<%=t '.title', :default => "Receipts this year" %>',
-          vAxis: {title: '<%=t '.month', :default => "Month" %>',  titleTextStyle: {color: 'red'}}
-      };
-
-      var chart = new google.visualization.BarChart(document.getElementById('receipts_this_year_chart'));
-      chart.draw(data, options);
-  }
-</script>
+<figure style="width:100%;height:350px;margin:0;" id="incomes_this_year_chart"></figure>
+<%= content_for :javascripts do %>
+  <script type="text/javascript">
+    var data = {
+            "xScale": "ordinal",
+            "yScale": "linear",
+            "main": [
+              {
+                "className": ".incomes",
+                "data": [
+                  <%= invoices.join(',').html_safe %>
+                ]
+              }
+            ]
+          }
+    var incomes_this_year_chart = new xChart('bar', data, '#incomes_this_year_chart');
+  </script>
+<% end %>

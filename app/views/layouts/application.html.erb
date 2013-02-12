@@ -16,22 +16,8 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= yield :stylesheets %>
 
-    <!-- Javascripts
-    ================================================== -->
-    <%= javascript_include_tag "application" %>
-    <% if I18n.locale == :it %>
-      <%= javascript_include_tag "jquery.ui.datepicker-it" %>
-    <% end %>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        // Modifies the favicon adding the number of expired recurring slips
-        <% expired = expired_recurring_slips_badge(true) %>
-        <% if expired > 0 %>
-          Tinycon.setBubble(<%= expired %>);
-        <% end %>
-      });
-    </script>
   </head>
   <body>
 
@@ -61,5 +47,21 @@
       <%= render partial: 'layouts/footer' %>
 
     </div> <!-- /container -->
+    <!-- Javascripts
+    ================================================== -->
+    <%= javascript_include_tag "application" %>
+    <% if I18n.locale == :it %>
+      <%= javascript_include_tag "jquery.ui.datepicker-it" %>
+    <% end %>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        // Modifies the favicon adding the number of expired recurring slips
+        <% expired = expired_recurring_slips_badge(true) %>
+        <% if expired > 0 %>
+          Tinycon.setBubble(<%= expired %>);
+        <% end %>
+      });
+    </script>
+    <%= yield :javascripts %>
   </body>
 </html>
