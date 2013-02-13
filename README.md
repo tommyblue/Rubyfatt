@@ -1,4 +1,4 @@
-## Rubyfatt
+## Rubyfatt [![Build Status](https://secure.travis-ci.org/guard/guard.png?branch=master)](http://travis-ci.org/guard/guard) [![Dependency Status](https://gemnasium.com/tommyblue/Rubyfatt.png)](https://gemnasium.com/tommyblue/Rubyfatt) [![Code Climate](https://codeclimate.com/github/tommyblue/Rubyfatt.png)](https://codeclimate.com/github/tommyblue/Rubyfatt)
 
 ### [http://rubyfatt.kreations.it/](http://rubyfatt.kreations.it/)
 
