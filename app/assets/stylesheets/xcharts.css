@@ -1,3 +1,14 @@
+.ex-tooltip {
+  position: absolute;
+  background: #EEE;
+  border-radius: 3px ;
+  border-radius: 3px ;
+  padding: 5px ;
+  box-shadow: 0 1px 3px black;
+  box-shadow: 0 1px 3px black;
+  border-collapse: separate;
+  display: none;
+}
 .xchart .line {
   stroke-width: 3px;
   fill: none;

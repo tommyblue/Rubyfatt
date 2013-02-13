@@ -36,6 +36,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'annotate'
   gem 'railroady'
+  gem 'pry'
 end
 
 gem "rspec-rails", :group => [:test, :development]
@@ -43,6 +44,7 @@ group :test do
   gem "factory_girl_rails"
   gem "capybara"
   gem "guard-rspec"
+  gem 'rb-fsevent', '~> 0.9.1'
 end
 
 

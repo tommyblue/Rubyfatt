@@ -1,4 +1,5 @@
 it:
+  months_array: '["", "Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"]'
   ## CanCan messages
   unauthorized:
     manage:

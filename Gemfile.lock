@@ -160,6 +160,7 @@ GEM
       thor (>= 0.14.6, < 2.0)
     raindrops (0.10.0)
     rake (10.0.3)
+    rb-fsevent (0.9.3)
     rdoc (3.12.1)
       json (~> 1.4)
     rspec (2.12.0)
@@ -242,8 +243,10 @@ DEPENDENCIES
   mysql2
   paperclip (~> 3.0)
   prawn (~> 1.0.0.rc1)
+  pry
   railroady
   rails (= 3.2.11)
+  rb-fsevent (~> 0.9.1)
   rspec-rails
   sass-rails (~> 3.2.5)
   simple_form (~> 2.0.4)

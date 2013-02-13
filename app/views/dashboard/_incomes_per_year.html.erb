@@ -14,7 +14,7 @@
       "yScale": "linear",
       "main": [
         {
-          "className": ".incomes",
+          "className": ".incomes_per_year",
           "data": [
             <%= invoices.join(',').html_safe %>
           ]
@@ -22,17 +22,15 @@
       ]
     }
     var opts = {
-        "tickHintX": 5,
-        "mouseover": function (d, i) {
+        'mouseover': function (data, i) {
           var pos = $(this).offset();
-
-          tt.text('<%=t '.year', :default => "Year" %> '+d.x+': '+d.y+'<%=t '.total', :default => "Total" %>').css({
-            top: topOffset + pos.top,
+          tt.text('<%=t '.total', :default => "Total" %> ' + d3.format(".2f")(data.y)).css({
+            top: -40 + pos.top,
             left: pos.left
           }).show();
         },
 
-        "mouseout": function (x) {
+        'mouseout': function (data, i) {
           tt.hide();
         }
       };
