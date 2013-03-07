@@ -49,7 +49,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% slip.time_entries.order(:date).each do |time_entry| %>
+                    <% slip.time_entries.order('date DESC').each do |time_entry| %>
                       <tr>
                         <td><%=l time_entry.date %></td>
                         <td><%= time_entry.hours %></td>
@@ -64,6 +64,7 @@
                 </table>
               </div>
               <div class="modal-footer">
+                <%= link_to ('<i class="icon-plus"></i> ' + t('.time_entries.add', default: "Add entry")).html_safe, new_customer_slip_time_entry_path(@customer, slip), class: 'btn btn-success' %>
                 <a href="#" class="btn btn-primary" data-dismiss="modal"><i class="icon-remove"></i> <%=t '.time_entries.close', :default => "Close" %></a>
               </div>
             </div>

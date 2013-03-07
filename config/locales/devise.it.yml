@@ -21,6 +21,7 @@ it:
         forgot_password: "Hai dimenticato la password?"
     failure:
       user:
+        not_found_in_database: "L'utente non è stato trovato"
         already_authenticated: "Hai già effettuato l'accesso."
         unauthenticated: "Devi accedere o registrarti per continuare."
         unconfirmed: "Devi confermare il tuo account per continuare."

@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 
-#----- SQLite or MySQL or..
-#gem 'sqlite3'
+#----- SQLite or MySQL or PostgreSQL or..
+# gem 'sqlite3'
 gem 'mysql2'
+# gem 'pg'
 
 #----- Authentication and authorization
 gem 'devise', '~> 2.2.3'
@@ -22,13 +23,30 @@ gem 'simple_form', '~> 2.0.4'
 gem 'country_select', '~> 1.1.3'
 
 #----- Twitter bootstrap with SASS
-gem 'bootstrap-sass', '~> 2.2.2.0'
+gem 'bootstrap-sass', '~> 2.3.0.1'
 
 #----- Paperclip
 gem "paperclip", "~> 3.0"
 
 #----- Exception notification
 gem 'exception_notification'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'annotate'
+  gem 'railroady'
+  gem 'pry'
+end
+
+gem "rspec-rails", :group => [:test, :development]
+group :test do
+  gem "factory_girl_rails"
+  gem "capybara"
+  gem "guard-rspec"
+  gem 'rb-fsevent', '~> 0.9.1'
+end
+
 
 # group :development do
 #   gem "jeweler", "> 1.6.4"
@@ -47,6 +65,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 gem 'unicorn'
 gem 'capistrano'

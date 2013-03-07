@@ -1,4 +1,4 @@
-## Rubyfatt
+## Rubyfatt [![Build Status](https://secure.travis-ci.org/tommyblue/Rubyfatt.png?branch=master)](http://travis-ci.org/tommyblue/Rubyfatt) [![Dependency Status](https://gemnasium.com/tommyblue/Rubyfatt.png)](https://gemnasium.com/tommyblue/Rubyfatt) [![Code Climate](https://codeclimate.com/github/tommyblue/Rubyfatt.png)](https://codeclimate.com/github/tommyblue/Rubyfatt)
 
 ### [http://rubyfatt.kreations.it/](http://rubyfatt.kreations.it/)
 
@@ -49,6 +49,15 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 ## Changelog
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
+
+### 1.3.0 (08/03/2013)
+
+- Aggiornato a Rails 3.2.12
+- Invertito l'ordine di visualizzazione delle ore svolte
+- Fix per il supporto SQLite e PostgreSQL
+- Grafici con xCharts al posto di Google charts (riabilitabile da configurazione)
+- Aggiunti primi test
+- Aggiornati jQuery UI, Twitter Bootstrap (v. 2.3.0.1) e Font Awesome (v. 3.0.2)
 
 ### 1.2.4 (06/01/2013)
 

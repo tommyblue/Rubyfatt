@@ -1,6 +1,6 @@
 class ConsolidatedTax < ActiveRecord::Base
   belongs_to :user
-  has_many :taxes, :class_name => 'Tax', :order => '`order` ASC', :dependent => :destroy
+  has_many :taxes, :class_name => 'Tax', :order => {"Mysql2" => "`order` ASC", "PostgreSQL" => '"order" ASC', "SQLite" => '"order" ASC'}[ActiveRecord::Base.connection.adapter_name], :dependent => :destroy
   has_many :invoices
   has_many :invoice_projects
   has_many :estimates

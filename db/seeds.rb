@@ -1,4 +1,6 @@
-user = User.create(
+[User, Tax, ConsolidatedTax, Customer, Estimate, Invoice, InvoiceProject, RecurringSlip, Slip, TimeEntry, WorkCategory].collect(&:destroy_all)
+
+user = User.create!(
   :email => "demo@example.com",
   :password => "password",
   :name => "John",
@@ -12,7 +14,6 @@ user = User.create(
   :vat => "012345678910", # Partita IVA
   :phone => "+39.333.1234567"
 )
-user.save!
 
 ## Regimi di tassazione
 taxes = Tax.create(
@@ -52,24 +53,32 @@ user.consolidated_taxes << consolidated_tax
 
 customer = user.customers.create(:title => "Test customer", :name => "Bill", :surname => "Brown", :address => "Via Roma, 1", :zip_code => "123456", :town => "Roma", :province => "RO", :country => "Italy", :tax_code => "DEFABC00X00A123Z", :vat => "019876543210")
 
-slip1 = customer.slips.create(:customer_id => customer.id, :name => "Test slip 1", :rate => 14.32)
-slip2 = customer.slips.create(:customer_id => customer.id, :name => "Test slip 2", :rate => 46.40)
-slip3 = customer.slips.create(:customer_id => customer.id, :name => "Test slip 3", :rate => 130.00)
-slip4 = customer.slips.create(:customer_id => customer.id, :name => "Test slip 4", :rate => 85.50)
+slip1 = customer.slips.create!(:name => "Test slip 1", :rate => 14.32)
+slip2 = customer.slips.create!(:name => "Test slip 2", :rate => 46.40)
+slip3 = customer.slips.create!(:name => "Test slip 3", :rate => 130.00)
+slip4 = customer.slips.create!(:name => "Test slip 4", :rate => 85.50)
 
-estimate = customer.estimates.create(:customer_id => customer.id, :date => Time.now, :number => 1, :invoiced => false, :consolidated_tax_id => consolidated_tax.id)
-slip1.estimate = estimate
-slip2.estimate = estimate
+estimate = customer.estimates.new(:date => Time.now, :number => 1, :invoiced => false, :consolidated_tax_id => consolidated_tax.id)
+# slip1.estimate = estimate
+# slip2.estimate = estimate
+estimate.slips = [slip1, slip2]
+estimate.save
 
-invoice_project_1 = customer.invoice_projects.create(:customer_id => customer.id, :date => Time.now, :number => 1, :invoiced => true, :consolidated_tax_id => consolidated_tax.id)
-invoice_project_2 = customer.invoice_projects.create(:customer_id => customer.id, :date => Time.now, :number => 2, :invoiced => false, :consolidated_tax_id => consolidated_tax.id)
-slip1.invoice_project = invoice_project_1
-slip2.invoice_project = invoice_project_1
-slip3.invoice_project = invoice_project_2
+invoice_project_1 = customer.invoice_projects.new(:date => Time.now, :number => 1, :invoiced => true, :consolidated_tax_id => consolidated_tax.id)
+invoice_project_2 = customer.invoice_projects.new(:date => Time.now, :number => 2, :invoiced => false, :consolidated_tax_id => consolidated_tax.id)
+invoice_project_1.slips = [slip1, slip2]
+invoice_project_2.slips = [slip3]
+invoice_project_1.save!
+invoice_project_2.save!
+# slip1.invoice_project = invoice_project_1
+# slip2.invoice_project = invoice_project_1
+# slip3.invoice_project = invoice_project_2
 
-invoice = customer.invoices.create(:customer_id => customer.id, :date => Time.now, :number => 1, :paid => false, :consolidated_tax_id => consolidated_tax.id)
-slip1.invoice = invoice
-slip2.invoice = invoice
+invoice = customer.invoices.new(:date => Time.now, :number => 1, :paid => false, :consolidated_tax_id => consolidated_tax.id)
+invoice.slips = [slip1, slip2]
+invoice.save!
+# slip1.invoice = invoice
+# slip2.invoice = invoice
 
 slip1.save!
 slip2.save!

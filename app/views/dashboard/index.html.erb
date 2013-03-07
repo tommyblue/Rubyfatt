@@ -1,12 +1,23 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<div class="row-fluid">
-  <div class="span6">
-    <%= render 'incomes_this_year' %>
+<% if (option = Option.get_option(current_user, 'CHARTS_ENGINE')) && option.value.downcase == 'google' %>
+  <div class="row-fluid">
+    <div class="span6">
+      <%= render 'incomes_this_year_gcharts' %>
+    </div>
+    <div class="span6">
+      <%= render 'incomes_per_year_gcharts' %>
+    </div>
   </div>
-  <div class="span6">
-    <%= render 'incomes_per_year' %>
+<% else %>
+  <div class="row-fluid">
+    <div class="span6">
+      <%= render 'incomes_this_year' %>
+    </div>
+    <div class="span6">
+      <%= render 'incomes_per_year' %>
+    </div>
   </div>
-</div>
+<% end %>
 <div class="row-fluid">
   <div class="span6">
     <%= render 'customers_account_summary' %>

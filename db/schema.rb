@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120918203026) do
+ActiveRecord::Schema.define(:version => 20130307221621) do
 
   create_table "consolidated_taxes", :force => true do |t|
     t.integer "user_id"
@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20120918203026) do
   end
 
   add_index "time_entries", ["slip_id"], :name => "index_time_entries_on_slip_id"
+  add_index "time_entries", ["work_category_id"], :name => "index_time_entries_on_work_category_id"
 
   create_table "users", :force => true do |t|
     t.string   "name",                                                    :null => false
