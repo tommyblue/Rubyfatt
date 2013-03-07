@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120918203026) do
+ActiveRecord::Schema.define(:version => 20130307221621) do
 
   create_table "consolidated_taxes", :force => true do |t|
     t.integer "user_id"
