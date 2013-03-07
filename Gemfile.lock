@@ -44,7 +44,7 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     binding_of_caller (0.6.8)
-    bootstrap-sass (2.2.2.0)
+    bootstrap-sass (2.3.0.1)
       sass (~> 3.2)
     builder (3.0.4)
     cancan (1.6.9)
@@ -101,6 +101,9 @@ GEM
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.0.1)
+      jquery-rails
+      railties (>= 3.1.0)
     json (1.7.7)
     kgio (2.8.0)
     listen (0.7.2)
@@ -160,6 +163,7 @@ GEM
       thor (>= 0.14.6, < 2.0)
     raindrops (0.10.0)
     rake (10.0.3)
+    rb-fsevent (0.9.3)
     rdoc (3.12.1)
       json (~> 1.4)
     rspec (2.12.0)
@@ -179,7 +183,7 @@ GEM
       rspec-mocks (~> 2.12.0)
     ruby-rc4 (0.1.5)
     rubyzip (0.9.9)
-    sass (3.2.5)
+    sass (3.2.6)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -228,7 +232,7 @@ DEPENDENCIES
   annotate
   better_errors
   binding_of_caller
-  bootstrap-sass (~> 2.2.2.0)
+  bootstrap-sass (~> 2.3.0.1)
   cancan (~> 1.6.8)
   capybara
   coffee-rails (~> 3.2.2)
@@ -239,11 +243,14 @@ DEPENDENCIES
   guard-rspec
   ice_cube (~> 0.9.3)
   jquery-rails
+  jquery-ui-rails
   mysql2
   paperclip (~> 3.0)
   prawn (~> 1.0.0.rc1)
+  pry
   railroady
   rails (= 3.2.12)
+  rb-fsevent (~> 0.9.1)
   rspec-rails
   sass-rails (~> 3.2.5)
   simple_form (~> 2.0.4)

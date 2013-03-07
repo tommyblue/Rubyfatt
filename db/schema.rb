@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120918203026) do
+ActiveRecord::Schema.define(:version => 20130307221621) do
 
   create_table "consolidated_taxes", :force => true do |t|
     t.integer "user_id"
@@ -162,30 +162,30 @@ ActiveRecord::Schema.define(:version => 20120918203026) do
   add_index "time_entries", ["work_category_id"], :name => "index_time_entries_on_work_category_id"
 
   create_table "users", :force => true do |t|
-    t.string   "name",                                     :null => false
-    t.string   "surname",                                  :null => false
-    t.string   "address",                                  :null => false
-    t.string   "zip_code",                                 :null => false
-    t.string   "town",                                     :null => false
-    t.string   "province",                                 :null => false
+    t.string   "name",                                                    :null => false
+    t.string   "surname",                                                 :null => false
+    t.string   "address",                                                 :null => false
+    t.string   "zip_code",                                                :null => false
+    t.string   "town",                                                    :null => false
+    t.string   "province",                                                :null => false
     t.string   "country"
-    t.string   "tax_code",                                 :null => false
-    t.string   "vat",                                      :null => false
-    t.string   "phone",                                    :null => false
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
-    t.string   "email",                  :default => "",   :null => false
-    t.string   "encrypted_password",     :default => "",   :null => false
+    t.string   "tax_code",                                                :null => false
+    t.string   "vat",                                                     :null => false
+    t.string   "phone",                                                   :null => false
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.string   "email",                                 :default => "",   :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",   :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                         :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.text     "bank_coordinates"
-    t.string   "language",               :default => "it"
+    t.string   "language",                              :default => "it"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"

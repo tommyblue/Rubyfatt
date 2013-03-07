@@ -30,7 +30,12 @@ Rubyfatt::Application.routes.draw do
   match 'profile/update' => 'profile#update', :via => :put
   match 'profile/destroy_logo' => 'profile#destroy_logo', :via => :delete, :as => 'destroy_logo'
 
-  resources :options, :only => [:index, :edit, :update]
+  resources :options, only: [:index] do
+    collection do
+      put :save
+    end
+  end
+
   resources :work_categories, :except => [:show]
 
   resources :consolidated_taxes, :except => :show do

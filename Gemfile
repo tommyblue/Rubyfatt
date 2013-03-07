@@ -23,7 +23,7 @@ gem 'simple_form', '~> 2.0.4'
 gem 'country_select', '~> 1.1.3'
 
 #----- Twitter bootstrap with SASS
-gem 'bootstrap-sass', '~> 2.2.2.0'
+gem 'bootstrap-sass', '~> 2.3.0.1'
 
 #----- Paperclip
 gem "paperclip", "~> 3.0"
@@ -36,6 +36,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'annotate'
   gem 'railroady'
+  gem 'pry'
 end
 
 gem "rspec-rails", :group => [:test, :development]
@@ -43,6 +44,7 @@ group :test do
   gem "factory_girl_rails"
   gem "capybara"
   gem "guard-rspec"
+  gem 'rb-fsevent', '~> 0.9.1'
 end
 
 
@@ -69,6 +71,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Use unicorn as the web server
 gem 'unicorn'
