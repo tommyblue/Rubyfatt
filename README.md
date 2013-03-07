@@ -50,11 +50,14 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### 1.3.0 (08/03/2013)
+
 - Aggiornato a Rails 3.2.12
 - Invertito l'ordine di visualizzazione delle ore svolte
 - Fix per il supporto SQLite e PostgreSQL
 - Grafici con xCharts al posto di Google charts (riabilitabile da configurazione)
 - Aggiunti primi test
+- Aggiornati jQuery UI, Twitter Bootstrap (v. 2.3.0.1) e Font Awesome (v. 3.0.2)
 
 ### 1.2.4 (06/01/2013)
 

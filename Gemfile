@@ -23,7 +23,7 @@ gem 'simple_form', '~> 2.0.4'
 gem 'country_select', '~> 1.1.3'
 
 #----- Twitter bootstrap with SASS
-gem 'bootstrap-sass', '~> 2.2.2.0'
+gem 'bootstrap-sass', '~> 2.3.0.1'
 
 #----- Paperclip
 gem "paperclip", "~> 3.0"
@@ -71,6 +71,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Use unicorn as the web server
 gem 'unicorn'

@@ -40,3 +40,7 @@ form .help-block {
 #password-strenght .bar {
   width: 1%;
 }
+
+form .add-on .icon-calendar:hover {
+  cursor: pointer;
+}

@@ -1,23 +1,23 @@
-<div class="row-fluid">
-  <% if (option = Option.get_option(current_user, 'CHARTS_ENGINE')) && option.value.downcase == 'google' %>
-    <% content_for :javascripts do %>
-      <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <% end %>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<% if (option = Option.get_option(current_user, 'CHARTS_ENGINE')) && option.value.downcase == 'google' %>
+  <div class="row-fluid">
     <div class="span6">
       <%= render 'incomes_this_year_gcharts' %>
     </div>
     <div class="span6">
       <%= render 'incomes_per_year_gcharts' %>
     </div>
-  <% else %>
+  </div>
+<% else %>
+  <div class="row-fluid">
     <div class="span6">
       <%= render 'incomes_this_year' %>
     </div>
     <div class="span6">
       <%= render 'incomes_per_year' %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
 <div class="row-fluid">
   <div class="span6">
     <%= render 'customers_account_summary' %>

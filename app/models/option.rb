@@ -41,7 +41,7 @@ class Option < ActiveRecord::Base
 
   def self.create_option(user, key)
     DEFAULT_VALUES.each do |option|
-      if option[:name] == key
+      if option[:name] == key.upcase
         return user.options.create(option)
       end
     end

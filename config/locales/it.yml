@@ -1,4 +1,5 @@
 it:
+  save: "Salva"
   months_array: '["", "Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"]'
   ## CanCan messages
   unauthorized:
@@ -58,7 +59,7 @@ it:
         error: "Non è stato possibile convertire il progetto di notula in notula"
     options:
       update:
-        success: "L'opzione è stata aggiornata con successo"
+        success: "Le opzioni sono state aggiornate con successo"
     payments:
       create:
         success: "Il pagamento è stato registrato con successo"
@@ -337,6 +338,10 @@ it:
       alert:
         title: "Fai attenzione!"
         message: "Le opzioni sono usate per determinare vari aspetti del flusso di lavoro. Fai molta attenzione nel modificarne i valori!"
+      next_estimate_number: "Prossimo numero di preventivo"
+      next_invoice_project_number: "Prossimo numero di progetto notula"
+      next_invoice_number: "Prossimo numero di notula"
+      charts_engine: "Grafici"
     edit:
       title: "Modifica l'opzione"
     form:

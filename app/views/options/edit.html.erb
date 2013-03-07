@@ -1,9 +1,0 @@
-<%= content_for :breadcrumb do %>
-  <%= print_breadcrumbs([ 
-                      [t('breadcrumb.options.index', :default => "Options"), options_path],
-                      [t('breadcrumb.options.edit', :default => "Edit option"), nil]
-                    ]).html_safe %>
-<% end %>
-<h1><%=t '.title', :default => "Edit option" %> <em>"<%= @option.name %>"</em></h1>
-
-<%= render 'form' %>
