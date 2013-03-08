@@ -130,6 +130,7 @@ GEM
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
+    pg (0.14.1)
     polyglot (0.3.3)
     prawn (1.0.0.rc1)
       pdf-reader (>= 0.9.0)
@@ -250,6 +251,7 @@ DEPENDENCIES
   jquery-ui-rails
   mysql2
   paperclip (~> 3.0)
+  pg
   prawn (~> 1.0.0.rc1)
   pry
   railroady
