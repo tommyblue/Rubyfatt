@@ -4,5 +4,15 @@ rvm:
 branches:
   only:
     - master
+env:
+  - DB=sqlite
+  - DB=mysql
+  - DB=postgresql
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rake
 before_script:
-  - mysql -e 'create database rubyfatt_test;'
+  - cp config/database.travis.yml config/database.yml
+  - mysql -e 'create database rubyfatt_test'
+  - psql -c 'create database rubyfatt_test' -U postgres
