@@ -42,3 +42,9 @@
     </tr>
   </tbody>
 </table>
+<% if @year_certifications.size == 0 %>
+  <div class="alert alert-info">
+    <h4 class="alert-heading"><%=t '.alert.title', :default => "Pay attention!" %></h4>
+    <%=t '.alert.message', default: "If you can't see any withholding certification in this page (and they should be here) probably you didn't set any tax as withholding." %>
+  </div>
+<% end %>
