@@ -13,3 +13,18 @@ postgresql: &postgresql
   username: postgres
   password:
   database: rubyfatt_<%= Rails.env %>
+
+defaults: &defaults
+  pool: 5
+  timeout: 5000
+  host: localhost
+  <<: *<%= ENV['DB'] || "postgresql" %>
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
