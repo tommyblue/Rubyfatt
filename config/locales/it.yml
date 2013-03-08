@@ -117,6 +117,9 @@ it:
       destroy:
         success: "La categoria è stata eliminata con successo"
         error: "Non è stato possibile eliminare la categoria"
+    certifications:
+      update:
+        success: "La certificazione è stata aggiornata con successo"
   ##########################################################
   #                                                        #
   #                      VIEWS                             #
@@ -147,12 +150,13 @@ it:
       job_status: "Stato dei lavori"
       working_slips: "Progetti in corso"
       all_invoices: "Tutte le notule"
+      certifications: "Certificazioni ritenute d'acconto"
       estimates: "Preventivi"
       invoice_projects: "Progetti di notula"
       unpaid_invoices: "Notule insolute"
       recurring_slips: "Progetti ricorrenti"
-      reports:
-        title: "Report"
+      management:
+        title: "Gestione"
       customers:
         title: "Clienti"
         show: "Visualizza i clienti"
@@ -225,6 +229,9 @@ it:
       index: "Categorie"
       new: "Nuova categoria"
       edit: "Modifica la categoria"
+    certifications:
+      index: "Certificazioni ritenute d'acconto"
+      new: "Nuova certificazione"
   #
   # MODEL CLASS ATTRIBUTES NAMES
   # Alphabetically ordered
@@ -251,6 +258,7 @@ it:
   Rate: "Prezzo"
   value: "Valore"
   Compound: "Composta"
+  Withholding: "Ritenuta"
   Rule: "Regola"
   Slips: "Progetti"
   Tax code: "Codice Fiscale"
@@ -260,6 +268,10 @@ it:
   Total: "Totale"
   Value: "Valore"
   Vat: "P. IVA"
+  Year: "Anno"
+  Received: "Ricevuta"
+  Received at: "Data di ricezione"
+  Attachment: "Allegato"
   #
   # DASHBOARD
   #
@@ -312,6 +324,7 @@ it:
       order_hint: "Determina l'ordine con cui vengono calcolate le tasse sui progetti"
       rate_hint: "Inserire il valore della tassazione. Ad esempio inserire 21 per calcolare una tassa del 21%"
       compound_hint: "Le tasse non composte vengon calcolate sulla somma dei progetti e il risultato è l'imponibile. Su di esso vengono calcolate le tasse composte."
+      withholding_hint: "Una tassa indicata come ritenuta d'acconto verrà usata per calcolare l'importo delle certificazioni"
   #
   # CUSTOMERS
   #
@@ -533,6 +546,18 @@ it:
   reports:
     unpaid_invoices:
       title: "Notule insolute"
+  #
+  # CERTIFICATIONS
+  #
+  certifications:
+    index:
+      title: "Certificazioni delle ritenute d'acconto"
+      new: "Aggiungi"
+      edit: "Modifica"
+      download: "Scarica"
+      total: "Totale"
+    new:
+      title: "Aggiungi una certificazione"
   ##########################################################################
   #                                                                        #
   #                              RAILS-I18N                                #

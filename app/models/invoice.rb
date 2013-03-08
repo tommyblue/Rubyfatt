@@ -18,6 +18,8 @@ class Invoice < ActiveRecord::Base
   end
 
   scope :by_year, lambda {|year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31")}
+  # Returns the invoices with consolidated taxes with at least one tax with withholding flag at true
+  scope :withholding_taxes, joins(consolidated_tax: :taxes).where(taxes: { withholding: true }).uniq
 
   validates :date, :presence => true
   validates :customer, :presence => true
@@ -60,6 +62,25 @@ class Invoice < ActiveRecord::Base
 
     compounds.each { |compound| sum += compound }
     sum
+  end
+
+  # Returns the withholding rate of an invoice
+  def withholding_rate
+    rate = 0
+    sum = self.rate
+    compounds = []
+    self.consolidated_tax.taxes.each do |tax|
+      partial = sum * tax.rate / 100
+      if tax.compound
+        compounds << partial
+        rate += partial if tax.withholding
+      else
+        compounds.each { |compound| sum += compound }
+        sum += partial
+        rate += partial if tax.withholding
+      end
+    end
+    rate * (-1)
   end
 
   # Destroy the invoice restoring the slips or the invoice project if present

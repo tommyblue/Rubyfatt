@@ -66,6 +66,7 @@ end
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'select2-rails'
 
 gem 'unicorn'
 gem 'capistrano'

@@ -21,6 +21,7 @@
 //= require tinycon.min
 //= require d3.v3
 //= require xcharts
+//= require select2
 
 $(document).ready(function(){
   $('input.datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
@@ -30,4 +31,5 @@ $(document).ready(function(){
     var el = this.parentNode.parentNode;
     $(el).find('input').focus();
   });
+  $(".enable_select2").select2();
 })

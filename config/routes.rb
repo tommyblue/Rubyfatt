@@ -42,6 +42,8 @@ Rubyfatt::Application.routes.draw do
     resources :taxes, :except => [:index, :show]
   end
 
+  resources :certifications, only: [:index, :edit, :update]
+
   match 'invoices/all' => 'invoices#all', :as => :all_invoices
 
   match 'invoice/:invoice_id/payment' => 'payments#create', :via => :post
