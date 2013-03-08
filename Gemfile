@@ -41,6 +41,8 @@ end
 
 gem "rspec-rails", :group => [:test, :development]
 group :test do
+  gem "rake"
+  gem "sqlite3"
   gem "factory_girl_rails"
   gem "capybara"
   gem "guard-rspec"

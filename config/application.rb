@@ -66,5 +66,6 @@ module Rubyfatt
     # Disable assets generation
     config.generators.stylesheets = false
     config.generators.javascripts = false
+    config.generators.helpers = false
   end
 end
