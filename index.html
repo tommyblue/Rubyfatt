@@ -18,33 +18,21 @@ tagline: Gestione di fatturazione per partite IVA
 <h3 id='caratteristiche_principali'>Caratteristiche principali:</h3>
 
 <ul>
-<li>Gestione di differenti tipi di tassazione</li>
-
-<li>Supporta più tasse calcolate sullo stesso imponibile (ad esempio imponibile calcolato con INPS 4% e Iva 21% e ritenuta d&#8217;acconto 20% entrambe calcolate sull&#8217;imponibile). Ottimo per ogni tipo di partita iva</li>
-
-<li>Gestione dei lavori ricorrenti</li>
-
-<li>Gestione dei progetti di notula e loro trasformazione in notule</li>
-
-<li>Trasformazione dei lavori in preventivi, progetti di notula e notule/fatture</li>
-
-<li>Stampa/download PDF delle fatture e degli altri documenti</li>
-
-<li>Gestione dei pagamenti</li>
-
-<li>Riepilogo delle fatture emesse</li>
-
-<li>Modifica della numerazione delle fatture e dei preventivi (ad esempio ad inizio anno)</li>
-
-<li>Gestione delle coordinate bancarie stampate nei progetti di notula</li>
-
-<li>Registrazione dettagliata delle ore svolte nei progetti</li>
-
-<li>Multiutente</li>
-
-<li>Completamente multilingua, di default in italiano (disponibile la lingua inglese)</li>
-
-<li>Responsive layout con Twitter Bootstrap</li>
+  <li>Gestione di differenti tipi di tassazione</li>
+  <li>Supporta più tasse calcolate sullo stesso imponibile (ad esempio imponibile calcolato con INPS 4% e Iva 21% e ritenuta d&#8217;acconto 20% entrambe calcolate sull&#8217;imponibile). Ottimo per ogni tipo di partita iva</li>
+  <li>Gestione dei lavori ricorrenti</li>
+  <li>Gestione dei progetti di notula e loro trasformazione in notule</li>
+  <li>Trasformazione dei lavori in preventivi, progetti di notula e notule/fatture</li>
+  <li>Stampa/download PDF delle fatture e degli altri documenti</li>
+  <li>Gestione dei pagamenti</li>
+  <li>Gestione delle certificazioni delle ritenute d'acconto</li>
+  <li>Riepilogo delle fatture emesse</li>
+  <li>Modifica della numerazione delle fatture e dei preventivi (ad esempio ad inizio anno)</li>
+  <li>Gestione delle coordinate bancarie stampate nei progetti di notula</li>
+  <li>Registrazione dettagliata delle ore svolte nei progetti</li>
+  <li>Multiutente</li>
+  <li>Completamente multilingua, di default in italiano (disponibile la lingua inglese)</li>
+  <li>Responsive layout con Twitter Bootstrap</li>
 </ul>
 
 <p>Rubyfatt è un&#8217;applicazione <strong>Ruby on Rails</strong> e pertanto fruibile via web (sul proprio pc, su una rete locale o via internet). È nato come progetto personale in seno a <a target="_blank" href='http://www.kreations.it'>Kreations Collective</a> e ha raggiunto un&#8217;apprezzabile maturità con la versione 1.0.</p>
@@ -60,9 +48,8 @@ tagline: Gestione di fatturazione per partite IVA
 <p>Si può effettuare il login con:</p>
 
 <ul>
-<li><strong>Username</strong>: demo@example.com</li>
-
-<li><strong>Password</strong>: password</li>
+  <li><strong>Username</strong>: demo@example.com</li>
+  <li><strong>Password</strong>: password</li>
 </ul>
 
 <p>Sei pregato di usare la demo con parsimonia e senza stressare troppo il server, ma per il resto puoi divertirti come vuoi :)</p>
@@ -87,6 +74,17 @@ tagline: Gestione di fatturazione per partite IVA
 
 <p>Di seguito i TAG git con le principali caratteristiche e cambiamenti</p>
 
+<h3 id='130'>1.3.0 (08/03/2013)</h3>
+
+<ul>
+  <li>Gestione delle certificazioni delle ritenute d'acconto</li>
+  <li>Grafici con xCharts al posto di Google charts (riabilitabile da configurazione)</li>
+  <li>Aggiornato a Rails 3.2.12</li>
+  <li>Aggiornati jQuery UI, Twitter Bootstrap (v. 2.3.0.1) e Font Awesome (v. 3.0.2)</li>
+  <li>Invertito l'ordine di visualizzazione delle ore svolte</li>
+  <li>Fix per il supporto SQLite e PostgreSQL</li>
+  <li>Aggiunti primi test</li>
+</ul>
 <h3 id='124'>1.2.4 (06/01/2013)</h3>
 
 <ul>
@@ -132,110 +130,110 @@ tagline: Gestione di fatturazione per partite IVA
 <h3 id='111'>1.1.1</h3>
 
 <ul>
-<li>
-    Disabilitato Twitter Responsive per problemi con il menù
-</li>
-<li>
-    Passaggio delle versioni a 3 cifre
-</li>
+  <li>
+  Disabilitato Twitter Responsive per problemi con il menù
+  </li>
+  <li>
+  Passaggio delle versioni a 3 cifre
+  </li>
 </ul>
 
 <h3 id='11'>1.1</h3>
 
 <ul>
-<li>
-    Aggiunta la gestione delle ore svolte nei progetti a tempo
-</li>
-<li>
-    Gestione delle categorie di lavoro per le ore svolte
-</li>
-<li>
-    Fix minori
-</li>
+  <li>
+  Aggiunta la gestione delle ore svolte nei progetti a tempo
+  </li>
+  <li>
+  Gestione delle categorie di lavoro per le ore svolte
+  </li>
+  <li>
+  Fix minori
+  </li>
 </ul>
 
 <h3 id='10'>1.0</h3>
 
 <ul>
-<li>Gestione dei permessi con CanCan</li>
+  <li>Gestione dei permessi con CanCan</li>
 
-<li>Tolta l&#8217;associazione di una tassa con l&#8217;utente, adesso passa da ConsolidatedTax (<strong>richiede migrazione del database</strong>)</li>
+  <li>Tolta l&#8217;associazione di una tassa con l&#8217;utente, adesso passa da ConsolidatedTax (<strong>richiede migrazione del database</strong>)</li>
 
-<li>Quando una notula o un progetto di notula vengono scaricati, l&#8217;informazione viene salvata (<strong>richiede migrazione del database</strong>)</li>
+  <li>Quando una notula o un progetto di notula vengono scaricati, l&#8217;informazione viene salvata (<strong>richiede migrazione del database</strong>)</li>
 
-<li>Fix minori</li>
+  <li>Fix minori</li>
 </ul>
 
 <h3 id='014'>0.14</h3>
 
 <ul>
-<li>Viene mostrato il totale dei progetti in corso nella pagina riassuntiva del cliente</li>
+  <li>Viene mostrato il totale dei progetti in corso nella pagina riassuntiva del cliente</li>
 
-<li>Il badge del progetti di notula, nel menù &#8220;Stato dei lavori&#8221; mostra soltanto i progetti di notula non fatturati</li>
+  <li>Il badge del progetti di notula, nel menù &#8220;Stato dei lavori&#8221; mostra soltanto i progetti di notula non fatturati</li>
 
-<li>La pagina riassuntiva dei progetti di notula mostra i progetti divisi in due tabelle: fatturati e non</li>
+  <li>La pagina riassuntiva dei progetti di notula mostra i progetti divisi in due tabelle: fatturati e non</li>
 
-<li>Modificato l&#8217;ordine dei progetti ricorrenti secondo la scadenza</li>
+  <li>Modificato l&#8217;ordine dei progetti ricorrenti secondo la scadenza</li>
 
-<li>Collegata la notula al progetto di notula da cui viene generata (<strong>richiede migrazione del database</strong>)</li>
+  <li>Collegata la notula al progetto di notula da cui viene generata (<strong>richiede migrazione del database</strong>)</li>
 
-<li>Eliminate le icone Fugue e aggiunto Font Awesome</li>
+  <li>Eliminate le icone Fugue e aggiunto Font Awesome</li>
 
-<li>Eliminazione di un cliente se non ha dati associati</li>
+  <li>Eliminazione di un cliente se non ha dati associati</li>
 
-<li>Gestione della tassazione (tasse e regimi di tassazione)</li>
+  <li>Gestione della tassazione (tasse e regimi di tassazione)</li>
 
-<li>Viene evidenziato il cliente attivo nella sidebar</li>
+  <li>Viene evidenziato il cliente attivo nella sidebar</li>
 
-<li>Creazione notule e progetti di notula direttamente dalla pagina dei lavori in corso</li>
+  <li>Creazione notule e progetti di notula direttamente dalla pagina dei lavori in corso</li>
 
-<li>Scelta della data di fatturazione in fase di trasformazione di un progetto di notula in notula</li>
+  <li>Scelta della data di fatturazione in fase di trasformazione di un progetto di notula in notula</li>
 
-<li>Settaggio dei dati di una notula quando generata dai progetti di notula</li>
+  <li>Settaggio dei dati di una notula quando generata dai progetti di notula</li>
 
-<li>Bloccato l&#8217;aggiornamento massivo degli attributi non specificati in <code>attr_accessible</code></li>
+  <li>Bloccato l&#8217;aggiornamento massivo degli attributi non specificati in <code>attr_accessible</code></li>
 
-<li>Verificate e implementate le validazioni dei modelli</li>
+  <li>Verificate e implementate le validazioni dei modelli</li>
 
-<li>Fix minori</li>
+  <li>Fix minori</li>
 </ul>
 
 <h3 id='013'>0.13</h3>
 
 <ul>
-<li>Aggiunto il metodo <em>Option.get_option(user, key)</em> per ottenere un&#8217;opzione o crearla al volo se non esiste</li>
+  <li>Aggiunto il metodo <em>Option.get_option(user, key)</em> per ottenere un&#8217;opzione o crearla al volo se non esiste</li>
 </ul>
 
 <h3 id='012'>0.12</h3>
 
 <ul>
-<li>Gestione preventivi</li>
+  <li>Gestione preventivi</li>
 </ul>
 
 <h3 id='011'>0.11</h3>
 
 <ul>
-<li>Rinominata l&#8217;app in <strong>Rubyfatt</strong></li>
+  <li>Rinominata l&#8217;app in <strong>Rubyfatt</strong></li>
 </ul>
 
 <h3 id='010'>0.10</h3>
 
 <ul>
-<li>Aggiunte le icone per device iOS</li>
+  <li>Aggiunte le icone per device iOS</li>
 
-<li>Fix minori</li>
+  <li>Fix minori</li>
 </ul>
 
 <h3 id='09'>0.9</h3>
 
 <ul>
-<li>Trasformazione dei progetti ricorrenti in progetti di notula</li>
+  <li>Trasformazione dei progetti ricorrenti in progetti di notula</li>
 
-<li>Fix minori</li>
+  <li>Fix minori</li>
 </ul>
 
 <h3>Versioni precedenti</h3>
 
 <ul>
-<li>Per il changelog completo vedere il <a href="https://github.com/tommyblue/Rubyfatt/blob/master/README.md" target="_blank">file README del progetto</a></li>
+  <li>Per il changelog completo vedere il <a href="https://github.com/tommyblue/Rubyfatt/blob/master/README.md" target="_blank">file README del progetto</a></li>
 </ul>
