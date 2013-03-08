@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130307221621) do
+ActiveRecord::Schema.define(:version => 20130308115825) do
+
+  create_table "certifications", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "customer_id"
+    t.integer  "year"
+    t.date     "received_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.decimal  "rate",                    :precision => 8, :scale => 2
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
+  end
 
   create_table "consolidated_taxes", :force => true do |t|
     t.integer "user_id"
@@ -143,6 +157,7 @@ ActiveRecord::Schema.define(:version => 20130307221621) do
     t.string  "name"
     t.integer "rate"
     t.boolean "compound"
+    t.boolean "withholding",         :default => false
   end
 
   add_index "taxes", ["consolidated_tax_id"], :name => "index_taxes_on_consolidated_tax_id"

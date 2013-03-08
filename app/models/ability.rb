@@ -7,6 +7,7 @@ class Ability
     can :manage,          ConsolidatedTax,  :user_id => user.id
     can :manage,          Customer,         :user_id => user.id
     can :manage,          Option,           :user_id => user.id
+    can :manage,          Certification,    :user_id => user.id
     can :manage,          Estimate,         :customer => { :user_id => user.id }
     can :manage,          Invoice,          :customer => { :user_id => user.id }
     can :manage,          InvoiceProject,   :customer => { :user_id => user.id }
@@ -23,6 +24,6 @@ class Ability
     can :update,          User,             :id => user.id
     can :password_edit,   User,             :id => user.id
     can :password_update, User,             :id => user.id
-    can :destroy_logo, User,             :id => user.id
+    can :destroy_logo,    User,             :id => user.id
   end
 end

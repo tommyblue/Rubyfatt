@@ -62,5 +62,9 @@ module Rubyfatt
     config.assets.version = '1.0'
 
     config.sass.line_comments = false
+
+    # Disable assets generation
+    config.generators.stylesheets = false
+    config.generators.javascripts = false
   end
 end
