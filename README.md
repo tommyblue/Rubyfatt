@@ -53,6 +53,7 @@ Di seguito i TAG git con le principali caratteristiche e cambiamenti
 ### 1.3.0 (08/03/2013)
 
 - Aggiornato a Rails 3.2.12
+- Gestione delle certificazioni delle ritenute d'acconto (#11)
 - Invertito l'ordine di visualizzazione delle ore svolte
 - Fix per il supporto SQLite e PostgreSQL
 - Grafici con xCharts al posto di Google charts (riabilitabile da configurazione)
