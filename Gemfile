@@ -39,14 +39,14 @@ group :development do
   gem 'pry'
 end
 
-gem "rspec-rails", :group => [:test, :development]
+gem "rspec-rails", "~> 2.13.0", :group => [:test, :development]
 group :test do
   gem "rake"
   gem "sqlite3"
   gem "pg"
   gem "factory_girl_rails"
   gem "capybara"
-  gem "guard-rspec"
+  gem "guard-rspec", "~> 2.5.0"
   gem 'rb-fsevent', '~> 0.9.1'
 end
 
