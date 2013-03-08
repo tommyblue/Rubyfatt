@@ -559,7 +559,7 @@ it:
       alert:
         title: "Attenzione"
         message: "Se nella tabella sovrastante non è presente nessuna notula di cui inserire le certicazione di ritenuta d'acconto (e non dovrebbe esserlo), probabilmente non è stata impostata nessuna tassa come ritenuta d'acconto"
-    new:
+    edit:
       title: "Aggiungi una certificazione"
   ##########################################################################
   #                                                                        #
