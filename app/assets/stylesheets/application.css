@@ -8,6 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require select2
  *= require_self
  *= require_tree .
 */
@@ -43,4 +44,14 @@ form .help-block {
 
 form .add-on .icon-calendar:hover {
   cursor: pointer;
+}
+
+.profile_logo {
+  margin-bottom: 20px;
+}
+.profile_logo img {
+  max-width: 400px;
+}
+h1.sup-spaced {
+  margin-top: 40px;
 }

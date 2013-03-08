@@ -72,6 +72,7 @@ end
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'select2-rails'
 
 # Use unicorn as the web server
 gem 'unicorn'
