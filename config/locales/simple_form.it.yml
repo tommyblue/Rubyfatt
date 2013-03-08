@@ -63,6 +63,12 @@ it:
     labels:
       option:
         value: "Valore"
+      certification:
+        customer: "Cliente"
+        year: "Anno"
+        rate: "Valore"
+        received_at: "Data di ricezione"
+        attachment: "Allegato"
       consolidated_tax:
         name: "Nome"
         notes: "Note"
