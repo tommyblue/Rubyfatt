@@ -16,6 +16,7 @@ Ha un piccolo sistema di report con statistiche e grafici sugli incassi, le notu
 * Trasformazione dei lavori in preventivi, progetti di notula e notule/fatture
 * Stampa/download PDF delle fatture e degli altri documenti
 * Gestione dei pagamenti
+* Gestione delle certificazioni delle ritenute d'acconto
 * Riepilogo delle fatture emesse
 * Modifica della numerazione delle fatture e dei preventivi (ad esempio ad inizio anno)
 * Gestione delle coordinate bancarie stampate nei progetti di notula
