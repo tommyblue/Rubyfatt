@@ -15,7 +15,7 @@ gem 'cancan', '~> 1.6.8'
 gem 'prawn',  '~> 1.0.0.rc1'
 
 #----- Recurring invoices time management
-gem 'ice_cube', '~> 0.9.3'
+gem 'ice_cube', '~> 0.10.0'
 gem 'vpim', '~> 0.695'
 
 #----- Forms made easy
