@@ -10,4 +10,8 @@ class PostgresqlAdapter
   def self.get_date_part date_part, value
   	"EXTRACT(#{date_part} FROM #{value})"
   end
+
+  def self.order_asc
+  	'"order" ASC'
+  end
 end
