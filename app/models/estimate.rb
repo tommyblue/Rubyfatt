@@ -5,16 +5,8 @@ class Estimate < ActiveRecord::Base
 
   attr_accessible :date, :number, :invoiced, :consolidated_tax_id, :slip_ids
 
-  default_scope do
-    case ActiveRecord::Base.connection.adapter_name
-    when "Mysql2"
-      order("YEAR(#{table_name}.date)", "#{table_name}.number", "#{table_name}.id")
-    when "PostgreSQL"
-      order("EXTRACT(YEAR FROM #{table_name}.date)", "#{table_name}.number", "#{table_name}.id")
-    when "SQLite"
-      order("strftime(\"%Y\", #{table_name}.date)", "#{table_name}.number", "#{table_name}.id")
-    end
-  end
+  default_scope order DbAdapter.get_year("#{table_name}.date"), "#{table_name}.number", "#{table_name}.id"
+
   scope :by_year, lambda {|year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31")}
 
   validates :date, :presence => true

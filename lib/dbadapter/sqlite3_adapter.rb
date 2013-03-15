@@ -10,4 +10,8 @@ class Sqlite3Adapter
   def self.get_date_part date_part, value
   	"strftime('%#{date_part}', #{value})"
   end
+
+  def self.order_asc
+  	'"order" ASC'
+  end
 end
