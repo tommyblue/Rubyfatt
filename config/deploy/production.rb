@@ -1,3 +1,6 @@
+require "capistrano-rbenv"
+set :rbenv_ruby_version, "1.9.3-p392"
+
 server "galois.linusse.org", :web, :app, :db, primary: true
 
 set :deploy_to, "/home/#{user}/apps/#{application}"

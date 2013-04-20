@@ -70,3 +70,4 @@ gem 'select2-rails'
 
 gem 'unicorn'
 gem 'capistrano'
+gem 'capistrano-rbenv'
