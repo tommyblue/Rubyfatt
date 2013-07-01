@@ -51,6 +51,15 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### 1.4.0 (01/07/2013)
+
+- Aggiornato a Rails 4.0.0
+
+### 1.3.1 (01/07/2013)
+
+- Aggiornato a Rails 3.2.13
+- Aggiornate varie gemme
+
 ### 1.3.0 (08/03/2013)
 
 - Aggiornato a Rails 3.2.12
