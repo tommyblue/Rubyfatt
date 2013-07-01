@@ -18,7 +18,7 @@ gem 'cancan', '~> 1.6.10'
 gem 'prawn',  '~> 1.0.0.rc1'
 
 #----- Recurring invoices time management
-gem 'ice_cube', '~> 0.10.0'
+gem 'ice_cube', '~> 0.11.0'
 gem 'vpim', '~> 0.695'
 
 #----- Forms made easy
@@ -26,7 +26,7 @@ gem 'simple_form', '~> 3.0.0.rc'
 gem 'country_select', '~> 1.1.3'
 
 #----- Twitter bootstrap with SASS
-gem 'bootstrap-sass', '~> 2.3.0.1'
+gem 'bootstrap-sass', '~> 2.3.2.0'
 
 #----- Paperclip
 gem "paperclip", "~> 3.4.2"
@@ -71,7 +71,7 @@ gem 'sass-rails',   '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '~> 2.1.1'
 
-gem 'jquery-rails', '~> 2.3.0'
+gem 'jquery-rails', '~> 3.0.1'
 gem 'jquery-ui-rails', "~> 4.0.3"
 gem 'select2-rails', '~> 3.4.3'
 
