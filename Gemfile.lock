@@ -249,7 +249,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    vpim (0.695)
     warden (1.2.1)
       rack (>= 1.0)
     xpath (2.0.0)
@@ -295,4 +294,3 @@ DEPENDENCIES
   therubyracer
   uglifier (~> 2.1.1)
   unicorn (~> 4.6.3)
-  vpim (~> 0.695)
