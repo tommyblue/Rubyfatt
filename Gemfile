@@ -19,7 +19,6 @@ gem 'prawn',  '~> 1.0.0.rc1'
 
 #----- Recurring invoices time management
 gem 'ice_cube', '~> 0.11.0'
-gem 'vpim', '~> 0.695'
 
 #----- Forms made easy
 gem 'simple_form', '~> 3.0.0.rc'
@@ -54,13 +53,6 @@ group :test do
   gem "guard-rspec", "~> 3.0.2"
   gem 'rb-fsevent', '~> 0.9.1'
 end
-
-
-# group :development do
-#   gem "jeweler", "> 1.6.4"
-#   gem 'i18n-spec'
-#   gem 'localeapp'
-# end
 
 group :production do
   gem "airbrake_user_attributes", "~> 0.1.6"
