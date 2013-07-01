@@ -61,10 +61,12 @@ Rubyfatt::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.middleware.use ExceptionNotifier,
-    :email_prefix => "[Rubyfatt] ",
-    :sender_address => %{"notifier" <info@kreations.it>},
-    :exception_recipients => %w{info@kreations.it}
-
   config.eager_load = true
 end
+
+Rubyfatt::Application.config.middleware.use ExceptionNotification::Rack,
+  email: {
+    email_prefix: "[Rubyfatt] ",
+    sender_address: %{"notifier" <info@kreations.it>},
+    exception_recipients: %w{info@kreations.it}
+  }
