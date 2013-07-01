@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :authenticate_user!
-  before_filter :set_locale
+  before_action :authenticate_user!
+  before_action :set_locale
   layout :layout_by_resource
 
   rescue_from CanCan::AccessDenied do |exception|

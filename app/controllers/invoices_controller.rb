@@ -1,9 +1,8 @@
 class InvoicesController < ApplicationController
-  load_and_authorize_resource :customer
-  load_and_authorize_resource :invoice, :through => :customer, :except => [:all]
+  load_and_authorize_resource :customer, except: [ :all ]
+  load_and_authorize_resource :invoice, through: :customer, except: [ :all ]
 
   def index
-
   end
 
   def new

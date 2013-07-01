@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
-  before_filter :load_current_user
-  authorize_resource :user, :parent => false
+  before_action :load_current_user
+  authorize_resource :user, parent: false
 
   def edit
   end

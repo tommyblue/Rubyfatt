@@ -3,16 +3,16 @@ class RecurringSlip < ActiveRecord::Base
   serialize :schedule, Hash
 
   belongs_to :customer
-  has_one :user, :through => :customer
+  has_one :user, through: :customer
 
   attr_accessible :schedule, :last_occurrence, :next_occurrence, :name, :rate, :customer_id
 
-  validates :name, :presence => true
-  validates :rate, :presence => true, :numericality => true
-  validates :customer, :presence => true
-  validates :schedule, :presence => true
+  validates :name, presence: true
+  validates :rate, presence: true, numericality: true
+  validates :customer, presence: true
+  validates :schedule, presence: true
   validate :customer_must_exist
-  validate :check_customer_on_save, :on => :save
+  validate :check_customer_on_save, on: :save
 
   before_create do
     self.next_occurrence = self.schedule.next_occurrence unless self.next_occurrence
@@ -73,7 +73,7 @@ class RecurringSlip < ActiveRecord::Base
   # rule = IceCube::Rule.monthly.day_of_month(1)
   # schedule = IceCube::Schedule.new
   # schedule.add_recurrence_rule rule
-  # RecurringSlip.create(:customer_id => 1, :name => 'test', :rate => 100.0, :schedule => schedule)
+  # RecurringSlip.create(customer_id: 1, name: 'test', rate: 100.0, schedule: schedule)
   def schedule=(new_schedule)
     write_attribute(:schedule, new_schedule.to_hash)
   end
@@ -84,7 +84,7 @@ class RecurringSlip < ActiveRecord::Base
 
   def check_customer_on_save
     if customer.user_id != current_user.user_id
-      errors.add(:check_customer, t('controllers.recurring_slips.save.error', :default => "Customer incorrect"))
+      errors.add(:check_customer, t('controllers.recurring_slips.save.error', default: "Customer incorrect"))
     end
   end
 

@@ -1,6 +1,6 @@
 class InvoiceProjectsController < ApplicationController
-  load_and_authorize_resource :customer
-  load_and_authorize_resource :invoice_project, :through => :customer, :except => [:index, :to_invoice_form, :to_invoice, :from_recurring_slip, :create_from_recurring_slip]
+  load_and_authorize_resource :customer, except: [:index, :to_invoice_form, :to_invoice, :from_recurring_slip, :create_from_recurring_slip]
+  load_and_authorize_resource :invoice_project, through: :customer, except: [:index, :to_invoice_form, :to_invoice, :from_recurring_slip, :create_from_recurring_slip]
 
   def index
     @invoiced_invoice_projects = current_user.invoice_projects.invoiced

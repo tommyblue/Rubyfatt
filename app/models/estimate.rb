@@ -5,14 +5,14 @@ class Estimate < ActiveRecord::Base
 
   attr_accessible :date, :number, :invoiced, :consolidated_tax_id, :slip_ids
 
-  default_scope order DbAdapter.get_year("#{table_name}.date"), "#{table_name}.number", "#{table_name}.id"
+  default_scope { order DbAdapter.get_year("#{table_name}.date"), "#{table_name}.number", "#{table_name}.id" }
 
-  scope :by_year, lambda {|year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31")}
+  scope :by_year, lambda { |year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31") }
 
-  validates :date, :presence => true
-  validates :customer, :presence => true
-  validates :consolidated_tax, :presence => true
-  validates :slips, :presence => true
+  validates :date, presence: true
+  validates :customer, presence: true
+  validates :consolidated_tax, presence: true
+  validates :slips, presence: true
   validate :customer_must_exist
   validate :consolidated_tax_must_exist
 
