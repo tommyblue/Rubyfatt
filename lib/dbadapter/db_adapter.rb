@@ -13,4 +13,8 @@ class DbAdapter
   def self.get_year value
     get_adapter_class.get_year value
   end
+
+  def self.order_asc
+    get_adapter_class.order_asc
+  end
 end

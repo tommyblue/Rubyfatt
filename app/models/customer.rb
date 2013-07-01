@@ -5,16 +5,16 @@ class Customer < ActiveRecord::Base
   has_many :invoice_projects
   has_many :slips
   has_many :recurring_slips
-  has_many :working_slips, :class_name => 'Slip', :conditions => ['invoice_id IS NULL AND invoice_project_id IS NULL']
+  has_many :working_slips, -> { where('invoice_id IS NULL AND invoice_project_id IS NULL') }, class_name: 'Slip'
   has_many :certifications
 
   attr_accessible :title, :name, :surname, :address, :zip_code, :town, :province, :country, :tax_code, :vat
 
-  validates :user, :presence => true
-  validates :title, :presence => true, :uniqueness => { :scope => :user_id }
-  validates :vat, :uniqueness => { :scope => :user_id }, :allow_nil => true, :allow_blank => true
+  validates :user, presence: true
+  validates :title, presence: true, uniqueness: { scope: :user_id }
+  validates :vat, uniqueness: { scope: :user_id }, allow_nil: true, allow_blank: true
 
-  scope :ordered, order(:title, :name, :surname)
+  scope :ordered, -> { order(:title, :name, :surname) }
 
   def billed
     sum = 0

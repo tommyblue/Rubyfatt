@@ -1,7 +1,1 @@
-# Be sure to restart your server when you modify this file.
-
-# Your secret key for verifying the integrity of signed cookies.
-# If you change this key, all old signed cookies will become invalid!
-# Make sure the secret is at least 30 characters and all random,
-# no regular words or you'll be exposed to dictionary attacks.
-Rubyfatt::Application.config.secret_token = '5593689558b24691797ee62bb67081b8329edbc70f3ed5b0bf5fdde72b85b28d6ecc49b13a0d30c2ead44f4539f3c0f8a488d34aff5e684d77be867c1535a36d'
+Rubyfatt::Application.config.secret_key_base = '9bc7e1f58bf6c6ec58a31d22e91ad16afab0afb5e399f647a63f03bd5ecbcbf04ba4f18    ea25e1d8d2199db5fc54f29dd2762acbae2f4f1103efb6895cd34f0bb'

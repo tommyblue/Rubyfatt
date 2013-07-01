@@ -3,10 +3,10 @@ class Tax < ActiveRecord::Base
 
   attr_accessible :order, :name, :rate, :compound, :withholding
 
-  validates :order, :numericality => true, :presence => true
-  validates :rate, :numericality => true, :presence => true
-  validates :name, :presence => true, :uniqueness => { :scope => :consolidated_tax_id }
-  validates :compound, :inclusion => { :in => [true, false] }
+  validates :order, numericality: true, presence: true
+  validates :rate, numericality: true, presence: true
+  validates :name, presence: true, uniqueness: { scope: :consolidated_tax_id }
+  validates :compound, inclusion: { in: [true, false] }
   validate :consolidated_tax_must_exist
 
   private

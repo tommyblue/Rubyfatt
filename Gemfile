@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '4.0.0'
+
+#----- Rails 3 compatibility (TO BE REMOVED ASAP)
+gem 'protected_attributes'
 
 #----- SQLite or MySQL or PostgreSQL or..
 # gem 'sqlite3'
@@ -8,42 +11,47 @@ gem 'mysql2'
 # gem 'pg'
 
 #----- Authentication and authorization
-gem 'devise', '~> 2.2.3'
-gem 'cancan', '~> 1.6.8'
+gem 'devise', '~> 3.0.0.rc'
+gem 'cancan', '~> 1.6.10'
 
 #----- PDF Generation
 gem 'prawn',  '~> 1.0.0.rc1'
 
 #----- Recurring invoices time management
-gem 'ice_cube', '~> 0.9.3'
+gem 'ice_cube', '~> 0.11.0'
 gem 'vpim', '~> 0.695'
 
 #----- Forms made easy
-gem 'simple_form', '~> 2.0.4'
+gem 'simple_form', '~> 3.0.0.rc'
 gem 'country_select', '~> 1.1.3'
 
 #----- Twitter bootstrap with SASS
-gem 'bootstrap-sass', '~> 2.3.0.1'
+gem 'bootstrap-sass', '~> 2.3.2.0'
 
 #----- Paperclip
-gem "paperclip", "~> 3.0"
+gem "paperclip", "~> 3.4.2"
 
 #----- Exception notification
-gem 'exception_notification'
+gem 'exception_notification', "~> 4.0.0.rc1"
 
 group :development do
-  gem 'better_errors'
+  gem 'better_errors', '~> 0.9.0'
   gem 'binding_of_caller'
   gem 'annotate'
   gem 'railroady'
-  gem 'pry'
+  gem 'pry', '~> 0.9.12.2'
+  gem 'therubyracer'
 end
 
-gem "rspec-rails", :group => [:test, :development]
+gem "rspec-rails", "~> 2.13.2", :group => [:test, :development]
 group :test do
-  gem "factory_girl_rails"
-  gem "capybara"
-  gem "guard-rspec"
+  gem "rake"
+  gem "sqlite3"
+  gem "mysql2"
+  gem "pg", '~> 0.15.1'
+  gem "factory_girl_rails", "~> 4.2.1"
+  gem "capybara", '~> 2.1.0'
+  gem "guard-rspec", "~> 3.0.2"
   gem 'rb-fsevent', '~> 0.9.1'
 end
 
@@ -55,19 +63,19 @@ end
 # end
 
 group :production do
-  gem "airbrake_user_attributes"
+  gem "airbrake_user_attributes", "~> 0.1.6"
 end
 
-group :assets do
-  gem 'sass-rails',   '~> 3.2.5'
-  gem 'coffee-rails', '~> 3.2.2'
-  gem 'uglifier', '>= 1.0.3'
-end
+#----- Assets
+gem 'sass-rails',   '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier', '~> 2.1.1'
 
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
-gem 'select2-rails'
+gem 'jquery-rails', '~> 3.0.1'
+gem 'jquery-ui-rails', "~> 4.0.3"
+gem 'select2-rails', '~> 3.4.3'
 
-gem 'unicorn'
+# Use unicorn as the web server
+gem 'unicorn', '~> 4.6.3'
 gem 'capistrano'
 gem 'capistrano-rbenv'

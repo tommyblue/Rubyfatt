@@ -16,6 +16,7 @@ Ha un piccolo sistema di report con statistiche e grafici sugli incassi, le notu
 * Trasformazione dei lavori in preventivi, progetti di notula e notule/fatture
 * Stampa/download PDF delle fatture e degli altri documenti
 * Gestione dei pagamenti
+* Gestione delle certificazioni delle ritenute d'acconto
 * Riepilogo delle fatture emesse
 * Modifica della numerazione delle fatture e dei preventivi (ad esempio ad inizio anno)
 * Gestione delle coordinate bancarie stampate nei progetti di notula
@@ -49,6 +50,15 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 ## Changelog
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
+
+### 1.4.0 (01/07/2013)
+
+- Aggiornato a Rails 4.0.0
+
+### 1.3.1 (01/07/2013)
+
+- Aggiornato a Rails 3.2.13
+- Aggiornate varie gemme
 
 ### 1.3.0 (08/03/2013)
 

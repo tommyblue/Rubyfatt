@@ -1,13 +1,13 @@
 class ConsolidatedTax < ActiveRecord::Base
   belongs_to :user
-  has_many :taxes, :class_name => 'Tax', :order => {"Mysql2" => "`order` ASC", "PostgreSQL" => '"order" ASC', "SQLite" => '"order" ASC'}[ActiveRecord::Base.connection.adapter_name], :dependent => :destroy
+  has_many :taxes, -> { order(DbAdapter.order_asc) }, class_name: 'Tax', dependent: :destroy
   has_many :invoices
   has_many :invoice_projects
   has_many :estimates
 
   attr_accessible :name, :notes
 
-  validates :name, :presence => true, :uniqueness => { :scope => :user_id }
+  validates :name, presence: true, uniqueness: { scope: :user_id }
   validate :user_must_exist
 
   def can_be_deleted?

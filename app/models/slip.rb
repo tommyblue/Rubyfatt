@@ -7,15 +7,15 @@ class Slip < ActiveRecord::Base
 
   attr_accessible :name, :rate, :timed, :duration
 
-  validates :name, :presence => true
-  validates :rate, :presence => true, :numericality => true
-  validates :customer, :presence => true
-  validates :duration, :numericality => true, :allow_nil => true, :allow_blank => true
+  validates :name, presence: true
+  validates :rate, presence: true, numericality: true
+  validates :customer, presence: true
+  validates :duration, numericality: true, allow_nil: true, allow_blank: true
   validate :customer_must_exist
   validate :estimate_must_exist
   validate :invoice_must_exist
 
-  scope :working, where("invoice_id IS NULL AND invoice_project_id IS NULL")
+  scope :working, -> { where("invoice_id IS NULL AND invoice_project_id IS NULL") }
 
   def total_hours
     (self.timed and self.time_entries.size > 0) ? self.time_entries.map(&:hours).inject(:+) : 0

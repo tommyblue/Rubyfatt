@@ -1,9 +1,9 @@
 class SlipsController < ApplicationController
-  load_and_authorize_resource :customer
-  load_and_authorize_resource :slip, :through => :customer, :parent => false, :except => :working
-  load_and_authorize_resource :estimate, :through => :customer, :parent => false, :only => :index
-  load_and_authorize_resource :invoice, :through => :customer, :parent => false, :only => :index
-  load_and_authorize_resource :invoice_project, :through => :customer, :parent => false, :only => :index
+  load_and_authorize_resource :customer, except: :working
+  load_and_authorize_resource :slip, through: :customer, parent: false, except: :working
+  load_and_authorize_resource :estimate, through: :customer, parent: false, only: :index
+  load_and_authorize_resource :invoice, through: :customer, parent: false, only: :index
+  load_and_authorize_resource :invoice_project, through: :customer, parent: false, only: :index
 
   def index
     @slips = @customer.working_slips
