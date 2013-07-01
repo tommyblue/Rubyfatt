@@ -8,8 +8,8 @@ gem 'mysql2'
 # gem 'pg'
 
 #----- Authentication and authorization
-gem 'devise', '~> 2.2.3'
-gem 'cancan', '~> 1.6.8'
+gem 'devise', '~> 2.2.4'
+gem 'cancan', '~> 1.6.10'
 
 #----- PDF Generation
 gem 'prawn',  '~> 1.0.0.rc1'
@@ -26,10 +26,10 @@ gem 'country_select', '~> 1.1.3'
 gem 'bootstrap-sass', '~> 2.3.0.1'
 
 #----- Paperclip
-gem "paperclip", "~> 3.0"
+gem "paperclip", "~> 3.4.2"
 
 #----- Exception notification
-gem 'exception_notification'
+gem 'exception_notification', "~> 3.0.1"
 
 group :development do
   gem 'better_errors'
@@ -39,12 +39,12 @@ group :development do
   gem 'pry'
 end
 
-gem "rspec-rails", "~> 2.13.0", :group => [:test, :development]
+gem "rspec-rails", "~> 2.13.2", :group => [:test, :development]
 group :test do
   gem "rake"
   gem "sqlite3"
   gem "pg"
-  gem "factory_girl_rails"
+  gem "factory_girl_rails", "~> 4.2.1"
   gem "capybara"
   gem "guard-rspec", "~> 2.5.0"
   gem 'rb-fsevent', '~> 0.9.1'
@@ -58,7 +58,7 @@ end
 # end
 
 group :production do
-  gem "airbrake_user_attributes"
+  gem "airbrake_user_attributes", "~> 0.1.6"
 end
 
 # Gems used only for assets and not required
@@ -74,7 +74,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', "~> 4.0.3"
 gem 'select2-rails'
 
 # Use unicorn as the web server
