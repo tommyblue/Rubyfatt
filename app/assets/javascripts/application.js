@@ -18,6 +18,7 @@
 //= require bootstrap-modal
 //= require bootstrap-transition
 //= require bootstrap-tooltip
+//= require bootstrap-sortable
 //= require tinycon.min
 //= require d3.v3
 //= require xcharts

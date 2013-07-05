@@ -7,6 +7,9 @@ class SlipsController < ApplicationController
 
   def index
     @slips = @customer.working_slips
+    @estimates = @estimates.sorted
+    @invoice_projects = @invoice_projects.sorted
+    @invoices = @invoices.sorted
   end
 
   def new

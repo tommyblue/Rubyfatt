@@ -8,6 +8,7 @@ class Estimate < ActiveRecord::Base
   default_scope { order DbAdapter.get_year("#{table_name}.date"), "#{table_name}.number", "#{table_name}.id" }
 
   scope :by_year, lambda { |year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31") }
+  scope :sorted, -> { order('date DESC') }
 
   validates :date, presence: true
   validates :customer, presence: true
