@@ -8,6 +8,8 @@ class Invoice < ActiveRecord::Base
 
   default_scope { order DbAdapter.get_year("#{table_name}.date"), "#{table_name}.number", "#{table_name}.id" }
 
+  scope :sorted, -> { order('date DESC') }
+
   scope :by_year, lambda { |year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31") }
   # Returns the invoices with consolidated taxes with at least one tax with withholding flag at true
   scope :withholding_taxes, -> { joins(consolidated_tax: :taxes).where(taxes: { withholding: true }).uniq }

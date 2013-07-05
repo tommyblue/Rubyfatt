@@ -3,8 +3,8 @@ class InvoiceProjectsController < ApplicationController
   load_and_authorize_resource :invoice_project, through: :customer, except: [:index, :to_invoice_form, :to_invoice, :from_recurring_slip, :create_from_recurring_slip]
 
   def index
-    @invoiced_invoice_projects = current_user.invoice_projects.invoiced
-    @uninvoiced_invoice_projects = current_user.invoice_projects.uninvoiced
+    @invoiced_invoice_projects = current_user.invoice_projects.invoiced.sorted
+    @uninvoiced_invoice_projects = current_user.invoice_projects.uninvoiced.sorted
     authorize! :read, Invoice
   end
 

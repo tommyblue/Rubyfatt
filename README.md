@@ -51,6 +51,11 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### 1.4.1 (05/07/2013)
+
+- Rese ordinabili le tabelle aggiungendo Bootstrap-sortable (https://github.com/drvic10k/bootstrap-sortable)
+- L'ordine di default di preventivi, progetti di notula e notule è stato invertito (il più recente in alto)
+
 ### 1.4.0 (01/07/2013)
 
 - Aggiornato a Rails 4.0.0
