@@ -23,6 +23,8 @@
 //= require d3.v3
 //= require xcharts
 //= require select2
+//= require bootstrap-wysihtml5
+//= require bootstrap-wysihtml5/locales/it-IT
 
 $(document).ready(function(){
   $('input.datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
@@ -33,4 +35,9 @@ $(document).ready(function(){
     $(el).find('input').focus();
   });
   $(".enable_select2").select2();
+  $('.wysihtml5').each(function(i, elem) {
+    $(elem).wysihtml5({
+      locale: "it-IT"
+    });
+  });
 })

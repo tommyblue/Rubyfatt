@@ -51,6 +51,12 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### 1.4.2 (11/07/2013)
+
+- Aggiunte le info ai clienti, visualizzati in testa alla pagina dei documenti **richiede migrazione del database**
+- Aggiunto il namespace /api/ per gestire le chiamate AJAX
+- Introdotto WYSIHTML5 per il rich-editing delle textarea
+
 ### 1.4.1 (05/07/2013)
 
 - Rese ordinabili le tabelle aggiungendo Bootstrap-sortable (https://github.com/drvic10k/bootstrap-sortable)
@@ -77,7 +83,7 @@ Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
 ### 1.2.4 (06/01/2013)
 
-- Aggiornato a Rails 3.2.10 per fix CVE-2012-5664 https://groups.google.com/forum/?fromgroups=#!topic/rubyonrails-security/DCNTNp_qjFM
+- Aggiornato a Rails 3.2.10 per fix [CVE-2012-5664](https://groups.google.com/forum/?fromgroups=#!topic/rubyonrails-security/DCNTNp_qjFM)
 
 ### 1.2.3 (02/01/2013)
 
@@ -122,8 +128,8 @@ Di seguito i TAG git con le principali caratteristiche e cambiamenti
 ### 1.0
 
 - Gestione dei permessi con CanCan
-- Tolta l'associazione di una tassa con l'utente, adesso passa da ConsolidatedTax (**richiede migrazione del database**)
-- Quando una notula o un progetto di notula vengono scaricati, l'informazione viene salvata (**richiede migrazione del database**)
+- Tolta l'associazione di una tassa con l'utente, adesso passa da ConsolidatedTax **richiede migrazione del database**
+- Quando una notula o un progetto di notula vengono scaricati, l'informazione viene salvata **richiede migrazione del database**
 - Fix minori
 
 ### 0.14
@@ -132,7 +138,7 @@ Di seguito i TAG git con le principali caratteristiche e cambiamenti
 - Il badge del progetti di notula, nel menù "Stato dei lavori" mostra soltanto i progetti di notula non fatturati
 - La pagina riassuntiva dei progetti di notula mostra i progetti divisi in due tabelle: fatturati e non
 - Modificato l'ordine dei progetti ricorrenti secondo la scadenza
-- Collegata la notula al progetto di notula da cui viene generata (**richiede migrazione del database**)
+- Collegata la notula al progetto di notula da cui viene generata **richiede migrazione del database**
 - Eliminate le icone Fugue e aggiunto Font Awesome
 - Eliminazione di un cliente se non ha dati associati
 - Gestione della tassazione (tasse e regimi di tassazione)

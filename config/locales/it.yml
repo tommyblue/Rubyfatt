@@ -1,5 +1,7 @@
+#encoding: utf-8
 it:
   save: "Salva"
+  saving: "Salvando..."
   months_array: '["", "Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"]'
   ## CanCan messages
   unauthorized:
@@ -403,7 +405,11 @@ it:
   # SLIPS
   #
   slips:
+    customer_info_modal:
+      new: "Aggiungi un testo introduttivo"
+      edit: "Modifica"
     index:
+      edit_customer: "Modifica il cliente"
       hours: "Ore"
       time_entries:
         title: "Ore svolte per"

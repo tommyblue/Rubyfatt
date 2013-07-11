@@ -1,0 +1,22 @@
+class window.CustomerInfoManagement
+  constructor: ->
+    $(document).on 'submit', '#edit-customer-info-form', @edit_customer_info
+
+  edit_customer_info: (e) =>
+    e.preventDefault()
+    e.stopPropagation()
+
+    $(e.target).find('button').html('<i class="icon-spinner icon-spin"></i> <%= I18n.t 'saving', default: 'Saving...' %>').attr('disabled', 'disabled')
+
+    $.ajax({
+      dataType: 'json'
+      type: 'patch'
+      url: $(e.target).attr('action')
+      data: $(e.target).serialize()
+      success: (data) =>
+        window.location.reload(true)
+    })
+
+$ ->
+  new CustomerInfoManagement
+

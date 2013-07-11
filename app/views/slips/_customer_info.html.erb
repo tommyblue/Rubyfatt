@@ -1,0 +1,8 @@
+<% unless @customer.info.blank? %>
+  <div class="well">
+    <%= raw @customer.info %>
+    <%= render partial: 'customer_info_modal', locals: { action: 'edit' } %>
+  </div>
+<% else %>
+  <%= render partial: 'customer_info_modal', locals: { action: 'new' } %>
+<% end %>

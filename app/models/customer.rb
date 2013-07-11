@@ -8,7 +8,7 @@ class Customer < ActiveRecord::Base
   has_many :working_slips, -> { where('invoice_id IS NULL AND invoice_project_id IS NULL') }, class_name: 'Slip'
   has_many :certifications
 
-  attr_accessible :title, :name, :surname, :address, :zip_code, :town, :province, :country, :tax_code, :vat
+  attr_accessible :title, :name, :surname, :address, :zip_code, :town, :province, :country, :tax_code, :vat, :info
 
   validates :user, presence: true
   validates :title, presence: true, uniqueness: { scope: :user_id }
