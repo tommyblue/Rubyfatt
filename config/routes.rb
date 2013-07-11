@@ -49,5 +49,9 @@ Rubyfatt::Application.routes.draw do
   match 'invoice/:invoice_id/payment' => 'payments#create', via: :post
   match 'invoice/:invoice_id/payment' => 'payments#new', via: :get
 
-  root :to => 'dashboard#index'
+  namespace :api do
+    resources :customers, only: [:update]
+  end
+
+  root to: 'dashboard#index'
 end

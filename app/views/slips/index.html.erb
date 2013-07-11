@@ -4,6 +4,16 @@
                     ]).html_safe %>
 <% end %>
 
+<div class="row-fluid">
+  <div class="span12">
+    <%= link_to edit_customer_path(@customer), class: 'btn btn-mini btn-primary pull-right' do %>
+      <i class="icon-edit"></i> <%=t '.edit_customer', default: 'Edit customer' %>
+    <% end %>
+  </div>
+</div>
+
+<%= render 'customer_info' %>
+
 <%= render 'slips_table' %>
 
 <%= render 'estimates_table' %>
