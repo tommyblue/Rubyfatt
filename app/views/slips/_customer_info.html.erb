@@ -2,6 +2,7 @@
   <div class="well">
     <%= raw @customer.info %>
     <%= render partial: 'customer_info_modal', locals: { action: 'edit' } %>
+    <small><em><%= t '.last_customer_update', default: "Last customer update" %>: <%=l @customer.updated_at %></em></small>
   </div>
 <% else %>
   <%= render partial: 'customer_info_modal', locals: { action: 'new' } %>
