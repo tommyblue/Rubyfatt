@@ -1,3 +1,6 @@
+require "capistrano-rbenv"
+set :rbenv_ruby_version, "2.0.0-p247"
+
 server "rubyfatt-demo.kreations.it", :web, :app, :db, primary: true
 
 set :deploy_to, "/home/#{user}/apps/#{application}"
@@ -30,16 +33,16 @@ namespace :deploy do
   end
   before "deploy:finalize_update", "deploy:prepare_install"
 
-  namespace :assets do
-    task :precompile, roles: :web, except: {no_release: true} do
-      from = source.next_revision(current_revision)
-      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
-        run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
-      else
-        logger.info "Skipping asset pre-compilation because there were no asset changes"
-      end
-    end
-  end
+  # namespace :assets do
+  #   task :precompile, roles: :web, except: {no_release: true} do
+  #     from = source.next_revision(current_revision)
+  #     if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
+  #       run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+  #     else
+  #       logger.info "Skipping asset pre-compilation because there were no asset changes"
+  #     end
+  #   end
+  # end
 
   task :create_symlink do
     run "ln -nfs #{shared_path}/system/ #{release_path}/"
