@@ -405,6 +405,8 @@ it:
   # SLIPS
   #
   slips:
+    customer_info:
+      last_customer_update: "Ultimo aggiornamento del cliente"
     customer_info_modal:
       new: "Aggiungi un testo introduttivo"
       edit: "Modifica"

@@ -47,9 +47,14 @@ Ruby on Rails, software su cui è basato Rubyfatt, è distribuito con licenza MI
 
 L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni di GitHub](https://github.com/tommyblue/Rubyfatt/issues?labels=enhancement&page=1&state=open) con la label *enhancement*.
 
+<a name="changelog"></a>
 ## Changelog
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
+
+### 1.4.3 (15/07/2013)
+
+- Visualizzata la data dell'ultima modifica alle info dei clienti
 
 ### 1.4.2 (11/07/2013)
 
