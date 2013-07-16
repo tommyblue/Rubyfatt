@@ -11,7 +11,7 @@ gem 'mysql2'
 # gem 'pg'
 
 #----- Authentication and authorization
-gem 'devise', '~> 3.0.0.rc'
+gem 'devise', '~> 3.0.0'
 gem 'cancan', '~> 1.6.10'
 
 #----- PDF Generation
@@ -61,7 +61,7 @@ end
 #----- Assets
 gem 'sass-rails',   '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'uglifier', '~> 2.1.1'
+gem 'uglifier', '~> 2.1.2'
 
 gem 'jquery-rails', '~> 3.0.4'
 gem 'jquery-ui-rails', "~> 4.0.3"
