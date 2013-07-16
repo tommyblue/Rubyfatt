@@ -1,0 +1,21 @@
+<%= content_for :breadcrumb do %>
+  <%= print_breadcrumbs([
+    ["Wiki", wiki_page_path],
+    [t('breadcrumb.wiki.new', default: "New"), nil]
+  ]).html_safe %>
+<% end %>
+
+<h1><%=wt 'Creating a new wiki page' %></h1>
+
+<%= simple_form_for( @page, { :as => :page, :url => url_for( :action => :update ), :html=> { :class => 'wiki_form form-horizontal', :method => :post } }) do |f| %>
+  <%= f.hidden_field :previous_version_number, :value => f.object.last_version_number %>
+
+  <%= f.input :title, input_html: { class: 'span6' } %>
+  <%= f.input :content, input_html: { class: 'span10', rows: 10 } %>
+  <%= f.hidden_field :comment, :value => 'First Revision'%>
+  <%= hidden_field_tag :path, @page.path %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+  </div>
+<% end %>

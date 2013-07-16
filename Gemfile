@@ -33,6 +33,9 @@ gem "paperclip", "~> 3.4.2"
 #----- Exception notification
 gem 'exception_notification', "~> 4.0.0"
 
+#----- Wiki
+gem 'irwi', git: 'git://github.com/tommyblue/irwi.git', branch: 'rails4'
+
 group :development do
   gem 'better_errors', '~> 0.9.0'
   gem 'binding_of_caller'

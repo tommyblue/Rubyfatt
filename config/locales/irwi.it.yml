@@ -1,0 +1,26 @@
+#encoding: utf-8
+it:
+  wiki:
+    'There is no such page': 'Questa pagina non esiste. <a href="%{new_url}">Vuoi crearla</a>?'
+    'Creating a new wiki page': 'Creazione di una nuova pagina'
+    'Editing wiki page': 'Modifica della pagina'
+    'Title': 'Titolo'
+    'Content': 'Contenuto'
+    'Preview': "Anteprima delle modifiche"
+    'Cancel': "Annulla"
+    'History': 'Versioni'
+    'Edit': 'Modifica'
+    'Destroy': 'Elimina'
+    destroy_page_confirm: "Confermi l'eliminazione della pagina?"
+    'Revised on %{time} by %{user}': "Ultimo aggiornamento: %{time}"
+    '%{page_title} - History': '%{page_title} - Versioni'
+    Version: Versione
+    Date: Data
+    Author: Autore
+    Comment: Commento
+    'Compare selected versions': "Confronta le versioni selezionate"
+    'Changes list': "Lista versioni"
+    'Changes in content': "Modifiche al contenuto"
+    '%{page_title} - Comparing versions %{old_version} and %{new_version}': '%{page_title} - Confronto versioni %{old_version} e %{new_version}'
+    'All pages': 'Tutte le pagine'
+    'You are not allowed to be here': 'Permessi insufficienti per accedere alla pagina'

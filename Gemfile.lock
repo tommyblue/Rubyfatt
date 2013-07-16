@@ -1,7 +1,21 @@
+GIT
+  remote: git://github.com/tommyblue/irwi.git
+  revision: 8e758942585e9f7be091f7772a7f2775237b57e1
+  branch: rails4
+  specs:
+    irwi (0.5.0)
+      RedCloth
+      actionpack (>= 4.0.0)
+      activerecord (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      diff-lcs (>= 1.1.2)
+      rails_autolink (>= 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
     Ascii85 (1.0.2)
+    RedCloth (4.2.9)
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
       mail (~> 2.5.3)
@@ -181,6 +195,8 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.0)
       sprockets-rails (~> 2.0.0)
+    rails_autolink (1.1.0)
+      rails (> 3.1)
     railties (4.0.0)
       actionpack (= 4.0.0)
       activesupport (= 4.0.0)
@@ -277,6 +293,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.2.1)
   guard-rspec (~> 3.0.2)
   ice_cube (~> 0.11.0)
+  irwi!
   jquery-rails (~> 3.0.4)
   jquery-ui-rails (~> 4.0.3)
   mysql2
