@@ -4,7 +4,11 @@ class WikiPagesController < ApplicationController
 
   def show_allowed?
     begin
-      authorize! :read, @page
+      if @page.persisted?
+        authorize! :read, @page
+      else
+        authorize! :read, WikiPage
+      end
       true
     rescue
       false
@@ -17,7 +21,11 @@ class WikiPagesController < ApplicationController
 
   def edit_allowed?
     begin
-      authorize! :edit, @page
+      if @page.persisted?
+        authorize! :edit, @page
+      else
+        authorize! :edit, WikiPage
+      end
       true
     rescue
       false
