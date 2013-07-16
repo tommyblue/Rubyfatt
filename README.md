@@ -55,7 +55,7 @@ Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
 ### 1.5.0 (/07/2013)
 
-- Aggiunta la wiki
+- Aggiunta la wiki **richiede migrazione del database**
 
 ### 1.4.3 (15/07/2013)
 
