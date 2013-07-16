@@ -15,6 +15,9 @@ it:
     buttons:
       cancel: "Resetta il form"
     submit:
+      page:
+        create: "Crea la pagina"
+        update: "Aggiorna la pagina"
       certification:
         update: "Salva"
       time_entry:
@@ -61,6 +64,10 @@ it:
     error_notification:
       default_message: '<a class="close" href="#" data-dismiss="alert">×</a><h4 class="alert-heading">Attenzione!</h4>Sono stati rilevati degli errori'
     labels:
+      page:
+        title: "Titolo della pagina"
+        content: "Contenuto"
+        comment: "Commento alla modifica (opzionale)"
       option:
         value: "Valore"
       certification:

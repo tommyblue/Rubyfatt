@@ -14,6 +14,8 @@ class Ability
     can :manage,          RecurringSlip,    customer: { user_id: user.id }
     can :create,          RecurringSlip
     can :manage,          Slip,             customer: { user_id: user.id }
+    can :manage,          WikiPage,         creator_id: user.id
+    can :manage,          WikiPageVersion,  updator_id: user.id
 
     can :manage, TimeEntry do |t|
       t.slip.customer.user.id == user.id

@@ -1,4 +1,5 @@
 Rubyfatt::Application.routes.draw do
+  wiki_root '/wiki'
   devise_for :users
 
   resources :customers, except: :show do

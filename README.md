@@ -20,9 +20,10 @@ Ha un piccolo sistema di report con statistiche e grafici sugli incassi, le notu
 * Riepilogo delle fatture emesse
 * Modifica della numerazione delle fatture e dei preventivi (ad esempio ad inizio anno)
 * Gestione delle coordinate bancarie stampate nei progetti di notula
+* Include una wiki
 * Multiutente
 * Completamente multilingua, di default in italiano (disponibile la lingua inglese)
-* Responsive layout con Twitter Bootstrap
+* Twitter Bootstrap con responsive layout
 
 Rubyfatt è un'applicazione **Ruby on Rails** e pertanto fruibile via web (sul proprio pc, su una rete locale o via internet).
 
@@ -51,6 +52,10 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 ## Changelog
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
+
+### 1.5.0 (/07/2013)
+
+- Aggiunta la wiki
 
 ### 1.4.3 (15/07/2013)
 

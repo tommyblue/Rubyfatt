@@ -234,6 +234,11 @@ it:
     certifications:
       index: "Certificazioni ritenute d'acconto"
       new: "Nuova certificazione"
+    wiki:
+      new: "Nuova pagina"
+      edit: "Modifica la pagina"
+      history: "Versioni"
+      all_pages: "Tutte le pagine"
   #
   # MODEL CLASS ATTRIBUTES NAMES
   # Alphabetically ordered
