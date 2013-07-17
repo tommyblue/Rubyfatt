@@ -15,12 +15,12 @@ module BaseInvoice
     base.send :scope, :by_year, lambda { |year| base.where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31") }
 
     base.before_create do |base_invoice|
-      option = Option.get_option(base_invoice.customer.user, base_invoice.next_option_name)
+      option = Option.get_option(base_invoice.customer.user, base_invoice.class.next_option_name)
       base_invoice.number = option.value.to_i
     end
 
     base.after_create do |base_invoice|
-      option = Option.get_option(base_invoice.customer.user, base_invoice.next_option_name)
+      option = Option.get_option(base_invoice.customer.user, base_invoice.class.next_option_name)
       option.value = option.value.to_i + 1
       option.save!
     end

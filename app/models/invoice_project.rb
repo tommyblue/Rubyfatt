@@ -20,7 +20,7 @@ class InvoiceProject < ActiveRecord::Base
 
   before_destroy :clear_invoice_relation
 
-  def next_option_name
+  def self.next_option_name
     'NEXT_INVOICE_PROJECT_NUMBER'
   end
 
