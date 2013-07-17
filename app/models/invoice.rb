@@ -1,5 +1,5 @@
 class Invoice < ActiveRecord::Base
-  include ::Calculators::TaxCalculator
+  include ::BaseInvoice
 
   belongs_to :consolidated_tax
   belongs_to :customer
@@ -8,11 +8,6 @@ class Invoice < ActiveRecord::Base
 
   attr_accessible :date, :number, :paid, :payment_date, :consolidated_tax_id, :slip_ids
 
-  default_scope { order DbAdapter.get_year("#{table_name}.date"), "#{table_name}.number", "#{table_name}.id" }
-
-  scope :sorted, -> { order('date DESC') }
-
-  scope :by_year, lambda { |year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31") }
   # Returns the invoices with consolidated taxes with at least one tax with withholding flag at true
   scope :withholding_taxes, -> { joins(consolidated_tax: :taxes).where(taxes: { withholding: true }).uniq }
 
@@ -23,15 +18,8 @@ class Invoice < ActiveRecord::Base
   validate :customer_must_exist
   validate :consolidated_tax_must_exist
 
-  before_create do
-    option = Option.get_option(self.customer.user, 'NEXT_INVOICE_NUMBER')
-    self.number = option.value.to_i
-  end
-
-  after_create do
-    option = Option.get_option(self.customer.user, 'NEXT_INVOICE_NUMBER')
-    option.value = option.value.to_i + 1
-    option.save!
+  def next_option_name
+    'NEXT_INVOICE_NUMBER'
   end
 
   # Get the sum of the slips' rates
