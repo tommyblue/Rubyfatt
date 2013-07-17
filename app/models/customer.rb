@@ -16,6 +16,15 @@ class Customer < ActiveRecord::Base
 
   scope :ordered, -> { order(:title, :name, :surname) }
 
+  # Show the correct customer heading: title, if present or full name instead
+  def heading
+    self.title.blank? ? self.full_name : self.title
+  end
+
+  def full_name
+    [name, surname].join(' ')
+  end
+
   def billed
     sum = 0
     self.invoices.each { |invoice| sum += invoice.total }
