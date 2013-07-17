@@ -1,14 +1,11 @@
 class Estimate < ActiveRecord::Base
+  include ::BaseInvoice
+
   belongs_to :consolidated_tax
   belongs_to :customer
   has_many :slips
 
   attr_accessible :date, :number, :invoiced, :consolidated_tax_id, :slip_ids
-
-  default_scope { order DbAdapter.get_year("#{table_name}.date"), "#{table_name}.number", "#{table_name}.id" }
-
-  scope :by_year, lambda { |year| where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31") }
-  scope :sorted, -> { order('date DESC') }
 
   validates :date, presence: true
   validates :customer, presence: true
@@ -17,39 +14,14 @@ class Estimate < ActiveRecord::Base
   validate :customer_must_exist
   validate :consolidated_tax_must_exist
 
-  before_create do
-    option = Option.get_option(self.customer.user, 'NEXT_ESTIMATE_NUMBER')
-    self.number = option.value.to_i
-  end
-
-  after_create do
-    option = Option.get_option(self.customer.user, 'NEXT_ESTIMATE_NUMBER')
-    option.value = option.value.to_i + 1
-    option.save!
+  def next_option_name
+    'NEXT_ESTIMATE_NUMBER'
   end
 
   # Get the sum of the slips' rates
   def rate
     sum = 0
     self.slips.each { |slip| sum += slip.rate }
-    sum
-  end
-
-  # Applies consolidated taxes to the slip rate
-  def total
-    sum = self.rate
-    compounds = []
-    self.consolidated_tax.taxes.each do |tax|
-      partial = sum * tax.rate / 100
-      if tax.compound
-        compounds << partial
-      else
-        compounds.each { |compound| sum += compound }
-        sum += partial
-      end
-    end
-
-    compounds.each { |compound| sum += compound }
     sum
   end
 
