@@ -18,7 +18,7 @@ class Invoice < ActiveRecord::Base
   validate :customer_must_exist
   validate :consolidated_tax_must_exist
 
-  def next_option_name
+  def self.next_option_name
     'NEXT_INVOICE_NUMBER'
   end
 
