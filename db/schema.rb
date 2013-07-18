@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130716124436) do
+ActiveRecord::Schema.define(version: 20130718144904) do
 
   create_table "certifications", force: true do |t|
     t.integer  "user_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20130716124436) do
     t.text    "notes"
   end
 
+  add_index "consolidated_taxes", ["name", "user_id"], name: "index_consolidated_taxes_on_name_and_user_id", unique: true, using: :btree
   add_index "consolidated_taxes", ["name"], name: "index_consolidated_taxes_on_name", using: :btree
   add_index "consolidated_taxes", ["user_id"], name: "index_consolidated_taxes_on_user_id", using: :btree
 
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 20130716124436) do
 
   add_index "customers", ["name"], name: "index_customers_on_name", using: :btree
   add_index "customers", ["surname"], name: "index_customers_on_surname", using: :btree
+  add_index "customers", ["title", "user_id"], name: "index_customers_on_title_and_user_id", unique: true, using: :btree
   add_index "customers", ["title"], name: "index_customers_on_title", using: :btree
   add_index "customers", ["user_id"], name: "index_customers_on_user_id", using: :btree
 
@@ -107,7 +109,7 @@ ActiveRecord::Schema.define(version: 20130716124436) do
   add_index "invoices", ["consolidated_tax_id"], name: "index_invoices_on_consolidated_tax_id", using: :btree
   add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
   add_index "invoices", ["date"], name: "index_invoices_on_date", using: :btree
-  add_index "invoices", ["invoice_project_id"], name: "index_invoices_on_invoice_project_id", using: :btree
+  add_index "invoices", ["invoice_project_id"], name: "index_invoices_on_invoice_project_id", unique: true, using: :btree
   add_index "invoices", ["number"], name: "index_invoices_on_number", using: :btree
   add_index "invoices", ["paid"], name: "index_invoices_on_paid", using: :btree
 
@@ -118,6 +120,7 @@ ActiveRecord::Schema.define(version: 20130716124436) do
     t.boolean "integer", default: false
   end
 
+  add_index "options", ["name", "user_id"], name: "index_options_on_name_and_user_id", unique: true, using: :btree
   add_index "options", ["name"], name: "index_options_on_name", using: :btree
   add_index "options", ["user_id"], name: "index_options_on_user_id", using: :btree
 
@@ -162,6 +165,7 @@ ActiveRecord::Schema.define(version: 20130716124436) do
   end
 
   add_index "taxes", ["consolidated_tax_id"], name: "index_taxes_on_consolidated_tax_id", using: :btree
+  add_index "taxes", ["name", "consolidated_tax_id"], name: "index_taxes_on_name_and_consolidated_tax_id", unique: true, using: :btree
   add_index "taxes", ["name"], name: "index_taxes_on_name", using: :btree
 
   create_table "time_entries", force: true do |t|
@@ -237,13 +241,14 @@ ActiveRecord::Schema.define(version: 20130716124436) do
 
   add_index "wiki_pages", ["creator_id"], name: "index_wiki_pages_on_creator_id", using: :btree
   add_index "wiki_pages", ["path"], name: "index_wiki_pages_on_path", unique: true, using: :btree
+  add_index "wiki_pages", ["title"], name: "index_wiki_pages_on_title", unique: true, using: :btree
 
   create_table "work_categories", force: true do |t|
     t.integer "user_id"
     t.string  "label",   null: false
   end
 
-  add_index "work_categories", ["label"], name: "index_work_categories_on_label", using: :btree
+  add_index "work_categories", ["label"], name: "index_work_categories_on_label", unique: true, using: :btree
   add_index "work_categories", ["user_id"], name: "index_work_categories_on_user_id", using: :btree
 
 end
