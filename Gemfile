@@ -7,7 +7,7 @@ gem 'protected_attributes'
 
 #----- SQLite or MySQL or PostgreSQL or..
 # gem 'sqlite3'
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.13'
 # gem 'pg'
 
 #----- Authentication and authorization
@@ -25,10 +25,10 @@ gem 'simple_form', '~> 3.0.0.rc'
 gem 'country_select', '~> 1.2.0'
 
 #----- Twitter bootstrap with SASS
-gem 'bootstrap-sass', '~> 2.3.2.0'
+gem 'bootstrap-sass', '~> 2.3.2.1'
 
 #----- Paperclip
-gem "paperclip", "~> 3.4.2"
+gem "paperclip", "~> 3.5.0"
 
 #----- Exception notification
 gem 'exception_notification', "~> 4.0.0"
@@ -49,7 +49,6 @@ gem "rspec-rails", "~> 2.13.2", :group => [:test, :development]
 group :test do
   gem "rake"
   gem "sqlite3"
-  gem "mysql2"
   gem "pg", '~> 0.15.1'
   gem "factory_girl_rails", "~> 4.2.1"
   gem "capybara", '~> 2.1.0'
@@ -69,7 +68,7 @@ gem 'uglifier', '~> 2.1.2'
 gem 'jquery-rails', '~> 3.0.4'
 gem 'jquery-ui-rails', "~> 4.0.3"
 gem 'select2-rails', '~> 3.4.3'
-gem 'bootstrap-wysihtml5-rails'
+gem 'bootstrap-wysihtml5-rails', '~> 0.3.1.21'
 
 # Use unicorn as the web server
 gem 'unicorn', '~> 4.6.3'
