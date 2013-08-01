@@ -8,7 +8,7 @@ gem 'protected_attributes'
 #----- SQLite or MySQL or PostgreSQL or..
 # gem 'sqlite3'
 gem 'mysql2', '~> 0.3.13'
-# gem 'pg'
+gem 'pg', '~> 0.16.0'
 
 #----- Authentication and authorization
 gem 'devise', '~> 3.0.0'
@@ -42,14 +42,12 @@ group :development do
   gem 'annotate'
   gem 'railroady'
   gem 'pry', '~> 0.9.12.2'
-  gem 'therubyracer'
 end
 
 gem "rspec-rails", "~> 2.13.2", :group => [:test, :development]
 group :test do
   gem "rake"
   gem "sqlite3"
-  gem "pg", '~> 0.15.1'
   gem "factory_girl_rails", "~> 4.2.1"
   gem "capybara", '~> 2.1.0'
   gem "guard-rspec", "~> 3.0.2"
@@ -64,6 +62,7 @@ end
 gem 'sass-rails',   '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '~> 2.1.2'
+gem 'therubyracer'
 
 gem 'jquery-rails', '~> 3.0.4'
 gem 'jquery-ui-rails', "~> 4.0.3"
