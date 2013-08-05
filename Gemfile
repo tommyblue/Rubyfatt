@@ -11,7 +11,7 @@ gem 'mysql2', '~> 0.3.13'
 gem 'pg', '~> 0.16.0'
 
 #----- Authentication and authorization
-gem 'devise', '~> 3.0.0'
+gem 'devise', '~> 3.0.1'
 gem 'cancan', '~> 1.6.10'
 
 #----- PDF Generation
@@ -28,7 +28,7 @@ gem 'country_select', '~> 1.2.0'
 gem 'bootstrap-sass', '~> 2.3.2.1'
 
 #----- Paperclip
-gem "paperclip", "~> 3.5.0"
+gem "paperclip", "~> 3.5.1"
 
 #----- Exception notification
 gem 'exception_notification', "~> 4.0.0"
@@ -66,7 +66,7 @@ gem 'therubyracer'
 
 gem 'jquery-rails', '~> 3.0.4'
 gem 'jquery-ui-rails', "~> 4.0.3"
-gem 'select2-rails', '~> 3.4.3'
+gem 'select2-rails', '~> 3.4.7'
 gem 'bootstrap-wysihtml5-rails', '~> 0.3.1.21'
 
 # Use unicorn as the web server
