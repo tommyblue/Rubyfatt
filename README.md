@@ -53,6 +53,11 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### 1.5.1 (09/09/2013)
+
+- Aggiornate varie gemme
+- Refactoring di codice
+
 ### 1.5.0 (16/07/2013)
 
 - Aggiunta la wiki **richiede migrazione del database**
