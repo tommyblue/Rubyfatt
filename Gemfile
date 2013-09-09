@@ -11,7 +11,7 @@ gem 'mysql2', '~> 0.3.13'
 gem 'pg', '~> 0.16.0'
 
 #----- Authentication and authorization
-gem 'devise', '~> 3.0.1'
+gem 'devise', '~> 3.1.0'
 gem 'cancan', '~> 1.6.10'
 
 #----- PDF Generation
@@ -37,7 +37,7 @@ gem 'exception_notification', "~> 4.0.0"
 gem 'irwi', git: 'git://github.com/tommyblue/irwi.git', branch: 'rails4'
 
 group :development do
-  gem 'better_errors', '~> 0.9.0'
+  gem 'better_errors', '~> 1.0.1'
   gem 'binding_of_caller'
   gem 'annotate'
   gem 'railroady'
@@ -67,7 +67,7 @@ gem 'therubyracer'
 gem 'jquery-rails', '~> 3.0.4'
 gem 'jquery-ui-rails', "~> 4.0.3"
 gem 'select2-rails', '~> 3.4.7'
-gem 'bootstrap-wysihtml5-rails', '~> 0.3.1.21'
+gem 'bootstrap-wysihtml5-rails', '~> 0.3.1.23'
 
 # Use unicorn as the web server
 gem 'unicorn', '~> 4.6.3'
