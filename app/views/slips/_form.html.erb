@@ -3,9 +3,9 @@
   <% if f.error_notification %>
     <%= f.error_notification %>
   <% end %>
-  
+
   <legend></legend>
-  <%= f.input :name %>
+  <%= f.input :name, autofocus: true %>
   <%= f.input :rate %>
   <%= f.input :timed %>
   <%= f.input :duration, :hint => :duration %>
