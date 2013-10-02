@@ -11,7 +11,7 @@ gem 'mysql2', '~> 0.3.13'
 gem 'pg', '~> 0.16.0'
 
 #----- Authentication and authorization
-gem 'devise', '~> 3.1.0'
+gem 'devise', '~> 3.1.1'
 gem 'cancan', '~> 1.6.10'
 
 #----- PDF Generation
@@ -21,17 +21,17 @@ gem 'prawn',  '~> 1.0.0.rc1'
 gem 'ice_cube', '~> 0.11.0'
 
 #----- Forms made easy
-gem 'simple_form', '~> 3.0.0.rc'
+gem 'simple_form', '~> 3.0.0'
 gem 'country_select', '~> 1.2.0'
 
 #----- Twitter bootstrap with SASS
-gem 'bootstrap-sass', '~> 2.3.2.1'
+gem 'bootstrap-sass', '~> 2.3.2.2'
 
 #----- Paperclip
 gem "paperclip", "~> 3.5.1"
 
 #----- Exception notification
-gem 'exception_notification', "~> 4.0.0"
+gem 'exception_notification', "~> 4.0.1"
 
 #----- Wiki
 gem 'irwi', git: 'git://github.com/tommyblue/irwi.git', branch: 'rails4'
@@ -42,6 +42,7 @@ group :development do
   gem 'annotate'
   gem 'railroady'
   gem 'pry', '~> 0.9.12.2'
+  gem "brakeman", require: false
 end
 
 gem "rspec-rails", "~> 2.13.2", :group => [:test, :development]
@@ -61,12 +62,12 @@ end
 #----- Assets
 gem 'sass-rails',   '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'uglifier', '~> 2.1.2'
+gem 'uglifier', '~> 2.2.1'
 gem 'therubyracer'
 
 gem 'jquery-rails', '~> 3.0.4'
-gem 'jquery-ui-rails', "~> 4.0.3"
-gem 'select2-rails', '~> 3.4.7'
+gem 'jquery-ui-rails', "~> 4.0.5"
+gem 'select2-rails', '~> 3.5.0'
 gem 'bootstrap-wysihtml5-rails', '~> 0.3.1.23'
 
 # Use unicorn as the web server
