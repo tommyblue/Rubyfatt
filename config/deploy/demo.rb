@@ -1,3 +1,4 @@
+set :application, "rubyfatt"
 require "capistrano-rbenv"
 set :rbenv_ruby_version, "2.0.0-p247"
 

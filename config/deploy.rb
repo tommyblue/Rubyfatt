@@ -8,7 +8,6 @@ set :user, "tommyblue"
 set :use_sudo, false
 
 set :scm, :git
-set :application, "rubyfatt"
 set :repository,  "git@bitbucket.org:tommyblue/rubyfatt.git"
 
 default_run_options[:pty] = true

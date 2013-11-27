@@ -1,7 +1,8 @@
+set :application, "fatture.kreations.it"
 require "capistrano-rbenv"
-set :rbenv_ruby_version, "2.0.0-p247"
+set :rbenv_ruby_version, "2.0.0-p353"
 
-server "galois.linusse.org", :web, :app, :db, primary: true
+server "fibonacci.linusse.org", :web, :app, :db, primary: true
 
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
