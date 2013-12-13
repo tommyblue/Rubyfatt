@@ -292,6 +292,8 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    unicorn-worker-killer (0.4.2)
+      unicorn (~> 4)
     warden (1.2.3)
       rack (>= 1.0)
     xpath (2.0.0)
@@ -340,3 +342,4 @@ DEPENDENCIES
   therubyracer (~> 0.12.0)
   uglifier (~> 2.2.1)
   unicorn (~> 4.6.3)
+  unicorn-worker-killer

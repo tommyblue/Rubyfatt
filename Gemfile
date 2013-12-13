@@ -72,5 +72,6 @@ gem 'bootstrap-wysihtml5-rails', '~> 0.3.1.23'
 
 # Use unicorn as the web server
 gem 'unicorn', '~> 4.6.3'
+gem 'unicorn-worker-killer'
 gem 'capistrano'
 gem 'capistrano-rbenv'
