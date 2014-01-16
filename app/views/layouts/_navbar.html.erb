@@ -22,16 +22,6 @@
           </li>
           <li<%= active_navbar_helper(/^\/recurring_slips$/).html_safe %>><%= link_to (t('.recurring_slips', :default => "Recurring slips")+" #{expired_recurring_slips_badge}").html_safe, recurring_slips_path %></li>
           <li class="divider-vertical"></li>
-          <li class="dropdown<%= active_navbar_helper(/^\/invoices\/all$|^\/certifications[\/]*.*$/, true).html_safe %>">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%=t '.management.title', default: "Management" %>
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li<%= active_navbar_helper(/^\/invoices\/all$/).html_safe %>><%= link_to t('.all_invoices', :default => "All invoices"), all_invoices_path %></li>
-              <li<%= active_navbar_helper(/^\/certifications[\/]*.*$/).html_safe %>><%= link_to t('.certifications', default: "Withholding certifications"), certifications_path %></li>
-            </ul>
-          </li>
           <li class="dropdown<%= active_navbar_helper(/^\/customers$|\/customers\/new$/, true).html_safe %>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%=t '.customers.title', :default => "Customers" %>
