@@ -31,11 +31,12 @@ class Customer < ActiveRecord::Base
     sum
   end
 
-  def paid
+  def paid?
     sum = 0
-    self.invoices.each { |invoice| sum += invoice.total if invoice.paid }
+    self.invoices.each { |invoice| sum += invoice.total if invoice.paid? }
     sum
   end
+  alias_method :paid, :paid?
 
   def unpaid
     sum = 0

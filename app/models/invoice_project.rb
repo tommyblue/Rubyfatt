@@ -44,7 +44,6 @@ class InvoiceProject < ActiveRecord::Base
     invoice = self.customer.invoices.new
     invoice.consolidated_tax = self.consolidated_tax
     invoice.date = invoice_data[:date]
-    invoice.paid = invoice_data[:paid]
     invoice.payment_date = invoice_data[:payment_date]
 
     self.slips.each do |slip|
