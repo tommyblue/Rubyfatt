@@ -53,6 +53,10 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### 1.5.3 (17/01/2014)
+
+- Invoice payments now possible
+
 ### 1.5.2 (02/01/2014)
 
 - A notice indicates a new year has started and document numbering must be reset
