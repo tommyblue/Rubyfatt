@@ -65,6 +65,7 @@ it:
     payments:
       create:
         success: "Il pagamento è stato registrato con successo"
+        unexpected_error: "In errore inaspettato ha impedito il salvataggio del pagamento"
     profile:
       update:
         success: "Il tuo profilo è stato aggiornato con successo"

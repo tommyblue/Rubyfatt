@@ -47,8 +47,8 @@ Rubyfatt::Application.routes.draw do
 
   match 'invoices/all' => 'invoices#all', as: :all_invoices, via: :get
 
-  match 'invoice/:invoice_id/payment' => 'payments#create', via: :post
   match 'invoice/:invoice_id/payment' => 'payments#new', via: :get
+  match 'invoice/:invoice_id/payment' => 'payments#create', via: :post
 
   namespace :api do
     resources :customers, only: [:update]
