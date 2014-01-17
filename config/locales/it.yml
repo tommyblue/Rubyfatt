@@ -1,5 +1,6 @@
 #encoding: utf-8
 it:
+  new_year_message: "Non sono presenti notule per l'anno in corso ma il numero della prossima notula non sarà 1, probabilmente devi resettare i contatori dalla pagina delle opzioni"
   save: "Salva"
   saving: "Salvando..."
   months_array: '["", "Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"]'
@@ -65,6 +66,7 @@ it:
     payments:
       create:
         success: "Il pagamento è stato registrato con successo"
+        unexpected_error: "In errore inaspettato ha impedito il salvataggio del pagamento"
     profile:
       update:
         success: "Il tuo profilo è stato aggiornato con successo"

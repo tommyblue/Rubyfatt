@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130718144904) do
+ActiveRecord::Schema.define(version: 20131225100820) do
 
   create_table "certifications", force: true do |t|
     t.integer  "user_id"
@@ -98,7 +98,6 @@ ActiveRecord::Schema.define(version: 20130718144904) do
     t.integer  "consolidated_tax_id"
     t.date     "date",                                null: false
     t.integer  "number",                              null: false
-    t.boolean  "paid",                default: false
     t.date     "payment_date"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
@@ -111,7 +110,6 @@ ActiveRecord::Schema.define(version: 20130718144904) do
   add_index "invoices", ["date"], name: "index_invoices_on_date", using: :btree
   add_index "invoices", ["invoice_project_id"], name: "index_invoices_on_invoice_project_id", unique: true, using: :btree
   add_index "invoices", ["number"], name: "index_invoices_on_number", using: :btree
-  add_index "invoices", ["paid"], name: "index_invoices_on_paid", using: :btree
 
   create_table "options", force: true do |t|
     t.integer "user_id"

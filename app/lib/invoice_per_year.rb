@@ -2,7 +2,7 @@ module InvoicePerYear
   def this_year
     select("#{DbAdapter.get_month "invoices.date"} AS month_number, SUM(slips.rate) AS month_income")
       .joins(:slips, :customer)
-      .where("#{DbAdapter.get_year "invoices.date"} = ? AND invoices.paid = ?", Time.now.year, true)
+      .where("#{DbAdapter.get_year "invoices.date"} = ?", Time.now.year)
       .group("#{DbAdapter.get_month "invoices.date"}")
       .order('month_number')
   end

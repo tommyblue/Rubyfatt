@@ -6,10 +6,10 @@ class Invoice < ActiveRecord::Base
   has_many :slips
   belongs_to :invoice_project
 
-  attr_accessible :date, :number, :paid, :payment_date, :consolidated_tax_id, :slip_ids
+  attr_accessible :date, :number, :payment_date, :consolidated_tax_id, :slip_ids
 
   # Returns the invoices with consolidated taxes with at least one tax with withholding flag at true
-  scope :withholding_taxes, -> { joins(consolidated_tax: :taxes).where(taxes: { withholding: true }).uniq }
+  scope :withholding_taxes, -> { joins(consolidated_tax: :taxes).where(taxes: { withholding: true }) }
 
   validates :date, presence: true
   validates :customer, presence: true
@@ -17,6 +17,20 @@ class Invoice < ActiveRecord::Base
   validates :slips, presence: true
   validate :customer_must_exist
   validate :consolidated_tax_must_exist
+
+  def paid?
+    !self.payment_date.blank?
+  end
+  alias_method :paid, :paid?
+
+  # Left this method for retrocompatibility
+  def paid=(val)
+    val
+  end
+
+  def pay(payment_date = Time.now)
+    self.update_attribute(:payment_date, payment_date)
+  end
 
   def self.next_option_name
     'NEXT_INVOICE_NUMBER'

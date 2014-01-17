@@ -30,6 +30,19 @@ class Option < ActiveRecord::Base
     }
   ]
 
+  def integer?
+    self.integer
+  end
+
+  def self.get_option_value(user, key)
+    o = self.get_option(user, key)
+    if o.integer?
+      o.value.to_i
+    else
+      o.value
+    end
+  end
+
   def self.get_option(user, key)
     value = user.options.where(name: key)
     unless value.empty?
