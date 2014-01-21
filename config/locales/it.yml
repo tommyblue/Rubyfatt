@@ -138,7 +138,7 @@ it:
   layouts:
     register:
       registration_title: "Benvenuto su Rubyfatt"
-      registration_description: "Non sono presenti utenti nell'applicazione, riempiendo il modulo a destra potrai creare il tuo utente e iniziare a lavorare con Rubyfatt."
+      registration_description: "Non sono presenti utenti nell'applicazione, riempiendo il modulo potrai creare il tuo utente e iniziare a lavorare con Rubyfatt."
     main:
       sidebar:
         title: "Clienti"
