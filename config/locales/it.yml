@@ -315,7 +315,6 @@ it:
     new:
       title: "Crea un nuovo utente"
       legend: ''
-      email_hint: "A questo indirizzo email verrà inviata la password dell'account"
       bank_hint: "Se inserite, le coordinate saranno visualizzate nei progetti di notula"
       no_logo: "Logo non presente"
       logo_hint: "Rapporto dimensioni nel PDF: "
