@@ -53,6 +53,10 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### 1.5.4 (21/01/2014)
+
+- Implemented support for taxes with fixed rate (not percentage)
+
 ### 1.5.3 (17/01/2014)
 
 - Invoice payments now possible
