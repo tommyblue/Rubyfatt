@@ -4,19 +4,12 @@
   <h3><%=t '.slogan', default: "VAT manager" %></h3>
 </div>
 
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "new_user form-horizontal"}) do |f| %>
-  <legend><%=t '.insert_credentials', :default => "Insert your credentials" %></legend>
-  <% if flash[:alert] %>
-    <div class="alert alert-error fade in">
-      <a class="close" data-dismiss="alert" href="#">&times;</a>
-      <%= flash[:alert] %>
-    </div>
-  <% end %>
-
-  <%= f.input :email, :autofocus => true %>
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "new_user form-horizontal"}) do |f| %>
+  <legend><%=t '.insert_credentials', default: "Insert your credentials" %></legend>
+  <%= f.input :email, autofocus: true %>
 	<%= f.input :password %>
-	<%= f.input :remember_me, :as => :boolean %>
+	<%= f.input :remember_me, as: :boolean %>
   <div class="form-actions">
-    <%= f.submit t('.sign_in' , :default => "Sign in"), :class => 'btn btn-primary' %>
+    <%= f.submit t('.sign_in' , default: "Sign in"), class: 'btn btn-primary' %>
   </div>
 <% end %>

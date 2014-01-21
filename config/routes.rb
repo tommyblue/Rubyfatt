@@ -14,6 +14,8 @@ Rubyfatt::Application.routes.draw do
     resources :recurring_invoice
   end
 
+  resources :register, only: [:new, :create]
+
   match 'slips/working' => 'slips#working', as: :working_slips, via: :get
 
   match 'invoices/unpaid' => 'reports#unpaid_invoices', as: :unpaid_invoices, via: :get

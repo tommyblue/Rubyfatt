@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+
+  before_action :check_initial_registration
   before_action :authenticate_user!
   before_action :set_locale
   before_action :check_new_year
+
   layout :layout_by_resource
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -11,6 +14,10 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def check_initial_registration
+    redirect_to new_register_path if User.count == 0
+  end
 
   def set_locale
     if current_user
