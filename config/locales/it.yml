@@ -20,6 +20,8 @@ it:
   #                                                        #
   ##########################################################
   controllers:
+    register:
+      success: "L'utente è stato correttamente creato.<br /><br />È stata generata una password da usare per l'accesso: <strong>%{password}</strong>"
     consolidated_taxes:
       create:
         success: "Il regime di tassazione è stato creato con successo"
@@ -134,6 +136,9 @@ it:
   # LAYOUTS
   #
   layouts:
+    register:
+      registration_title: "Benvenuto su Rubyfatt"
+      registration_description: "Non sono presenti utenti nell'applicazione, riempiendo il modulo a destra potrai creare il tuo utente e iniziare a lavorare con Rubyfatt."
     main:
       sidebar:
         title: "Clienti"
@@ -304,6 +309,17 @@ it:
       year: "Anno"
       total: "Subtotale"
   #
+  # REGISTER
+  #
+  register:
+    new:
+      title: "Crea un nuovo utente"
+      legend: ''
+      email_hint: "A questo indirizzo email verrà inviata la password dell'account"
+      bank_hint: "Se inserite, le coordinate saranno visualizzate nei progetti di notula"
+      no_logo: "Logo non presente"
+      logo_hint: "Rapporto dimensioni nel PDF: "
+  #
   # CONSOLIDATED TAXES
   #
   consolidated_taxes:
@@ -402,7 +418,7 @@ it:
     edit:
       title: "Modifica i tuoi dati"
     form:
-      legend: "Dati personali"
+      legend: ""
       no_logo: "Logo non presente"
       logo_hint: "Rapporto dimensioni nel PDF: "
       delete_logo: "Elimina il logo"

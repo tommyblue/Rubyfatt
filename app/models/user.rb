@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
   validates :language, inclusion: {in: ['it', 'en']}
   validates_attachment_content_type :logo, content_type: /image/
 
+  def full_name
+    [self.name, self.surname].join(' ')
+  end
 
   def unpaid_invoices
     invoices = []
@@ -33,5 +36,10 @@ class User < ActiveRecord::Base
   def destroy_logo
     self.logo = nil
     self.save
+  end
+
+  def self.generate_password
+    require 'securerandom'
+    SecureRandom.hex(5)
   end
 end

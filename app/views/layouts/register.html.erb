@@ -43,17 +43,11 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header"><%=t '.sidebar.title', :default => "Available actions" %></li>
-                <%= render :partial => "devise/shared/links" %>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">
-          <%= render partial: "layouts/flashes" %>
-
+        <div class="span12">
+          <div class="alert alert-info fade in" data-alert="alert">
+            <h3><%=t '.registration_title', default: 'Welcome to Rubyfatt' %></h3>
+            <p><%=t '.registration_description', default: "Fill in the form and you'll create the first user of the app" %></p>
+          </div>
           <%= yield %>
         </div>
       </div><!--/row-->

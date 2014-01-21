@@ -29,6 +29,7 @@ it:
         create: "Crea la tassa"
         update: "Modifica la tassa"
       user:
+        create: "Crea l'utente"
         update: "Salva le modifiche"
       option:
         update: "Modifica il valore"
