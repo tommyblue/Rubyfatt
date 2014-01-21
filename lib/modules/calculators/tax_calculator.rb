@@ -5,7 +5,13 @@ module Calculators
       sum = self.rate
       compounds = []
       self.consolidated_tax.taxes.each do |tax|
-        partial = sum * tax.rate / 100
+        # Calculate the real rate (can be fixed or percentage)
+        if tax.fixed_rate
+          partial = tax.rate
+        else
+          partial = sum * tax.rate / 100
+        end
+
         if tax.compound
           compounds << partial
         else

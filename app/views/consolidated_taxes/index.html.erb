@@ -18,7 +18,8 @@
       <tr>
         <th><%=t model_class.human_attribute_name(:order) %></th>
         <th><%=t model_class.human_attribute_name(:name) %></th>
-        <th><%=t 'value', :default => "Value" %></th>
+        <th><%=t 'value', default: "Rate" %></th>
+        <th><%=t 'fixed_rate', default: "Fixed rate" %></th>
         <th><%=t Tax.new.class.human_attribute_name(:compound) %></th>
         <th><%=t Tax.new.class.human_attribute_name(:withholding) %></th>
         <th><%=t 'actions', :default => "Actions" %></th>
@@ -31,6 +32,9 @@
           <td><%= tax.name %></td>
           <td>
             <%= tax.rate %>
+          </td>
+          <td>
+            <%= tax.fixed_rate ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %>
           </td>
           <td>
             <%= tax.compound ? '<span class="label label-success"><i class="icon-ok"></i></span>'.html_safe : '<span class="label label-important"><i class="icon-remove"></i></span>'.html_safe %>

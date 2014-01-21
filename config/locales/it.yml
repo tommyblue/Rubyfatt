@@ -266,6 +266,7 @@ it:
   Payment date: "Data di pagamento"
   Rate: "Prezzo"
   value: "Valore"
+  fixed_rate: "Valore fisso"
   Compound: "Composta"
   Withholding: "Ritenuta"
   Rule: "Regola"
@@ -332,6 +333,7 @@ it:
     form:
       order_hint: "Determina l'ordine con cui vengono calcolate le tasse sui progetti"
       rate_hint: "Inserire il valore della tassazione. Ad esempio inserire 21 per calcolare una tassa del 21%"
+      fixed_rate_hint: "Se il valore è fisso viene calcolato come somma, non in percentuale"
       compound_hint: "Le tasse non composte vengon calcolate sulla somma dei progetti e il risultato è l'imponibile. Su di esso vengono calcolate le tasse composte."
       withholding_hint: "Una tassa indicata come ritenuta d'acconto verrà usata per calcolare l'importo delle certificazioni"
   #
