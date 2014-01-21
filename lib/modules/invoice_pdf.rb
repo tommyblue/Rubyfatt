@@ -145,8 +145,14 @@ class InvoicePdf < Prawn::Document
     @sum = @subtotal
     compounds = []
 
-    @invoice.consolidated_tax.taxes.each do |tax|
-      partial = @sum * tax.rate / 100
+    taxes = @invoice.consolidated_tax.taxes
+    taxes.each_with_index do |tax, index|
+      if tax.fixed_rate
+        partial = tax.rate
+      else
+        partial = @sum * tax.rate / 100
+      end
+
       items += [[tax.name, number_to_currency(partial)]]
 
       if tax.compound
@@ -154,7 +160,7 @@ class InvoicePdf < Prawn::Document
       else
         compounds.each { |compound| @sum += compound }
         @sum += partial
-        items += [["<b>Imponibile</b>", "<b>#{number_to_currency(@sum)}</b>"]]
+        items += [["<b>Imponibile</b>", "<b>#{number_to_currency(@sum)}</b>"]] if taxes.size > index + 1 && taxes[index + 1].compound
       end
     end
 

@@ -8,6 +8,7 @@
   <%= f.input :order, hint: t('.order_hint', default: "The order to calculate the taxes") %>
   <%= f.input :name %>
   <%= f.input :rate, hint: t('.rate_hint', default: "Insert tax percentage value (e.g. insert 21 to calculate a tax of 21%)") %>
+  <%= f.input :fixed_rate, hint: t('.fixed_rate_hint', default: "If fixed, the rate will be calculated as a sum, not as percentage") %>
   <%= f.input :compound, hint: t('.compound_hint', default: "Compound taxes are calculated after the other taxes") %>
   <%= f.input :withholding, hint: t('.withholding_hint', default: "A withholding tax is used to calculate withholding certifications rate") %>
 

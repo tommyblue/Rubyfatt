@@ -83,6 +83,7 @@ it:
         order: "Ordine"
         name: "Nome"
         rate: "Valore"
+        fixed_rate: "Valore fisso?"
         compound: "Composta"
         withholding: "Ritenuta d'acconto"
       time_entry:

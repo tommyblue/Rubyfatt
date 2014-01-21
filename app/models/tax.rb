@@ -1,7 +1,7 @@
 class Tax < ActiveRecord::Base
   belongs_to :consolidated_tax
 
-  attr_accessible :order, :name, :rate, :compound, :withholding
+  attr_accessible :order, :name, :rate, :fixed_rate, :compound, :withholding
 
   validates :order, numericality: true, presence: true
   validates :rate, numericality: true, presence: true
