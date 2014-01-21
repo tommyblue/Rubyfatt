@@ -10,7 +10,7 @@
 
   <div class="row-fluid">
     <div class="span6">
-      <%= f.input :email, hint: t('.email_hint'), default: 'The generated password will be delivered to this email address' %>
+      <%= f.input :email, autofocus: true %>
       <%= f.input :name %>
       <%= f.input :surname %>
       <%= f.input :language, as: :radio_buttons, collection: [['Italiano', 'it'], ['English', 'en']] %>
