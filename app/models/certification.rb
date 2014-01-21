@@ -8,7 +8,7 @@ class Certification < ActiveRecord::Base
 
   def self.year_certification(user, year)
     totals = {}
-    invoices = user.invoices.by_year(year).where(paid: true).withholding_taxes
+    invoices = user.invoices.by_year(year).where.not(payment_date: nil).withholding_taxes
     invoices.each do |invoice|
       unless totals.has_key?(invoice.customer)
         totals[invoice.customer] = {}

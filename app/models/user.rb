@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   def unpaid_invoices
     invoices = []
-    self.invoices.each { |invoice| invoices << invoice unless invoice.paid }
+    self.invoices.each { |invoice| invoices << invoice unless invoice.paid? }
     invoices
   end
 

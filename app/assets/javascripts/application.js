@@ -15,6 +15,7 @@
 //= require jquery.ui.all
 //= require bootstrap-dropdown
 //= require bootstrap-alert
+//= require bootstrap-collapse
 //= require bootstrap-modal
 //= require bootstrap-transition
 //= require bootstrap-tooltip
