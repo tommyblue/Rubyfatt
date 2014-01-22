@@ -1,6 +1,6 @@
 set :application, "fatture.kreations.it"
 require "capistrano-rbenv"
-set :rbenv_ruby_version, "2.0.0-p353"
+set :rbenv_ruby_version, "2.1.0"
 
 server "fibonacci.linusse.org", :web, :app, :db, primary: true
 
