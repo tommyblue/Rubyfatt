@@ -71,6 +71,7 @@ it:
         comment: "Commento alla modifica (opzionale)"
       option:
         value: "Valore"
+        name: "Seleziona la nuova opzione"
       certification:
         customer: "Cliente"
         year: "Anno"

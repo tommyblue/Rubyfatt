@@ -33,7 +33,7 @@ Rubyfatt::Application.routes.draw do
   match 'profile/update' => 'profile#update', via: :patch
   match 'profile/destroy_logo' => 'profile#destroy_logo', via: :delete, as: 'destroy_logo'
 
-  resources :options, only: [:index] do
+  resources :options, only: [:index, :create] do
     collection do
       put :save
     end

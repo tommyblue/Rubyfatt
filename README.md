@@ -53,17 +53,21 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### 1.5.5 (23/01/2014)
+
+- Possibilità di rinominare le notule attraverso un'opzione
+
 ### 1.5.4 (21/01/2014)
 
-- Implemented support for taxes with fixed rate (not percentage)
+- Possibilità di inserire tasse a valore fisso (non percentuale)
 
 ### 1.5.3 (17/01/2014)
 
-- Invoice payments now possible
+- Implementato il pagamento a posteriori delle notule
 
 ### 1.5.2 (02/01/2014)
 
-- A notice indicates a new year has started and document numbering must be reset
+- Un messaggio indica l'inizio di un nuovo anno e la necessità di azzerare i numeri dei documenti
 
 ### 1.5.1 (09/09/2013)
 

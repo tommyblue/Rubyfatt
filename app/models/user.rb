@@ -23,6 +23,15 @@ class User < ActiveRecord::Base
   validates :language, inclusion: {in: ['it', 'en']}
   validates_attachment_content_type :logo, content_type: /image/
 
+
+  def get_option_value(key)
+    if self.options.where(name: key).any?
+      Option.get_option_value(self, key)
+    else
+      nil
+    end
+  end
+
   def full_name
     [self.name, self.surname].join(' ')
   end

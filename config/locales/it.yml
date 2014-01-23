@@ -63,6 +63,9 @@ it:
         success: "Il progetto di notula è stato correttamente convertito in notula"
         error: "Non è stato possibile convertire il progetto di notula in notula"
     options:
+      create:
+        success: "L'opzione è stata creata con successo"
+        error: "Errore durante la creazione dell'opzione"
       update:
         success: "Le opzioni sono state aggiornate con successo"
     payments:
@@ -374,6 +377,9 @@ it:
     index:
       title: "Opzioni"
       edit: "Modifica"
+      new_option: "Nuova opzione"
+      new_option_modal_title: "Aggiungi una nuova opzione"
+      add_btn: "Salva l'opzione"
       alert:
         title: "Fai attenzione!"
         message: "Le opzioni sono usate per determinare vari aspetti del flusso di lavoro. Fai molta attenzione nel modificarne i valori!"
@@ -381,6 +387,8 @@ it:
       next_invoice_project_number: "Prossimo numero di progetto notula"
       next_invoice_number: "Prossimo numero di notula"
       charts_engine: "Grafici"
+      invoice_label: 'Titolo indicato nei documenti'
+      invoice_hint: 'Ad esempio: "Fattura", "Notula", "Parcella", ecc.'
     edit:
       title: "Modifica l'opzione"
     form:
