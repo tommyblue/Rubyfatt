@@ -25,7 +25,7 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = InvoicePdf.new(@invoice, view_context)
+        pdf = InvoicePdf.new(@invoice, view_context, current_user.get_option_value('INVOICE_LABEL'))
         @invoice.update_download_status
         send_data pdf.render, filename: "invoice_#{@invoice.date.year}-#{@invoice.number.to_s.rjust(3,'0')}.pdf",
         type: "application/pdf"

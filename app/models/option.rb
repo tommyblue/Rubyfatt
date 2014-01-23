@@ -27,6 +27,11 @@ class Option < ActiveRecord::Base
       name: 'CHARTS_ENGINE',
       value: 'xcharts',
       integer: false
+    },
+    {
+      name: 'INVOICE_LABEL',
+      value: 'Notula',
+      integer: false
     }
   ]
 
@@ -62,9 +67,10 @@ class Option < ActiveRecord::Base
   end
 
   private
-    def user_must_exist
-      unless self.user_id.nil?
-        errors[:base] << "The user doesn't exist" unless User.find_by_id(self.user_id)
-      end
+
+  def user_must_exist
+    unless self.user_id.nil?
+      errors[:base] << "The user doesn't exist" unless User.find_by_id(self.user_id)
     end
+  end
 end

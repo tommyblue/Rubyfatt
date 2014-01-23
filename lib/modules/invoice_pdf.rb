@@ -3,6 +3,7 @@ include ActionView::Helpers::NumberHelper
 class InvoicePdf < Prawn::Document
   def initialize(invoice, view, title = "Notula", bank_coordinates = nil)
     super()
+    title ||= "Notula"
     @title = title
     @bank_coordinates = bank_coordinates
     @invoice = invoice
