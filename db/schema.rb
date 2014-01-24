@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140120151917) do
+ActiveRecord::Schema.define(version: 20140124151429) do
 
   create_table "certifications", force: true do |t|
     t.integer  "user_id"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20140120151917) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.decimal  "rate",                    precision: 8, scale: 2
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   create_table "consolidated_taxes", force: true do |t|
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 20140120151917) do
     t.string   "country"
     t.string   "tax_code"
     t.string   "vat"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.text     "info"
   end
 
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 20140120151917) do
     t.date     "date",                                null: false
     t.integer  "number",                              null: false
     t.boolean  "invoiced",            default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "estimates", ["consolidated_tax_id"], name: "index_estimates_on_consolidated_tax_id", using: :btree
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 20140120151917) do
     t.date     "date",                                null: false
     t.integer  "number",                              null: false
     t.boolean  "invoiced",            default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.boolean  "downloaded",          default: false
   end
 
@@ -99,8 +99,8 @@ ActiveRecord::Schema.define(version: 20140120151917) do
     t.date     "date",                                null: false
     t.integer  "number",                              null: false
     t.date     "payment_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "invoice_project_id"
     t.boolean  "downloaded",          default: false
   end
@@ -142,8 +142,8 @@ ActiveRecord::Schema.define(version: 20140120151917) do
     t.decimal  "rate",               precision: 8, scale: 2,                 null: false
     t.boolean  "timed",                                      default: false
     t.integer  "duration"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
     t.integer  "invoice_project_id"
   end
 
@@ -173,38 +173,39 @@ ActiveRecord::Schema.define(version: 20140120151917) do
     t.date     "date"
     t.float    "hours"
     t.string   "comments"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   add_index "time_entries", ["slip_id"], name: "index_time_entries_on_slip_id", using: :btree
   add_index "time_entries", ["work_category_id"], name: "index_time_entries_on_work_category_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "name",                                  null: false
-    t.string   "surname",                               null: false
-    t.string   "address",                               null: false
-    t.string   "zip_code",                              null: false
-    t.string   "town",                                  null: false
-    t.string   "province",                              null: false
+    t.string   "title"
+    t.string   "name",                                              null: false
+    t.string   "surname",                                           null: false
+    t.string   "address",                                           null: false
+    t.string   "zip_code",                                          null: false
+    t.string   "town",                                              null: false
+    t.string   "province",                                          null: false
     t.string   "country"
-    t.string   "tax_code",                              null: false
-    t.string   "vat",                                   null: false
-    t.string   "phone",                                 null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "email",                  default: "",   null: false
-    t.string   "encrypted_password",     default: "",   null: false
+    t.string   "tax_code",                                          null: false
+    t.string   "vat",                                               null: false
+    t.string   "phone",                                             null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "email",                              default: "",   null: false
+    t.string   "encrypted_password",     limit: 128, default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",                      default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.text     "bank_coordinates"
-    t.string   "language",               default: "it"
+    t.string   "language",                           default: "it"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"

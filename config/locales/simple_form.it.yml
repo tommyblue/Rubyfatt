@@ -135,6 +135,7 @@ it:
       profile:
         password: "Password"
       user:
+        title: "Titolo"
         email: "Email"
         name: "Nome"
         surname: "Cognome"

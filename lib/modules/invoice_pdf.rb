@@ -93,7 +93,7 @@ class InvoicePdf < Prawn::Document
   end
 
   def company_address
-      text "#{@invoice.customer.user.surname} #{@invoice.customer.user.name}", align: :left, color: "777777"
+      text "#{@invoice.customer.user.full_name}", align: :left, color: "777777"
       text "#{@invoice.customer.user.address}", align: :left, color: "777777"
       text "#{@invoice.customer.user.zip_code} #{@invoice.customer.user.town} (#{@invoice.customer.user.province})", align: :left, color: "777777"
       text "C.F. #{@invoice.customer.user.tax_code}", align: :left, color: "777777"

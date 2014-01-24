@@ -426,6 +426,7 @@ it:
       title: "Modifica i tuoi dati"
     form:
       legend: ""
+      title_hint: "Se compilato, verrà mostrato prima del nome nei documenti (es. Sig.,Dr.ssa, Ing., ecc.)"
       no_logo: "Logo non presente"
       logo_hint: "Rapporto dimensioni nel PDF: "
       delete_logo: "Elimina il logo"
