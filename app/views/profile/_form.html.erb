@@ -1,13 +1,14 @@
-<%= simple_form_for @user, :url => '/profile/update', :html => {:class => 'form-horizontal', :multipart => true } do |f| %>
+<%= simple_form_for @user, url: '/profile/update', html: {class: 'form-horizontal', multipart: true } do |f| %>
 
   <% if f.error_notification %>
     <%= f.error_notification %>
   <% end %>
 
-  <legend><%=t '.legend', :default => "Personal data" %></legend>
+  <legend><%=t '.legend', default: "Personal data" %></legend>
+  <%= f.input :title, hint: t('.title_hint', default: "If filled in, it will be visible before the name in the documents (e.g. Mr, Dr, etc.)") %>
   <%= f.input :name %>
   <%= f.input :surname %>
-  <%= f.input :language, :as => :radio_buttons, :collection => [['Italiano', 'it'], ['English', 'en']] %>
+  <%= f.input :language, as: :radio_buttons, collection: [['Italiano', 'it'], ['English', 'en']] %>
   <%= f.input :address %>
   <%= f.input :zip_code %>
   <%= f.input :town %>
@@ -17,12 +18,12 @@
   <%= f.input :vat %>
   <%= f.input :phone %>
   <%= f.input :email %>
-  <%= f.input :bank_coordinates, :input_html => { :class => 'input-xlarge', :rows => 8 } %>
-  <%= f.input :logo, :hint => t('.logo_hint', :default => 'Size ratio in PDFs: ') + '137x60' do %>
+  <%= f.input :bank_coordinates, input_html: { class: 'input-xlarge', rows: 8 } %>
+  <%= f.input :logo, hint: t('.logo_hint', default: 'Size ratio in PDFs: ') + '137x60' do %>
     <div class="profile_logo">
       <% if @user.logo.present? %>
         <%= image_tag(@user.logo) %>
-        <%= link_to '<i class="icon-trash"></i> '.html_safe + t('.delete_logo'), destroy_logo_path, :method => :delete, :data => { :confirm => t('.delete_logo_confirm') }, :class => "btn btn-danger btn-mini" %>
+        <%= link_to '<i class="icon-trash"></i> '.html_safe + t('.delete_logo'), destroy_logo_path, method: :delete, data: { confirm: t('.delete_logo_confirm') }, class: "btn btn-danger btn-mini" %>
       <% else %>
         <small><em><%= t('.no_logo') %></em></small>
       <% end %>
@@ -31,7 +32,7 @@
   <% end %>
 
   <div class="form-actions">
-    <%= f.button :submit, :class => 'btn-primary' %>
-    <%= submit_tag t('helpers.buttons.cancel', :default => 'Cancel'), :type => :reset, :class => "btn btn-danger" %>
+    <%= f.button :submit, class: 'btn-primary' %>
+    <%= submit_tag t('helpers.buttons.cancel', default: 'Cancel'), type: :reset, class: "btn btn-danger" %>
   </div>
 <% end %>

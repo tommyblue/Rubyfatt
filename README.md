@@ -53,6 +53,10 @@ L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni d
 
 Di seguito i TAG git con le principali caratteristiche e cambiamenti
 
+### 1.5.6 (24/01/2014)
+
+- Aggiunto il titolo al nome, visualizzabile (se compilato) nell'intestazione dei documenti
+
 ### 1.5.5 (23/01/2014)
 
 - Possibilità di rinominare le notule attraverso un'opzione
