@@ -8,7 +8,6 @@
   <%= f.input :date, :wrapper => :prepend do %>
     <%= content_tag :span, '<i class="icon-calendar"></i>'.html_safe, :class => "add-on" %><%= f.input_field :date, :as => :datepicker %>
   <% end %>
-  <%= f.input :paid %>
   <%= f.input :payment_date, :wrapper => :prepend do %>
     <%= content_tag :span, '<i class="icon-calendar"></i>'.html_safe, :class => "add-on" %><%= f.input_field :payment_date, :as => :datepicker %>
   <% end %>
