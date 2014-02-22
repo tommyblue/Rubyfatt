@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.0'
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.3'
 
 #----- Rails 3 compatibility (TO BE REMOVED ASAP)
 gem 'protected_attributes'
@@ -62,8 +62,8 @@ group :production do
 end
 
 #----- Assets
-gem 'sass-rails',   '~> 4.0.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'sass-rails',   '~> 4.0.1'
+gem 'coffee-rails', '~> 4.0.1'
 gem 'uglifier', '~> 2.2.1'
 gem 'therubyracer', '~> 0.12.0'
 
