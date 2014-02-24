@@ -5,7 +5,7 @@ ruby '2.1.0'
 gem 'rails', '4.0.3'
 
 #----- Rails 3 compatibility (TO BE REMOVED ASAP)
-gem 'protected_attributes'
+gem 'protected_attributes', '~> 1.0.5'
 
 #----- SQLite or MySQL or PostgreSQL or..
 # gem 'sqlite3'
