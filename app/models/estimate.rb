@@ -5,8 +5,6 @@ class Estimate < ActiveRecord::Base
   belongs_to :customer
   has_many :slips
 
-  attr_accessible :date, :number, :invoiced, :consolidated_tax_id, :slip_ids
-
   validates :date, presence: true
   validates :customer, presence: true
   validates :consolidated_tax, presence: true

@@ -17,9 +17,9 @@ describe Invoice do
     invoice3.save!
 
     invoices = Invoice.where('id IN (?)', [invoice1.id, invoice2.id, invoice3.id])
-    invoices[0].id.should eq invoice2.id
-    invoices[1].id.should eq invoice3.id
-    invoices[2].id.should eq invoice1.id
+    expect(invoices[0].id).to eq invoice2.id
+    expect(invoices[1].id).to eq invoice3.id
+    expect(invoices[2].id).to eq invoice1.id
   end
 
   it "should be payable" do

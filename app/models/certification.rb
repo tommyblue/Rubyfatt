@@ -1,6 +1,4 @@
 class Certification < ActiveRecord::Base
-  attr_accessible :customer_id, :year, :received_at, :rate, :attachment
-
   has_attached_file :attachment
 
   belongs_to :user

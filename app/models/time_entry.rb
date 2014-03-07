@@ -1,6 +1,4 @@
 class TimeEntry < ActiveRecord::Base
-  attr_accessible :date, :hours, :comments, :work_category_id
-
   belongs_to :work_category
   belongs_to :slip
 

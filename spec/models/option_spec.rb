@@ -13,7 +13,7 @@ describe Option do
 
     new_number = Option.get_option(@user, Estimate.next_option_name).value.to_i
 
-    new_number.should eq(old_number + 1)
+    expect(new_number).to eq(old_number + 1)
   end
 
   it "should inscrement by 1 the option number when an InvoiceProject is created" do
@@ -28,7 +28,7 @@ describe Option do
 
     new_number = Option.get_option(@user, InvoiceProject.next_option_name).value.to_i
 
-    new_number.should eq(old_number + 1)
+    expect(new_number).to eq(old_number + 1)
   end
 
   it "should inscrement by 1 the option number when an Invoice is created" do
@@ -43,7 +43,7 @@ describe Option do
 
     new_number = Option.get_option(@user, Invoice.next_option_name).value.to_i
 
-    new_number.should eq(old_number + 1)
+    expect(new_number).to eq(old_number + 1)
   end
 
 end

@@ -1,8 +1,6 @@
 class Option < ActiveRecord::Base
   belongs_to :user
 
-  attr_accessible :name, :value, :integer
-
   validates :name, presence: true, uniqueness: { scope: :user_id }
   validates :value, presence: true
   validate :user_must_exist

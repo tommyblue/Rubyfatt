@@ -8,51 +8,6 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require select2
- *= require bootstrap-wysihtml5
  *= require_self
  *= require_tree .
-*/
-
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-
-.nowrap {
-  white-space: nowrap;
-}
-
-td a.btn.btn-mini {
-  min-width: 70px;
-  margin-bottom: 2px;
-}
-
-form .help-block {
-  font-size: 80%;
-  font-style: italic;
-}
-.password-strenght-wrapper {
-  margin-bottom: 0 !important;
-  margin-top: -10px !important
-}
-#password-strenght {
-  width: 220px;
-}
-#password-strenght .bar {
-  width: 1%;
-}
-
-form .add-on .icon-calendar:hover {
-  cursor: pointer;
-}
-
-.profile_logo {
-  margin-bottom: 20px;
-}
-.profile_logo img {
-  max-width: 400px;
-}
-h1.sup-spaced {
-  margin-top: 40px;
-}
+ */
