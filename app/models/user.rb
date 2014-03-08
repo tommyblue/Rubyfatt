@@ -14,12 +14,21 @@ class User < ActiveRecord::Base
   has_many :invoice_projects, through: :customers
   has_many :work_categories
   has_many :certifications
+  has_many :tokens, dependent: :destroy
 
   validates_presence_of :email, :name, :surname, :address, :zip_code, :town, :province, :tax_code, :vat, :phone
   validates_uniqueness_of :email
   validates :language, inclusion: {in: ['it', 'en']}
   validates_attachment_content_type :logo, content_type: /image/
 
+  # Sign in the user from API and returns a valid token if correct
+  def self.api_login(email, password)
+    if (user = User.find_by_email(email)) && user.valid_password?(password)
+      user.new_token
+    else
+      false
+    end
+  end
 
   def get_option_value(key)
     if self.options.where(name: key).any?
@@ -47,5 +56,11 @@ class User < ActiveRecord::Base
   def self.generate_password
     require 'securerandom'
     SecureRandom.hex(5)
+  end
+
+  def new_token
+    token = Token.generate_token
+    self.tokens.create(token: token)
+    token
   end
 end

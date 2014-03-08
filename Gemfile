@@ -8,7 +8,7 @@ gem 'mysql2', '~> 0.3.13'
 
 #----- Authentication and authorization
 gem 'devise', '~> 3.2.3'
-# gem 'pundit', '~> 0.2.2'
+gem 'pundit', '~> 0.2.2'
 
 #----- PDF Generation
 gem 'prawn',  '~> 1.0.0.rc2'

@@ -2,6 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'pundit/rspec'
 
 load_schema = lambda {
   load "#{Rails.root.to_s}/db/schema.rb" # use db agnostic schema by default
@@ -31,6 +32,10 @@ RSpec.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
 
+  config.include Devise::TestHelpers, type: :controller
+  config.extend ControllerMacros, type: :controller
+  config.include ValidUserRequestHelper, type: :request
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -47,18 +52,21 @@ RSpec.configure do |config|
 end
 
 def generate_scenario
-  @user = FactoryGirl.create :user
+  @user1 = FactoryGirl.create :user
   @consolidated_tax = FactoryGirl.create :consolidated_tax
   @tax1 = FactoryGirl.create :tax, order: 0, name: 'INPS 4%', rate: 4, compound: false, consolidated_tax: @consolidated_tax
   @tax2 = FactoryGirl.create :tax, order: 1, name: 'IVA 21%', rate: 21, compound: true, consolidated_tax: @consolidated_tax
   @tax3 = FactoryGirl.create :tax, order: 2, name: "Ritenuta d'acconto -20%", rate: -20, compound: true, consolidated_tax: @consolidated_tax
 
-  @customer1 = FactoryGirl.create :customer, user: @user
+  @customer1 = FactoryGirl.create :customer, user: @user1
   @slip1 = FactoryGirl.create :slip, customer: @customer1
   @slip2 = FactoryGirl.create :slip, customer: @customer1
 
-  @customer2 = FactoryGirl.create :customer, user: @user
+  @customer2 = FactoryGirl.create :customer, user: @user1
   @slip3 = FactoryGirl.create :slip, customer: @customer2
   @slip4 = FactoryGirl.create :slip, customer: @customer2
   @slip5 = FactoryGirl.create :slip, customer: @customer2
+
+  @user2 = FactoryGirl.create :user
+  @customer3 = FactoryGirl.create :customer, user: @user2
 end

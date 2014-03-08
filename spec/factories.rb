@@ -12,6 +12,7 @@ FactoryGirl.define do
     tax_code "ABCDEF00X00A123Z"
     vat "012345678910"
     phone "+39.333.1234567"
+    password "12345678"
   end
 
   factory :tax do

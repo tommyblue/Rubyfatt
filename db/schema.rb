@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124151429) do
+ActiveRecord::Schema.define(version: 20140308184846) do
 
   create_table "certifications", force: true do |t|
     t.integer  "user_id"
@@ -179,6 +179,15 @@ ActiveRecord::Schema.define(version: 20140124151429) do
 
   add_index "time_entries", ["slip_id"], name: "index_time_entries_on_slip_id", using: :btree
   add_index "time_entries", ["work_category_id"], name: "index_time_entries_on_work_category_id", using: :btree
+
+  create_table "tokens", force: true do |t|
+    t.string   "token",      null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tokens", ["token"], name: "index_tokens_on_token", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "title"
