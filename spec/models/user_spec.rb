@@ -11,7 +11,7 @@ describe User do
   end
 
   it "can create a new token for the user" do
-    expect{@user.new_token}.to change{@user.tokens.count}.by(1)
+    expect{@user.tokens.create}.to change{@user.tokens.count}.by(1)
   end
 
   it "returns a new token when correctly logged-in" do

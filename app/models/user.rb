@@ -24,7 +24,8 @@ class User < ActiveRecord::Base
   # Sign in the user from API and returns a valid token if correct
   def self.api_login(email, password)
     if (user = User.find_by_email(email)) && user.valid_password?(password)
-      user.new_token
+      token = user.tokens.create
+      token.token
     else
       false
     end
@@ -56,11 +57,5 @@ class User < ActiveRecord::Base
   def self.generate_password
     require 'securerandom'
     SecureRandom.hex(5)
-  end
-
-  def new_token
-    token = Token.generate_token
-    self.tokens.create(token: token)
-    token
   end
 end
