@@ -7,7 +7,7 @@ describe Option do
 
     @estimate = Estimate.new(date: Time.now)
     @estimate.consolidated_tax = @consolidated_tax
-    @estimate.customer = @customer
+    @estimate.customer = @customer1
     @estimate.slips = [@slip1, @slip2]
     @estimate.save!
 
@@ -22,7 +22,7 @@ describe Option do
 
     @invoice_project = InvoiceProject.new(date: Time.now)
     @invoice_project.consolidated_tax = @consolidated_tax
-    @invoice_project.customer = @customer
+    @invoice_project.customer = @customer1
     @invoice_project.slips = [@slip1, @slip2]
     @invoice_project.save!
 
@@ -37,7 +37,7 @@ describe Option do
 
     @invoice = Invoice.new(date: Time.now)
     @invoice.consolidated_tax = @consolidated_tax
-    @invoice.customer = @customer
+    @invoice.customer = @customer1
     @invoice.slips = [@slip1, @slip2]
     @invoice.save!
 

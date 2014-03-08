@@ -4,15 +4,15 @@ describe Invoice do
   it "should be correctly sorted by default" do
     generate_scenario
 
-    invoice1 = @customer.invoices.new date: "2013-01-03", number: 1, consolidated_tax_id: @consolidated_tax.id
+    invoice1 = @customer1.invoices.new date: "2013-01-03", number: 1, consolidated_tax_id: @consolidated_tax.id
     invoice1.slips = [@slip1, @slip2]
     invoice1.save!
 
-    invoice2 = @customer.invoices.new date: "2012-12-03", number: 2, consolidated_tax_id: @consolidated_tax.id
+    invoice2 = @customer1.invoices.new date: "2012-12-03", number: 2, consolidated_tax_id: @consolidated_tax.id
     invoice2.slips = [@slip1, @slip2]
     invoice2.save!
 
-    invoice3 = @customer.invoices.new date: "2012-03-03", number: 4, consolidated_tax_id: @consolidated_tax.id
+    invoice3 = @customer1.invoices.new date: "2012-03-03", number: 4, consolidated_tax_id: @consolidated_tax.id
     invoice3.slips = [@slip1, @slip2]
     invoice3.save!
 
@@ -25,7 +25,7 @@ describe Invoice do
   it "should be payable" do
     generate_scenario
 
-    invoice = @customer.invoices.new date: "2013-01-03", number: 1, consolidated_tax_id: @consolidated_tax.id, payment_date: nil
+    invoice = @customer1.invoices.new date: "2013-01-03", number: 1, consolidated_tax_id: @consolidated_tax.id, payment_date: nil
     invoice.slips = [@slip1, @slip2]
     invoice.save!
 
@@ -39,7 +39,7 @@ describe Invoice do
   it "should be payable with specific date" do
     generate_scenario
 
-    invoice = @customer.invoices.new date: "2013-01-03", number: 1, consolidated_tax_id: @consolidated_tax.id, payment_date: nil
+    invoice = @customer1.invoices.new date: "2013-01-03", number: 1, consolidated_tax_id: @consolidated_tax.id, payment_date: nil
     invoice.slips = [@slip1, @slip2]
     invoice.save!
 
@@ -53,7 +53,7 @@ describe Invoice do
   it "should have a method paid, alias of paid?" do
     generate_scenario
 
-    invoice = @customer.invoices.new date: "2013-01-03", number: 1, consolidated_tax_id: @consolidated_tax.id, payment_date: Time.now
+    invoice = @customer1.invoices.new date: "2013-01-03", number: 1, consolidated_tax_id: @consolidated_tax.id, payment_date: Time.now
     invoice.slips = [@slip1, @slip2]
     invoice.save!
 
@@ -66,7 +66,7 @@ describe Invoice do
   it "should be paid if has a payment date" do
     generate_scenario
 
-    invoice = @customer.invoices.new date: "2013-01-03", number: 1, consolidated_tax_id: @consolidated_tax.id, payment_date: Time.now
+    invoice = @customer1.invoices.new date: "2013-01-03", number: 1, consolidated_tax_id: @consolidated_tax.id, payment_date: Time.now
     invoice.slips = [@slip1, @slip2]
     invoice.save!
 
@@ -76,7 +76,7 @@ describe Invoice do
   it "should be unpaid if hasn't a payment date" do
     generate_scenario
 
-    invoice = @customer.invoices.new date: "2013-01-03", number: 1, consolidated_tax_id: @consolidated_tax.id, payment_date: nil
+    invoice = @customer1.invoices.new date: "2013-01-03", number: 1, consolidated_tax_id: @consolidated_tax.id, payment_date: nil
     invoice.slips = [@slip1, @slip2]
     invoice.save!
 

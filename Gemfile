@@ -29,6 +29,9 @@ gem 'exception_notification', '~> 4.0.1'
 #----- Wiki
 gem 'irwi', git: 'git://github.com/tommyblue/irwi.git', branch: 'rails4'
 
+#----- API
+gem 'active_model_serializers', '~> 0.8.1'
+
 group :development do
   gem 'better_errors', '~> 1.1.0'
   gem 'pry-rails', '~> 0.3.2'
@@ -45,8 +48,8 @@ group :test do
   gem 'pg', '~> 0.17.1'
   gem 'factory_girl_rails', '~> 4.4.1'
   # gem 'capybara', '~> 2.2.1'
-  # gem 'guard-rspec', '~> 4.2.8', require: false # incompatible with rspec-rails 3.0.0.beta
-  # gem 'rb-fsevent', '~> 0.9.4'
+  gem 'guard-rspec', '~> 4.2.8', require: false # incompatible with rspec-rails 3.0.0.beta
+  gem 'rb-fsevent', '~> 0.9.4'
 end
 
 group :production do
@@ -63,6 +66,10 @@ gem 'sass-rails',   '~> 4.0.1'
 gem 'coffee-rails', '~> 4.0.1'
 gem 'uglifier', '~> 2.4.0'
 gem 'therubyracer', '~> 0.12.1', platform: :ruby
+
+#----- Ember.js
+gem 'ember-rails', '~> 0.14.1'
+gem 'ember-source', '~> 1.4.0'
 
 gem 'jquery-rails', '~> 3.1.0'
 # gem 'jquery-ui-rails', '~> 4.2.0'

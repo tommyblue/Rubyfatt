@@ -52,7 +52,13 @@ def generate_scenario
   @tax1 = FactoryGirl.create :tax, order: 0, name: 'INPS 4%', rate: 4, compound: false, consolidated_tax: @consolidated_tax
   @tax2 = FactoryGirl.create :tax, order: 1, name: 'IVA 21%', rate: 21, compound: true, consolidated_tax: @consolidated_tax
   @tax3 = FactoryGirl.create :tax, order: 2, name: "Ritenuta d'acconto -20%", rate: -20, compound: true, consolidated_tax: @consolidated_tax
-  @customer = FactoryGirl.create :customer, user: @user
-  @slip1 = FactoryGirl.create :slip, customer: @customer
-  @slip2 = FactoryGirl.create :slip, customer: @customer
+
+  @customer1 = FactoryGirl.create :customer, user: @user
+  @slip1 = FactoryGirl.create :slip, customer: @customer1
+  @slip2 = FactoryGirl.create :slip, customer: @customer1
+
+  @customer2 = FactoryGirl.create :customer, user: @user
+  @slip3 = FactoryGirl.create :slip, customer: @customer2
+  @slip4 = FactoryGirl.create :slip, customer: @customer2
+  @slip5 = FactoryGirl.create :slip, customer: @customer2
 end
