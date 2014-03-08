@@ -34,11 +34,10 @@ gem 'active_model_serializers', '~> 0.8.1'
 
 group :development do
   gem 'better_errors', '~> 1.1.0'
-  gem 'pry-rails', '~> 0.3.2'
-
   # Brakeman detects security vulnerabilities in Ruby on Rails applications via static analysis.
   # gem 'brakeman', '~> 2.4.1', require: false
 end
+gem 'pry-rails', '~> 0.3.2', group: [:test, :development]
 
 # gem 'rspec-rails', '~> 3.0.0.beta', group: [:test, :development]
 gem 'rspec-rails', '~> 2.14.1', group: [:test, :development]
