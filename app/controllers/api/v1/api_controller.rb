@@ -3,7 +3,7 @@ class Api::V1::ApiController < ActionController::Base
   protect_from_forgery with: :null_session
   respond_to :json
 
-  before_action :token_authenticate_user!
+  # before_action :token_authenticate_user!
 
   def current_user
     @user
