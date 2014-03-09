@@ -4,4 +4,8 @@ CustomerPolicy = Struct.new(:user, :customer) do
       scope.where(user_id: user.id)
     end
   end
+
+  def show?
+    customer.user == user
+  end
 end

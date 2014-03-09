@@ -1,5 +1,5 @@
 <ul>
 {{#each customer in controller}}
-<li>{{customer.title}}</li>
+<li>{{#link-to 'customer' customer}}{{customer.title}}{{/link-to}}</li>
 {{/each}}
 </ul>

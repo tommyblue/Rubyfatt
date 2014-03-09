@@ -6,5 +6,7 @@ App.Store = DS.Store.extend
 
 DS.RESTAdapter.reopen
   namespace: 'api/v1'
-# DS.ActiveModelAdapter.reopen
-#   namespace: 'api/v1'
+  # headers: {
+  #   "API_KEY": "secret key"
+  #   "ANOTHER_HEADER": "Some header value"
+  # }
