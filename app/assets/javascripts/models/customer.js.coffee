@@ -15,3 +15,12 @@ App.Customer = DS.Model.extend
   full_name: (->
     @.get('name') + ' ' + @.get('surname')
   ).property('name', 'surname')
+  full_address: (->
+    addr = ''
+    addr += @.get('address') if @.get('address')
+    addr += ', ' + @.get('zip_code') if @.get('zip_code')
+    addr += ', ' + @.get('town') if @.get('town')
+    addr += ' (' + @.get('province') + ')' if @.get('province')
+    addr += ', ' + @.get('country') if @.get('country')
+    return addr
+  ).property('address', 'zip_code', 'town', 'province', 'country')
