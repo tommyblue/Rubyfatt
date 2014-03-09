@@ -8,4 +8,11 @@ module ValidUserRequestHelper
     # The login requests will match these to the user we just created in the factory, and authenticate us.
     post_via_redirect user_session_path, 'user[email]' => @user1.email, 'user[password]' => @user1.password
   end
+
+  def api_sign_in
+    psw = 'qwertyasdfg'
+    user = FactoryGirl.create(:user, password: psw)
+    post '/api/v1/users/sign_in.json', user: { email: user.email, password: psw }
+    user
+  end
 end

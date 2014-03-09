@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Api::V1::UsersController do
   describe 'Manage user login' do
-
     it 'can sign in receiving the token' do
       psw = 'qwertyasdfg'
       user = FactoryGirl.create(:user, password: psw)

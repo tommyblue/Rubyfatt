@@ -21,6 +21,15 @@ class User < ActiveRecord::Base
   validates :language, inclusion: {in: ['it', 'en']}
   validates_attachment_content_type :logo, content_type: /image/
 
+  # Authenticate a user by token
+  def self.authenticate_with_token(token_hash)
+    if (token = Token.find_by_token(token_hash)) && token.is_valid?
+      token.user
+    else
+      false
+    end
+  end
+
   # Sign in the user from API and returns a valid token if correct
   def self.api_login(email, password)
     if (user = User.find_by_email(email)) && user.valid_password?(password)
