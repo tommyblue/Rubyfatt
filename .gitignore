@@ -17,9 +17,10 @@
 # MAC and Vim files
 .DS_Store
 *.swp
+*.swo
 
 # Ignore logos
 /public/system
 
-.localeapp/
 _site/
+old/

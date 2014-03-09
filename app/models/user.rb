@@ -3,9 +3,6 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable#, :trackable, :validatable, :registerable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :title, :name, :surname, :address, :zip_code, :town, :province, :country, :tax_code, :vat, :phone, :bank_coordinates, :language, :logo
-
   has_attached_file :logo, styles: { medium: "600x300>" }
 
   has_many :customers
@@ -17,12 +14,40 @@ class User < ActiveRecord::Base
   has_many :invoice_projects, through: :customers
   has_many :work_categories
   has_many :certifications
+  has_many :tokens, dependent: :destroy
 
   validates_presence_of :email, :name, :surname, :address, :zip_code, :town, :province, :tax_code, :vat, :phone
   validates_uniqueness_of :email
   validates :language, inclusion: {in: ['it', 'en']}
   validates_attachment_content_type :logo, content_type: /image/
 
+  # Authenticate a user by token
+  def self.authenticate_with_token(token_hash)
+    if (token = Token.find_by_token(token_hash)) && token.is_valid?
+      token.user
+    else
+      false
+    end
+  end
+
+  # Sign in the user from API and returns a valid token if correct
+  def self.api_login(email, password)
+    if (user = User.find_by_email(email)) && user.valid_password?(password)
+      token = user.tokens.create
+      token.token
+    else
+      false
+    end
+  end
+
+  # Return last user token
+  def token
+    if t = self.tokens.last
+      t.token
+    else
+      nil
+    end
+  end
 
   def get_option_value(key)
     if self.options.where(name: key).any?

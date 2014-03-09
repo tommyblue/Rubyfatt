@@ -6,8 +6,6 @@ class Invoice < ActiveRecord::Base
   has_many :slips
   belongs_to :invoice_project
 
-  attr_accessible :date, :number, :payment_date, :consolidated_tax_id, :slip_ids
-
   # Returns the invoices with consolidated taxes with at least one tax with withholding flag at true
   scope :withholding_taxes, -> { joins(consolidated_tax: :taxes).where(taxes: { withholding: true }) }
 

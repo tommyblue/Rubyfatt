@@ -5,8 +5,6 @@ class ConsolidatedTax < ActiveRecord::Base
   has_many :invoice_projects
   has_many :estimates
 
-  attr_accessible :name, :notes
-
   validates :name, presence: true, uniqueness: { scope: :user_id }
   validate :user_must_exist
 

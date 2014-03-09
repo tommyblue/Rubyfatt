@@ -1,67 +1,33 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale %>">
   <head>
+    <link href="/favicon.ico" rel="shortcut icon">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/apple-touch-icon-114x114.png">
+    <meta name="author" content="Tommaso Visconti <tommaso.visconti@gmail.com>">
+    <title><%= content_for?(:title) ? yield(:title) : "Rubyfatt" %></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/assets/favicon.ico" rel="shortcut icon">
-    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/assets/apple-touch-icon-114x114.png">
-    <title><%= content_for?(:title) ? yield(:title) : "Rubyfatt" %></title>
     <%= csrf_meta_tags %>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= yield :stylesheets %>
-
   </head>
   <body>
 
-    <%= render('layouts/navbar') %>
+    <%= yield %>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header"><%=t '.sidebar.title', default: "Customers" %></li>
-              <% current_user.customers.order(:title,:surname,:name).each do |customer| %>
-        			  <li class="<%= "active" if @customer and @customer.id == customer.id %>"><%= link_to customer.title, customer_slips_path(customer) %></li>
-        			<% end %>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">
-          <%= content_for?(:breadcrumb) ? yield(:breadcrumb) : render('layouts/breadcrumb') %>
-
-          <%= render partial: "layouts/flashes" %>
-
-          <%= yield %>
-        </div>
-      </div><!--/row-->
-
-      <%= render partial: 'layouts/footer' %>
-
-    </div> <!-- /container -->
-    <!-- Javascripts
-    ================================================== -->
     <%= javascript_include_tag "application" %>
-    <% if I18n.locale == :it %>
-      <%= javascript_include_tag "jquery.ui.datepicker-it" %>
-    <% end %>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        // Modifies the favicon adding the number of expired recurring slips
-        <% expired = expired_recurring_slips_badge(true) %>
-        <% if expired > 0 %>
-          Tinycon.setBubble(<%= expired %>);
-        <% end %>
-      });
-    </script>
     <%= yield :javascripts %>
   </body>
 </html>

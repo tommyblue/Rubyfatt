@@ -5,8 +5,6 @@ class Slip < ActiveRecord::Base
   belongs_to :customer
   has_many :time_entries, dependent: :destroy
 
-  attr_accessible :name, :rate, :timed, :duration
-
   validates :name, presence: true
   validates :rate, presence: true, numericality: true
   validates :customer, presence: true

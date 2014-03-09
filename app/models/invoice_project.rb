@@ -6,8 +6,6 @@ class InvoiceProject < ActiveRecord::Base
   has_many :slips
   has_one :invoice
 
-  attr_accessible :date, :number, :invoiced, :consolidated_tax_id, :slip_ids
-
   scope :uninvoiced, -> { where(invoiced: false) }
   scope :invoiced, -> { where(invoiced: true) }
 

@@ -5,8 +5,6 @@ class RecurringSlip < ActiveRecord::Base
   belongs_to :customer
   has_one :user, through: :customer
 
-  attr_accessible :schedule, :last_occurrence, :next_occurrence, :name, :rate, :customer_id
-
   validates :name, presence: true
   validates :rate, presence: true, numericality: true
   validates :customer, presence: true
