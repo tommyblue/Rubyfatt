@@ -31,6 +31,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Return last user token
+  def token
+    if t = self.tokens.last
+      t.token
+    else
+      nil
+    end
+  end
+
   def get_option_value(key)
     if self.options.where(name: key).any?
       Option.get_option_value(self, key)

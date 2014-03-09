@@ -18,4 +18,16 @@ describe User do
     token = User.api_login @user.email, "12345678"
     expect(token).to eq(@user.tokens.last.token)
   end
+
+  describe "Can receive the user last token" do
+    it "has a token method to retrieve the last token" do
+      user = FactoryGirl.create :user_with_token
+      expect(user.token).to eq(user.tokens.last.token)
+    end
+
+    it "receive nil if the user doesn't have a token" do
+      user = FactoryGirl.create :user
+      expect(user.token).to be_nil
+    end
+end
 end

@@ -13,7 +13,18 @@ FactoryGirl.define do
     vat "012345678910"
     phone "+39.333.1234567"
     password "12345678"
+
+    factory :user_with_token do
+      ignore do
+        tokens_count 1
+      end
+      after(:create) do |user, evaluator|
+        create_list(:token, evaluator.tokens_count, user: user)
+      end
+    end
   end
+
+  factory :token
 
   factory :tax do
     # consolidated_tax
