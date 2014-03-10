@@ -12,7 +12,7 @@ class Customer < ActiveRecord::Base
   validates :title, presence: true, uniqueness: { scope: :user_id }
   validates :vat, uniqueness: { scope: :user_id }, allow_nil: true, allow_blank: true
 
-  scope :ordered, -> { order(:title, :name, :surname) }
+  scope :ordered, -> { order(:title) }
 
   # Show the correct customer heading: title, if present or full name instead
   def heading

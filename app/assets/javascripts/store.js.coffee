@@ -6,8 +6,6 @@ App.Store = DS.Store.extend
 
 DS.RESTAdapter.reopen
   namespace: 'api/v1'
-# DS.ActiveModelAdapter.reopen
-#   namespace: 'api/v1'
 
 Ember.SimpleAuth.Authenticators.OAuth2.reopen
   serverTokenEndpoint: '/api/v1/users/sign_in'
