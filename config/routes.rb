@@ -4,7 +4,7 @@ Rubyfatt::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :customers, except: [:new, :create, :edit, :update]
+      resources :customers, except: [:new, :edit]
       resources :users, only: [] do
         collection do
           post :sign_in

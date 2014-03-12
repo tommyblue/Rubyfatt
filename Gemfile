@@ -48,6 +48,7 @@ group :test do
   gem 'factory_girl_rails', '~> 4.4.1'
   # gem 'capybara', '~> 2.2.1'
   gem 'guard-rspec', '~> 4.2.8', require: false # incompatible with rspec-rails 3.0.0.beta
+  gem 'growl'
   gem 'rb-fsevent', '~> 0.9.4'
 end
 

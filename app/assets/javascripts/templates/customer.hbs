@@ -1,8 +1,17 @@
-<h1>{{title}}</h1>
-<p>{{full_name}}</p>
-<p>address: {{full_address}}</p>
-<p>tax_code: {{tax_code}}</p>
-<p>vat: {{vat}}</p>
-<p>info: {{{info}}}</p>
-<p>created_at: {{formatted_datetime created_at}}</p>
-<p>updated_at: {{formatted_datetime updated_at}}</p>
+{{#if isEditing}}
+  {{edit-customer class="edit" value=title}}
+  {{edit-customer class="edit" value=vat}}
+  <button {{action "saveCustomer"}} class="edit">Save</button>
+  <button {{action "showCustomer"}} class="back">Back</button>
+{{else}}
+  <h1>{{title}}</h1>
+  <p>{{full_name}}</p>
+  <p>address: {{full_address}}</p>
+  <p>tax_code: {{tax_code}}</p>
+  <p>vat: {{vat}}</p>
+  <p>info: {{{info}}}</p>
+  <p>created_at: {{formatted_datetime created_at}}</p>
+  <p>updated_at: {{formatted_datetime updated_at}}</p>
+  <button {{action "editCustomer"}} class="edit">Edit</button>
+  <button {{action "removeCustomer"}} class="destroy">Delete</button>
+{{/if}}

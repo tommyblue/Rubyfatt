@@ -6,6 +6,7 @@ describe CustomerSerializer do
     json = {
       customer: {
         id: @customer1.id,
+        user_id: @customer1.user_id,
         title: @customer1.title,
         name: @customer1.name,
         surname: @customer1.surname,

@@ -2,11 +2,14 @@ App.CustomerController = Ember.ObjectController.extend
   actions:
     editCustomer: ->
       @set('isEditing', true)
-    acceptChanges: ->
+    showCustomer: ->
       @set('isEditing', false)
-      @get('model').save()
+    saveCustomer: ->
+      @set('isEditing', false)
+      customer = @get('model')
+      customer.save()
     removeCustomer: ->
       customer = @get('model')
       customer.deleteRecord()
-      customer.save()
+      customer.save().then(@transitionToRoute('customers'))
   isEditing: false,
