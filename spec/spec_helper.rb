@@ -69,4 +69,8 @@ def generate_scenario
 
   @user2 = FactoryGirl.create :user
   @customer3 = FactoryGirl.create :customer, user: @user2
+
+  # Grant API access
+  @user1.tokens.create
+  @user2.tokens.create
 end

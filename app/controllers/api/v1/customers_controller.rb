@@ -8,7 +8,18 @@ class  Api::V1::CustomersController < Api::V1::ApiController
 
   def show
     @customer = Customer.find(params[:id])
-    authorize @customer, :show?
+    authorize @customer, :manage?
     respond_with @customer, serializer: CustomerSerializer
+  end
+
+  def destroy
+    @customer = Customer.find(params[:id])
+    authorize @customer, :manage?
+
+    if @customer.destroy
+      head :no_content, status: 204
+    else
+      respond_with @customer.errors, status: 422
+    end
   end
 end

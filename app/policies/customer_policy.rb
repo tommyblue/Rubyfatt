@@ -5,7 +5,7 @@ CustomerPolicy = Struct.new(:user, :customer) do
     end
   end
 
-  def show?
+  def manage?
     customer.user == user
   end
 end

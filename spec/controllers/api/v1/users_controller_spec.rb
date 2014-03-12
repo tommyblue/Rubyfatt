@@ -5,10 +5,10 @@ describe Api::V1::UsersController do
     it 'can sign in receiving the token' do
       psw = 'qwertyasdfg'
       user = FactoryGirl.create(:user, password: psw)
-      post :sign_in, format: :json, user: { email: user.email, password: psw }
+      post :sign_in, format: :json, username: user.email, password: psw
       expect(response).to be_success
       json = JSON.parse(response.body)
-      expect(json['token']).to eq(user.tokens.last.token)
+      expect(json['access_token']).to eq(user.tokens.last.token)
     end
 
     it 'can\'t sign with wrong credentials' do

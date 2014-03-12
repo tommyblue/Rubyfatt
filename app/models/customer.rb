@@ -1,12 +1,12 @@
 class Customer < ActiveRecord::Base
   belongs_to :user
-  has_many :estimates
-  has_many :invoices
-  has_many :invoice_projects
-  has_many :slips
-  has_many :recurring_slips
-  has_many :working_slips, -> { where('invoice_id IS NULL AND invoice_project_id IS NULL') }, class_name: 'Slip'
-  has_many :certifications
+  has_many :estimates, dependent: :destroy
+  has_many :invoices, dependent: :destroy
+  has_many :invoice_projects, dependent: :destroy
+  has_many :slips, dependent: :destroy
+  has_many :recurring_slips, dependent: :destroy
+  has_many :working_slips, -> { where('invoice_id IS NULL AND invoice_project_id IS NULL') }, class_name: 'Slip', dependent: :destroy
+  has_many :certifications, dependent: :destroy
 
   validates :user, presence: true
   validates :title, presence: true, uniqueness: { scope: :user_id }

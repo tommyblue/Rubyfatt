@@ -12,7 +12,7 @@ module ValidUserRequestHelper
   def api_sign_in
     psw = 'qwertyasdfg'
     user = FactoryGirl.create(:user, password: psw)
-    post '/api/v1/users/sign_in.json', user: { email: user.email, password: psw }
+    post '/api/v1/users/sign_in.json', username: user.email, password: psw
     user
   end
 end
