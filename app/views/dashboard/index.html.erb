@@ -1,8 +1,6 @@
 <script type="text/x-handlebars">
-{{#if session.isAuthenticated}}
-  <a {{ action 'invalidateSession' }}>Logout</a>
-{{else}}
-  <a {{ action 'authenticateSession' }}>Login</a>
-{{/if}}
-  {{ outlet }}
+  <%= render partial: 'nav' %>
+  <section>
+    {{ outlet }}
+  </section>
 </script>

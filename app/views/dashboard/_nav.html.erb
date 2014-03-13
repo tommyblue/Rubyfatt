@@ -1,0 +1,20 @@
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">Rubyfatt</a></h1>
+    </li>
+    <li class="toggle-topbar menu-icon">
+      <a href="#">Menu</a>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    {{#if session.isAuthenticated}}
+    <%= render partial: 'nav_authenticated' %>
+    {{else}}
+      <ul class="right">
+        <li><a {{ action 'authenticateSession' }}>Login</a></li>
+      </ul>
+    {{/if}}
+  </section>
+</nav>
