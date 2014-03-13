@@ -110,6 +110,9 @@ GEM
       railties (>= 3.0.0)
     ffi (1.9.3)
     formatador (0.2.4)
+    foundation-rails (5.2.0.0)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
     growl (1.0.3)
     guard (2.5.1)
       formatador (>= 0.2.4)
@@ -271,6 +274,7 @@ DEPENDENCIES
   ember-source (~> 1.4.0)
   exception_notification (~> 4.0.1)
   factory_girl_rails (~> 4.4.1)
+  foundation-rails
   growl
   guard-rspec (~> 4.2.8)
   ice_cube (~> 0.11.3)

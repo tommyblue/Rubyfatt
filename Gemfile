@@ -67,6 +67,9 @@ gem 'coffee-rails', '~> 4.0.1'
 gem 'uglifier', '~> 2.4.0'
 gem 'therubyracer', '~> 0.12.1', platform: :ruby
 
+#----- ZURB Foundation
+gem 'foundation-rails'
+
 #----- Ember.js
 gem 'ember-rails', '~> 0.14.1'
 gem 'ember-source', '~> 1.4.0'

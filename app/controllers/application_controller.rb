@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :check_initial_registration
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_locale
   # before_action :check_new_year # TODO
 
-  layout :layout_by_resource
+  # layout :layout_by_resource
 
   protected
 
