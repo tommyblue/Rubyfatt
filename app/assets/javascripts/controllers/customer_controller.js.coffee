@@ -33,4 +33,7 @@ App.CustomerController = Ember.ObjectController.extend
       customer.deleteRecord()
       customer.save().then(@transitionToRoute('customers'))
 
+    showDropdown: ->
+      Foundation.libs.dropdown.toggle($('#groupDropdownLink'))
+
   isEditing: false

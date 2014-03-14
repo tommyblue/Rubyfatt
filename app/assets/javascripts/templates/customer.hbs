@@ -78,7 +78,10 @@
     <div class="large-12 columns">
       <h1>{{title}}
         <button {{action "editCustomer"}} class="button tiny radius"><i class="fa fa-edit"></i> Edit</button>
-        <button {{action "removeCustomer"}} class="button tiny alert radius"><i class="fa fa-trash-o"></i> Delete</button>
+        <button {{action 'showDropdown'}} class="tiny alert radius button dropdown" data-dropdown="drop1" id="groupDropdownLink"><i class="fa fa-trash-o"></i> Delete</button><br />
+        <ul id="drop1" data-dropdown-content class="f-dropdown">
+          <li><a {{action "removeCustomer"}}>Yes, I'm sure!</a></li>
+        </ul>
       </h1>
       <table>
         <tr>
