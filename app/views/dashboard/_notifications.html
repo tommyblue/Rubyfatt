@@ -1,0 +1,11 @@
+{{#if notification}}
+  <div class="row">
+    <div class="large-12 columns">
+      <div data-alert {{bind-attr class=":alert-box :radius notification.type"}} id="notification">
+        {{#if notification.title}}
+          <h3>{{notification.title}}</h3>
+        {{/if}}
+        {{notification.message}}
+        <a href="#" class="close" {{action "closeNotification"}}>&times;</a>
+      </div>
+{{/if}}

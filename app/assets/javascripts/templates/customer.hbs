@@ -1,17 +1,108 @@
 {{#if isEditing}}
-  {{edit-customer class="edit" value=title}}
-  {{edit-customer class="edit" value=vat}}
-  <button {{action "saveCustomer"}} class="edit">Save</button>
-  <button {{action "showCustomer"}} class="back">Back</button>
+  <form>
+    <div class="row">
+      <div class="large-4 columns">
+        <label>Title
+          {{input value=title}}
+        </label>
+      </div>
+      <div class="large-4 columns">
+        <label>Name
+          {{input value=name}}
+        </label>
+      </div>
+      <div class="large-4 columns">
+        <label>Surname
+          {{input value=surname}}
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-9 columns">
+        <label>Address
+          {{input value=address}}
+        </label>
+      </div>
+      <div class="large-3 columns">
+        <label>ZIP code
+          {{input value=zip_code}}
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-6 columns">
+        <label>Town
+          {{input value=town}}
+        </label>
+      </div>
+      <div class="large-2 columns">
+        <label>Province
+          {{input value=province}}
+        </label>
+      </div>
+      <div class="large-4 columns">
+        <label>Country
+          {{input value=country}}
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-6 columns">
+        <label>Tax code
+          {{input value=tax_code}}
+        </label>
+      </div>
+      <div class="large-6 columns">
+        <label>VAT
+          {{input value=vat}}
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <label>Additional informations
+          {{textarea class="edit" value=info rows=10}}
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <button {{action "saveCustomer"}} class="button radius success"><i class="fa fa-save"></i> Save</button>
+        <button {{action "removeCustomer"}} class="button alert radius"><i class="fa fa-trash-o"></i> Delete</button>
+        <button {{action "showCustomer"}} class="button radius"><i class="fa fa-reply"></i> Back</button>
+      </div>
+    </div>
+  </form>
 {{else}}
-  <h1>{{title}}</h1>
-  <p>{{full_name}}</p>
-  <p>address: {{full_address}}</p>
-  <p>tax_code: {{tax_code}}</p>
-  <p>vat: {{vat}}</p>
-  <p>info: {{{info}}}</p>
-  <p>created_at: {{formatted_datetime created_at}}</p>
-  <p>updated_at: {{formatted_datetime updated_at}}</p>
-  <button {{action "editCustomer"}} class="edit">Edit</button>
-  <button {{action "removeCustomer"}} class="destroy">Delete</button>
+  <div class="row">
+    <div class="large-12 columns">
+      <h1>{{title}}
+        <button {{action "editCustomer"}} class="button tiny radius"><i class="fa fa-edit"></i> Edit</button>
+        <button {{action "removeCustomer"}} class="button tiny alert radius"><i class="fa fa-trash-o"></i> Delete</button>
+      </h1>
+      <table>
+        <tr>
+          <th>Name</th>
+          <td>{{full_name}}</td>
+        </tr>
+        <tr>
+          <th>Address</th>
+          <td>{{full_address}}</td>
+        </tr>
+        <tr>
+          <th>Tax code</th>
+          <td>{{tax_code}}</th>
+        </tr>
+        <tr>
+          <th>VAT</th>
+          <td>{{vat}}</th>
+        </tr>
+        <tr>
+          <th>Information</th>
+          <td>{{{info}}}</th>
+        </tr>
+      </table>
+      {{#link-to 'customers' class="button radius"}}<i class="fa fa-group"></i> Customers list{{/link-to}}
+    </div>
+  </div>
 {{/if}}

@@ -29,7 +29,8 @@ class  Api::V1::CustomersController < Api::V1::ApiController
     if @customer.update_attributes(customer_params)
       respond_with @customer, { location: nil, serializer: CustomerSerializer }
     else
-      render nothing: true, status: 422
+      respond_with @customer, { location: nil, status: 422 }
+      # render nothing: true, status: 422
     end
   end
 

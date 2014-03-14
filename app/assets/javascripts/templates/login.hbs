@@ -1,18 +1,32 @@
+{{#if errorMessage}}
 <div class="row">
-  <div class="large-12 medium-12 columns">
-    {{#if errorMessage}}
+  <div class="large-12 columns">
       <div data-alert class='alert alert-box radius'>
         {{errorMessage}}
         <a {{action 'closeMessage'}} class='close'>x</a>
       </div>
-    {{/if}}
-
-    <form {{action 'authenticate' on='submit'}}>
-      <label for='identification'>Login</label>
-      {{input id='identification' placeholder='Enter Login' value=identification}}
-      <label for='password'>Password</label>
-      {{input id='password' placeholder='Enter Password' type='password' value=password}}
-      <button type='submit'>Login</button>
-    </form>
+    </div>
   </div>
-</div>
+{{/if}}
+
+<form {{action 'authenticate' on='submit'}}>
+  <div class="row">
+    <div class="large-12 columns">
+      <label for='identification'>Login
+        {{input id='identification' placeholder='Enter email address' value=identification}}
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <label for='password'>Password
+        {{input id='password' placeholder='Enter Password' type='password' value=password}}
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <button type='submit' class="button">Sign in</button>
+    </div>
+  </div>
+</form>

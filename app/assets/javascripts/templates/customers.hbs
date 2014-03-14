@@ -1,5 +1,18 @@
-<ul>
-{{#each customer in controller}}
-<li>{{#link-to 'customer' customer}}{{customer.title}}{{/link-to}}</li>
-{{/each}}
-</ul>
+<div class="row">
+  <div class="large-12 columns">
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each customer in controller}}
+          <tr>
+            <td>{{#link-to 'customer' customer}}{{customer.title}}{{/link-to}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
