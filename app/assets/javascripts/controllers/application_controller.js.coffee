@@ -8,10 +8,10 @@ App.ApplicationController = Ember.Controller.extend
       if notification.persists
         notification.persists = null
       else
-        this.set('notification', null)
+        @set('notification', null)
 
   # notification alert
   # type can be: error, info, success
   # example: @get('controllers.application').notify({title: "Error!", message: "An error occurred in foobar.", type: "alert-error"})
   notify: (options) ->
-    this.set('notification', options)
+    @set('notification', options)

@@ -1,7 +1,11 @@
-App.CustomersRoute = Ember.Route.extend Ember.SimpleAuth.AuthenticatedRouteMixin,
+App.CustomersIndexRoute = Ember.Route.extend Ember.SimpleAuth.AuthenticatedRouteMixin,
   model: ->
     @store.find('customer')
 
-App.CustomerRoute = Ember.Route.extend
+App.CustomerRoute = Ember.Route.extend Ember.SimpleAuth.AuthenticatedRouteMixin,
   model: (params) ->
     @store.find('customer', params.customer_id)
+
+App.CustomersNewRoute = Ember.Route.extend Ember.SimpleAuth.AuthenticatedRouteMixin,
+  model: ->
+    App.Customer.createRecord({})

@@ -4,7 +4,6 @@ App.Router.map ()->
   @route 'login'
   @resource 'customers', ->
     @route 'new'
-    @route 'edit'
   @resource 'customer', { path: '/customer/:customer_id' }
 
 App.BeforeRoute = Ember.Route.extend
