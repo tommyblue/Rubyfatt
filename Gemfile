@@ -2,14 +2,14 @@ source 'https://rubygems.org'
 
 ruby '2.1.0'
 
-gem 'rails', '4.0.3'
+gem 'rails', '4.0.4'
 
 #----- Rails 3 compatibility (TO BE REMOVED ASAP)
-gem 'protected_attributes', '~> 1.0.5'
+gem 'protected_attributes', '~> 1.0.7'
 
 #----- SQLite or MySQL or PostgreSQL or..
 # gem 'sqlite3'
-gem 'mysql2', '~> 0.3.13'
+gem 'mysql2', '~> 0.3.15'
 gem 'pg', '~> 0.17.0'
 
 #----- Authentication and authorization
@@ -65,7 +65,7 @@ end
 gem 'sass-rails',   '~> 4.0.1'
 gem 'coffee-rails', '~> 4.0.1'
 gem 'uglifier', '~> 2.2.1'
-gem 'therubyracer', '~> 0.12.0'
+gem 'therubyracer', '~> 0.12.1'
 
 gem 'jquery-rails', '~> 3.0.4'
 gem 'jquery-ui-rails', "~> 4.0.5"
@@ -73,4 +73,4 @@ gem 'select2-rails', '~> 3.5.0'
 gem 'bootstrap-wysihtml5-rails', '~> 0.3.1.23'
 
 # Use unicorn as the web server
-gem 'unicorn', '~> 4.6.3'
+gem 'unicorn', '~> 4.8.2'
