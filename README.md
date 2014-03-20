@@ -33,20 +33,35 @@ Tutte le guide (installazione, aggiornamento, deploy, ecc.) le puoi trovare nell
 
 ## Come contribuire
 
-I bug e le cose da fare sono tracciate nelle [segnalazioni di GitHub](https://github.com/tommyblue/Rubyfatt/issues). se vuoi contribuire al progetto forkalo, lavora su qualche **segnalazione** e fai una **pull request**.
+I bug e le cose da fare sono tracciate nelle [segnalazioni di GitHub](https://github.com/tommyblue/Rubyfatt/issues) e nel successivo paragrafo **Sviluppo**. Se vuoi contribuire al progetto contattami direttamente oppure forkalo, lavora su qualche **segnalazione** e fai una **pull request**.
 Tutte le informazioni che ti servono le trovi sull'help ufficiale di GitHub: [http://help.github.com/send-pull-requests/](http://help.github.com/send-pull-requests/)
 
 Se trovi un errore o hai un suggerimento, ma non hai modo/tempo/voglia di correggerlo, [crea una nuova segnalazione](https://github.com/tommyblue/Rubyfatt/issues/new) e cercherò di lavorarci.
+
+## Sviluppo
+
+L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni di GitHub](https://github.com/tommyblue/Rubyfatt/issues?labels=enhancement&page=1&state=open) con la label *enhancement*.
+
+In questo momento vi sono tre filoni principali di sviluppo, molto legati tra loro: API, interfaccia client ([EmberJS](http://emberjs.com/)) e testing.
+Il branch `master` non verrà coinvolto in questi sviluppi finchè non saranno pronti alla produzione. Il branch su cui verranno invece inserite queste patch è `develop` (lo sviluppo segue il modello [git flow](http://nvie.com/posts/a-successful-git-branching-model/))
+
+### Testing
+
+Una grossa pecca di Rubyfatt è la mancanza di test. Avendo deciso di riscrivere una bella fetta del codice, sarà sviluppato utilizzando TDD, quindi tutto il nuovo codice (almeno lato server) sarà testato. Anche le funzioni implementate nel vecchio codice verranno testate via via che saranno incontrate.
+
+### API
+
+Nell'ottica di sviluppare un'interfaccia completamente lato client verranno rese disponibili tutte le funzioni attraverso API JSON autenticate. La documentazione relativa è alla pagina http://docs.rubyfatt.apiary.io/
+
+### Interfaccia EmberJS
+
+L'interfaccia utente sarà riscritta per utilizzare le nuove API. Il framework usato è [EmberJS](http://emberjs.com/)
 
 ## Licenza
 
 Rubyfatt è distribuito con licenza GNU Affero General Public License http://www.gnu.org/licenses/agpl.html
 
 Ruby on Rails, software su cui è basato Rubyfatt, è distribuito con licenza MIT http://opensource.org/licenses/MIT
-
-## Roadmap
-
-L'elenco dei buoni propositi per il futuro lo puoi trovare nelle [segnalazioni di GitHub](https://github.com/tommyblue/Rubyfatt/issues?labels=enhancement&page=1&state=open) con la label *enhancement*.
 
 <a name="changelog"></a>
 ## Changelog
