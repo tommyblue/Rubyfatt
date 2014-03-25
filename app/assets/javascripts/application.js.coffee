@@ -5,7 +5,7 @@
 #= require ember
 #= require ember-data
 #= require_self
-#= require app
+#= require ember-app
 
 window.App = Ember.Application.create({
   LOG_TRANSITIONS: true
