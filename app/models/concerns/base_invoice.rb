@@ -12,6 +12,7 @@ module BaseInvoice
 
     base.send :default_scope, Proc.new { base.order DbAdapter.get_year("#{base.table_name}.date"), "#{base.table_name}.number", "#{base.table_name}.id" }
     base.send :scope, :sorted, -> { base.order('date DESC') }
+    base.send :scope, :ordered, -> { base.order('date DESC') }
     base.send :scope, :by_year, lambda { |year| base.where("date >= ? and date <= ?", "#{year}-01-01", "#{year}-12-31") }
 
     base.before_create do |base_invoice|
