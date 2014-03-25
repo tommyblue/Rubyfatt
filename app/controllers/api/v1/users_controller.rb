@@ -5,7 +5,8 @@ class Api::V1::UsersController < Api::V1::ApiController
   # See Authenticators paragraph at https://github.com/simplabs/ember-simple-auth
   def sign_in
     raise 'invalid_request' if (params[:username].nil? || params[:password].nil?)
-    if token = User.api_login(params[:username], params[:password])
+    ip_address = request.remote_ip rescue nil
+    if token = User.api_login(params[:username], params[:password], ip_address)
       respond_with({ access_token: token, token_type: 'bearer' }, {location: nil, status: 200})
     else
       respond_with({ error: 'invalid_client', error_description: 'Wrong credentials'}, {location: nil, status: 401 })

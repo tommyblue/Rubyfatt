@@ -31,9 +31,9 @@ class User < ActiveRecord::Base
   end
 
   # Sign in the user from API and returns a valid token if correct
-  def self.api_login(email, password)
+  def self.api_login(email, password, ip_address = nil)
     if (user = User.find_by_email(email)) && user.valid_password?(password)
-      token = user.tokens.create
+      token = user.tokens.create(ip_address: ip_address)
       token.token
     else
       false

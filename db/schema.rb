@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140308184846) do
+ActiveRecord::Schema.define(version: 20140325164719) do
 
   create_table "certifications", force: true do |t|
     t.integer  "user_id"
@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(version: 20140308184846) do
   create_table "tokens", force: true do |t|
     t.string   "token",      null: false
     t.integer  "user_id",    null: false
+    t.string   "ip_address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
