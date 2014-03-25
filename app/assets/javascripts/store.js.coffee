@@ -1,9 +1,9 @@
 App.Store = DS.Store.extend
-  # adapter: '-active-model'
-  adapter: 'DS.RESTAdapter'
+  adapter: '-active-model'
+  # adapter: 'DS.RESTAdapter'
 
-# App.ApplicationAdapter = DS.RESTAdapter.extend
-DS.RESTAdapter.reopen
+# DS.RESTAdapter.reopen
+App.ApplicationAdapter = DS.RESTAdapter.extend
   namespace: 'api/v1'
 
 Ember.SimpleAuth.Authenticators.OAuth2.reopen

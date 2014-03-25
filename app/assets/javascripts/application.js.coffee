@@ -2,8 +2,8 @@
 #= require jquery_ujs
 #= require foundation
 #= require handlebars
-#= require ember
-#= require ember-data
+#= require ./components/ember-1.5.0
+#= require ./components/ember-data-1.0.0
 #= require_self
 #= require ember-app
 

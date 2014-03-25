@@ -1,12 +1,12 @@
 {{#if errorMessage}}
 <div class="row">
   <div class="large-12 columns">
-      <div data-alert class='alert alert-box radius'>
-        {{errorMessage}}
-        <a {{action 'closeMessage'}} class='close'>x</a>
-      </div>
+    <div data-alert class='alert alert-box radius'>
+      {{errorMessage}}
+      <a {{action 'closeMessage'}} class='close'>x</a>
     </div>
   </div>
+</div>
 {{/if}}
 
 <form {{action 'authenticate' on='submit'}}>

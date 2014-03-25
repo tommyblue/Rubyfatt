@@ -6,7 +6,6 @@ App.LoginController = Ember.Controller.extend Ember.SimpleAuth.LoginControllerMi
         message: "You are now signed in",
         type: "success",
         persists: false
-      @transitionTo 'index'
     sessionAuthenticationFailed: (error) ->
       msg = JSON.parse(error).error
       @get("controllers.application").notify

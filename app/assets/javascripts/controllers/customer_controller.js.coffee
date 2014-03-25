@@ -6,19 +6,18 @@ App.CustomersNewController = Ember.ObjectController.extend
       customer = @get('model')
       customer.save().then( (session) =>
         @get("controllers.application").notify
-          message: "The customer was saved",
+          message: "The customer was created",
           type: "success",
-          persists: false
+          persists: true
         @transitionToRoute('customer', customer)
       , (error) =>
         message = "Errors: "
-        $.each error.errors, (key, value) ->
+        $.each error.responseJSON.errors, (key, value) ->
           message += "#{key}: #{value}, "
         @get("controllers.application").notify
-          title: "The customer can't be saved",
           message: message,
           type: "alert",
-          persists: false
+          persists: true
       )
 
 App.CustomerController = Ember.ObjectController.extend

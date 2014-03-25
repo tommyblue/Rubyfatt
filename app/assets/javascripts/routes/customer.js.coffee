@@ -8,5 +8,4 @@ App.CustomerRoute = Ember.Route.extend Ember.SimpleAuth.AuthenticatedRouteMixin,
 
 App.CustomersNewRoute = Ember.Route.extend Ember.SimpleAuth.AuthenticatedRouteMixin,
   model: ->
-    # @store.createRecord('post')
-    App.Customer.createRecord({})
+    @store.createRecord('customer')
