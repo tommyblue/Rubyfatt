@@ -46,6 +46,7 @@ group :test do
   gem 'sqlite3', '~> 1.3.9'
   gem 'pg', '~> 0.17.1'
   gem 'factory_girl_rails', '~> 4.4.1'
+  gem 'faker', '~> 1.3.0'
   # gem 'capybara', '~> 2.2.1'
   gem 'guard-rspec', '~> 4.2.8', require: false # incompatible with rspec-rails 3.0.0.beta
   gem 'growl'

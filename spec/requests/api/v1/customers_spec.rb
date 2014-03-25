@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "CustomersController" do
+describe "Customers requests" do
   before do
     @user = api_sign_in
     @customer1 = FactoryGirl.create :customer, user: @user

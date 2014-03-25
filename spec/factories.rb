@@ -29,7 +29,7 @@ FactoryGirl.define do
   factory :tax do
     # consolidated_tax
     sequence(:order)
-    name "Tax"
+    sequence(:name) { |n| "Tax #{n}" }
     rate 4
     compound false
   end
@@ -37,8 +37,8 @@ FactoryGirl.define do
   factory :customer do
     user
     sequence(:title) {|n| "Test Customer n. #{n}"}
-    name "Bill"
-    surname "brown"
+    name Faker::Name.first_name
+    surname Faker::Name.last_name
     address "Via Roma, 1"
     zip_code "123456"
     town "Roma"
@@ -46,11 +46,20 @@ FactoryGirl.define do
     country "Italy"
     sequence(:tax_code) {|n| "DEFABC00X00A123#{n}"}
     sequence(:vat, 1000) {|n| "01987654#{n}"}
+
+    factory :customer_with_invoices do
+      ignore do
+        invoices_count 3
+      end
+      after(:create) do |customer, evaluator|
+        create_list(:invoice, evaluator.invoices_count, customer: customer)
+      end
+    end
   end
 
 
   factory :consolidated_tax do
-    name "P. IVA"
+    sequence(:name) { |n| "P. IVA #{n}" }
   end
 
 
@@ -67,9 +76,7 @@ FactoryGirl.define do
     paid false
     consolidated_tax
     before(:create) do |invoice|
-      invoice.slips = FactoryGirl.create_list(:slip, 0, customer: invoice.customer)
-      puts "HERE"
-      puts invoice.slips.inspect
+      invoice.slips = create_list(:slip, 2, customer: invoice.customer)
     end
   end
 end
