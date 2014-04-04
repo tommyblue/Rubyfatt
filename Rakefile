@@ -3,4 +3,5 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+require 'codesake/dawn/tasks'
 Rubyfatt::Application.load_tasks

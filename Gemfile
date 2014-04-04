@@ -36,6 +36,7 @@ group :development do
   gem 'better_errors', '~> 1.1.0'
   # Brakeman detects security vulnerabilities in Ruby on Rails applications via static analysis.
   # gem 'brakeman', '~> 2.4.1', require: false
+  gem 'codesake-dawn', require: false
 end
 gem 'pry-rails', '~> 0.3.2', group: [:test, :development]
 
