@@ -56,6 +56,10 @@ end
 
 group :production do
   gem 'airbrake_user_attributes', '~> 0.1.6'
+
+  # Use unicorn as the web server
+  gem 'unicorn', '~> 4.8.2'
+  # gem 'capistrano', '~> 3.1.0'
 end
 
 group :doc do
@@ -64,7 +68,7 @@ group :doc do
 end
 
 #----- Assets
-gem 'sass-rails',   '~> 4.0.1'
+gem 'sass-rails',   '~> 4.0.3'
 gem 'coffee-rails', '~> 4.0.1'
 gem 'uglifier', '~> 2.4.0'
 gem 'therubyracer', '~> 0.12.1', platform: :ruby
@@ -78,7 +82,3 @@ gem 'ember-source', '~> 1.4.0'
 
 gem 'jquery-rails', '~> 3.1.0'
 # gem 'jquery-ui-rails', '~> 4.2.0'
-
-# Use unicorn as the web server
-gem 'unicorn', '~> 4.8.2'
-# gem 'capistrano', '~> 3.1.0'
