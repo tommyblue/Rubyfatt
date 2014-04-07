@@ -71,6 +71,8 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.3)
       climate_control (>= 0.0.3, < 1.0)
+    codeclimate-test-reporter (0.1.1)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     codesake-commons (0.95.0)
       mechanize
@@ -348,6 +350,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.8.1)
   airbrake_user_attributes (~> 0.1.6)
   better_errors (~> 1.1.0)
+  codeclimate-test-reporter
   codesake-dawn
   coffee-rails (~> 4.0.1)
   devise (~> 3.2.3)

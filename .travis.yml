@@ -14,7 +14,7 @@ bundler_args: --without production
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
-  - bundle exec rspec spec
+  - CODECLIMATE_REPO_TOKEN=c4a73e487b5b8297808728964448353cf9169ac60b182c9c308326a40e20580d bundle exec rake
 before_script:
   - cp config/database.travis.yml config/database.yml
   - mysql -e 'create database rubyfatt_test'

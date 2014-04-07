@@ -52,6 +52,7 @@ group :test do
   gem 'guard-rspec', '~> 4.2.8', require: false # incompatible with rspec-rails 3.0.0.beta
   gem 'growl'
   gem 'rb-fsevent', '~> 0.9.4'
+  gem 'codeclimate-test-reporter', require: false
 end
 
 group :production do
