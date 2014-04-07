@@ -1,17 +1,17 @@
 source 'https://rubygems.org'
 ruby '2.1.1'
 
-gem 'rails', '4.0.3'
+gem 'rails', '4.0.4'
 
 #----- Databases
 gem 'mysql2', '~> 0.3.13'
 
 #----- Authentication and authorization
-gem 'devise', '~> 3.2.3'
-gem 'pundit', '~> 0.2.2'
+gem 'devise', '~> 3.2.4'
+gem 'pundit', '~> 0.2.3'
 
 #----- PDF Generation
-gem 'prawn',  '~> 1.0.0.rc2'
+gem 'prawn',  '~> 1.0.0'
 
 #----- Recurring invoices time management
 gem 'ice_cube', '~> 0.11.3'
@@ -71,15 +71,15 @@ end
 #----- Assets
 gem 'sass-rails',   '~> 4.0.3'
 gem 'coffee-rails', '~> 4.0.1'
-gem 'uglifier', '~> 2.4.0'
+gem 'uglifier', '~> 2.5.0'
 gem 'therubyracer', '~> 0.12.1', platform: :ruby
 
 #----- ZURB Foundation
-gem 'foundation-rails'
+gem 'foundation-rails', '~> 5.2.0.0'
 
 #----- Ember.js
 gem 'ember-rails', '~> 0.14.1'
-gem 'ember-source', '~> 1.4.0'
+gem 'ember-source', '~> 1.5.0'
 
 gem 'jquery-rails', '~> 3.1.0'
 # gem 'jquery-ui-rails', '~> 4.2.0'
