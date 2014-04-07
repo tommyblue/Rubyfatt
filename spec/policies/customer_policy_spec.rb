@@ -6,7 +6,7 @@ describe CustomerPolicy do
   context "for current user" do
     it "can only see its customers" do
       generate_scenario
-      expect(CustomerPolicy::Scope.new(@user1, Customer).resolve).to eq([@customer1, @customer2])
+      expect(CustomerPolicy::Scope.new(@user1, Customer).resolve).to include(@customer1, @customer2)
     end
 
     it "can't see others' customers" do
