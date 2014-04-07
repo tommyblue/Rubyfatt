@@ -41,9 +41,9 @@ end
 gem 'pry-rails', '~> 0.3.2', group: [:test, :development]
 
 # gem 'rspec-rails', '~> 3.0.0.beta', group: [:test, :development]
-gem 'rspec-rails', '~> 2.14.1', group: [:test, :development]
+gem 'rspec-rails', '~> 2.14.2', group: [:test, :development]
 group :test do
-  gem 'rake', '~> 10.1.0'
+  gem 'rake', '~> 10.2.2'
   gem 'sqlite3', '~> 1.3.9'
   gem 'pg', '~> 0.17.1'
   gem 'factory_girl_rails', '~> 4.4.1'
@@ -52,7 +52,7 @@ group :test do
   gem 'guard-rspec', '~> 4.2.8', require: false # incompatible with rspec-rails 3.0.0.beta
   gem 'growl'
   gem 'rb-fsevent', '~> 0.9.4'
-  gem 'codeclimate-test-reporter', require: false
+  gem 'codeclimate-test-reporter', '~> 0.3.0', require: false
 end
 
 group :production do
@@ -75,7 +75,7 @@ gem 'uglifier', '~> 2.5.0'
 gem 'therubyracer', '~> 0.12.1', platform: :ruby
 
 #----- ZURB Foundation
-gem 'foundation-rails', '~> 5.2.0.0'
+gem 'foundation-rails', '~> 5.2.2.0'
 
 #----- Ember.js
 gem 'ember-rails', '~> 0.14.1'
