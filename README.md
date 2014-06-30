@@ -1,4 +1,4 @@
-## Rubyfatt [![Build Status](https://secure.travis-ci.org/tommyblue/Rubyfatt.png?branch=develop)](http://travis-ci.org/tommyblue/Rubyfatt) [![Dependency Status](https://gemnasium.com/tommyblue/Rubyfatt.svg)](https://gemnasium.com/tommyblue/Rubyfatt) [![Code Climate](https://codeclimate.com/github/tommyblue/Rubyfatt.png)](https://codeclimate.com/github/tommyblue/Rubyfatt)
+## Rubyfatt [![Build Status](https://secure.travis-ci.org/tommyblue/Rubyfatt.png?branch=develop)](http://travis-ci.org/tommyblue/Rubyfatt) [![Dependency Status](https://gemnasium.com/tommyblue/Rubyfatt.svg)](https://gemnasium.com/tommyblue/Rubyfatt) [![Code Climate](https://codeclimate.com/github/tommyblue/Rubyfatt.png)](https://codeclimate.com/github/tommyblue/Rubyfatt) [![Coverage Status](https://coveralls.io/repos/tommyblue/Rubyfatt/badge.png)](https://coveralls.io/r/tommyblue/Rubyfatt)
 
 ### [http://rubyfatt.kreations.it/](http://rubyfatt.kreations.it/)
 
