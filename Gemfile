@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.1'
 
-gem 'rails', '4.1.2'
+gem 'rails', '4.1.4'
 
 #----- Databases
 gem 'mysql2', '~> 0.3.16'
@@ -11,7 +11,7 @@ gem 'devise', '~> 3.2.4'
 gem 'pundit', '~> 0.2.3'
 
 #----- PDF Generation
-gem 'prawn',  '~> 1.0.0'
+gem 'prawn',  '~> 1.1.0'
 
 #----- Recurring invoices time management
 gem 'ice_cube', '~> 0.11.3'
@@ -49,7 +49,7 @@ group :test do
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'faker', '~> 1.3.0'
   # gem 'capybara', '~> 2.2.1'
-  gem 'guard-rspec', '~> 4.2.8', require: false # incompatible with rspec-rails 3.0.0.beta
+  gem 'guard-rspec', '~> 4.2.10', require: false # incompatible with rspec-rails 3.0.0.beta
   gem 'growl'
   gem 'rb-fsevent', '~> 0.9.4'
   gem 'codeclimate-test-reporter', '~> 0.3.0', require: false
