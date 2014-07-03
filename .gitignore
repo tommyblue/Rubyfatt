@@ -24,3 +24,5 @@
 
 _site/
 old/
+
+coverage/

@@ -40,7 +40,7 @@ group :development do
 end
 gem 'pry-rails', '~> 0.3.2', group: [:test, :development]
 
-# gem 'rspec-rails', '~> 3.0.0.beta', group: [:test, :development]
+# gem 'rspec-rails', '~> 3.0.1', group: [:test, :development]
 gem 'rspec-rails', '~> 2.14.2', group: [:test, :development]
 group :test do
   gem 'rake', '~> 10.3.2'
