@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="large-12 columns">
+    {{#if isCreatingNew }}
+      {{partial 'customers/new'}}
+    {{else}}
+      <button {{action 'createNew'}} class="button radius"><i class="fa fa-plus"></i> New customer</button>
+    {{/if}}
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-3 columns">
+    <ul>
+      {{#each customer in model}}
+        <li>{{#link-to 'customer' customer}}{{customer.title}}{{/link-to}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="large-9 columns">
+    {{outlet}}
+  </div>
+</div>
