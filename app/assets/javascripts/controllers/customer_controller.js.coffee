@@ -20,8 +20,39 @@ App.CustomersNewController = Ember.ObjectController.extend
           persists: true
       )
 
+App.CustomersController = Ember.ArrayController.extend
+  needs: ["application"]
+
+  actions:
+    createNew: ->
+      @set('isCreatingNew', true)
+    hideCustomerForm: ->
+      @set('isCreatingNew', false)
+    saveCustomer: ->
+      customer = @get('model')
+      customer.save().then( (session) =>
+        @get("controllers.application").notify
+          message: "The customer was saved",
+          type: "success",
+          persists: false
+        @set('isEditing', false)
+        @set('isCreatingNew', false)
+      , (error) =>
+        message = "Errors: "
+        $.each error.errors, (key, value) ->
+          message += "#{key}: #{value}, "
+        @get("controllers.application").notify
+          title: "The customer can't be saved",
+          message: message,
+          type: "alert",
+          persists: false
+      )
+
 App.CustomerController = Ember.ObjectController.extend
   needs: ["application"]
+
+  isEditing: false
+  isCreatingNew: false
 
   actions:
     editCustomer: ->
@@ -38,6 +69,7 @@ App.CustomerController = Ember.ObjectController.extend
           type: "success",
           persists: false
         @set('isEditing', false)
+        @set('isCreatingNew', false)
       , (error) =>
         message = "Errors: "
         $.each error.errors, (key, value) ->
@@ -56,5 +88,3 @@ App.CustomerController = Ember.ObjectController.extend
 
     showDropdown: ->
       Foundation.libs.dropdown.toggle($('#groupDropdownLink'))
-
-  isEditing: false

@@ -1,78 +1,5 @@
 {{#if isEditing}}
-  <form>
-    <div class="row">
-      <div class="large-4 columns">
-        <label>Title
-          {{input value=title}}
-        </label>
-      </div>
-      <div class="large-4 columns">
-        <label>Name
-          {{input value=name}}
-        </label>
-      </div>
-      <div class="large-4 columns">
-        <label>Surname
-          {{input value=surname}}
-        </label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="large-9 columns">
-        <label>Address
-          {{input value=address}}
-        </label>
-      </div>
-      <div class="large-3 columns">
-        <label>ZIP code
-          {{input value=zip_code}}
-        </label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="large-6 columns">
-        <label>Town
-          {{input value=town}}
-        </label>
-      </div>
-      <div class="large-2 columns">
-        <label>Province
-          {{input value=province}}
-        </label>
-      </div>
-      <div class="large-4 columns">
-        <label>Country
-          {{input value=country}}
-        </label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="large-6 columns">
-        <label>Tax code
-          {{input value=tax_code}}
-        </label>
-      </div>
-      <div class="large-6 columns">
-        <label>VAT
-          {{input value=vat}}
-        </label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="large-12 columns">
-        <label>Additional informations
-          {{textarea class="edit" value=info rows=10}}
-        </label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="large-12 columns">
-        <button {{action "saveCustomer"}} class="button radius success"><i class="fa fa-save"></i> Save</button>
-        <button {{action "removeCustomer"}} class="button alert radius"><i class="fa fa-trash-o"></i> Delete</button>
-        <button {{action "showCustomer"}} class="button radius"><i class="fa fa-reply"></i> Back</button>
-      </div>
-    </div>
-  </form>
+  {{partial 'customers/edit_form'}}
 {{else}}
   <div class="row">
     <div class="large-12 columns">
@@ -105,7 +32,6 @@
           <td>{{{info}}}</th>
         </tr>
       </table>
-      {{#link-to 'customers' class="button radius"}}<i class="fa fa-group"></i> Customers list{{/link-to}}
     </div>
   </div>
 {{/if}}
