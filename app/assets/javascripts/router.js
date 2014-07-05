@@ -6,6 +6,10 @@ App.Router.map(function(){
   });
 });
 
+App.Router.reopen({
+  rootURL: '/'
+});
+
 Ember.Route.reopen({
   activate: function(){
     this.controllerFor('application').closeNotification();
