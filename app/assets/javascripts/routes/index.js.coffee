@@ -1,3 +1,7 @@
-App.IndexRoute = Ember.Route.extend Ember.SimpleAuth.AuthenticatedRouteMixin,
+App.IndexRoute = Ember.Route.extend
   redirect: ->
-    @transitionTo('customers')
+    sessionAuthenticationSucceeded: ->
+      @transitionTo('customers')
+    sessionAuthenticationFailed: (error) ->
+      console.log 'ko'
+      @send 'authorizationFailed'

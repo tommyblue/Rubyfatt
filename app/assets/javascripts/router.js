@@ -6,9 +6,9 @@ App.Router.map(function(){
   });
 });
 
-App.Router.reopen({
-  rootURL: '/'
-});
+// App.Router.reopen({
+//   rootURL: '/'
+// });
 
 Ember.Route.reopen({
   activate: function(){
@@ -16,3 +16,14 @@ Ember.Route.reopen({
     this._super();
   }
 });
+
+// Ember.SimpleAuth.AuthenticatedRouteMixin.reopen({
+//   error: function(reason, transition) {
+//     if (reason.status === 401) {
+//       console.log('401!');
+//       // this.redirectToLogin(transition);
+//     } else {
+//       console.log('unknown problem');
+//     }
+//   }
+// });
