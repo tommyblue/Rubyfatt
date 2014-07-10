@@ -1,27 +1,9 @@
-App.CustomersNewController = Ember.ObjectController.extend
-  needs: ["application"]
-
-  actions:
-    saveCustomer: ->
-      customer = @get('model')
-      customer.save().then( (session) =>
-        @get("controllers.application").notify
-          message: "The customer was created",
-          type: "success",
-          persists: true
-        @transitionToRoute('customer', customer)
-      , (error) =>
-        message = "Errors: "
-        $.each error.responseJSON.errors, (key, value) ->
-          message += "#{key}: #{value}, "
-        @get("controllers.application").notify
-          message: message,
-          type: "alert",
-          persists: true
-      )
-
 App.CustomersController = Ember.ArrayController.extend
   needs: ["application"]
+  sortProperties: ["title"]
+  sortAscending: true
+
+  isCreatingNew: false
 
   actions:
     createNew: ->
@@ -37,6 +19,27 @@ App.CustomersController = Ember.ArrayController.extend
           persists: false
         @set('isEditing', false)
         @set('isCreatingNew', false)
+      , (error) =>
+        message = "Errors: "
+        $.each error.errors, (key, value) ->
+          message += "#{key}: #{value}, "
+        @get("controllers.application").notify
+          title: "The customer can't be saved",
+          message: message,
+          type: "alert",
+          persists: false
+      )
+
+App.CustomersNewController = Ember.ObjectController.extend
+  needs: ["application"]
+  actions:
+    saveCustomer: ->
+      customer = @get('model')
+      customer.save().then( (session) =>
+        @get("controllers.application").notify
+          message: "The customer was saved",
+          type: "success",
+          persists: false
       , (error) =>
         message = "Errors: "
         $.each error.errors, (key, value) ->

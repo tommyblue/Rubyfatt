@@ -1,21 +1,16 @@
 <div class="row">
-  <div class="large-12 columns">
-    {{#if isCreatingNew }}
-      {{partial 'customers/new'}}
-    {{/if}}
-  </div>
-</div>
-
-<div class="row">
   <div class="large-3 medium-4 columns">
     <div class="hide-for-small">
       <div class="sidebar">
+        <strong>Customers</strong>
         <ul class="side-nav">
           <li>
-            <button {{action 'createNew'}} class="button tiny radius"><i class="fa fa-plus"></i> New customer</button>
+            {{#link-to 'customers.new' class="button tiny radius"}}<i class="fa fa-plus"></i> New customer{{/link-to}}
           </li>
-          {{#each customer in model}}
-            <li>{{#link-to 'customer' customer}}{{customer.title}}{{/link-to}}</li>
+          {{#each}}
+            {{#unless this.isNew}}
+              <li>{{#link-to 'customer' this}}{{title}}{{/link-to}}</li>
+            {{/unless}}
           {{/each}}
         </ul>
       </div>

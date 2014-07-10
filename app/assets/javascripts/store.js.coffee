@@ -1,4 +1,4 @@
-App.Store = DS.Store.extend
+App.ApplicationStore = DS.Store.extend
   adapter: '-active-model'
   # adapter: 'DS.RESTAdapter'
 
