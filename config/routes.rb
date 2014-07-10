@@ -12,6 +12,7 @@ Rubyfatt::Application.routes.draw do
       end
       resources :users, only: [] do
         collection do
+          get :profile
           post :sign_in
         end
       end

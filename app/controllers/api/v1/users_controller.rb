@@ -1,6 +1,10 @@
 class Api::V1::UsersController < Api::V1::ApiController
   skip_before_action :token_authenticate_user!, only: :sign_in
 
+  def profile
+    respond_with @user, { location: nil, serializer: UserSerializer }
+  end
+
   # TODO be compliant with RFC 6749 (OAuth 2.0) http://tools.ietf.org/html/rfc6749
   # See Authenticators paragraph at https://github.com/simplabs/ember-simple-auth
   def sign_in

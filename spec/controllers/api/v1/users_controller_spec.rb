@@ -28,4 +28,15 @@ describe Api::V1::UsersController do
       expect(json['error']).to eq('invalid_client')
     end
   end
+
+  describe 'User profile' do
+    it 'returns user profile informations' do
+      user = FactoryGirl.create :user_with_token
+
+      @request.env['HTTP_AUTHORIZATION'] = user.tokens.last.token
+      get :profile, format: :json
+      json = JSON.parse(response.body)
+      expect(json['user'].keys).to include('email', 'name', 'surname', 'language')
+    end
+  end
 end
