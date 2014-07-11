@@ -11,10 +11,7 @@ App.ApplicationController = Ember.Controller.extend
         @set('notification', null)
 
   signedInUser: (->
-    if localStorage['currentUser']
-      return @store.find('user', localStorage['currentUser'].id)
-    else
-      return null
+    return @store.find('user', localStorage.currentUserId)
   ).property('App.currentUser')
 
   # notification alert
