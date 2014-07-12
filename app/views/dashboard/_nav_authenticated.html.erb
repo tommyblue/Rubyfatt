@@ -2,5 +2,6 @@
   <li>{{#link-to 'customers'}}<i class="fa fa-group"></i> Customers{{/link-to}}</li>
 </ul>
 <ul class="right">
+  <li class="active"><a href="#">Hello, {{signedInUser.name}}</a></li>
   <li><a {{ action 'invalidateSession' }}><i class="fa fa-sign-out"></i> Sign out</a></li>
 </ul>

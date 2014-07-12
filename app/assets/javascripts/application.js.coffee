@@ -12,5 +12,6 @@ window.App = Ember.Application.create
   LOG_TRANSITIONS: true
   LOG_TRANSITIONS_INTERNAL: true
   LOG_RESOLVER: true
+  currentUser: localStorage['currentUser']
 
 $(-> $(document).foundation())
