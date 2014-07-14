@@ -35,8 +35,9 @@ App.ApplicationRoute = Ember.Route.extend(Ember.SimpleAuth.ApplicationRouteMixin
       // App.set('currentUser', null);
       return this._super();
     }
-  },
-  redirect: function() {
-    return this.transitionTo('index');
   }
+  // ,
+  // redirect: function() {
+  //   return this.transitionTo('index');
+  // }
 });
