@@ -47,7 +47,7 @@ group :test do
   gem 'sqlite3', '~> 1.3.9'
   gem 'pg', '~> 0.17.1'
   gem 'factory_girl_rails', '~> 4.4.1'
-  gem 'faker', '~> 1.3.0'
+  gem 'faker', '~> 1.4.2'
   # gem 'capybara', '~> 2.2.1'
   gem 'guard-rspec', '~> 4.2.10', require: false # incompatible with rspec-rails 3.0.0.beta
   gem 'growl'
@@ -72,15 +72,15 @@ end
 #----- Assets
 gem 'sass-rails',   '~> 4.0.3'
 gem 'coffee-rails', '~> 4.0.1'
-gem 'uglifier', '~> 2.5.1'
+gem 'uglifier', '~> 2.5.3'
 gem 'therubyracer', '~> 0.12.1', platform: :ruby
 
 #----- ZURB Foundation
-gem 'foundation-rails', '~> 5.3.0'
+gem 'foundation-rails', '~> 5.3.1.0'
 
 #----- Ember.js
 gem 'ember-rails', '~> 0.15.0'
-gem 'ember-source', '~> 1.5.1.1'
+gem 'ember-source', '~> 1.6.1'
 
 gem 'jquery-rails', '~> 3.1.0'
 # gem 'jquery-ui-rails', '~> 4.2.0'
