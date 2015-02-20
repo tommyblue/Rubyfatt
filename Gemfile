@@ -62,7 +62,7 @@ group :production do
 end
 
 #----- Assets
-gem 'sass-rails',   '~> 4.0.1'
+gem 'sass-rails',   '~> 4.0.2'
 gem 'coffee-rails', '~> 4.0.1'
 gem 'uglifier', '~> 2.2.1'
 gem 'therubyracer', '~> 0.12.1'
