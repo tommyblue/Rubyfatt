@@ -92,6 +92,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    concurrent-ruby (1.1.9)
     country_select (1.2.0)
     debug_inspector (0.0.2)
     devise (3.1.1)
@@ -128,7 +129,8 @@ GEM
     hashery (2.1.0)
     highline (1.6.19)
     hike (1.2.3)
-    i18n (0.6.9)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     ice_cube (0.11.0)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
